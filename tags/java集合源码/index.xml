@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Java集合源码 on 破壳</title>
+    <link>http://localhost:1313/tags/java%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81/</link>
+    <description>Recent content in Java集合源码 on 破壳</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 17 Jul 2019 16:50:58 +0000</lastBuildDate>
+    
+	<atom:link href="http://localhost:1313/tags/java%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Java 集合源码 - AbstractCollection</title>
+      <link>http://localhost:1313/2019/07/17/jdk-collection-abstract-collection/</link>
+      <pubDate>Wed, 17 Jul 2019 16:50:58 +0000</pubDate>
+      
+      <guid>http://localhost:1313/2019/07/17/jdk-collection-abstract-collection/</guid>
+      <description>介绍 AbstractCollection是Java集合实现类的根抽象实现类，它实现了Collection接口，而集合的三个分支(List,S</description>
+    </item>
+    
+  </channel>
+</rss>

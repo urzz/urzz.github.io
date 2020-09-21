@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Spring Boot 整合shiro使用自定义filter - 破壳</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="fooksky" /><meta name="description" content="最近一个项目的认证是用shiro实现的，以前没有做过spring boot &#43; shiro的整合，所以遇到了一些奇奇怪怪的坑 shiro的整合具体这边就不" /><meta name="keywords" content="fooksky, 破壳, Java" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.74.3 with theme even" />
+
+
+<link rel="canonical" href="http://localhost:1313/2019/06/11/spring-boot-shiro-custom-filter/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="/sass/main.min.c7bc1becf36bcf6a9ebd25d2947e43a2eb745ddb0c9a32b43126fd7fa460c351.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Spring Boot 整合shiro使用自定义filter" />
+<meta property="og:description" content="最近一个项目的认证是用shiro实现的，以前没有做过spring boot &#43; shiro的整合，所以遇到了一些奇奇怪怪的坑 shiro的整合具体这边就不" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/2019/06/11/spring-boot-shiro-custom-filter/" />
+<meta property="article:published_time" content="2019-06-11T21:33:38+00:00" />
+<meta property="article:modified_time" content="2019-06-11T21:33:38+00:00" />
+<meta itemprop="name" content="Spring Boot 整合shiro使用自定义filter">
+<meta itemprop="description" content="最近一个项目的认证是用shiro实现的，以前没有做过spring boot &#43; shiro的整合，所以遇到了一些奇奇怪怪的坑 shiro的整合具体这边就不">
+<meta itemprop="datePublished" content="2019-06-11T21:33:38+00:00" />
+<meta itemprop="dateModified" content="2019-06-11T21:33:38+00:00" />
+<meta itemprop="wordCount" content="1050">
+
+
+
+<meta itemprop="keywords" content="Spring,Java," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Spring Boot 整合shiro使用自定义filter"/>
+<meta name="twitter:description" content="最近一个项目的认证是用shiro实现的，以前没有做过spring boot &#43; shiro的整合，所以遇到了一些奇奇怪怪的坑 shiro的整合具体这边就不"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">FookSky</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">FookSky</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Spring Boot 整合shiro使用自定义filter</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-06-11 </span>
+        <div class="post-category">
+            <a href="/categories/spring/"> Spring </a>
+            </div>
+          <span class="more-meta"> 约 1050 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#anon失效">anon失效</a></li>
+            <li><a href="#小结">小结</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <blockquote>
+<p>最近一个项目的认证是用shiro实现的，以前没有做过spring boot + shiro的整合，所以遇到了一些奇奇怪怪的坑</p>
+</blockquote>
+<!-- more -->
+<p>shiro的整合具体这边就不做阐述了，大概有以下几个类:</p>
+<ul>
+<li>JwtFilter</li>
+<li>ShiroConfig</li>
+<li>JwtRealm</li>
+<li>JwtToken</li>
+</ul>
+<p>这里需要关注的只有前两个类，自定义的filter：JwtFilter，以及Shiro配置类</p>
+<p>ShiroConfig.java</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-Java" data-lang="Java"> <span class="nd">@Bean</span><span class="o">(</span><span class="s">&#34;securityManager&#34;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">DefaultWebSecurityManager</span> <span class="nf">getManager</span><span class="o">(</span><span class="nd">@Autowired</span> <span class="n">JwtRealm</span> <span class="n">jwtRealm</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">DefaultWebSecurityManager</span> <span class="n">securityManager</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultWebSecurityManager</span><span class="o">();</span>
+
+    <span class="n">securityManager</span><span class="o">.</span><span class="na">setRealm</span><span class="o">(</span><span class="n">jwtRealm</span><span class="o">);</span>
+
+    <span class="n">DefaultSubjectDAO</span> <span class="n">subjectDAO</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultSubjectDAO</span><span class="o">();</span>
+    <span class="n">DefaultSessionStorageEvaluator</span> <span class="n">defaultSessionStorageEvaluator</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultSessionStorageEvaluator</span><span class="o">();</span>
+    <span class="n">defaultSessionStorageEvaluator</span><span class="o">.</span><span class="na">setSessionStorageEnabled</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+    <span class="n">subjectDAO</span><span class="o">.</span><span class="na">setSessionStorageEvaluator</span><span class="o">(</span><span class="n">defaultSessionStorageEvaluator</span><span class="o">);</span>
+    <span class="n">securityManager</span><span class="o">.</span><span class="na">setSubjectDAO</span><span class="o">(</span><span class="n">subjectDAO</span><span class="o">);</span>
+
+    <span class="k">return</span> <span class="n">securityManager</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nd">@Bean</span><span class="o">(</span><span class="s">&#34;shiroFilter&#34;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">ShiroFilterFactoryBean</span> <span class="nf">factory</span><span class="o">(</span><span class="n">DefaultWebSecurityManager</span> <span class="n">securityManager</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">ShiroFilterFactoryBean</span> <span class="n">factoryBean</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ShiroFilterFactoryBean</span><span class="o">();</span>
+
+    <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Filter</span><span class="o">&gt;</span> <span class="n">filterMap</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedHashMap</span><span class="o">&lt;&gt;();</span>
+    <span class="n">filterMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">SHIRO_JWT_FILTER_NAME</span><span class="o">,</span> <span class="k">new</span> <span class="n">JwtFilter</span><span class="o">());</span>
+    <span class="n">factoryBean</span><span class="o">.</span><span class="na">setFilters</span><span class="o">(</span><span class="n">filterMap</span><span class="o">);</span>
+
+    <span class="n">factoryBean</span><span class="o">.</span><span class="na">setSecurityManager</span><span class="o">(</span><span class="n">securityManager</span><span class="o">);</span>
+
+    <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">filterRuleMap</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedHashMap</span><span class="o">&lt;&gt;();</span>
+    <span class="n">filterRuleMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;/auth/token&#34;</span><span class="o">,</span> <span class="s">&#34;anon&#34;</span><span class="o">);</span>
+    <span class="n">filterRuleMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;/v2/api-docs&#34;</span><span class="o">,</span> <span class="s">&#34;anon&#34;</span><span class="o">);</span>
+    <span class="n">filterRuleMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;/swagger-resources/**&#34;</span><span class="o">,</span> <span class="s">&#34;anon&#34;</span><span class="o">);</span>
+    <span class="n">filterRuleMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;/api/**&#34;</span><span class="o">,</span> <span class="s">&#34;anon&#34;</span><span class="o">);</span>
+    <span class="n">filterRuleMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;/**&#34;</span><span class="o">,</span> <span class="n">SHIRO_JWT_FILTER_NAME</span><span class="o">);</span>
+
+    <span class="n">factoryBean</span><span class="o">.</span><span class="na">setFilterChainDefinitionMap</span><span class="o">(</span><span class="n">filterRuleMap</span><span class="o">);</span>
+
+    <span class="k">return</span> <span class="n">factoryBean</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="anon失效">anon失效</h3>
+<p>因为需要在自定义filter中注入一些属性，所以把JwtFilter交给Spring管理</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-Java" data-lang="Java"><span class="nd">@Bean</span>
+<span class="kd">public</span> <span class="n">JwtFilter</span> <span class="nf">jwtFilter</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="n">JwtFilter</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>同时修改<code>shiroFilter</code>中的filterMap设置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-Java" data-lang="Java"><span class="n">filterMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">SHIRO_JWT_FILTER_NAME</span><span class="o">,</span> <span class="n">jwtFilter</span><span class="o">());</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>但是在修改后，filterChainDefinitionMap中设置为anon的路由规则就失效了，所有的接口请求都会走JwtFilter，而不是先走ShiroFilter。</p>
+<p>原因：</p>
+<blockquote>
+<p>在将JwtFilter交给Spring管理后，Spring将其注册到filterChain中了，与ShiroFilter同级，所以即使设置了filter的order，在shiroFilter完了之后也会经过JwtFilter，从而导致认证请求调用链的异常</p>
+</blockquote>
+<p>解决方法：</p>
+<ul>
+<li>不要把JwtFilter交由Spring管理，直接new一个实例，交由<code>ShiroFilterFactoryBean</code>管理。这样可以保证JwtFilter和ShiroFilter的父子关系，保证filter调用链的正确性
+<ul>
+<li>但是这样的话，在JwtFilter中就不能进行依赖注入，只能获取applicationContext来获取对应的bean，比较麻烦</li>
+</ul>
+</li>
+<li>依然把JwtFilter交由Spring管理，但是设置这个bean不要注册到filter调用链中</li>
+</ul>
+<p>第一个方法只需要把filterMap中JwtFilter获取方式改回new，同时将该类中依赖注入的地方改用获取Spring上下文从而获取bean的方式，这个方式比较麻烦。</p>
+<p>第二个方法则是通过<code>FilterRegistrationBean</code>取消JwtFilter的自动注册，参考 <a href="https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#howto-disable-registration-of-a-servlet-or-filter">文档</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-Java" data-lang="Java"><span class="nd">@Bean</span>
+<span class="kd">public</span> <span class="n">FilterRegistrationBean</span> <span class="nf">registerJwtFilter</span><span class="o">(</span><span class="nd">@Autowired</span> <span class="n">JwtFilter</span> <span class="n">jwtFilter</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">// 设置jwt filter不自动注册到spring管理的监听器中，防止与shiro filter同级，导致该监听器必定执行
+</span><span class="c1"></span>    <span class="n">FilterRegistrationBean</span><span class="o">&lt;</span><span class="n">JwtFilter</span><span class="o">&gt;</span> <span class="n">jwtFilterRegister</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FilterRegistrationBean</span><span class="o">&lt;&gt;(</span><span class="n">jwtFilter</span><span class="o">);</span>
+    <span class="n">jwtFilterRegister</span><span class="o">.</span><span class="na">setEnabled</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+
+    <span class="k">return</span> <span class="n">jwtFilterRegister</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="小结">小结</h3>
+<p>Spring Boot整合Shiro很方便，但是还是有一些注意点的，甚至有的问题还是与Spring的加载机制有关系</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">fooksky</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2019-06-11
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/spring/">Spring</a>
+          <a href="/tags/java/">Java</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/2019/07/03/spring-boot-nginx-cookie-nout-found/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Nginx反代Spring Boot后端服务后，丢失cookie</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/2019/06/05/spring-shiro-cors-config/">
+            <span class="next-text nav-default">Spring Boot 整合shiro后的跨域设置</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+            repo="urzz/hugo-comments"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/urzz" class="iconfont icon-github" title="github"></a>
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="upyun-info">
+    Hosted by <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank"><img src="/images/upyun_logo.png" style="width:60px;display:inline;vertical-align:middle;" /></a>
+  </div>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2015 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>fooksky</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+<script id="baidu_push">
+  (function(){
+    if (window.location.hostname === 'localhost') return;
+    var bp = document.createElement('script'); bp.async = true;
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>给博客加上HTTPS - 破壳</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="fooksky" /><meta name="description" content="最近因为毕业，有很多的事情要忙，差点忘了还有个很久不写的博客还放在腾讯云优惠学生机上面（差点就寿未终就正寝） 毕业之后腾讯云的学生机也玩不到了" /><meta name="keywords" content="fooksky, 破壳, Java" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.74.3 with theme even" />
+
+
+<link rel="canonical" href="http://localhost:1313/2017/06/29/nginx-with-https/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="/sass/main.min.c7bc1becf36bcf6a9ebd25d2947e43a2eb745ddb0c9a32b43126fd7fa460c351.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="给博客加上HTTPS" />
+<meta property="og:description" content="最近因为毕业，有很多的事情要忙，差点忘了还有个很久不写的博客还放在腾讯云优惠学生机上面（差点就寿未终就正寝） 毕业之后腾讯云的学生机也玩不到了" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/2017/06/29/nginx-with-https/" />
+<meta property="article:published_time" content="2017-06-29T01:21:59+00:00" />
+<meta property="article:modified_time" content="2017-06-29T01:21:59+00:00" />
+<meta itemprop="name" content="给博客加上HTTPS">
+<meta itemprop="description" content="最近因为毕业，有很多的事情要忙，差点忘了还有个很久不写的博客还放在腾讯云优惠学生机上面（差点就寿未终就正寝） 毕业之后腾讯云的学生机也玩不到了">
+<meta itemprop="datePublished" content="2017-06-29T01:21:59+00:00" />
+<meta itemprop="dateModified" content="2017-06-29T01:21:59+00:00" />
+<meta itemprop="wordCount" content="1302">
+
+
+
+<meta itemprop="keywords" content="Nginx," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="给博客加上HTTPS"/>
+<meta name="twitter:description" content="最近因为毕业，有很多的事情要忙，差点忘了还有个很久不写的博客还放在腾讯云优惠学生机上面（差点就寿未终就正寝） 毕业之后腾讯云的学生机也玩不到了"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">FookSky</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">FookSky</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">给博客加上HTTPS</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2017-06-29 </span>
+        <div class="post-category">
+            <a href="/categories/nginx/"> Nginx </a>
+            </div>
+          <span class="more-meta"> 约 1302 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#准备">准备</a></li>
+            <li><a href="#使用acmesh">使用acme.sh</a></li>
+            <li><a href="#nginx-配置">Nginx 配置</a></li>
+            <li><a href="#小结">小结</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>最近因为毕业，有很多的事情要忙，差点忘了还有个很久不写的博客还放在腾讯云优惠学生机上面（差点就寿未终就正寝）</p>
+<p>毕业之后腾讯云的学生机也玩不到了，送的域名也是要到期了，干脆就直接域名和服务器都给换了= =</p>
+<p>趁着这次重新配置博客的环境，就想顺手上个 https ~</p>
+<!-- more -->
+<h3 id="准备">准备</h3>
+<p>本机的hexo的安装配置这边就略略略了</p>
+<p>下面看看服务器端的配置</p>
+<h4 id="nginx">Nginx</h4>
+<p>HTTP服务器，没用过Apache所以就选择它来作为HTTP服务器了。
+因为是静态博客，只需要有个Nginx指定root路径很快就能配置好一个静态服务器了。</p>
+<h4 id="acmesh">acme.sh</h4>
+<p>acme.sh是github上某大神写的一个shell脚本，它可以从Let&rsquo;s Encrypt生成免费的HTTPS证书，并且可以设置自动更新证书，防止证书过期。</p>
+<h3 id="使用acmesh">使用acme.sh</h3>
+<p>acme的安装可以直接看github，readme里面有中文版的说明。看这儿：<a href="'https://github.com/Neilpang/acme.sh/wiki/%E8%AF%B4%E6%98%8E'">acme.sh</a></p>
+<h4 id="安装">安装</h4>
+<p>acme的安装很简单，只需要安装好curl即可，然后获取安装脚本并运行。安装脚本会自动将acme.sh安装到当前用户的home目录下，并且将alias等写入<code>.bashrc</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">curl  https://get.acme.sh <span class="p">|</span> sh
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="生成证书">生成证书</h4>
+<p>生成证书有两种验证方式。</p>
+<p>一种是在网站根目录下防止一个文件，来验证域名的所有权，验证成功之后就可以生成证书。</p>
+<p>另一种是通过DNS的方式，在域名解析中添加一条TXT解析记录来验证域名的所有权。</p>
+<p>acme提供了自动添加TXT记录完成验证的功能，只需要事先准备好域名解析商所给到的api_id和key即可。</p>
+<p>以cloudxns为例，首先登陆cloudxns官网，进入API管理，生成API。</p>
+<p>API生成成功之后进行如下操作</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">CX_Key</span><span class="o">=</span><span class="s2">&#34;1234&#34;</span>
+<span class="nb">export</span> <span class="nv">CX_Secret</span><span class="o">=</span><span class="s2">&#34;sADDsdasdgdsf&#34;</span>
+
+acme.sh --issue --dns dns_cx -d example.com
+</code></pre></td></tr></table>
+</div>
+</div><p>这样CX_Key和CX_Secret都会保存在<code>~/.acme.sh/account.conf</code>中，当需要的时候回自动调用。</p>
+<p>更多的DNS API的使用方法可以看这儿：<a href="https://github.com/Neilpang/acme.sh/blob/master/dnsapi/README.md">How to use DNS API</a></p>
+<h4 id="复制证书到nginx">复制证书到Nginx</h4>
+<p>复制证书必须使用 <code>--installcert</code> 命令，并指定复制的目标位置（路径必须存在）。</p>
+<p>指定reloadcmd，在证书更新之后，reloadcmd会被自动调用。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">acme.sh --installcert -d urzz.me <span class="se">\
+</span><span class="se"></span>        --key-file /etc/nginx/ssl/urzz.me.key <span class="se">\
+</span><span class="se"></span>        --fullchain-file /etc/nginx/ssl/urzz.me.cer <span class="se">\
+</span><span class="se"></span>        --reloadcmd <span class="s2">&#34;service nginx force-reload&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="更新证书">更新证书</h4>
+<p>目前的脚本，证书会在60天之后自动更新。</p>
+<h5 id="手动更新">手动更新</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">acme.sh --renew -d example.com --force
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="更新">更新</h4>
+<p>由于let&rsquo;s encrypt和acme协议都在频繁的更新，因此acme.sh也需要经常更新。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># --auto-upgrade 设置自动更新</span>
+acme.sh  --upgrade  --auto-upgrade
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="nginx-配置">Nginx 配置</h3>
+<p>在 <code>/etc/nginx/nginx.conf</code> 中有一个include，这表示Nginx启东时会解析include后面路径里面的文件</p>
+<p>为了便于备份，我创建了/data目录，并将自定义的Nginx配置文件放在此路径下。</p>
+<p>Nginx配置大概如下，参考 <a href="https://aotu.io/notes/2016/08/16/nginx-https/index.html">Nginx 配置 HTTPS 服务器</a></p>
+<p>配置写完之后重启Nginx即可</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">server</span> <span class="p">{</span>
+    <span class="kn">listen</span>              <span class="mi">443</span> <span class="s">ssl</span><span class="p">;</span>
+    <span class="kn">server_name</span>         <span class="s">urzz.me</span><span class="p">;</span>
+
+    <span class="kn">keepalive_timeout</span>   <span class="mi">70</span><span class="p">;</span>
+
+    <span class="kn">ssl_certificate</span>     <span class="s">/etc/nginx/ssl/urzz.me.cer</span><span class="p">;</span>
+    <span class="kn">ssl_certificate_key</span> <span class="s">/etc/nginx/ssl/urzz.me.key</span><span class="p">;</span>
+
+    <span class="kn">add_header</span> <span class="s">Strict-Transport-Security</span> <span class="s">&#34;max-age=31536000</span><span class="p">;</span><span class="kn">&#34;</span> <span class="s">always</span><span class="p">;</span>
+    
+    <span class="c1"># 使用DH文件, 在目录 /etc/ssl/certs 运行以下代码生成 dhparam.pem 文件
+</span><span class="c1"></span>    <span class="kn">ssl_prefer_server_ciphers</span> <span class="no">on</span><span class="p">;</span>
+    <span class="kn">ssl_dhparam</span> <span class="s">/etc/ssl/certs/dhparam.pem</span><span class="p">;</span>
+    <span class="kn">ssl_protocols</span> <span class="s">TLSv1</span> <span class="s">TLSv1.1</span> <span class="s">TLSv1.2</span><span class="p">;</span>
+    <span class="kn">ssl_ciphers</span> <span class="s">&#34;EECDH+ECDSA+AESGCM</span> <span class="s">EECDH+aRSA+AESGCM</span> <span class="s">EECDH+ECDSA+SHA384</span> <span class="s">EECDH+ECDSA+SHA256</span> <span class="s">EECDH+aRSA+SHA384</span> <span class="s">EECDH+aRSA+SHA256</span> <span class="s">EECDH+aRSA+RC4</span> <span class="s">EECDH</span> <span class="s">EDH+aRSA</span> <span class="s">!aNULL</span> <span class="s">!eNULL</span> <span class="s">!LOW</span> <span class="s">!3DES</span> <span class="s">!MD5</span> <span class="s">!EXP</span> <span class="s">!PSK</span> <span class="s">!SRP</span> <span class="s">!DSS</span> <span class="s">!RC4&#34;</span><span class="p">;</span>
+
+    <span class="kn">add_header</span> <span class="s">X-Frame-Options</span> <span class="s">DENY</span><span class="p">;</span>
+    <span class="kn">add_header</span> <span class="s">X-Content-Type-Options</span> <span class="s">nosniff</span><span class="p">;</span>
+    <span class="kn">add_header</span> <span class="s">X-Xss-Protection</span> <span class="mi">1</span><span class="p">;</span>
+
+    <span class="kn">root</span>              <span class="s">/data/blog</span><span class="p">;</span>
+
+    <span class="kn">index</span>             <span class="s">index.html</span><span class="p">;</span>
+
+    <span class="kn">access_log</span>        <span class="s">/data/log/access_blog.log</span><span class="p">;</span>
+    <span class="kn">error_log</span>         <span class="s">/data/log/error_blog.log</span><span class="p">;</span>
+    
+    <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
+        
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">server</span> <span class="p">{</span>
+    <span class="kn">listen</span> <span class="mi">80</span><span class="p">;</span>
+    <span class="kn">server_name</span> <span class="s">urzz.me</span><span class="p">;</span>
+    <span class="kn">rewrite</span> <span class="s">^(.*)</span>$ <span class="s">https://urzz.me</span><span class="nv">$1</span> <span class="s">permanent</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="小结">小结</h3>
+<p>现在再访问就可以看到强制使用https了哦也。</p>
+<p>虽然只是简单的个人博客，但是用上了绿色的小锁瞬间感觉就不一样了！</p>
+<p>这个夜晚的修仙成果还不错~</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">fooksky</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2017-06-29
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/nginx/">Nginx</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/2017/12/17/failed-start-docker-after-upgrade-kernel/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">升级内核后无法启动docker</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/2017/02/06/unexpected-java-nullpoint-exception/">
+            <span class="next-text nav-default">印象深刻的Java空指针异常</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+            repo="urzz/hugo-comments"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/urzz" class="iconfont icon-github" title="github"></a>
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="upyun-info">
+    Hosted by <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank"><img src="/images/upyun_logo.png" style="width:60px;display:inline;vertical-align:middle;" /></a>
+  </div>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2015 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>fooksky</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+<script id="baidu_push">
+  (function(){
+    if (window.location.hostname === 'localhost') return;
+    var bp = document.createElement('script'); bp.async = true;
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+
+
+</body>
+</html>

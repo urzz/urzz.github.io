@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Shiro on 破壳</title>
+    <link>http://localhost:1313/tags/shiro/</link>
+    <description>Recent content in Shiro on 破壳</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 05 Jun 2019 21:13:14 +0000</lastBuildDate>
+    
+	<atom:link href="http://localhost:1313/tags/shiro/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Spring Boot 整合shiro后的跨域设置</title>
+      <link>http://localhost:1313/2019/06/05/spring-shiro-cors-config/</link>
+      <pubDate>Wed, 05 Jun 2019 21:13:14 +0000</pubDate>
+      
+      <guid>http://localhost:1313/2019/06/05/spring-shiro-cors-config/</guid>
+      <description>之前的项目都没有跨域的要求，都是通过nginx反代后端接口避免跨域请求的，但是最近的项目要求要处理跨域的请求，所以记录一下 1. 正常的Sprin</description>
+    </item>
+    
+  </channel>
+</rss>

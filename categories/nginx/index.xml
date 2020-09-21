@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nginx on 破壳</title>
+    <link>http://localhost:1313/categories/nginx/</link>
+    <description>Recent content in Nginx on 破壳</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 29 Jun 2017 01:21:59 +0000</lastBuildDate>
+    
+	<atom:link href="http://localhost:1313/categories/nginx/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>给博客加上HTTPS</title>
+      <link>http://localhost:1313/2017/06/29/nginx-with-https/</link>
+      <pubDate>Thu, 29 Jun 2017 01:21:59 +0000</pubDate>
+      
+      <guid>http://localhost:1313/2017/06/29/nginx-with-https/</guid>
+      <description>最近因为毕业，有很多的事情要忙，差点忘了还有个很久不写的博客还放在腾讯云优惠学生机上面（差点就寿未终就正寝） 毕业之后腾讯云的学生机也玩不到了</description>
+    </item>
+    
+  </channel>
+</rss>

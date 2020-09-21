@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>linux on 破壳</title>
+    <link>http://localhost:1313/tags/linux/</link>
+    <description>Recent content in linux on 破壳</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 18 Dec 2018 11:57:16 +0000</lastBuildDate>
+    
+	<atom:link href="http://localhost:1313/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>SSH 免密码登录失败</title>
+      <link>http://localhost:1313/2018/12/18/ssh-pubkey-auth-failed/</link>
+      <pubDate>Tue, 18 Dec 2018 11:57:16 +0000</pubDate>
+      
+      <guid>http://localhost:1313/2018/12/18/ssh-pubkey-auth-failed/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;服务器新建用户，ssh关闭密码认证，只允许pubkey。但是root可以以pubkey登录，新建的用户却不可以，经检查后发现，pubkey认证对用户目录等相关路径的权限是有要求的。
+可在ssh登录命令后加上 &lt;code&gt;-v&lt;/code&gt; 参数，查看具体登录日志&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>升级内核后无法启动docker</title>
+      <link>http://localhost:1313/2017/12/17/failed-start-docker-after-upgrade-kernel/</link>
+      <pubDate>Sun, 17 Dec 2017 00:55:16 +0000</pubDate>
+      
+      <guid>http://localhost:1313/2017/12/17/failed-start-docker-after-upgrade-kernel/</guid>
+      <description>使用了manjaro自带工具更新了linux内核版本到4.14.3之后，docker启动失败 原因 在ststemd中，sudo systemctl status docker.service 不能看到全</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Editor on 破壳</title>
+    <link>http://localhost:1313/categories/editor/</link>
+    <description>Recent content in Editor on 破壳</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 02 Jan 2017 11:28:49 +0000</lastBuildDate>
+    
+	<atom:link href="http://localhost:1313/categories/editor/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>VIM插件管理器 - vim-plug</title>
+      <link>http://localhost:1313/2017/01/02/awesome-vim-plug/</link>
+      <pubDate>Mon, 02 Jan 2017 11:28:49 +0000</pubDate>
+      
+      <guid>http://localhost:1313/2017/01/02/awesome-vim-plug/</guid>
+      <description>之前一直在用spf13-vim的开源vim配置，但是一直都感觉这个太过重量级了。用了大半年之后还是决定自己动手diy一个。 为什么要用 主要是因</description>
+    </item>
+    
+  </channel>
+</rss>

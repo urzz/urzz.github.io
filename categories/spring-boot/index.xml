@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Spring Boot on 破壳</title>
+    <link>http://localhost:1313/categories/spring-boot/</link>
+    <description>Recent content in Spring Boot on 破壳</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 03 Jul 2019 19:08:29 +0000</lastBuildDate>
+    
+	<atom:link href="http://localhost:1313/categories/spring-boot/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Nginx反代Spring Boot后端服务后，丢失cookie</title>
+      <link>http://localhost:1313/2019/07/03/spring-boot-nginx-cookie-nout-found/</link>
+      <pubDate>Wed, 03 Jul 2019 19:08:29 +0000</pubDate>
+      
+      <guid>http://localhost:1313/2019/07/03/spring-boot-nginx-cookie-nout-found/</guid>
+      <description>为了解决跨域请求无法使用cookie的问题，使用nginx对后端服务做了反代。但是反代之后，却发现cookie没有被正确传递。 相关配置 nginx 反代</description>
+    </item>
+    
+    <item>
+      <title>Spring Boot 2 的MVC配置改变</title>
+      <link>http://localhost:1313/2018/03/20/spring-boot-2-mvc-config/</link>
+      <pubDate>Tue, 20 Mar 2018 15:44:02 +0000</pubDate>
+      
+      <guid>http://localhost:1313/2018/03/20/spring-boot-2-mvc-config/</guid>
+      <description>Spring Boot 升级2.0之后，弃用 WebMvcConfigurerAdapter。 Spring Boot 2的Spring版本升级到Spring5，而Spring5为了充</description>
+    </item>
+    
+  </channel>
+</rss>

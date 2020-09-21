@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on 破壳</title>
+    <link>http://localhost:1313/post/</link>
+    <description>Recent content in Posts on 破壳</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 30 Mar 2020 21:59:20 +0000</lastBuildDate>
+    
+	<atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Switch的优化方式</title>
+      <link>http://localhost:1313/2020/03/30/improve-use-of-switch/</link>
+      <pubDate>Mon, 30 Mar 2020 21:59:20 +0000</pubDate>
+      
+      <guid>http://localhost:1313/2020/03/30/improve-use-of-switch/</guid>
+      <description>背景 switch/case 是Java的一个流程控制语法，作为多if/else条件判断的替代语法，平常用的还是很多的，毕竟比起看起来就很繁琐、难以阅读的if/el</description>
+    </item>
+    
+    <item>
+      <title>Windows10迁移以及UEFI引导修复</title>
+      <link>http://localhost:1313/2019/12/15/win10-migration-fix-uefi-boot/</link>
+      <pubDate>Sun, 15 Dec 2019 18:10:24 +0000</pubDate>
+      
+      <guid>http://localhost:1313/2019/12/15/win10-migration-fix-uefi-boot/</guid>
+      <description>海康威视c2000 pro太香了，双十二没忍住剁了个1t的。在此记录一下win10的迁移步骤以及碰到的问题。 迁移工具选择 AOMEI Backupper 分区助手 其实这俩都</description>
+    </item>
+    
+    <item>
+      <title>Java 集合源码 - AbstractCollection</title>
+      <link>http://localhost:1313/2019/07/17/jdk-collection-abstract-collection/</link>
+      <pubDate>Wed, 17 Jul 2019 16:50:58 +0000</pubDate>
+      
+      <guid>http://localhost:1313/2019/07/17/jdk-collection-abstract-collection/</guid>
+      <description>介绍 AbstractCollection是Java集合实现类的根抽象实现类，它实现了Collection接口，而集合的三个分支(List,S</description>
+    </item>
+    
+    <item>
+      <title>设计模式 - 单例模式的几种实现方式</title>
+      <link>http://localhost:1313/2019/07/08/java-singleton-pattern/</link>
+      <pubDate>Mon, 08 Jul 2019 20:02:35 +0000</pubDate>
+      
+      <guid>http://localhost:1313/2019/07/08/java-singleton-pattern/</guid>
+      <description>定义 什么是单例模式？ 在整个系统中，一个类永远只有一个实例化的对象，被称为单例 作用 单例模式可以减少一个频繁被创建的重量级对象在多次实例化的时候</description>
+    </item>
+    
+    <item>
+      <title>Nginx反代Spring Boot后端服务后，丢失cookie</title>
+      <link>http://localhost:1313/2019/07/03/spring-boot-nginx-cookie-nout-found/</link>
+      <pubDate>Wed, 03 Jul 2019 19:08:29 +0000</pubDate>
+      
+      <guid>http://localhost:1313/2019/07/03/spring-boot-nginx-cookie-nout-found/</guid>
+      <description>为了解决跨域请求无法使用cookie的问题，使用nginx对后端服务做了反代。但是反代之后，却发现cookie没有被正确传递。 相关配置 nginx 反代</description>
+    </item>
+    
+    <item>
+      <title>Spring Boot 整合shiro使用自定义filter</title>
+      <link>http://localhost:1313/2019/06/11/spring-boot-shiro-custom-filter/</link>
+      <pubDate>Tue, 11 Jun 2019 21:33:38 +0000</pubDate>
+      
+      <guid>http://localhost:1313/2019/06/11/spring-boot-shiro-custom-filter/</guid>
+      <description>最近一个项目的认证是用shiro实现的，以前没有做过spring boot + shiro的整合，所以遇到了一些奇奇怪怪的坑 shiro的整合具体这边就不</description>
+    </item>
+    
+    <item>
+      <title>Spring Boot 整合shiro后的跨域设置</title>
+      <link>http://localhost:1313/2019/06/05/spring-shiro-cors-config/</link>
+      <pubDate>Wed, 05 Jun 2019 21:13:14 +0000</pubDate>
+      
+      <guid>http://localhost:1313/2019/06/05/spring-shiro-cors-config/</guid>
+      <description>之前的项目都没有跨域的要求，都是通过nginx反代后端接口避免跨域请求的，但是最近的项目要求要处理跨域的请求，所以记录一下 1. 正常的Sprin</description>
+    </item>
+    
+    <item>
+      <title>基于Spring做请求参数的加解密/签名校验</title>
+      <link>http://localhost:1313/2019/05/30/spring-param-encrypt/</link>
+      <pubDate>Thu, 30 May 2019 14:04:34 +0000</pubDate>
+      
+      <guid>http://localhost:1313/2019/05/30/spring-param-encrypt/</guid>
+      <description>之前做的一个对外网关项目，安全需要所以得对参数进行加密校验 参数 接口交互约定了三个参数： timestamp（请求时间戳） data（实际请求数据</description>
+    </item>
+    
+    <item>
+      <title>SSH 免密码登录失败</title>
+      <link>http://localhost:1313/2018/12/18/ssh-pubkey-auth-failed/</link>
+      <pubDate>Tue, 18 Dec 2018 11:57:16 +0000</pubDate>
+      
+      <guid>http://localhost:1313/2018/12/18/ssh-pubkey-auth-failed/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;服务器新建用户，ssh关闭密码认证，只允许pubkey。但是root可以以pubkey登录，新建的用户却不可以，经检查后发现，pubkey认证对用户目录等相关路径的权限是有要求的。
+可在ssh登录命令后加上 &lt;code&gt;-v&lt;/code&gt; 参数，查看具体登录日志&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>hexo 接入 gitment 作为评论系统</title>
+      <link>http://localhost:1313/2018/09/23/hexo-use-gitment/</link>
+      <pubDate>Sun, 23 Sep 2018 16:09:46 +0000</pubDate>
+      
+      <guid>http://localhost:1313/2018/09/23/hexo-use-gitment/</guid>
+      <description>hexo version: v6.4.1 1. 配置 配置文件在 themes/next. 基本配置如下，主要需要填写正确的github_user, github_repo, client_id, client_secret 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 # Gitment# Introduction: https://imsun.net/posts/gitment-introduction/gitment:enable:truemint:true# RECOMMEND, A mint on Gitment, to support count,</description>
+    </item>
+    
+    <item>
+      <title>Spring Boot 2 的MVC配置改变</title>
+      <link>http://localhost:1313/2018/03/20/spring-boot-2-mvc-config/</link>
+      <pubDate>Tue, 20 Mar 2018 15:44:02 +0000</pubDate>
+      
+      <guid>http://localhost:1313/2018/03/20/spring-boot-2-mvc-config/</guid>
+      <description>Spring Boot 升级2.0之后，弃用 WebMvcConfigurerAdapter。 Spring Boot 2的Spring版本升级到Spring5，而Spring5为了充</description>
+    </item>
+    
+    <item>
+      <title>升级内核后无法启动docker</title>
+      <link>http://localhost:1313/2017/12/17/failed-start-docker-after-upgrade-kernel/</link>
+      <pubDate>Sun, 17 Dec 2017 00:55:16 +0000</pubDate>
+      
+      <guid>http://localhost:1313/2017/12/17/failed-start-docker-after-upgrade-kernel/</guid>
+      <description>使用了manjaro自带工具更新了linux内核版本到4.14.3之后，docker启动失败 原因 在ststemd中，sudo systemctl status docker.service 不能看到全</description>
+    </item>
+    
+    <item>
+      <title>给博客加上HTTPS</title>
+      <link>http://localhost:1313/2017/06/29/nginx-with-https/</link>
+      <pubDate>Thu, 29 Jun 2017 01:21:59 +0000</pubDate>
+      
+      <guid>http://localhost:1313/2017/06/29/nginx-with-https/</guid>
+      <description>最近因为毕业，有很多的事情要忙，差点忘了还有个很久不写的博客还放在腾讯云优惠学生机上面（差点就寿未终就正寝） 毕业之后腾讯云的学生机也玩不到了</description>
+    </item>
+    
+    <item>
+      <title>印象深刻的Java空指针异常</title>
+      <link>http://localhost:1313/2017/02/06/unexpected-java-nullpoint-exception/</link>
+      <pubDate>Mon, 06 Feb 2017 22:51:48 +0000</pubDate>
+      
+      <guid>http://localhost:1313/2017/02/06/unexpected-java-nullpoint-exception/</guid>
+      <description>今天在公司无意中碰到一个从来没碰到过的空指针异常= = Java中，空指针异常应该是最常见的异常了。一般来说，碰到 NullPointerException 直接跳到报错的那一行就很容易</description>
+    </item>
+    
+    <item>
+      <title>VIM插件管理器 - vim-plug</title>
+      <link>http://localhost:1313/2017/01/02/awesome-vim-plug/</link>
+      <pubDate>Mon, 02 Jan 2017 11:28:49 +0000</pubDate>
+      
+      <guid>http://localhost:1313/2017/01/02/awesome-vim-plug/</guid>
+      <description>之前一直在用spf13-vim的开源vim配置，但是一直都感觉这个太过重量级了。用了大半年之后还是决定自己动手diy一个。 为什么要用 主要是因</description>
+    </item>
+    
+    <item>
+      <title>谈谈三栏布局的几种方式</title>
+      <link>http://localhost:1313/2016/09/13/column-3-of-the-css-layout-skills/</link>
+      <pubDate>Tue, 13 Sep 2016 11:01:21 +0000</pubDate>
+      
+      <guid>http://localhost:1313/2016/09/13/column-3-of-the-css-layout-skills/</guid>
+      <description>三栏式布局是几种常见的布局方式之一，而且实现三栏布局的方式也是有很多，但是大部分的方法都存在这样那样的问题。 绝对定位法（不推荐） 方法简介 使用</description>
+    </item>
+    
+    <item>
+      <title>Chrome 好用的插件及介绍</title>
+      <link>http://localhost:1313/2016/07/26/useful-chrome-extensions/</link>
+      <pubDate>Tue, 26 Jul 2016 16:55:04 +0000</pubDate>
+      
+      <guid>http://localhost:1313/2016/07/26/useful-chrome-extensions/</guid>
+      <description>Chrome 好用的插件及介绍 Infinity new tab 自定义新建的标签页，集合了很多很有用的功能。 GitHub Awesome Complete 不离开当前项目窗口的前提下，弹窗显示出你的搜索结果 Octotree Octotree 是一款非常方</description>
+    </item>
+    
+    <item>
+      <title>Python&#43;requests&#43;bs4&#43;ponyORM 抓取拉勾网数据</title>
+      <link>http://localhost:1313/2016/03/13/lagou-crawler/</link>
+      <pubDate>Sun, 13 Mar 2016 15:23:07 +0000</pubDate>
+      
+      <guid>http://localhost:1313/2016/03/13/lagou-crawler/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;自从14年底开始接触Python，到现在也已经一年多了。期间因为自己的各种拖延症，导致我学Python学的超级慢。光是一本《Python核心编程》就看了大半年还没看完，一直在犹豫学这个学那个，导致自己虽然接触的东西很多，前端后端都有，但是都学得很浅，想要做出个完完整整的东西还是很困难。这次的爬虫是一次很棒的练手项目，Python多线程提高了抓取和存储效率，requests+BeautifulSoup搭档来请求并解析网页，pony ORM简化数据的存储，接下来就是准备用Flask做后端框架来用起我抓取的这些信息了。&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>迁移Ubuntu至另一个硬盘</title>
+      <link>http://localhost:1313/2016/02/02/move-ubuntu/</link>
+      <pubDate>Tue, 02 Feb 2016 23:33:53 +0000</pubDate>
+      
+      <guid>http://localhost:1313/2016/02/02/move-ubuntu/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;我一直认为，Windows就是用来玩游戏的系统。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;自从喜欢上了Ubuntu，就一发不可收拾了。虚拟机玩着特别不爽，然后正好要戒游戏，咬咬牙直接装上了Ubuntu（当然，是双系统）。但是固态只有250G左右，两个系统分下来，Ubuntu只有70G左右，win的C盘不知不觉就会占很大的，所以win占大头。其实这本来也是够用了的，不过自从开始学Android之后，就有点吃紧了。原因无他，虚拟机没地方放了。谁让Ubuntu下没有官方的QQ呢，而且wine的QQ真的是特别难用。趁着过年，而且笔记本有个msata的接口，就买了个128G的建兴的。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;头比较大的是家里网时4M小水管，如果重装系统的话很麻烦，而且开发环境也要重新配置，就想着能不能直接把原来的系统备份过来，还好，google是可以查到资料的！&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>JS通过打乱数组生成不重复随机数</title>
+      <link>http://localhost:1313/2015/12/01/js-random-no-repeat/</link>
+      <pubDate>Tue, 01 Dec 2015 20:47:48 +0000</pubDate>
+      
+      <guid>http://localhost:1313/2015/12/01/js-random-no-repeat/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Js生成随机数的方法跟Java很像，或者说很多的编程语言的随机数生成方法都是类似的，只不过生成随机数的函数的实现思想是不是一致我就不知道了～&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
