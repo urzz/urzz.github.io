@@ -2,57 +2,57 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Java on 破壳</title>
-    <link>http://localhost:1313/tags/java/</link>
+    <link>https://urzz.xyz/tags/java/</link>
     <description>Recent content in Java on 破壳</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Mon, 30 Mar 2020 21:59:20 +0000</lastBuildDate>
     
-	<atom:link href="http://localhost:1313/tags/java/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://urzz.xyz/tags/java/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Switch的优化方式</title>
-      <link>http://localhost:1313/2020/03/30/improve-use-of-switch/</link>
+      <link>https://urzz.xyz/2020/03/30/improve-use-of-switch/</link>
       <pubDate>Mon, 30 Mar 2020 21:59:20 +0000</pubDate>
       
-      <guid>http://localhost:1313/2020/03/30/improve-use-of-switch/</guid>
+      <guid>https://urzz.xyz/2020/03/30/improve-use-of-switch/</guid>
       <description>背景 switch/case 是Java的一个流程控制语法，作为多if/else条件判断的替代语法，平常用的还是很多的，毕竟比起看起来就很繁琐、难以阅读的if/el</description>
     </item>
     
     <item>
       <title>Spring Boot 整合shiro使用自定义filter</title>
-      <link>http://localhost:1313/2019/06/11/spring-boot-shiro-custom-filter/</link>
+      <link>https://urzz.xyz/2019/06/11/spring-boot-shiro-custom-filter/</link>
       <pubDate>Tue, 11 Jun 2019 21:33:38 +0000</pubDate>
       
-      <guid>http://localhost:1313/2019/06/11/spring-boot-shiro-custom-filter/</guid>
+      <guid>https://urzz.xyz/2019/06/11/spring-boot-shiro-custom-filter/</guid>
       <description>最近一个项目的认证是用shiro实现的，以前没有做过spring boot + shiro的整合，所以遇到了一些奇奇怪怪的坑 shiro的整合具体这边就不</description>
     </item>
     
     <item>
       <title>基于Spring做请求参数的加解密/签名校验</title>
-      <link>http://localhost:1313/2019/05/30/spring-param-encrypt/</link>
+      <link>https://urzz.xyz/2019/05/30/spring-param-encrypt/</link>
       <pubDate>Thu, 30 May 2019 14:04:34 +0000</pubDate>
       
-      <guid>http://localhost:1313/2019/05/30/spring-param-encrypt/</guid>
+      <guid>https://urzz.xyz/2019/05/30/spring-param-encrypt/</guid>
       <description>之前做的一个对外网关项目，安全需要所以得对参数进行加密校验 参数 接口交互约定了三个参数： timestamp（请求时间戳） data（实际请求数据</description>
     </item>
     
     <item>
       <title>Spring Boot 2 的MVC配置改变</title>
-      <link>http://localhost:1313/2018/03/20/spring-boot-2-mvc-config/</link>
+      <link>https://urzz.xyz/2018/03/20/spring-boot-2-mvc-config/</link>
       <pubDate>Tue, 20 Mar 2018 15:44:02 +0000</pubDate>
       
-      <guid>http://localhost:1313/2018/03/20/spring-boot-2-mvc-config/</guid>
+      <guid>https://urzz.xyz/2018/03/20/spring-boot-2-mvc-config/</guid>
       <description>Spring Boot 升级2.0之后，弃用 WebMvcConfigurerAdapter。 Spring Boot 2的Spring版本升级到Spring5，而Spring5为了充</description>
     </item>
     
     <item>
       <title>印象深刻的Java空指针异常</title>
-      <link>http://localhost:1313/2017/02/06/unexpected-java-nullpoint-exception/</link>
+      <link>https://urzz.xyz/2017/02/06/unexpected-java-nullpoint-exception/</link>
       <pubDate>Mon, 06 Feb 2017 22:51:48 +0000</pubDate>
       
-      <guid>http://localhost:1313/2017/02/06/unexpected-java-nullpoint-exception/</guid>
+      <guid>https://urzz.xyz/2017/02/06/unexpected-java-nullpoint-exception/</guid>
       <description>今天在公司无意中碰到一个从来没碰到过的空指针异常= = Java中，空指针异常应该是最常见的异常了。一般来说，碰到 NullPointerException 直接跳到报错的那一行就很容易</description>
     </item>
     

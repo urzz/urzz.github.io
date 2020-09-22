@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Chrome on 破壳</title>
-    <link>http://localhost:1313/tags/chrome/</link>
+    <link>https://urzz.xyz/tags/chrome/</link>
     <description>Recent content in Chrome on 破壳</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Tue, 26 Jul 2016 16:55:04 +0000</lastBuildDate>
     
-	<atom:link href="http://localhost:1313/tags/chrome/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://urzz.xyz/tags/chrome/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Chrome 好用的插件及介绍</title>
-      <link>http://localhost:1313/2016/07/26/useful-chrome-extensions/</link>
+      <link>https://urzz.xyz/2016/07/26/useful-chrome-extensions/</link>
       <pubDate>Tue, 26 Jul 2016 16:55:04 +0000</pubDate>
       
-      <guid>http://localhost:1313/2016/07/26/useful-chrome-extensions/</guid>
+      <guid>https://urzz.xyz/2016/07/26/useful-chrome-extensions/</guid>
       <description>Chrome 好用的插件及介绍 Infinity new tab 自定义新建的标签页，集合了很多很有用的功能。 GitHub Awesome Complete 不离开当前项目窗口的前提下，弹窗显示出你的搜索结果 Octotree Octotree 是一款非常方</description>
     </item>
     

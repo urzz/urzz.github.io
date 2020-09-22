@@ -2,48 +2,48 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Spring on 破壳</title>
-    <link>http://localhost:1313/tags/spring/</link>
+    <link>https://urzz.xyz/tags/spring/</link>
     <description>Recent content in Spring on 破壳</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Wed, 03 Jul 2019 19:08:29 +0000</lastBuildDate>
     
-	<atom:link href="http://localhost:1313/tags/spring/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://urzz.xyz/tags/spring/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Nginx反代Spring Boot后端服务后，丢失cookie</title>
-      <link>http://localhost:1313/2019/07/03/spring-boot-nginx-cookie-nout-found/</link>
+      <link>https://urzz.xyz/2019/07/03/spring-boot-nginx-cookie-nout-found/</link>
       <pubDate>Wed, 03 Jul 2019 19:08:29 +0000</pubDate>
       
-      <guid>http://localhost:1313/2019/07/03/spring-boot-nginx-cookie-nout-found/</guid>
+      <guid>https://urzz.xyz/2019/07/03/spring-boot-nginx-cookie-nout-found/</guid>
       <description>为了解决跨域请求无法使用cookie的问题，使用nginx对后端服务做了反代。但是反代之后，却发现cookie没有被正确传递。 相关配置 nginx 反代</description>
     </item>
     
     <item>
       <title>Spring Boot 整合shiro使用自定义filter</title>
-      <link>http://localhost:1313/2019/06/11/spring-boot-shiro-custom-filter/</link>
+      <link>https://urzz.xyz/2019/06/11/spring-boot-shiro-custom-filter/</link>
       <pubDate>Tue, 11 Jun 2019 21:33:38 +0000</pubDate>
       
-      <guid>http://localhost:1313/2019/06/11/spring-boot-shiro-custom-filter/</guid>
+      <guid>https://urzz.xyz/2019/06/11/spring-boot-shiro-custom-filter/</guid>
       <description>最近一个项目的认证是用shiro实现的，以前没有做过spring boot + shiro的整合，所以遇到了一些奇奇怪怪的坑 shiro的整合具体这边就不</description>
     </item>
     
     <item>
       <title>Spring Boot 整合shiro后的跨域设置</title>
-      <link>http://localhost:1313/2019/06/05/spring-shiro-cors-config/</link>
+      <link>https://urzz.xyz/2019/06/05/spring-shiro-cors-config/</link>
       <pubDate>Wed, 05 Jun 2019 21:13:14 +0000</pubDate>
       
-      <guid>http://localhost:1313/2019/06/05/spring-shiro-cors-config/</guid>
+      <guid>https://urzz.xyz/2019/06/05/spring-shiro-cors-config/</guid>
       <description>之前的项目都没有跨域的要求，都是通过nginx反代后端接口避免跨域请求的，但是最近的项目要求要处理跨域的请求，所以记录一下 1. 正常的Sprin</description>
     </item>
     
     <item>
       <title>基于Spring做请求参数的加解密/签名校验</title>
-      <link>http://localhost:1313/2019/05/30/spring-param-encrypt/</link>
+      <link>https://urzz.xyz/2019/05/30/spring-param-encrypt/</link>
       <pubDate>Thu, 30 May 2019 14:04:34 +0000</pubDate>
       
-      <guid>http://localhost:1313/2019/05/30/spring-param-encrypt/</guid>
+      <guid>https://urzz.xyz/2019/05/30/spring-param-encrypt/</guid>
       <description>之前做的一个对外网关项目，安全需要所以得对参数进行加密校验 参数 接口交互约定了三个参数： timestamp（请求时间戳） data（实际请求数据</description>
     </item>
     

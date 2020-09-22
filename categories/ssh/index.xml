@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ssh on 破壳</title>
-    <link>http://localhost:1313/categories/ssh/</link>
+    <link>https://urzz.xyz/categories/ssh/</link>
     <description>Recent content in ssh on 破壳</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Tue, 18 Dec 2018 11:57:16 +0000</lastBuildDate>
     
-	<atom:link href="http://localhost:1313/categories/ssh/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://urzz.xyz/categories/ssh/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>SSH 免密码登录失败</title>
-      <link>http://localhost:1313/2018/12/18/ssh-pubkey-auth-failed/</link>
+      <link>https://urzz.xyz/2018/12/18/ssh-pubkey-auth-failed/</link>
       <pubDate>Tue, 18 Dec 2018 11:57:16 +0000</pubDate>
       
-      <guid>http://localhost:1313/2018/12/18/ssh-pubkey-auth-failed/</guid>
+      <guid>https://urzz.xyz/2018/12/18/ssh-pubkey-auth-failed/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;服务器新建用户，ssh关闭密码认证，只允许pubkey。但是root可以以pubkey登录，新建的用户却不可以，经检查后发现，pubkey认证对用户目录等相关路径的权限是有要求的。
 可在ssh登录命令后加上 &lt;code&gt;-v&lt;/code&gt; 参数，查看具体登录日志&lt;/p&gt;

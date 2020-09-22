@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>docker on 破壳</title>
-    <link>http://localhost:1313/tags/docker/</link>
+    <link>https://urzz.xyz/tags/docker/</link>
     <description>Recent content in docker on 破壳</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sun, 17 Dec 2017 00:55:16 +0000</lastBuildDate>
     
-	<atom:link href="http://localhost:1313/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://urzz.xyz/tags/docker/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>升级内核后无法启动docker</title>
-      <link>http://localhost:1313/2017/12/17/failed-start-docker-after-upgrade-kernel/</link>
+      <link>https://urzz.xyz/2017/12/17/failed-start-docker-after-upgrade-kernel/</link>
       <pubDate>Sun, 17 Dec 2017 00:55:16 +0000</pubDate>
       
-      <guid>http://localhost:1313/2017/12/17/failed-start-docker-after-upgrade-kernel/</guid>
+      <guid>https://urzz.xyz/2017/12/17/failed-start-docker-after-upgrade-kernel/</guid>
       <description>使用了manjaro自带工具更新了linux内核版本到4.14.3之后，docker启动失败 原因 在ststemd中，sudo systemctl status docker.service 不能看到全</description>
     </item>
     

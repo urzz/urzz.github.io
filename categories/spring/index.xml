@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Spring on 破壳</title>
-    <link>http://localhost:1313/categories/spring/</link>
+    <link>https://urzz.xyz/categories/spring/</link>
     <description>Recent content in Spring on 破壳</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Tue, 11 Jun 2019 21:33:38 +0000</lastBuildDate>
     
-	<atom:link href="http://localhost:1313/categories/spring/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://urzz.xyz/categories/spring/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Spring Boot 整合shiro使用自定义filter</title>
-      <link>http://localhost:1313/2019/06/11/spring-boot-shiro-custom-filter/</link>
+      <link>https://urzz.xyz/2019/06/11/spring-boot-shiro-custom-filter/</link>
       <pubDate>Tue, 11 Jun 2019 21:33:38 +0000</pubDate>
       
-      <guid>http://localhost:1313/2019/06/11/spring-boot-shiro-custom-filter/</guid>
+      <guid>https://urzz.xyz/2019/06/11/spring-boot-shiro-custom-filter/</guid>
       <description>最近一个项目的认证是用shiro实现的，以前没有做过spring boot + shiro的整合，所以遇到了一些奇奇怪怪的坑 shiro的整合具体这边就不</description>
     </item>
     
     <item>
       <title>Spring Boot 整合shiro后的跨域设置</title>
-      <link>http://localhost:1313/2019/06/05/spring-shiro-cors-config/</link>
+      <link>https://urzz.xyz/2019/06/05/spring-shiro-cors-config/</link>
       <pubDate>Wed, 05 Jun 2019 21:13:14 +0000</pubDate>
       
-      <guid>http://localhost:1313/2019/06/05/spring-shiro-cors-config/</guid>
+      <guid>https://urzz.xyz/2019/06/05/spring-shiro-cors-config/</guid>
       <description>之前的项目都没有跨域的要求，都是通过nginx反代后端接口避免跨域请求的，但是最近的项目要求要处理跨域的请求，所以记录一下 1. 正常的Sprin</description>
     </item>
     

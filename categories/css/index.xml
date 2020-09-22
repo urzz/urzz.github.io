@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>CSS on 破壳</title>
-    <link>http://localhost:1313/categories/css/</link>
+    <link>https://urzz.xyz/categories/css/</link>
     <description>Recent content in CSS on 破壳</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Tue, 13 Sep 2016 11:01:21 +0000</lastBuildDate>
     
-	<atom:link href="http://localhost:1313/categories/css/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://urzz.xyz/categories/css/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>谈谈三栏布局的几种方式</title>
-      <link>http://localhost:1313/2016/09/13/column-3-of-the-css-layout-skills/</link>
+      <link>https://urzz.xyz/2016/09/13/column-3-of-the-css-layout-skills/</link>
       <pubDate>Tue, 13 Sep 2016 11:01:21 +0000</pubDate>
       
-      <guid>http://localhost:1313/2016/09/13/column-3-of-the-css-layout-skills/</guid>
+      <guid>https://urzz.xyz/2016/09/13/column-3-of-the-css-layout-skills/</guid>
       <description>三栏式布局是几种常见的布局方式之一，而且实现三栏布局的方式也是有很多，但是大部分的方法都存在这样那样的问题。 绝对定位法（不推荐） 方法简介 使用</description>
     </item>
     

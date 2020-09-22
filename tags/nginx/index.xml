@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Nginx on 破壳</title>
-    <link>http://localhost:1313/tags/nginx/</link>
+    <link>https://urzz.xyz/tags/nginx/</link>
     <description>Recent content in Nginx on 破壳</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Wed, 03 Jul 2019 19:08:29 +0000</lastBuildDate>
     
-	<atom:link href="http://localhost:1313/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://urzz.xyz/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Nginx反代Spring Boot后端服务后，丢失cookie</title>
-      <link>http://localhost:1313/2019/07/03/spring-boot-nginx-cookie-nout-found/</link>
+      <link>https://urzz.xyz/2019/07/03/spring-boot-nginx-cookie-nout-found/</link>
       <pubDate>Wed, 03 Jul 2019 19:08:29 +0000</pubDate>
       
-      <guid>http://localhost:1313/2019/07/03/spring-boot-nginx-cookie-nout-found/</guid>
+      <guid>https://urzz.xyz/2019/07/03/spring-boot-nginx-cookie-nout-found/</guid>
       <description>为了解决跨域请求无法使用cookie的问题，使用nginx对后端服务做了反代。但是反代之后，却发现cookie没有被正确传递。 相关配置 nginx 反代</description>
     </item>
     
     <item>
       <title>给博客加上HTTPS</title>
-      <link>http://localhost:1313/2017/06/29/nginx-with-https/</link>
+      <link>https://urzz.xyz/2017/06/29/nginx-with-https/</link>
       <pubDate>Thu, 29 Jun 2017 01:21:59 +0000</pubDate>
       
-      <guid>http://localhost:1313/2017/06/29/nginx-with-https/</guid>
+      <guid>https://urzz.xyz/2017/06/29/nginx-with-https/</guid>
       <description>最近因为毕业，有很多的事情要忙，差点忘了还有个很久不写的博客还放在腾讯云优惠学生机上面（差点就寿未终就正寝） 毕业之后腾讯云的学生机也玩不到了</description>
     </item>
     
