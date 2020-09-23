@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Hexo迁移Hugo - 破壳</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="fooksky" /><meta name="description" content="安装 首先需要安装Hugo。Hugo的安装很简单，官方安装教程：Install Hugo。 Mac下安装可以直接选择Homebrew。 1 brew install hugo Hu" /><meta name="keywords" content="fooksky, 破壳, Java" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.74.3 with theme even" />
+
+
+<link rel="canonical" href="https://urzz.xyz/2020/09/22/hexo-migrate-to-hugo/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="/sass/main.min.c7bc1becf36bcf6a9ebd25d2947e43a2eb745ddb0c9a32b43126fd7fa460c351.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Hexo迁移Hugo" />
+<meta property="og:description" content="安装 首先需要安装Hugo。Hugo的安装很简单，官方安装教程：Install Hugo。 Mac下安装可以直接选择Homebrew。 1 brew install hugo Hu" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://urzz.xyz/2020/09/22/hexo-migrate-to-hugo/" />
+<meta property="article:published_time" content="2020-09-22T02:13:05+08:00" />
+<meta property="article:modified_time" content="2020-09-22T02:13:05+08:00" />
+<meta itemprop="name" content="Hexo迁移Hugo">
+<meta itemprop="description" content="安装 首先需要安装Hugo。Hugo的安装很简单，官方安装教程：Install Hugo。 Mac下安装可以直接选择Homebrew。 1 brew install hugo Hu">
+<meta itemprop="datePublished" content="2020-09-22T02:13:05+08:00" />
+<meta itemprop="dateModified" content="2020-09-22T02:13:05+08:00" />
+<meta itemprop="wordCount" content="1778">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Hexo迁移Hugo"/>
+<meta name="twitter:description" content="安装 首先需要安装Hugo。Hugo的安装很简单，官方安装教程：Install Hugo。 Mac下安装可以直接选择Homebrew。 1 brew install hugo Hu"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">FookSky</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">FookSky</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Hexo迁移Hugo</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-09-22 </span>
+        
+          <span class="more-meta"> 约 1778 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#安装">安装</a></li>
+            <li><a href="#配置">配置</a></li>
+            <li><a href="#部署">部署</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h3 id="安装">安装</h3>
+<p>首先需要安装Hugo。Hugo的安装很简单，官方安装教程：<a href="https://gohugo.io/getting-started/installing/">Install Hugo</a>。
+Mac下安装可以直接选择Homebrew。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">brew install hugo
+</code></pre></td></tr></table>
+</div>
+</div><p>Hugo程序安装以后，需要初始化博客目录。比如要创建一个目录名为Blog的博客目录</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">hugo new site Blog
+</code></pre></td></tr></table>
+</div>
+</div><p>执行后会提示：</p>
+<blockquote>
+<p>Congratulations! Your new Hugo site is created in /Users/urzz/Blog1.
+Just a few more steps and you&rsquo;re ready to go:</p>
+<ol>
+<li>Download a theme into the same-named folder.
+Choose a theme from <a href="https://themes.gohugo.io/">https://themes.gohugo.io/</a> or
+create your own with the &ldquo;hugo new theme <THEMENAME>&rdquo; command.</li>
+<li>Perhaps you want to add some content. You can add single files
+with &ldquo;hugo new <SECTIONNAME>/<FILENAME>.<FORMAT>&rdquo;.</li>
+<li>Start the built-in live server via &ldquo;hugo server&rdquo;.
+Visit <a href="https://gohugo.io/">https://gohugo.io/</a> for quickstart guide and full documentation.</li>
+</ol>
+</blockquote>
+<p>同时，会在命令执行目录下新建Blog文件夹，这个文件夹里面会生成一些配置文件夹。还有一个config.toml文件，这个文件是博客的主配置文件。
+archetypes: default.md是后续新增博文的模板
+content: markdown文章目录
+static: 存放静态文件，后续需要用到的静态文件比如图片，github page的自定义域名需要的CNAME文件，都可以放在这里面，这里的文件会原封不动复制到public的目录下
+themes: 文件夹则是存放博客主题的。</p>
+<h3 id="配置">配置</h3>
+<h4 id="安装主题">安装主题</h4>
+<p>Hugo的主题有很多，可以去这里自己选择。我用的是even主题: <a href="https://github.com/olOwOlo/hugo-theme-even">olOwOlo/hugo-theme-even</a></p>
+<p>首先下载主题到当前博客目录下的themes目录，然后复制博客目录下的配置文件到博客根目录。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">git clone https://github.com/olOwOlo/hugo-theme-even themes/even
+cp -f themes/even/exampleSite/config.toml ./config.toml
+</code></pre></td></tr></table>
+</div>
+</div><p>这样，博客主题安装已经成功了，运行<code>hugo -t even</code>就可以生成博客静态文件到public文件夹</p>
+<h4 id="博客配置">博客配置</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nv">baseURL</span> <span class="o">=</span> <span class="s2">&#34;https://urzz.xyz/&#34;</span> <span class="c1"># 这个设置会影响博客中的部分跳转链接，比如sitemap.xml</span>
+<span class="nv">languageCode</span> <span class="o">=</span> <span class="s2">&#34;zh-cn&#34;</span>
+<span class="nv">defaultContentLanguage</span> <span class="o">=</span> <span class="s2">&#34;zh-cn&#34;</span> 
+<span class="nv">title</span> <span class="o">=</span> <span class="s2">&#34;破壳&#34;</span>
+  
+<span class="o">[</span>params<span class="o">]</span>
+  <span class="nv">since</span> <span class="o">=</span> <span class="s2">&#34;2015&#34;</span> <span class="c1"># 最下面脚注的时间展示</span>
+  <span class="nv">logoTitle</span> <span class="o">=</span> <span class="s2">&#34;FookSky&#34;</span> <span class="c1"># 网站左上角的大标题</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>除了这些基本配置以外，config.toml中还有很多其他配置，可以参考各行配置后面的注释有选择得修改。</p>
+<h4 id="评论系统">评论系统</h4>
+<blockquote>
+<p>我这里没有考虑迁移hexo之前使用的评论系统的数据，因此直接忽略了迁移.</p>
+</blockquote>
+<p>hugo支持的评论系统有不少，这里选用了utterances。因为它和gitment一样，基于github的issues来实现评论功能，使用比较方便，而且需要的权限更少，更安全。</p>
+<p>首先需要新建一个repo，比如我这里新建的是urzz/hugo-comments。</p>
+<p>even主题也集成了utterances的配置，只需要修改部分配置：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 配置评论系统</span>
+<span class="o">[</span>params.utterances<span class="o">]</span>       <span class="c1"># https://utteranc.es/</span>
+    <span class="nv">owner</span> <span class="o">=</span> <span class="s2">&#34;urzz&#34;</span>              <span class="c1"># Your GitHub ID</span>
+    <span class="nv">repo</span> <span class="o">=</span> <span class="s2">&#34;hugo-comments&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这样，评论系统也就ok了。</p>
+<h4 id="hexo数据迁移">hexo数据迁移</h4>
+<p>首先迁移博客文档数据，even主题的博文markdown在content/post目录下，所以需要在content下新建文件夹post，然后复制hexo中<code>source/_posts</code>下的markdown文件到这个文件夹中。</p>
+<p>做到这里，其实博客基本迁移就完成了。不过我hexo中博客都会指定固定链接，而hugo默认是<code>/year/month/day/filename</code>这样的格式，为了使原文章中设置的固定链接生效，需要做以下几个改动。</p>
+<p>首先在config.toml中新增固定连接格式设置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>permalinks<span class="o">]</span>
+  <span class="nv">post</span> <span class="o">=</span> <span class="s2">&#34;/:year/:month/:day/:slug/&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>hexo中的固定链接设置是在文章md文件的最顶端设置permalink，指定固定连接，而hugo中可以设置url属性指定文章路由。比如<code>url: /test</code>，那访问路径就是<code>https://urzz.xyz/test</code>，那就需要每篇文章都改，工作量比较大了。</p>
+<p>回头看上面配置文件的改动其实也可以发现，hugo可以使用slug属性来配置固链。这样就只需要将各文章中原先permalink改为slug就可以了。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 这个脚本仅适用于mac，mac的sed命令会与linux有所区别</span>
+<span class="nb">cd</span> content/post
+<span class="c1"># 功能：查找当前目录下.md结尾的文件，替换文件中permalink为slug</span>
+find . -name <span class="s2">&#34;*.md&#34;</span> -exec sed -i <span class="s1">&#39;&#39;</span> <span class="s1">&#39;s/permalink/slug/g&#39;</span> <span class="s1">&#39;{}&#39;</span> +<span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="部署">部署</h3>
+<blockquote>
+<p>因为是从hexo迁移，所以相关repo已经创建好了。这里略过了github pages的配置</p>
+</blockquote>
+<p>hugo博客的部署其实跟hexo没太大区别，只不过它没有支持git deploy。
+为了同时支持部署到vps和github，这里新增了一个部署脚本。脚本参考: <a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/">Host on GitHub</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">!/bin/bash
+
+<span class="nb">echo</span> -e <span class="s2">&#34;\033[0;32mDeploying updates...\033[0m&#34;</span>
+
+<span class="c1"># Build the project.</span>
+hugo -t even <span class="c1"># if using a theme, replace with `hugo -t &lt;YOURTHEME&gt;`</span>
+
+<span class="nb">echo</span> -e <span class="s2">&#34;Uploading To VPS...&#34;</span>
+rsync -avz --delete public/ username@host:<span class="nv">$remote_dir</span>
+
+<span class="c1"># Go To Public folder</span>
+<span class="nb">cd</span> public
+
+<span class="c1"># Add changes to git.</span>
+git add .
+
+<span class="c1"># Commit changes.</span>
+<span class="nv">msg</span><span class="o">=</span><span class="s2">&#34;rebuilding site `date`&#34;</span>
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$#</span> -eq <span class="m">1</span> <span class="o">]</span>
+  <span class="k">then</span> <span class="nv">msg</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$1</span><span class="s2">&#34;</span>
+<span class="k">fi</span>
+git commit -m <span class="s2">&#34;</span><span class="nv">$msg</span><span class="s2">&#34;</span>
+
+<span class="c1"># Push source and build repos.</span>
+git push upstream master
+
+<span class="c1"># Come Back up to the Project Root</span>
+<span class="nb">cd</span> ..
+</code></pre></td></tr></table>
+</div>
+</div><p>该脚本用rsync来同步生成的静态博客到vps上，另外，首次同步到github时，需要git push -f来强制更新github pages所在repo。</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">fooksky</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2020-09-22
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        
+        <a class="next" href="/2020/03/30/improve-use-of-switch/">
+            <span class="next-text nav-default">Switch的优化方式</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+            repo="urzz/hugo-comments"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/urzz" class="iconfont icon-github" title="github"></a>
+  <a href="https://urzz.xyz/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="upyun-info">
+    Hosted by <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank"><img src="/images/upyun_logo.png" style="width:60px;display:inline;vertical-align:middle;" /></a>
+  </div>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2015 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>fooksky</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+<script id="baidu_push">
+  (function(){
+    if (window.location.hostname === 'localhost') return;
+    var bp = document.createElement('script'); bp.async = true;
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+
+
+</body>
+</html>

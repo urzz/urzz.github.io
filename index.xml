@@ -6,10 +6,19 @@
     <description>Recent content on 破壳</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 30 Mar 2020 21:59:20 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 22 Sep 2020 02:13:05 +0800</lastBuildDate>
     
 	<atom:link href="https://urzz.xyz/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Hexo迁移Hugo</title>
+      <link>https://urzz.xyz/2020/09/22/hexo-migrate-to-hugo/</link>
+      <pubDate>Tue, 22 Sep 2020 02:13:05 +0800</pubDate>
+      
+      <guid>https://urzz.xyz/2020/09/22/hexo-migrate-to-hugo/</guid>
+      <description>安装 首先需要安装Hugo。Hugo的安装很简单，官方安装教程：Install Hugo。 Mac下安装可以直接选择Homebrew。 1 brew install hugo Hu</description>
+    </item>
     
     <item>
       <title>Switch的优化方式</title>
