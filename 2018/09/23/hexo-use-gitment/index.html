@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.74.3 with theme even" />
+<meta name="generator" content="Hugo 0.81.0-DEV with theme even" />
 
 
 <link rel="canonical" href="https://urzz.xyz/2018/09/23/hexo-use-gitment/" />
@@ -49,7 +49,7 @@
 <meta itemprop="description" content="hexo version: v6.4.1 1. 配置 配置文件在 themes/next. 基本配置如下，主要需要填写正确的github_user, github_repo, client_id, client_secret 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 # Gitment# Introduction: https://imsun.net/posts/gitment-introduction/gitment:enable:truemint:true# RECOMMEND, A mint on Gitment, to support count,">
 <meta itemprop="datePublished" content="2018-09-23T16:09:46+00:00" />
 <meta itemprop="dateModified" content="2018-09-23T16:09:46+00:00" />
-<meta itemprop="wordCount" content="898">
+<meta itemprop="wordCount" content="899">
 
 
 
@@ -91,12 +91,21 @@
         <li class="mobile-menu-item">Categories</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">FookSky</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -111,6 +120,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -126,7 +136,7 @@
         <div class="post-category">
             <a href="/categories/hexo/"> Hexo </a>
             </div>
-          <span class="more-meta"> 约 898 字 </span>
+          <span class="more-meta"> 约 899 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -181,19 +191,19 @@
 <td class="lntd">
 <pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># Gitment</span><span class="w">
 </span><span class="w"></span><span class="c"># Introduction: https://imsun.net/posts/gitment-introduction/</span><span class="w">
-</span><span class="w"></span><span class="k">gitment</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">enable</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span><span class="w">  </span><span class="k">mint</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c"># RECOMMEND, A mint on Gitment, to support count, language and proxy_gateway</span><span class="w">
-</span><span class="w">  </span><span class="k">count</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c"># Show comments count in post meta area</span><span class="w">
-</span><span class="w">  </span><span class="k">lazy</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="c"># Comments lazy loading with a button</span><span class="w">
-</span><span class="w">  </span><span class="k">cleanly</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c"># Hide &#39;Powered by ...&#39; on footer, and more</span><span class="w">
-</span><span class="w">  </span><span class="k">language</span><span class="p">:</span><span class="w"> </span><span class="c"># Force language, or auto switch by theme</span><span class="w">
-</span><span class="w">  </span><span class="k">github_user</span><span class="p">:</span><span class="w"> </span>urzz<span class="w"> </span><span class="c"># MUST HAVE, Your Github Username</span><span class="w">
-</span><span class="w">  </span><span class="k">github_repo</span><span class="p">:</span><span class="w"> </span>blog-comment<span class="w">  </span><span class="c"># MUST HAVE, The name of the repo you use to store Gitment comments</span><span class="w">
-</span><span class="w">  </span><span class="k">client_id</span><span class="p">:</span><span class="w"> </span><span class="cp">***</span><span class="w"> </span><span class="c"># MUST HAVE, Github client id for the Gitment</span><span class="w">
-</span><span class="w">  </span><span class="k">client_secret</span><span class="p">:</span><span class="w"> </span><span class="cp">***</span><span class="w"> </span><span class="c"># EITHER this or proxy_gateway, Github access secret token for the Gitment</span><span class="w">
-</span><span class="w">  </span><span class="k">proxy_gateway: # Address of api proxy, See</span><span class="p">:</span><span class="w"> </span>https<span class="p">:</span>//github.com/aimingoo/intersect<span class="w">
-</span><span class="w">  </span><span class="k">redirect_protocol</span><span class="p">:</span><span class="w"> </span><span class="c"># Protocol of redirect_uri with force_redirect_protocol when mint enabled</span><span class="w">
+</span><span class="w"></span><span class="nt">gitment</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">enable</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">  </span><span class="nt">mint</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c"># RECOMMEND, A mint on Gitment, to support count, language and proxy_gateway</span><span class="w">
+</span><span class="w">  </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c"># Show comments count in post meta area</span><span class="w">
+</span><span class="w">  </span><span class="nt">lazy</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="c"># Comments lazy loading with a button</span><span class="w">
+</span><span class="w">  </span><span class="nt">cleanly</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c"># Hide &#39;Powered by ...&#39; on footer, and more</span><span class="w">
+</span><span class="w">  </span><span class="nt">language</span><span class="p">:</span><span class="w"> </span><span class="c"># Force language, or auto switch by theme</span><span class="w">
+</span><span class="w">  </span><span class="nt">github_user</span><span class="p">:</span><span class="w"> </span><span class="l">urzz</span><span class="w"> </span><span class="c"># MUST HAVE, Your Github Username</span><span class="w">
+</span><span class="w">  </span><span class="nt">github_repo</span><span class="p">:</span><span class="w"> </span><span class="l">blog-comment </span><span class="w"> </span><span class="c"># MUST HAVE, The name of the repo you use to store Gitment comments</span><span class="w">
+</span><span class="w">  </span><span class="nt">client_id</span><span class="p">:</span><span class="w"> </span><span class="cp">***</span><span class="w"> </span><span class="c"># MUST HAVE, Github client id for the Gitment</span><span class="w">
+</span><span class="w">  </span><span class="nt">client_secret</span><span class="p">:</span><span class="w"> </span><span class="cp">***</span><span class="w"> </span><span class="c"># EITHER this or proxy_gateway, Github access secret token for the Gitment</span><span class="w">
+</span><span class="w">  </span><span class="nt">proxy_gateway: # Address of api proxy, See</span><span class="p">:</span><span class="w"> </span><span class="l">https://github.com/aimingoo/intersect</span><span class="w">
+</span><span class="w">  </span><span class="nt">redirect_protocol</span><span class="p">:</span><span class="w"> </span><span class="c"># Protocol of redirect_uri with force_redirect_protocol when mint enabled</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
 </div><h3 id="2-使用">2. 使用</h3>
@@ -388,7 +398,7 @@
   <span class="copyright-year">
     &copy; 
     2015 - 
-    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>fooksky</span>
+    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>fooksky</span>
   </span>
 </div>
 

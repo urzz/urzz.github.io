@@ -6,11 +6,7 @@
     <description>Recent content in Posts on 破壳 - 虽不能至，心向往之</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 22 Sep 2020 02:13:05 +0800</lastBuildDate>
-    
-	<atom:link href="https://urzz.xyz/post/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 22 Sep 2020 02:13:05 +0800</lastBuildDate><atom:link href="https://urzz.xyz/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hexo迁移Hugo</title>
       <link>https://urzz.xyz/2020/09/22/hexo-migrate-to-hugo/</link>
@@ -174,17 +170,6 @@
       
       <guid>https://urzz.xyz/2016/07/26/useful-chrome-extensions/</guid>
       <description>Chrome 好用的插件及介绍 Infinity new tab 自定义新建的标签页，集合了很多很有用的功能。 GitHub Awesome Complete 不离开当前项目窗口的前提下，弹窗显示出你的搜索结果 Octotree Octotree 是一款非常方</description>
-    </item>
-    
-    <item>
-      <title>Python&#43;requests&#43;bs4&#43;ponyORM 抓取拉勾网数据</title>
-      <link>https://urzz.xyz/2016/03/13/lagou-crawler/</link>
-      <pubDate>Sun, 13 Mar 2016 15:23:07 +0000</pubDate>
-      
-      <guid>https://urzz.xyz/2016/03/13/lagou-crawler/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;自从14年底开始接触Python，到现在也已经一年多了。期间因为自己的各种拖延症，导致我学Python学的超级慢。光是一本《Python核心编程》就看了大半年还没看完，一直在犹豫学这个学那个，导致自己虽然接触的东西很多，前端后端都有，但是都学得很浅，想要做出个完完整整的东西还是很困难。这次的爬虫是一次很棒的练手项目，Python多线程提高了抓取和存储效率，requests+BeautifulSoup搭档来请求并解析网页，pony ORM简化数据的存储，接下来就是准备用Flask做后端框架来用起我抓取的这些信息了。&lt;/p&gt;
-&lt;/blockquote&gt;</description>
     </item>
     
     <item>

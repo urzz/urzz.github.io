@@ -6,11 +6,7 @@
     <description>Recent content in UEFI on 破壳 - 虽不能至，心向往之</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 15 Dec 2019 18:10:24 +0000</lastBuildDate>
-    
-	<atom:link href="https://urzz.xyz/tags/uefi/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 15 Dec 2019 18:10:24 +0000</lastBuildDate><atom:link href="https://urzz.xyz/tags/uefi/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Windows10迁移以及UEFI引导修复</title>
       <link>https://urzz.xyz/2019/12/15/win10-migration-fix-uefi-boot/</link>

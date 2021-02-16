@@ -359,27 +359,6 @@
   </url>
   
   <url>
-    <loc>https://urzz.xyz/categories/python/</loc>
-    <lastmod>2016-03-13T15:23:07+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://urzz.xyz/2016/03/13/lagou-crawler/</loc>
-    <lastmod>2016-03-13T15:23:07+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://urzz.xyz/tags/spider/</loc>
-    <lastmod>2016-03-13T15:23:07+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://urzz.xyz/categories/linux/</loc>
     <lastmod>2016-02-02T23:33:53+00:00</lastmod>
     <changefreq>weekly</changefreq>

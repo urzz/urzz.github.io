@@ -6,11 +6,7 @@
     <description>Recent content in docker on 破壳 - 虽不能至，心向往之</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 17 Dec 2017 00:55:16 +0000</lastBuildDate>
-    
-	<atom:link href="https://urzz.xyz/tags/docker/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 17 Dec 2017 00:55:16 +0000</lastBuildDate><atom:link href="https://urzz.xyz/tags/docker/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>升级内核后无法启动docker</title>
       <link>https://urzz.xyz/2017/12/17/failed-start-docker-after-upgrade-kernel/</link>

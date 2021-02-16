@@ -6,11 +6,7 @@
     <description>Recent content in Editor on 破壳 - 虽不能至，心向往之</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 02 Jan 2017 11:28:49 +0000</lastBuildDate>
-    
-	<atom:link href="https://urzz.xyz/categories/editor/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 02 Jan 2017 11:28:49 +0000</lastBuildDate><atom:link href="https://urzz.xyz/categories/editor/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>VIM插件管理器 - vim-plug</title>
       <link>https://urzz.xyz/2017/01/02/awesome-vim-plug/</link>
