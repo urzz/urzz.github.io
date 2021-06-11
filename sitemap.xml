@@ -3,14 +3,56 @@
   
   <url>
     <loc>https://urzz.xyz/categories/</loc>
-    <lastmod>2021-02-16T02:35:14+08:00</lastmod>
+    <lastmod>2021-06-12T02:55:46+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://urzz.xyz/categories/docker/</loc>
+    <lastmod>2021-06-12T02:55:46+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://urzz.xyz/categories/linux/</loc>
+    <lastmod>2021-06-12T02:55:46+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://urzz.xyz/post/</loc>
-    <lastmod>2021-02-16T02:35:14+08:00</lastmod>
+    <lastmod>2021-06-12T02:55:46+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://urzz.xyz/tags/</loc>
+    <lastmod>2021-06-12T02:55:46+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://urzz.xyz/tags/traefik/</loc>
+    <lastmod>2021-06-12T02:55:46+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://urzz.xyz/2021/06/12/traefik-reverse-static-file/</loc>
+    <lastmod>2021-06-12T02:55:46+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://urzz.xyz/</loc>
+    <lastmod>2021-06-12T02:55:46+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -31,20 +73,6 @@
   
   <url>
     <loc>https://urzz.xyz/2021/02/16/pve-install-synology/</loc>
-    <lastmod>2021-02-16T02:35:14+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://urzz.xyz/tags/</loc>
-    <lastmod>2021-02-16T02:35:14+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://urzz.xyz/</loc>
     <lastmod>2021-02-16T02:35:14+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -282,13 +310,6 @@
   </url>
   
   <url>
-    <loc>https://urzz.xyz/categories/docker/</loc>
-    <lastmod>2017-12-17T00:55:16+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://urzz.xyz/2017/12/17/failed-start-docker-after-upgrade-kernel/</loc>
     <lastmod>2017-12-17T00:55:16+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -375,13 +396,6 @@
   <url>
     <loc>https://urzz.xyz/2016/07/26/useful-chrome-extensions/</loc>
     <lastmod>2016-07-26T16:55:04+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://urzz.xyz/categories/linux/</loc>
-    <lastmod>2016-02-02T23:33:53+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

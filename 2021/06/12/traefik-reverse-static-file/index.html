@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Traefik 静态文件代理 - 破壳 - 虽不能至，心向往之</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="fooksky" /><meta name="description" content="先说结论：Traefik 不支持代理静态文件。原因参考: issue 4240 为什么 这里简单说一下为什么吧，因为它的设计原则是：Separation of Conce" /><meta name="keywords" content="fooksky, 破壳, Java" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.81.0-DEV with theme even" />
+
+
+<link rel="canonical" href="https://urzz.xyz/2021/06/12/traefik-reverse-static-file/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="/sass/main.min.39a3e01cac9473be1356f3572fcfe34b2e363efabad244a99a40f28a812c837e.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Traefik 静态文件代理" />
+<meta property="og:description" content="先说结论：Traefik 不支持代理静态文件。原因参考: issue 4240 为什么 这里简单说一下为什么吧，因为它的设计原则是：Separation of Conce" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://urzz.xyz/2021/06/12/traefik-reverse-static-file/" />
+<meta property="article:published_time" content="2021-06-12T02:55:46+08:00" />
+<meta property="article:modified_time" content="2021-06-12T02:55:46+08:00" />
+<meta itemprop="name" content="Traefik 静态文件代理">
+<meta itemprop="description" content="先说结论：Traefik 不支持代理静态文件。原因参考: issue 4240 为什么 这里简单说一下为什么吧，因为它的设计原则是：Separation of Conce">
+<meta itemprop="datePublished" content="2021-06-12T02:55:46+08:00" />
+<meta itemprop="dateModified" content="2021-06-12T02:55:46+08:00" />
+<meta itemprop="wordCount" content="579">
+
+
+
+<meta itemprop="keywords" content="Traefik," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Traefik 静态文件代理"/>
+<meta name="twitter:description" content="先说结论：Traefik 不支持代理静态文件。原因参考: issue 4240 为什么 这里简单说一下为什么吧，因为它的设计原则是：Separation of Conce"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">FookSky</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">FookSky</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Traefik 静态文件代理</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2021-06-12 </span>
+        <div class="post-category">
+            <a href="/categories/linux/"> Linux </a>
+            <a href="/categories/docker/"> Docker </a>
+            </div>
+          <span class="more-meta"> 约 579 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#为什么">为什么</a></li>
+            <li><a href="#怎么实现静态文件代理">怎么实现静态文件代理</a></li>
+            <li><a href="#结论">结论</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <blockquote>
+<p>先说结论：Traefik 不支持代理静态文件。原因参考: <a href="https://github.com/traefik/traefik/issues/4240">issue 4240</a></p>
+</blockquote>
+<h3 id="为什么">为什么</h3>
+<p>这里简单说一下为什么吧，因为它的设计原则是：<code>Separation of Concerns</code>。所以traefik并没有提供代理以外的功能，而静态文件需要一个静态文件服务器。</p>
+<h3 id="怎么实现静态文件代理">怎么实现静态文件代理</h3>
+<p>为什么需要静态文件代理？其实主要是为了部署前端项目文件。</p>
+<p>traefik 反代需要 route + service ，因此需要一个静态文件服务器来提供服务，如果只是个人使用，完全可以使用nginx来做静态文件服务器。</p>
+<h4 id="nginx---env-文件">Nginx - .env 文件</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># 应用名称
+SERVICE_NAME=nginx_server
+# 使用的应用镜像
+DOCKER_IMAGE=nginx:1.21.0-alpine
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="nginx---docker-composeyml">Nginx - docker-compose.yml</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;3.6&#39;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">gitea</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">${DOCKER_IMAGE}</span><span class="w">
+</span><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l">${SERVICE_NAME}</span><span class="w">
+</span><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="l">USER_UID=1000</span><span class="w">
+</span><span class="w">      </span>- <span class="l">USER_GID=1000</span><span class="w">
+</span><span class="w">    </span><span class="nt">networks</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="l">traefik</span><span class="w">
+</span><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l">unless-stopped</span><span class="w">
+</span><span class="w">    </span><span class="nt">labels</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="s2">&#34;traefik.enable=true&#34;</span><span class="w">
+</span><span class="w">      </span>- <span class="s2">&#34;traefik.docker.network=traefik&#34;</span><span class="w">
+</span><span class="w">      </span>- <span class="s2">&#34;traefik.http.services.nginxserverhttp.loadbalancer.server.scheme=http&#34;</span><span class="w">
+</span><span class="w">      </span>- <span class="s2">&#34;traefik.http.services.nginxserverhttp.loadbalancer.server.port=80&#34;</span><span class="w">
+</span><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="l">/etc/localtime:/etc/localtime:ro</span><span class="w">
+</span><span class="w">      </span>- <span class="l">/etc/timezone:/etc/timezone:ro</span><span class="w">
+</span><span class="w">      </span>- <span class="l">./conf:/etc/nginx/conf.d</span><span class="w">
+</span><span class="w">      </span>- <span class="l">./data:/data</span><span class="w">
+</span><span class="w">    </span><span class="nt">logging</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;json-file&#34;</span><span class="w">
+</span><span class="w">      </span><span class="nt">options</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">max-size</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;10m&#34;</span><span class="w">
+</span><span class="w">    </span><span class="nt">healthcheck</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">test</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;CMD-SHELL&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;curl --fail http://127.0.0.1 || exit 1&#34;</span><span class="p">]</span><span class="w">
+</span><span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l">5s</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">networks</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">traefik</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">external</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>将静态文件放入 <code>data</code> 目录，对应的nginx配置文件放入 <code>conf</code> 目录。</p>
+<p>这样可以创建Nginx的container，同时labels中定义了nginx的service。</p>
+<h4 id="traefik-routes-配置示例">Traefik Routes 配置示例</h4>
+<p>这里在traefik的dynamic config新增了routes，没有在labels中定义，因为我想在后续有新的项目需要部署时可以复用这个service。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-toml" data-lang="toml"><span class="p">[</span><span class="nx">http</span><span class="p">.</span><span class="nx">routers</span><span class="p">]</span>
+  <span class="p">[</span><span class="nx">http</span><span class="p">.</span><span class="nx">routers</span><span class="p">.</span><span class="nx">testroute</span><span class="p">]</span>
+    <span class="nx">entryPoints</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;http&#34;</span><span class="p">]</span>
+    <span class="nx">middlewares</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;https-redirect@file&#34;</span><span class="p">]</span>
+    <span class="nx">rule</span> <span class="p">=</span> <span class="s2">&#34;Host(`domain`)&#34;</span>
+    <span class="nx">service</span> <span class="p">=</span> <span class="s2">&#34;nginxserverhttp&#34;</span>
+  <span class="p">[</span><span class="nx">http</span><span class="p">.</span><span class="nx">routers</span><span class="p">.</span><span class="nx">testroutessl</span><span class="p">]</span>
+    <span class="nx">entryPoints</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;https&#34;</span><span class="p">]</span>
+    <span class="nx">middlewares</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;gzip@file&#34;</span><span class="p">]</span>
+    <span class="nx">rule</span> <span class="p">=</span> <span class="s2">&#34;Host(`domain`)&#34;</span>
+    <span class="nx">service</span> <span class="p">=</span> <span class="s2">&#34;nginxserverhttp&#34;</span>
+  <span class="p">[</span><span class="nx">http</span><span class="p">.</span><span class="nx">routers</span><span class="p">.</span><span class="nx">testroutessl</span><span class="p">.</span><span class="nx">tls</span><span class="p">]</span>
+    <span class="nx">certresolver</span> <span class="p">=</span> <span class="s2">&#34;le&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="结论">结论</h3>
+<p>Traefik 实现静态文件代理的方式，就是创建静态代理服务器的container，然后配置service和rule，实现静态文件的访问。</p>
+<p>Traefik 最大的好处是支持服务自动发现，就俩字儿，好用。</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">fooksky</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2021-06-12
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/traefik/">Traefik</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/2021/02/16/pve-install-synology/">
+            <span class="next-text nav-default">PVE 安装黑群晖教程</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+            repo="urzz/hugo-comments"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/urzz" class="iconfont icon-github" title="github"></a>
+  <a href="https://urzz.xyz/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="upyun-info">
+    Hosted by <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank"><img src="/images/upyun_logo.png" style="width:60px;display:inline;vertical-align:middle;" /></a>
+  </div>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2015 - 
+    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>fooksky</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-101637356-2', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<script id="baidu_analytics">
+  var _hmt = _hmt || [];
+  (function() {
+    if (window.location.hostname === 'localhost') return;
+    var hm = document.createElement("script"); hm.async = true;
+    hm.src = "https://hm.baidu.com/hm.js?46750ea49e78dae35da592f752b47547";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+<script id="baidu_push">
+  (function(){
+    if (window.location.hostname === 'localhost') return;
+    var bp = document.createElement('script'); bp.async = true;
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+
+
+</body>
+</html>

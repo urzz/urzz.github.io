@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Traefik on 破壳 - 虽不能至，心向往之</title>
+    <link>https://urzz.xyz/tags/traefik/</link>
+    <description>Recent content in Traefik on 破壳 - 虽不能至，心向往之</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 12 Jun 2021 02:55:46 +0800</lastBuildDate><atom:link href="https://urzz.xyz/tags/traefik/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Traefik 静态文件代理</title>
+      <link>https://urzz.xyz/2021/06/12/traefik-reverse-static-file/</link>
+      <pubDate>Sat, 12 Jun 2021 02:55:46 +0800</pubDate>
+      
+      <guid>https://urzz.xyz/2021/06/12/traefik-reverse-static-file/</guid>
+      <description>先说结论：Traefik 不支持代理静态文件。原因参考: issue 4240 为什么 这里简单说一下为什么吧，因为它的设计原则是：Separation of Conce</description>
+    </item>
+    
+  </channel>
+</rss>

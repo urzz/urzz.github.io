@@ -6,7 +6,25 @@
     <description>Recent content in Categories on 破壳 - 虽不能至，心向往之</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 16 Feb 2021 02:35:14 +0800</lastBuildDate><atom:link href="https://urzz.xyz/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 12 Jun 2021 02:55:46 +0800</lastBuildDate><atom:link href="https://urzz.xyz/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Docker</title>
+      <link>https://urzz.xyz/categories/docker/</link>
+      <pubDate>Sat, 12 Jun 2021 02:55:46 +0800</pubDate>
+      
+      <guid>https://urzz.xyz/categories/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linux</title>
+      <link>https://urzz.xyz/categories/linux/</link>
+      <pubDate>Sat, 12 Jun 2021 02:55:46 +0800</pubDate>
+      
+      <guid>https://urzz.xyz/categories/linux/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>PVE</title>
       <link>https://urzz.xyz/categories/pve/</link>
@@ -80,15 +98,6 @@
     </item>
     
     <item>
-      <title>docker</title>
-      <link>https://urzz.xyz/categories/docker/</link>
-      <pubDate>Sun, 17 Dec 2017 00:55:16 +0000</pubDate>
-      
-      <guid>https://urzz.xyz/categories/docker/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Nginx</title>
       <link>https://urzz.xyz/categories/nginx/</link>
       <pubDate>Thu, 29 Jun 2017 01:21:59 +0000</pubDate>
@@ -121,15 +130,6 @@
       <pubDate>Tue, 26 Jul 2016 16:55:04 +0000</pubDate>
       
       <guid>https://urzz.xyz/categories/chrome/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Linux</title>
-      <link>https://urzz.xyz/categories/linux/</link>
-      <pubDate>Tue, 02 Feb 2016 23:33:53 +0000</pubDate>
-      
-      <guid>https://urzz.xyz/categories/linux/</guid>
       <description></description>
     </item>
     
