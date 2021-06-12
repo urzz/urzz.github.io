@@ -13,7 +13,7 @@
       <pubDate>Sat, 12 Jun 2021 02:55:46 +0800</pubDate>
       
       <guid>https://urzz.xyz/2021/06/12/traefik-reverse-static-file/</guid>
-      <description>先说结论：Traefik 不支持代理静态文件。原因参考: issue 4240 为什么 这里简单说一下为什么吧，因为它的设计原则是：Separation of Conce</description>
+      <description>先说问题：Traefik 本身是不支持代理静态文件的。原因参考: issue 4240 为什么 这里简单说一下为什么吧，因为它的设计原则是：Separation of C</description>
     </item>
     
     <item>

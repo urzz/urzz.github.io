@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="fooksky" /><meta name="description" content="先说结论：Traefik 不支持代理静态文件。原因参考: issue 4240 为什么 这里简单说一下为什么吧，因为它的设计原则是：Separation of Conce" /><meta name="keywords" content="fooksky, 破壳, Java" />
+<meta name="author" content="fooksky" /><meta name="description" content="先说问题：Traefik 本身是不支持代理静态文件的。原因参考: issue 4240 为什么 这里简单说一下为什么吧，因为它的设计原则是：Separation of C" /><meta name="keywords" content="fooksky, 破壳, Java" />
 
 
 
@@ -40,23 +40,23 @@
 
 
 <meta property="og:title" content="Traefik 静态文件代理" />
-<meta property="og:description" content="先说结论：Traefik 不支持代理静态文件。原因参考: issue 4240 为什么 这里简单说一下为什么吧，因为它的设计原则是：Separation of Conce" />
+<meta property="og:description" content="先说问题：Traefik 本身是不支持代理静态文件的。原因参考: issue 4240 为什么 这里简单说一下为什么吧，因为它的设计原则是：Separation of C" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://urzz.xyz/2021/06/12/traefik-reverse-static-file/" />
 <meta property="article:published_time" content="2021-06-12T02:55:46+08:00" />
 <meta property="article:modified_time" content="2021-06-12T02:55:46+08:00" />
 <meta itemprop="name" content="Traefik 静态文件代理">
-<meta itemprop="description" content="先说结论：Traefik 不支持代理静态文件。原因参考: issue 4240 为什么 这里简单说一下为什么吧，因为它的设计原则是：Separation of Conce">
+<meta itemprop="description" content="先说问题：Traefik 本身是不支持代理静态文件的。原因参考: issue 4240 为什么 这里简单说一下为什么吧，因为它的设计原则是：Separation of C">
 <meta itemprop="datePublished" content="2021-06-12T02:55:46+08:00" />
 <meta itemprop="dateModified" content="2021-06-12T02:55:46+08:00" />
-<meta itemprop="wordCount" content="579">
+<meta itemprop="wordCount" content="583">
 
 
 
 <meta itemprop="keywords" content="Traefik," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Traefik 静态文件代理"/>
-<meta name="twitter:description" content="先说结论：Traefik 不支持代理静态文件。原因参考: issue 4240 为什么 这里简单说一下为什么吧，因为它的设计原则是：Separation of Conce"/>
+<meta name="twitter:description" content="先说问题：Traefik 本身是不支持代理静态文件的。原因参考: issue 4240 为什么 这里简单说一下为什么吧，因为它的设计原则是：Separation of C"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -137,7 +137,7 @@
             <a href="/categories/linux/"> Linux </a>
             <a href="/categories/docker/"> Docker </a>
             </div>
-          <span class="more-meta"> 约 579 字 </span>
+          <span class="more-meta"> 约 583 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -165,7 +165,7 @@
 </div>
     <div class="post-content">
       <blockquote>
-<p>先说结论：Traefik 不支持代理静态文件。原因参考: <a href="https://github.com/traefik/traefik/issues/4240">issue 4240</a></p>
+<p>先说问题：Traefik 本身是不支持代理静态文件的。原因参考: <a href="https://github.com/traefik/traefik/issues/4240">issue 4240</a></p>
 </blockquote>
 <h3 id="为什么">为什么</h3>
 <p>这里简单说一下为什么吧，因为它的设计原则是：<code>Separation of Concerns</code>。所以traefik并没有提供代理以外的功能，而静态文件需要一个静态文件服务器。</p>
