@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.81.0-DEV with theme even" />
+<meta name="generator" content="Hugo 0.87.0 with theme even" />
 
 
 <link rel="canonical" href="https://urzz.xyz/2019/07/03/spring-boot-nginx-cookie-nout-found/" />
@@ -35,26 +35,22 @@
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-<link href="/sass/main.min.39a3e01cac9473be1356f3572fcfe34b2e363efabad244a99a40f28a812c837e.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="Nginx反代Spring Boot后端服务后，丢失cookie" />
 <meta property="og:description" content="为了解决跨域请求无法使用cookie的问题，使用nginx对后端服务做了反代。但是反代之后，却发现cookie没有被正确传递。 相关配置 nginx 反代" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://urzz.xyz/2019/07/03/spring-boot-nginx-cookie-nout-found/" />
+<meta property="og:url" content="https://urzz.xyz/2019/07/03/spring-boot-nginx-cookie-nout-found/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2019-07-03T19:08:29+00:00" />
 <meta property="article:modified_time" content="2019-07-03T19:08:29+00:00" />
+
 <meta itemprop="name" content="Nginx反代Spring Boot后端服务后，丢失cookie">
-<meta itemprop="description" content="为了解决跨域请求无法使用cookie的问题，使用nginx对后端服务做了反代。但是反代之后，却发现cookie没有被正确传递。 相关配置 nginx 反代">
-<meta itemprop="datePublished" content="2019-07-03T19:08:29+00:00" />
+<meta itemprop="description" content="为了解决跨域请求无法使用cookie的问题，使用nginx对后端服务做了反代。但是反代之后，却发现cookie没有被正确传递。 相关配置 nginx 反代"><meta itemprop="datePublished" content="2019-07-03T19:08:29+00:00" />
 <meta itemprop="dateModified" content="2019-07-03T19:08:29+00:00" />
 <meta itemprop="wordCount" content="890">
-
-
-
-<meta itemprop="keywords" content="Nginx,Spring,Cookie," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="Nginx,Spring,Cookie," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Nginx反代Spring Boot后端服务后，丢失cookie"/>
 <meta name="twitter:description" content="为了解决跨域请求无法使用cookie的问题，使用nginx对后端服务做了反代。但是反代之后，却发现cookie没有被正确传递。 相关配置 nginx 反代"/>
 
@@ -173,12 +169,12 @@
 <p>nginx反代的配置很简单，只是简单设置了proxy_pass</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">location</span> <span class="s">/edims-api</span> <span class="p">{</span>
+<pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">location</span> <span class="s">/edims-api</span> <span class="p">{</span>
     <span class="kn">proxy_pass</span> <span class="s">http://server_ip:port/</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></td></tr></table>
@@ -187,13 +183,13 @@
 <p>后端服务使用内嵌Tomcat，且设置了context-path。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">server</span><span class="p">:</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">server</span><span class="p">:</span><span class="w">
 </span><span class="w">  </span><span class="c"># 省略了无关配置</span><span class="w">
 </span><span class="w">  </span><span class="nt">servlet</span><span class="p">:</span><span class="w">
 </span><span class="w">    </span><span class="nt">context-path</span><span class="p">:</span><span class="w"> </span><span class="l">/path</span><span class="w">
@@ -216,13 +212,13 @@
 <p>修改nginx的反代配置，在location中添加<code>proxy_cookie_path</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">location</span> <span class="s">/edims-api</span> <span class="p">{</span>
+<pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">location</span> <span class="s">/edims-api</span> <span class="p">{</span>
     <span class="kn">proxy_pass</span>          <span class="s">http://server_ip:port/</span><span class="p">;</span>
     <span class="kn">proxy_cookie_path</span>   <span class="s">/edims-background</span> <span class="s">/edims-api/edims-background</span><span class="p">;</span>
 <span class="p">}</span>
@@ -337,7 +333,7 @@
 
 
 
-<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+<script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
 
 
 <script type="application/javascript">

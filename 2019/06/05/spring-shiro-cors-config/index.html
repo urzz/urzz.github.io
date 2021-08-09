@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.81.0-DEV with theme even" />
+<meta name="generator" content="Hugo 0.87.0 with theme even" />
 
 
 <link rel="canonical" href="https://urzz.xyz/2019/06/05/spring-shiro-cors-config/" />
@@ -35,26 +35,22 @@
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-<link href="/sass/main.min.39a3e01cac9473be1356f3572fcfe34b2e363efabad244a99a40f28a812c837e.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="Spring Boot 整合shiro后的跨域设置" />
 <meta property="og:description" content="之前的项目都没有跨域的要求，都是通过nginx反代后端接口避免跨域请求的，但是最近的项目要求要处理跨域的请求，所以记录一下 1. 正常的Sprin" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://urzz.xyz/2019/06/05/spring-shiro-cors-config/" />
+<meta property="og:url" content="https://urzz.xyz/2019/06/05/spring-shiro-cors-config/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2019-06-05T21:13:14+00:00" />
 <meta property="article:modified_time" content="2019-06-05T21:13:14+00:00" />
+
 <meta itemprop="name" content="Spring Boot 整合shiro后的跨域设置">
-<meta itemprop="description" content="之前的项目都没有跨域的要求，都是通过nginx反代后端接口避免跨域请求的，但是最近的项目要求要处理跨域的请求，所以记录一下 1. 正常的Sprin">
-<meta itemprop="datePublished" content="2019-06-05T21:13:14+00:00" />
+<meta itemprop="description" content="之前的项目都没有跨域的要求，都是通过nginx反代后端接口避免跨域请求的，但是最近的项目要求要处理跨域的请求，所以记录一下 1. 正常的Sprin"><meta itemprop="datePublished" content="2019-06-05T21:13:14+00:00" />
 <meta itemprop="dateModified" content="2019-06-05T21:13:14+00:00" />
 <meta itemprop="wordCount" content="604">
-
-
-
-<meta itemprop="keywords" content="Spring,Shiro,Cors," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="Spring,Shiro,Cors," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Spring Boot 整合shiro后的跨域设置"/>
 <meta name="twitter:description" content="之前的项目都没有跨域的要求，都是通过nginx反代后端接口避免跨域请求的，但是最近的项目要求要处理跨域的请求，所以记录一下 1. 正常的Sprin"/>
 
@@ -171,7 +167,7 @@
 <p>基本的spring boot项目只需要写个配置类，实现<code>WebMvcConfigurer</code>接口的<code>addCorsMappings</code>方法</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -181,7 +177,7 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-Java" data-lang="Java"><span class="nd">@Override</span>
+<pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="nd">@Override</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addCorsMappings</span><span class="o">(</span><span class="n">CorsRegistry</span> <span class="n">registry</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">registry</span><span class="o">.</span><span class="na">addMapping</span><span class="o">(</span><span class="s">&#34;/**&#34;</span><span class="o">)</span>
             <span class="o">.</span><span class="na">allowCredentials</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
@@ -197,7 +193,7 @@
 <p>这时候就得祭出第二招，cors监听器。实现一个监听器，放在shiro的监听器之前，这样就可以保证在所有请求到来的时候，都会给response加上跨域headers。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -227,7 +223,7 @@
 </span><span class="lnt">28
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-Java" data-lang="Java"><span class="nd">@Bean</span>
+<pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="nd">@Bean</span>
 <span class="kd">public</span> <span class="n">FilterRegistrationBean</span> <span class="nf">corsFilter</span><span class="o">()</span> <span class="o">{</span>
     <span class="kd">final</span> <span class="n">UrlBasedCorsConfigurationSource</span> <span class="n">source</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UrlBasedCorsConfigurationSource</span><span class="o">();</span>
     <span class="kd">final</span> <span class="n">CorsConfiguration</span> <span class="n">config</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CorsConfiguration</span><span class="o">();</span>
@@ -366,7 +362,7 @@
 
 
 
-<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+<script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
 
 
 <script type="application/javascript">

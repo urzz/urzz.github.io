@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.81.0-DEV with theme even" />
+<meta name="generator" content="Hugo 0.87.0 with theme even" />
 
 
 <link rel="canonical" href="https://urzz.xyz/2021/06/12/traefik-reverse-static-file/" />
@@ -35,26 +35,22 @@
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-<link href="/sass/main.min.39a3e01cac9473be1356f3572fcfe34b2e363efabad244a99a40f28a812c837e.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="Traefik 静态文件代理" />
 <meta property="og:description" content="先说问题：Traefik 本身是不支持代理静态文件的。原因参考: issue 4240 为什么 这里简单说一下为什么吧，因为它的设计原则是：Separation of C" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://urzz.xyz/2021/06/12/traefik-reverse-static-file/" />
+<meta property="og:url" content="https://urzz.xyz/2021/06/12/traefik-reverse-static-file/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2021-06-12T02:55:46+08:00" />
 <meta property="article:modified_time" content="2021-06-12T02:55:46+08:00" />
+
 <meta itemprop="name" content="Traefik 静态文件代理">
-<meta itemprop="description" content="先说问题：Traefik 本身是不支持代理静态文件的。原因参考: issue 4240 为什么 这里简单说一下为什么吧，因为它的设计原则是：Separation of C">
-<meta itemprop="datePublished" content="2021-06-12T02:55:46+08:00" />
+<meta itemprop="description" content="先说问题：Traefik 本身是不支持代理静态文件的。原因参考: issue 4240 为什么 这里简单说一下为什么吧，因为它的设计原则是：Separation of C"><meta itemprop="datePublished" content="2021-06-12T02:55:46+08:00" />
 <meta itemprop="dateModified" content="2021-06-12T02:55:46+08:00" />
 <meta itemprop="wordCount" content="583">
-
-
-
-<meta itemprop="keywords" content="Traefik," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="Traefik," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Traefik 静态文件代理"/>
 <meta name="twitter:description" content="先说问题：Traefik 本身是不支持代理静态文件的。原因参考: issue 4240 为什么 这里简单说一下为什么吧，因为它的设计原则是：Separation of C"/>
 
@@ -175,13 +171,13 @@
 <h4 id="nginx---env-文件">Nginx - .env 文件</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback"># 应用名称
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"># 应用名称
 SERVICE_NAME=nginx_server
 # 使用的应用镜像
 DOCKER_IMAGE=nginx:1.21.0-alpine
@@ -190,7 +186,7 @@ DOCKER_IMAGE=nginx:1.21.0-alpine
 </div><h4 id="nginx---docker-composeyml">Nginx - docker-compose.yml</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -225,7 +221,7 @@ DOCKER_IMAGE=nginx:1.21.0-alpine
 </span><span class="lnt">33
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;3.6&#39;</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;3.6&#39;</span><span class="w">
 </span><span class="w">
 </span><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
 </span><span class="w">  </span><span class="nt">gitea</span><span class="p">:</span><span class="w">
@@ -266,7 +262,7 @@ DOCKER_IMAGE=nginx:1.21.0-alpine
 <p>这里在traefik的dynamic config新增了routes，没有在labels中定义，因为我想在后续有新的项目需要部署时可以复用这个service。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -281,7 +277,7 @@ DOCKER_IMAGE=nginx:1.21.0-alpine
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-toml" data-lang="toml"><span class="p">[</span><span class="nx">http</span><span class="p">.</span><span class="nx">routers</span><span class="p">]</span>
+<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="p">[</span><span class="nx">http</span><span class="p">.</span><span class="nx">routers</span><span class="p">]</span>
   <span class="p">[</span><span class="nx">http</span><span class="p">.</span><span class="nx">routers</span><span class="p">.</span><span class="nx">testroute</span><span class="p">]</span>
     <span class="nx">entryPoints</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;http&#34;</span><span class="p">]</span>
     <span class="nx">middlewares</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;https-redirect@file&#34;</span><span class="p">]</span>
@@ -325,7 +321,11 @@ DOCKER_IMAGE=nginx:1.21.0-alpine
           <a href="/tags/traefik/">Traefik</a>
           </div>
       <nav class="post-nav">
-        
+        <a class="prev" href="/2021/08/08/mybatis-plus-generator-config/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">使用mybatis-plus-generator初始化项目</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
         <a class="next" href="/2021/02/16/pve-install-synology/">
             <span class="next-text nav-default">PVE 安装黑群晖教程</span>
             <span class="next-text nav-mobile">下一篇</span>
@@ -400,7 +400,7 @@ DOCKER_IMAGE=nginx:1.21.0-alpine
 
 
 
-<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+<script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
 
 
 <script type="application/javascript">

@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.81.0-DEV with theme even" />
+<meta name="generator" content="Hugo 0.87.0 with theme even" />
 
 
 <link rel="canonical" href="https://urzz.xyz/2021/02/16/pve-install-synology/" />
@@ -35,26 +35,22 @@
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-<link href="/sass/main.min.39a3e01cac9473be1356f3572fcfe34b2e363efabad244a99a40f28a812c837e.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="PVE 安装黑群晖教程" />
 <meta property="og:description" content="因为某些原因，重装了两三次PVE和黑群，重装的过程中也碰到一点问题，因此这里记录一下教程。 PVE的安装这里就不说了，可以参考这个教程：Pro" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://urzz.xyz/2021/02/16/pve-install-synology/" />
+<meta property="og:url" content="https://urzz.xyz/2021/02/16/pve-install-synology/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2021-02-16T02:35:14+08:00" />
 <meta property="article:modified_time" content="2021-02-16T02:35:14+08:00" />
+
 <meta itemprop="name" content="PVE 安装黑群晖教程">
-<meta itemprop="description" content="因为某些原因，重装了两三次PVE和黑群，重装的过程中也碰到一点问题，因此这里记录一下教程。 PVE的安装这里就不说了，可以参考这个教程：Pro">
-<meta itemprop="datePublished" content="2021-02-16T02:35:14+08:00" />
+<meta itemprop="description" content="因为某些原因，重装了两三次PVE和黑群，重装的过程中也碰到一点问题，因此这里记录一下教程。 PVE的安装这里就不说了，可以参考这个教程：Pro"><meta itemprop="datePublished" content="2021-02-16T02:35:14+08:00" />
 <meta itemprop="dateModified" content="2021-02-16T02:35:14+08:00" />
 <meta itemprop="wordCount" content="682">
-
-
-
-<meta itemprop="keywords" content="PVE," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="PVE," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="PVE 安装黑群晖教程"/>
 <meta name="twitter:description" content="因为某些原因，重装了两三次PVE和黑群，重装的过程中也碰到一点问题，因此这里记录一下教程。 PVE的安装这里就不说了，可以参考这个教程：Pro"/>
 
@@ -201,11 +197,11 @@
 <p>将引导文件作为启动硬盘导入到虚拟机中</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 1000: vmid，ssd-c2000pro: 虚拟机存储位置</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 1000: vmid，ssd-c2000pro: 虚拟机存储位置</span>
 qm importdisk <span class="m">1000</span> /var/lib/vz/template/iso/synoboot.img ssd-c2000pro
 </code></pre></td></tr></table>
 </div>
@@ -324,7 +320,7 @@ qm importdisk <span class="m">1000</span> /var/lib/vz/template/iso/synoboot.img 
 
 
 
-<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+<script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
 
 
 <script type="application/javascript">

@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.81.0-DEV with theme even" />
+<meta name="generator" content="Hugo 0.87.0 with theme even" />
 
 
 <link rel="canonical" href="https://urzz.xyz/2018/09/23/hexo-use-gitment/" />
@@ -35,26 +35,22 @@
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-<link href="/sass/main.min.39a3e01cac9473be1356f3572fcfe34b2e363efabad244a99a40f28a812c837e.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="hexo 接入 gitment 作为评论系统" />
 <meta property="og:description" content="hexo version: v6.4.1 1. 配置 配置文件在 themes/next. 基本配置如下，主要需要填写正确的github_user, github_repo, client_id, client_secret 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 # Gitment# Introduction: https://imsun.net/posts/gitment-introduction/gitment:enable:truemint:true# RECOMMEND, A mint on Gitment, to support count," />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://urzz.xyz/2018/09/23/hexo-use-gitment/" />
+<meta property="og:url" content="https://urzz.xyz/2018/09/23/hexo-use-gitment/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2018-09-23T16:09:46+00:00" />
 <meta property="article:modified_time" content="2018-09-23T16:09:46+00:00" />
+
 <meta itemprop="name" content="hexo 接入 gitment 作为评论系统">
-<meta itemprop="description" content="hexo version: v6.4.1 1. 配置 配置文件在 themes/next. 基本配置如下，主要需要填写正确的github_user, github_repo, client_id, client_secret 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 # Gitment# Introduction: https://imsun.net/posts/gitment-introduction/gitment:enable:truemint:true# RECOMMEND, A mint on Gitment, to support count,">
-<meta itemprop="datePublished" content="2018-09-23T16:09:46+00:00" />
+<meta itemprop="description" content="hexo version: v6.4.1 1. 配置 配置文件在 themes/next. 基本配置如下，主要需要填写正确的github_user, github_repo, client_id, client_secret 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 # Gitment# Introduction: https://imsun.net/posts/gitment-introduction/gitment:enable:truemint:true# RECOMMEND, A mint on Gitment, to support count,"><meta itemprop="datePublished" content="2018-09-23T16:09:46+00:00" />
 <meta itemprop="dateModified" content="2018-09-23T16:09:46+00:00" />
 <meta itemprop="wordCount" content="899">
-
-
-
-<meta itemprop="keywords" content="Hexo," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="Hexo," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="hexo 接入 gitment 作为评论系统"/>
 <meta name="twitter:description" content="hexo version: v6.4.1 1. 配置 配置文件在 themes/next. 基本配置如下，主要需要填写正确的github_user, github_repo, client_id, client_secret 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 # Gitment# Introduction: https://imsun.net/posts/gitment-introduction/gitment:enable:truemint:true# RECOMMEND, A mint on Gitment, to support count,"/>
 
@@ -172,7 +168,7 @@
 基本配置如下，主要需要填写正确的<code>github_user</code>, <code>github_repo</code>, <code>client_id</code>, <code>client_secret</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -189,7 +185,7 @@
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># Gitment</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># Gitment</span><span class="w">
 </span><span class="w"></span><span class="c"># Introduction: https://imsun.net/posts/gitment-introduction/</span><span class="w">
 </span><span class="w"></span><span class="nt">gitment</span><span class="p">:</span><span class="w">
 </span><span class="w">  </span><span class="nt">enable</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
@@ -216,7 +212,7 @@
 <p>如下：<code>themes/next/layout/_third-party/comments/gitment.swig</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -240,7 +236,7 @@
 </span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&#34;text/javascript&#34;</span><span class="o">&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&#34;text/javascript&#34;</span><span class="o">&gt;</span>
   <span class="kd">function</span> <span class="nx">renderGitment</span><span class="p">(){</span>
     <span class="kd">var</span> <span class="nx">gitment</span> <span class="o">=</span> <span class="k">new</span> <span class="p">{{</span><span class="nx">CommentsClass</span><span class="p">}}({</span>
         <span class="nx">id</span><span class="o">:</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">pathname</span><span class="p">,</span>
@@ -272,7 +268,7 @@
 <p>gitment的作者已经将这个代理服务开源了，在<a href="https://github.com/imsun/gh-oauth-server">这里</a>，可以稍作修改：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -292,7 +288,7 @@
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="nx">upload</span><span class="p">.</span><span class="nx">array</span><span class="p">(),</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="nx">upload</span><span class="p">.</span><span class="nx">array</span><span class="p">(),</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
   <span class="c1">// 添加下面这行，并协商自己申请的client_secret
 </span><span class="c1"></span>  <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">client_secret</span><span class="o">=</span><span class="s1">&#39;*******&#39;</span>
   <span class="nx">request</span><span class="p">.</span><span class="nx">post</span><span class="p">({</span>
@@ -417,7 +413,7 @@
 
 
 
-<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+<script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
 
 
 <script type="application/javascript">

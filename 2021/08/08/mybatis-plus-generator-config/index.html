@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>使用mybatis-plus-generator初始化项目 - 破壳 - 虽不能至，心向往之</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="fooksky" /><meta name="description" content="简介 MyBatis Plus 是一个MyBatis的增强工具，内置通用mapper，提供了基本的curd操作，简化了MyBatis的开发使用工作。 它提供了一个代码" /><meta name="keywords" content="fooksky, 破壳, Java" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.87.0 with theme even" />
+
+
+<link rel="canonical" href="https://urzz.xyz/2021/08/08/mybatis-plus-generator-config/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="使用mybatis-plus-generator初始化项目" />
+<meta property="og:description" content="简介 MyBatis Plus 是一个MyBatis的增强工具，内置通用mapper，提供了基本的curd操作，简化了MyBatis的开发使用工作。 它提供了一个代码" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://urzz.xyz/2021/08/08/mybatis-plus-generator-config/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-08-08T23:17:14+08:00" />
+<meta property="article:modified_time" content="2021-08-08T23:17:14+08:00" />
+
+<meta itemprop="name" content="使用mybatis-plus-generator初始化项目">
+<meta itemprop="description" content="简介 MyBatis Plus 是一个MyBatis的增强工具，内置通用mapper，提供了基本的curd操作，简化了MyBatis的开发使用工作。 它提供了一个代码"><meta itemprop="datePublished" content="2021-08-08T23:17:14+08:00" />
+<meta itemprop="dateModified" content="2021-08-08T23:17:14+08:00" />
+<meta itemprop="wordCount" content="723">
+<meta itemprop="keywords" content="Mybatis-Plus," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="使用mybatis-plus-generator初始化项目"/>
+<meta name="twitter:description" content="简介 MyBatis Plus 是一个MyBatis的增强工具，内置通用mapper，提供了基本的curd操作，简化了MyBatis的开发使用工作。 它提供了一个代码"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">FookSky</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">FookSky</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">使用mybatis-plus-generator初始化项目</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2021-08-08 </span>
+        <div class="post-category">
+            <a href="/categories/java/"> Java </a>
+            </div>
+          <span class="more-meta"> 约 723 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#简介">简介</a></li>
+        <li><a href="#使用">使用</a>
+          <ul>
+            <li><a href="#maven依赖配置">maven依赖配置</a></li>
+            <li><a href="#示例">示例</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="简介">简介</h2>
+<p>MyBatis Plus 是一个MyBatis的增强工具，内置通用mapper，提供了基本的curd操作，简化了MyBatis的开发使用工作。
+它提供了一个代码生成器工具，可以根据数据库表来自动生成entity、mapper、mapper xml、service、controller等模块的代码，简化项目的初始化工作。</p>
+<p>本文示例所用版本：</p>
+<blockquote>
+<p>MyBatis-Plus: 3.4.3.1</p>
+<p>mybatis-plus-generator: 3.5.0</p>
+</blockquote>
+<h2 id="使用">使用</h2>
+<h3 id="maven依赖配置">maven依赖配置</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!-- mybatis-plus gen --&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>com.baomidou<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>mybatis-plus-generator<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>3.5.0<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.velocity<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>velocity-engine-core<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>2.3<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="示例">示例</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">xyz.urzz.selfpubgservice</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.baomidou.mybatisplus.generator.AutoGenerator</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.baomidou.mybatisplus.generator.config.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.baomidou.mybatisplus.generator.config.rules.NamingStrategy</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MybatisPlusGen</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">DB_URL</span> <span class="o">=</span> <span class="s">&#34;jdbc:mysql://${mysql_server}:3306/${db_name}&#34;</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">DB_USERNAME</span> <span class="o">=</span> <span class="s">&#34;user&#34;</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">DB_PASSWD</span> <span class="o">=</span> <span class="s">&#34;passwd&#34;</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">CODE_GEN_PATH</span> <span class="o">=</span> <span class="s">&#34;/src/main/java&#34;</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">CODE_AUTHOR</span> <span class="o">=</span> <span class="s">&#34;urzz&#34;</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">PACKAGE_PARENT</span> <span class="o">=</span> <span class="s">&#34;xyz.urzz&#34;</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">PACKAGE_MODULE</span> <span class="o">=</span> <span class="s">&#34;module&#34;</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">DB_TABLE_PREFIX</span> <span class="o">=</span> <span class="s">&#34;t_&#34;</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// db config
+</span><span class="c1"></span>        <span class="n">DataSourceConfig</span> <span class="n">dataSourceConfig</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DataSourceConfig</span>
+                <span class="o">.</span><span class="na">Builder</span><span class="o">(</span><span class="n">DB_URL</span><span class="o">,</span> <span class="n">DB_USERNAME</span><span class="o">,</span> <span class="n">DB_PASSWD</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+
+        <span class="c1">// code gen path config
+</span><span class="c1"></span>        <span class="n">String</span> <span class="n">projectPath</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">getProperty</span><span class="o">(</span><span class="s">&#34;user.dir&#34;</span><span class="o">);</span>
+        <span class="n">GlobalConfig</span> <span class="n">globalConfig</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GlobalConfig</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">outputDir</span><span class="o">(</span><span class="n">projectPath</span> <span class="o">+</span> <span class="n">CODE_GEN_PATH</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">openDir</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+                <span class="c1">// 覆盖文件
+</span><span class="c1"></span>                <span class="c1">//.fileOverride()
+</span><span class="c1"></span>                <span class="o">.</span><span class="na">author</span><span class="o">(</span><span class="n">CODE_AUTHOR</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+
+        <span class="c1">// code gen package config
+</span><span class="c1"></span>        <span class="n">PackageConfig</span> <span class="n">packageConfig</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PackageConfig</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">parent</span><span class="o">(</span><span class="n">PACKAGE_PARENT</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">moduleName</span><span class="o">(</span><span class="n">PACKAGE_MODULE</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+
+        <span class="c1">// code gen strategy config
+</span><span class="c1"></span>        <span class="n">StrategyConfig</span> <span class="n">strategyConfig</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StrategyConfig</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
+                <span class="c1">// table prefix
+</span><span class="c1"></span>                <span class="o">.</span><span class="na">addTablePrefix</span><span class="o">(</span><span class="n">DB_TABLE_PREFIX</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">entityBuilder</span><span class="o">()</span>
+                <span class="c1">// table -&gt; entity
+</span><span class="c1"></span>                <span class="o">.</span><span class="na">naming</span><span class="o">(</span><span class="n">NamingStrategy</span><span class="o">.</span><span class="na">underline_to_camel</span><span class="o">)</span>
+                <span class="c1">// column -&gt; field
+</span><span class="c1"></span>                <span class="o">.</span><span class="na">columnNaming</span><span class="o">(</span><span class="n">NamingStrategy</span><span class="o">.</span><span class="na">underline_to_camel</span><span class="o">)</span>
+                <span class="c1">// entity add lombok
+</span><span class="c1"></span>                <span class="o">.</span><span class="na">enableLombok</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">mapperBuilder</span><span class="o">()</span>
+                <span class="c1">// mapper add column list
+</span><span class="c1"></span>                <span class="o">.</span><span class="na">enableBaseColumnList</span><span class="o">()</span>
+                <span class="c1">// mapper add column map
+</span><span class="c1"></span>                <span class="o">.</span><span class="na">enableBaseResultMap</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+
+        <span class="n">TemplateConfig</span> <span class="n">templateConfig</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TemplateConfig</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
+                <span class="c1">// disable gen controller
+</span><span class="c1"></span>                <span class="o">.</span><span class="na">disable</span><span class="o">(</span><span class="n">TemplateType</span><span class="o">.</span><span class="na">CONTROLLER</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+
+        <span class="n">AutoGenerator</span> <span class="n">autoGenerator</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AutoGenerator</span><span class="o">(</span><span class="n">dataSourceConfig</span><span class="o">);</span>
+        <span class="n">autoGenerator</span><span class="o">.</span><span class="na">global</span><span class="o">(</span><span class="n">globalConfig</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">strategy</span><span class="o">(</span><span class="n">strategyConfig</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">template</span><span class="o">(</span><span class="n">templateConfig</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">packageInfo</span><span class="o">(</span><span class="n">packageConfig</span><span class="o">);</span>
+
+        <span class="n">autoGenerator</span><span class="o">.</span><span class="na">execute</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>类生成的相关配置在下列的各个配置类中，示例中只是展示了部分的配置。</p>
+<ul>
+<li><code>DataSourceConfig</code> 数据库链接配置</li>
+<li><code>PackageConfig</code> 类的包路径等配置</li>
+<li><code>StrategyConfig</code> 生成策略配置</li>
+<li><code>TemplateConfig</code> 模板配置</li>
+<li><code>GlobalConfig</code> 全局配置</li>
+</ul>
+<p><code>mybatis-plus-generator</code> 默认使用velocity作为类生成的模板引擎，出了velocity之外，也提供了freemarker和beetl的实现。generator也支持自定义模板，如需自定义，可以继承 <code>AbstractTemplateEngine</code>，参考 <code>VelocityTemplateEngine</code> 的实现。</p>
+<blockquote>
+<p>使用生成器，极大的简化了项目的初始化工作，可以无需编写繁琐的entity到mapper到service的这一套代码，还是可以大大提升开发效率的。</p>
+</blockquote>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">fooksky</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2021-08-08
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/mybatis-plus/">Mybatis-Plus</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/2021/06/12/traefik-reverse-static-file/">
+            <span class="next-text nav-default">Traefik 静态文件代理</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+            repo="urzz/hugo-comments"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/urzz" class="iconfont icon-github" title="github"></a>
+  <a href="https://urzz.xyz/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="upyun-info">
+    Hosted by <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank"><img src="/images/upyun_logo.png" style="width:60px;display:inline;vertical-align:middle;" /></a>
+  </div>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2015 - 
+    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>fooksky</span>
+    <br />
+    <a href="https://beian.miit.gov.cn/" target="_blank">苏ICP备18053064号-2</a>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-101637356-2', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<script id="baidu_analytics">
+  var _hmt = _hmt || [];
+  (function() {
+    if (window.location.hostname === 'localhost') return;
+    var hm = document.createElement("script"); hm.async = true;
+    hm.src = "https://hm.baidu.com/hm.js?46750ea49e78dae35da592f752b47547";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+<script id="baidu_push">
+  (function(){
+    if (window.location.hostname === 'localhost') return;
+    var bp = document.createElement('script'); bp.async = true;
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+
+
+</body>
+</html>
