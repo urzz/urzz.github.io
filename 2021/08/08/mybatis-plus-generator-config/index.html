@@ -49,7 +49,7 @@
 <meta itemprop="name" content="使用mybatis-plus-generator初始化项目">
 <meta itemprop="description" content="简介 MyBatis Plus 是一个MyBatis的增强工具，内置通用mapper，提供了基本的curd操作，简化了MyBatis的开发使用工作。 它提供了一个代码"><meta itemprop="datePublished" content="2021-08-08T23:17:14+08:00" />
 <meta itemprop="dateModified" content="2021-08-08T23:17:14+08:00" />
-<meta itemprop="wordCount" content="723">
+<meta itemprop="wordCount" content="750">
 <meta itemprop="keywords" content="Mybatis-Plus," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="使用mybatis-plus-generator初始化项目"/>
 <meta name="twitter:description" content="简介 MyBatis Plus 是一个MyBatis的增强工具，内置通用mapper，提供了基本的curd操作，简化了MyBatis的开发使用工作。 它提供了一个代码"/>
@@ -132,7 +132,7 @@
         <div class="post-category">
             <a href="/categories/java/"> Java </a>
             </div>
-          <span class="more-meta"> 约 723 字 </span>
+          <span class="more-meta"> 约 750 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -273,6 +273,7 @@
 </span><span class="lnt">71
 </span><span class="lnt">72
 </span><span class="lnt">73
+</span><span class="lnt">74
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">xyz.urzz.selfpubgservice</span><span class="o">;</span>
@@ -286,10 +287,10 @@
     <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">DB_USERNAME</span> <span class="o">=</span> <span class="s">&#34;user&#34;</span><span class="o">;</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">DB_PASSWD</span> <span class="o">=</span> <span class="s">&#34;passwd&#34;</span><span class="o">;</span>
 
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">MODULE</span> <span class="o">=</span> <span class="s">&#34;module&#34;</span><span class="o">;</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">CODE_GEN_PATH</span> <span class="o">=</span> <span class="s">&#34;/src/main/java&#34;</span><span class="o">;</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">CODE_AUTHOR</span> <span class="o">=</span> <span class="s">&#34;urzz&#34;</span><span class="o">;</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">PACKAGE_PARENT</span> <span class="o">=</span> <span class="s">&#34;xyz.urzz&#34;</span><span class="o">;</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">PACKAGE_MODULE</span> <span class="o">=</span> <span class="s">&#34;module&#34;</span><span class="o">;</span>
 
     <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">DB_TABLE_PREFIX</span> <span class="o">=</span> <span class="s">&#34;t_&#34;</span><span class="o">;</span>
 
@@ -302,8 +303,9 @@
         <span class="c1">// code gen path config
 </span><span class="c1"></span>        <span class="n">String</span> <span class="n">projectPath</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">getProperty</span><span class="o">(</span><span class="s">&#34;user.dir&#34;</span><span class="o">);</span>
         <span class="n">GlobalConfig</span> <span class="n">globalConfig</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GlobalConfig</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
-                <span class="o">.</span><span class="na">outputDir</span><span class="o">(</span><span class="n">projectPath</span> <span class="o">+</span> <span class="n">CODE_GEN_PATH</span><span class="o">)</span>
-                <span class="o">.</span><span class="na">openDir</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">outputDir</span><span class="o">(</span><span class="n">projectPath</span> <span class="o">+</span> <span class="s">&#34;/&#34;</span> <span class="o">+</span> <span class="n">MODULE</span> <span class="o">+</span> <span class="n">CODE_GEN_PATH</span><span class="o">)</span>
+                <span class="c1">// 生成文件后是否打开目录（文件浏览器）
+</span><span class="c1"></span>                <span class="o">.</span><span class="na">openDir</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
                 <span class="c1">// 覆盖文件
 </span><span class="c1"></span>                <span class="c1">//.fileOverride()
 </span><span class="c1"></span>                <span class="o">.</span><span class="na">author</span><span class="o">(</span><span class="n">CODE_AUTHOR</span><span class="o">)</span>
@@ -311,8 +313,8 @@
 
         <span class="c1">// code gen package config
 </span><span class="c1"></span>        <span class="n">PackageConfig</span> <span class="n">packageConfig</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PackageConfig</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
-                <span class="o">.</span><span class="na">parent</span><span class="o">(</span><span class="n">PACKAGE_PARENT</span><span class="o">)</span>
-                <span class="o">.</span><span class="na">moduleName</span><span class="o">(</span><span class="n">PACKAGE_MODULE</span><span class="o">)</span>
+                <span class="c1">// 包路径
+</span><span class="c1"></span>                <span class="o">.</span><span class="na">parent</span><span class="o">(</span><span class="n">PACKAGE_PARENT</span><span class="o">)</span>
                 <span class="o">.</span><span class="na">build</span><span class="o">();</span>
 
         <span class="c1">// code gen strategy config
