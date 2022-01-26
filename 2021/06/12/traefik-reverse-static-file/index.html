@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Traefik 静态文件代理">
 <meta itemprop="description" content="先说问题：Traefik 本身是不支持代理静态文件的。原因参考: issue 4240 为什么 这里简单说一下为什么吧，因为它的设计原则是：Separation of C"><meta itemprop="datePublished" content="2021-06-12T02:55:46+08:00" />
 <meta itemprop="dateModified" content="2021-06-12T02:55:46+08:00" />
-<meta itemprop="wordCount" content="615">
+<meta itemprop="wordCount" content="559">
 <meta itemprop="keywords" content="Traefik," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Traefik 静态文件代理"/>
 <meta name="twitter:description" content="先说问题：Traefik 本身是不支持代理静态文件的。原因参考: issue 4240 为什么 这里简单说一下为什么吧，因为它的设计原则是：Separation of C"/>
@@ -125,7 +125,7 @@
             <a href="/categories/linux/"> Linux </a>
             <a href="/categories/docker/"> Docker </a>
             </div>
-          <span class="more-meta"> 约 615 字 </span>
+          <span class="more-meta"> 约 559 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -286,7 +286,6 @@ DOCKER_IMAGE=nginx:1.21.0-alpine
 </div>
 </div><h3 id="结论">结论</h3>
 <p>Traefik 实现静态文件代理的方式，就是创建静态代理服务器的container，然后配置service和rule，实现静态文件的访问。</p>
-<p>Traefik 最大的好处是支持服务自动发现，配合docker label、k8s ingress/k8s crd，不需要配置类似nginx的配置文件。</p>
 
     </div>
 
