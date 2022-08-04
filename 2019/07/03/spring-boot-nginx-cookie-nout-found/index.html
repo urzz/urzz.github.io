@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.92.0 with theme even" />
+<meta name="generator" content="Hugo 0.101.0 with theme even" />
 
 
 <link rel="canonical" href="https://urzz.xyz/2019/07/03/spring-boot-nginx-cookie-nout-found/" />
@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Nginx反代Spring Boot后端服务后，丢失cookie">
 <meta itemprop="description" content="为了解决跨域请求无法使用cookie的问题，使用nginx对后端服务做了反代。但是反代之后，却发现cookie没有被正确传递。 相关配置 nginx 反代"><meta itemprop="datePublished" content="2019-07-03T19:08:29+00:00" />
 <meta itemprop="dateModified" content="2019-07-03T19:08:29+00:00" />
-<meta itemprop="wordCount" content="890">
+<meta itemprop="wordCount" content="868">
 <meta itemprop="keywords" content="Nginx,Spring,Cookie," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Nginx反代Spring Boot后端服务后，丢失cookie"/>
 <meta name="twitter:description" content="为了解决跨域请求无法使用cookie的问题，使用nginx对后端服务做了反代。但是反代之后，却发现cookie没有被正确传递。 相关配置 nginx 反代"/>
@@ -124,7 +124,7 @@
         <div class="post-category">
             <a href="/categories/spring-boot/"> Spring Boot </a>
             </div>
-          <span class="more-meta"> 约 890 字 </span>
+          <span class="more-meta"> 约 868 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -166,10 +166,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">location</span> <span class="s">/edims-api</span> <span class="p">{</span>
-    <span class="kn">proxy_pass</span> <span class="s">http://server_ip:port/</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="line"><span class="cl"><span class="k">location</span> <span class="s">/edims-api</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">proxy_pass</span> <span class="s">http://server_ip:port/</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="spring-boot后端服务配置">Spring Boot后端服务配置</h4>
 <p>后端服务使用内嵌Tomcat，且设置了context-path。</p>
@@ -181,11 +181,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">server</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="c"># 省略了无关配置</span><span class="w">
-</span><span class="w">  </span><span class="nt">servlet</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="nt">context-path</span><span class="p">:</span><span class="w"> </span><span class="l">/path</span><span class="w">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">server</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># 省略了无关配置</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">servlet</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">context-path</span><span class="p">:</span><span class="w"> </span><span class="l">/path</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="分析">分析</h3>
 <p>打个比方，登录请求需要请求两个接口A和B。在A接口中，会往session中存入一些数据，在访问B接口的时候需要从session中取出A接口存入的数据。在使用了nginx反代了后端服务之后，请求B接口时，无法从session中取到需要的数据，原因在于访问B接口时，浏览器没有自动将cookie带上，所以每次访问接口的session都不一样。</p>
@@ -196,9 +196,9 @@
 </blockquote>
 <p>浏览器根据cookie的domain和path，决定为哪些url请求发送cookie，而根据我的nginx配置来看，domain肯定是一致的，区别就在于path了。</p>
 <p>首先看一下cookie的path：
-<img src="https://upyun.urzz.xyz/2019/07/03/15621459439181.jpg" alt="-w669"></p>
+<img src="https://attachment.urzz.xyz/2019/07/03/15621459439181.jpg" alt="-w669"></p>
 <p>再来看一下请求url的path：
-<img src="https://upyun.urzz.xyz/2019/07/03/15621460365392.jpg" alt="-w553"></p>
+<img src="https://attachment.urzz.xyz/2019/07/03/15621460365392.jpg" alt="-w553"></p>
 <p>原因找到了，因为后端设置的cookie的path与反代之后访问地址的path不一致，才导致浏览器在B接口请求时并没有发送该cookie。</p>
 <h3 id="解决">解决</h3>
 <p>修改nginx的反代配置，在location中添加<code>proxy_cookie_path</code></p>
@@ -210,11 +210,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">location</span> <span class="s">/edims-api</span> <span class="p">{</span>
-    <span class="kn">proxy_pass</span>          <span class="s">http://server_ip:port/</span><span class="p">;</span>
-    <span class="kn">proxy_cookie_path</span>   <span class="s">/edims-background</span> <span class="s">/edims-api/edims-background</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="line"><span class="cl"><span class="k">location</span> <span class="s">/edims-api</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">proxy_pass</span>          <span class="s">http://server_ip:port/</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">proxy_cookie_path</span>   <span class="s">/edims-background</span> <span class="s">/edims-api/edims-background</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="总结">总结</h3>
 <p>一般来说，我们的Java后端应用并不会设置context-path，那默认的cookie的path其实应该是 <code>/</code>，这样的话，也就不会发现反代还会导致cookie丢失这种情况了。不过如果碰到了，只要了解web开发相关的基础知识，也还是很好解决的。</p>
@@ -325,7 +325,7 @@
 
 
 
-<script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 <script type="application/javascript">

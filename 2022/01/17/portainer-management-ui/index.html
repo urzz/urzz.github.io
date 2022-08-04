@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.92.0 with theme even" />
+<meta name="generator" content="Hugo 0.101.0 with theme even" />
 
 
 <link rel="canonical" href="https://urzz.xyz/2022/01/17/portainer-management-ui/" />
@@ -209,49 +209,49 @@
 </span><span class="lnt">42
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">cat &gt; ./docker-compose.yml <span class="s">&lt;&lt;EOF
-</span><span class="s">version: &#34;3.6&#34;
-</span><span class="s">
-</span><span class="s">services:
-</span><span class="s">
-</span><span class="s">  portainer:
-</span><span class="s">    container_name: portainer_server
-</span><span class="s">    image: portainer/portainer-ce:2.11.0-alpine
-</span><span class="s">    restart: always
-</span><span class="s">    ports:
-</span><span class="s">      - 9000:9000
-</span><span class="s">    volumes:
-</span><span class="s">      - /var/run/docker.sock:/var/run/docker.sock
-</span><span class="s">      - /data/portainer/portainer_data:/data
-</span><span class="s">    networks:
-</span><span class="s">      - traefik
-</span><span class="s">    labels:
-</span><span class="s">      - &#34;traefik.enable=true&#34;
-</span><span class="s">      - &#34;traefik.docker.network=traefik&#34;
-</span><span class="s">      - &#34;traefik.http.routers.portainer-web.middlewares=https-redirect@file&#34;
-</span><span class="s">      - &#34;traefik.http.routers.portainer-web.entrypoints=http&#34;
-</span><span class="s">      - &#34;traefik.http.routers.portainer-web.rule=Host(`domain`)&#34;
-</span><span class="s">      - &#34;traefik.http.routers.portainer-web.service=portainer-backend&#34;
-</span><span class="s">      - &#34;traefik.http.routers.portainer-ssl.middlewares=gzip@file&#34;
-</span><span class="s">      - &#34;traefik.http.routers.portainer-ssl.entrypoints=https&#34;
-</span><span class="s">      - &#34;traefik.http.routers.portainer-ssl.tls=true&#34;
-</span><span class="s">      - &#34;traefik.http.routers.portainer-ssl.tls.certresolver=le&#34;
-</span><span class="s">      - &#34;traefik.http.routers.portainer-ssl.rule=Host(`domain`)&#34;
-</span><span class="s">      - &#34;traefik.http.routers.portainer-ssl.service=portainer-backend&#34;
-</span><span class="s">      - &#34;traefik.http.services.portainer-backend.loadbalancer.server.scheme=http&#34;
-</span><span class="s">      - &#34;traefik.http.services.portainer-backend.loadbalancer.server.port=9000&#34;
-</span><span class="s">    logging:
-</span><span class="s">        driver: &#34;json-file&#34;
-</span><span class="s">        options:
-</span><span class="s">          max-size: &#34;10m&#34;
-</span><span class="s">
-</span><span class="s">networks:
-</span><span class="s">  traefik:
-</span><span class="s">    external: true
-</span><span class="s">EOF</span>
-
-docker-compose up -d
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">cat &gt; ./docker-compose.yml <span class="s">&lt;&lt;EOF
+</span></span></span><span class="line"><span class="cl"><span class="s">version: &#34;3.6&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">
+</span></span></span><span class="line"><span class="cl"><span class="s">services:
+</span></span></span><span class="line"><span class="cl"><span class="s">
+</span></span></span><span class="line"><span class="cl"><span class="s">  portainer:
+</span></span></span><span class="line"><span class="cl"><span class="s">    container_name: portainer_server
+</span></span></span><span class="line"><span class="cl"><span class="s">    image: portainer/portainer-ce:2.11.0-alpine
+</span></span></span><span class="line"><span class="cl"><span class="s">    restart: always
+</span></span></span><span class="line"><span class="cl"><span class="s">    ports:
+</span></span></span><span class="line"><span class="cl"><span class="s">      - 9000:9000
+</span></span></span><span class="line"><span class="cl"><span class="s">    volumes:
+</span></span></span><span class="line"><span class="cl"><span class="s">      - /var/run/docker.sock:/var/run/docker.sock
+</span></span></span><span class="line"><span class="cl"><span class="s">      - /data/portainer/portainer_data:/data
+</span></span></span><span class="line"><span class="cl"><span class="s">    networks:
+</span></span></span><span class="line"><span class="cl"><span class="s">      - traefik
+</span></span></span><span class="line"><span class="cl"><span class="s">    labels:
+</span></span></span><span class="line"><span class="cl"><span class="s">      - &#34;traefik.enable=true&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">      - &#34;traefik.docker.network=traefik&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">      - &#34;traefik.http.routers.portainer-web.middlewares=https-redirect@file&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">      - &#34;traefik.http.routers.portainer-web.entrypoints=http&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">      - &#34;traefik.http.routers.portainer-web.rule=Host(`domain`)&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">      - &#34;traefik.http.routers.portainer-web.service=portainer-backend&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">      - &#34;traefik.http.routers.portainer-ssl.middlewares=gzip@file&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">      - &#34;traefik.http.routers.portainer-ssl.entrypoints=https&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">      - &#34;traefik.http.routers.portainer-ssl.tls=true&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">      - &#34;traefik.http.routers.portainer-ssl.tls.certresolver=le&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">      - &#34;traefik.http.routers.portainer-ssl.rule=Host(`domain`)&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">      - &#34;traefik.http.routers.portainer-ssl.service=portainer-backend&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">      - &#34;traefik.http.services.portainer-backend.loadbalancer.server.scheme=http&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">      - &#34;traefik.http.services.portainer-backend.loadbalancer.server.port=9000&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">    logging:
+</span></span></span><span class="line"><span class="cl"><span class="s">        driver: &#34;json-file&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">        options:
+</span></span></span><span class="line"><span class="cl"><span class="s">          max-size: &#34;10m&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">
+</span></span></span><span class="line"><span class="cl"><span class="s">networks:
+</span></span></span><span class="line"><span class="cl"><span class="s">  traefik:
+</span></span></span><span class="line"><span class="cl"><span class="s">    external: true
+</span></span></span><span class="line"><span class="cl"><span class="s">EOF</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">docker-compose up -d
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="使用配置">使用配置</h2>
 <p>服务启动后，访问 http://ip:9000，可以看到初始化页面。</p>
@@ -373,7 +373,7 @@ docker-compose up -d
 
 
 
-<script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 <script type="application/javascript">

@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.92.0 with theme even" />
+<meta name="generator" content="Hugo 0.101.0 with theme even" />
 
 
 <link rel="canonical" href="https://urzz.xyz/2018/03/20/spring-boot-2-mvc-config/" />
@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Spring Boot 2 的MVC配置改变">
 <meta itemprop="description" content="Spring Boot 升级2.0之后，弃用 WebMvcConfigurerAdapter。 Spring Boot 2的Spring版本升级到Spring5，而Spring5为了充"><meta itemprop="datePublished" content="2018-03-20T15:44:02+00:00" />
 <meta itemprop="dateModified" content="2018-03-20T15:44:02+00:00" />
-<meta itemprop="wordCount" content="1240">
+<meta itemprop="wordCount" content="1239">
 <meta itemprop="keywords" content="Java,Spring Boot," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Spring Boot 2 的MVC配置改变"/>
 <meta name="twitter:description" content="Spring Boot 升级2.0之后，弃用 WebMvcConfigurerAdapter。 Spring Boot 2的Spring版本升级到Spring5，而Spring5为了充"/>
@@ -124,7 +124,7 @@
         <div class="post-category">
             <a href="/categories/spring-boot/"> Spring Boot </a>
             </div>
-          <span class="more-meta"> 约 1240 字 </span>
+          <span class="more-meta"> 约 1239 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -328,197 +328,195 @@
 </span><span class="lnt">184
 </span><span class="lnt">185
 </span><span class="lnt">186
-</span><span class="lnt">187
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">WebMvcConfigurer</span> <span class="o">{</span>
-
-    <span class="cm">/**
-</span><span class="cm">     * Helps with configuring HandlerMappings path matching options such as trailing slash match,
-</span><span class="cm">     * suffix registration, path matcher and path helper.
-</span><span class="cm">     * Configured path matcher and path helper instances are shared for:
-</span><span class="cm">     * &lt;ul&gt;
-</span><span class="cm">     * &lt;li&gt;RequestMappings&lt;/li&gt;
-</span><span class="cm">     * &lt;li&gt;ViewControllerMappings&lt;/li&gt;
-</span><span class="cm">     * &lt;li&gt;ResourcesMappings&lt;/li&gt;
-</span><span class="cm">     * &lt;/ul&gt;
-</span><span class="cm">     * @since 4.0.3
-</span><span class="cm">     */</span>
-    <span class="k">default</span> <span class="kt">void</span> <span class="nf">configurePathMatch</span><span class="o">(</span><span class="n">PathMatchConfigurer</span> <span class="n">configurer</span><span class="o">)</span> <span class="o">{</span>
-    <span class="o">}</span>
-
-    <span class="cm">/**
-</span><span class="cm">     * Configure content negotiation options.
-</span><span class="cm">     */</span>
-    <span class="k">default</span> <span class="kt">void</span> <span class="nf">configureContentNegotiation</span><span class="o">(</span><span class="n">ContentNegotiationConfigurer</span> <span class="n">configurer</span><span class="o">)</span> <span class="o">{</span>
-    <span class="o">}</span>
-
-    <span class="cm">/**
-</span><span class="cm">     * Configure asynchronous request handling options.
-</span><span class="cm">     */</span>
-    <span class="k">default</span> <span class="kt">void</span> <span class="nf">configureAsyncSupport</span><span class="o">(</span><span class="n">AsyncSupportConfigurer</span> <span class="n">configurer</span><span class="o">)</span> <span class="o">{</span>
-    <span class="o">}</span>
-
-    <span class="cm">/**
-</span><span class="cm">     * Configure a handler to delegate unhandled requests by forwarding to the
-</span><span class="cm">     * Servlet container&#39;s &#34;default&#34; servlet. A common use case for this is when
-</span><span class="cm">     * the {@link DispatcherServlet} is mapped to &#34;/&#34; thus overriding the
-</span><span class="cm">     * Servlet container&#39;s default handling of static resources.
-</span><span class="cm">     */</span>
-    <span class="k">default</span> <span class="kt">void</span> <span class="nf">configureDefaultServletHandling</span><span class="o">(</span><span class="n">DefaultServletHandlerConfigurer</span> <span class="n">configurer</span><span class="o">)</span> <span class="o">{</span>
-    <span class="o">}</span>
-
-    <span class="cm">/**
-</span><span class="cm">     * Add {@link Converter}s and {@link Formatter}s in addition to the ones
-</span><span class="cm">     * registered by default.
-</span><span class="cm">     */</span>
-    <span class="k">default</span> <span class="kt">void</span> <span class="nf">addFormatters</span><span class="o">(</span><span class="n">FormatterRegistry</span> <span class="n">registry</span><span class="o">)</span> <span class="o">{</span>
-    <span class="o">}</span>
-
-    <span class="cm">/**
-</span><span class="cm">     * Add Spring MVC lifecycle interceptors for pre- and post-processing of
-</span><span class="cm">     * controller method invocations. Interceptors can be registered to apply
-</span><span class="cm">     * to all requests or be limited to a subset of URL patterns.
-</span><span class="cm">     * &lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt; that interceptors registered here only apply to
-</span><span class="cm">     * controllers and not to resource handler requests. To intercept requests for
-</span><span class="cm">     * static resources either declare a
-</span><span class="cm">     * {@link org.springframework.web.servlet.handler.MappedInterceptor MappedInterceptor}
-</span><span class="cm">     * bean or switch to advanced configuration mode by extending
-</span><span class="cm">     * {@link org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport
-</span><span class="cm">     * WebMvcConfigurationSupport} and then override {@code resourceHandlerMapping}.
-</span><span class="cm">     */</span>
-    <span class="k">default</span> <span class="kt">void</span> <span class="nf">addInterceptors</span><span class="o">(</span><span class="n">InterceptorRegistry</span> <span class="n">registry</span><span class="o">)</span> <span class="o">{</span>
-    <span class="o">}</span>
-
-    <span class="cm">/**
-</span><span class="cm">     * Add handlers to serve static resources such as images, js, and, css
-</span><span class="cm">     * files from specific locations under web application root, the classpath,
-</span><span class="cm">     * and others.
-</span><span class="cm">     */</span>
-    <span class="k">default</span> <span class="kt">void</span> <span class="nf">addResourceHandlers</span><span class="o">(</span><span class="n">ResourceHandlerRegistry</span> <span class="n">registry</span><span class="o">)</span> <span class="o">{</span>
-    <span class="o">}</span>
-
-    <span class="cm">/**
-</span><span class="cm">     * Configure cross origin requests processing.
-</span><span class="cm">     * @since 4.2
-</span><span class="cm">     */</span>
-    <span class="k">default</span> <span class="kt">void</span> <span class="nf">addCorsMappings</span><span class="o">(</span><span class="n">CorsRegistry</span> <span class="n">registry</span><span class="o">)</span> <span class="o">{</span>
-    <span class="o">}</span>
-
-    <span class="cm">/**
-</span><span class="cm">     * Configure simple automated controllers pre-configured with the response
-</span><span class="cm">     * status code and/or a view to render the response body. This is useful in
-</span><span class="cm">     * cases where there is no need for custom controller logic -- e.g. render a
-</span><span class="cm">     * home page, perform simple site URL redirects, return a 404 status with
-</span><span class="cm">     * HTML content, a 204 with no content, and more.
-</span><span class="cm">     */</span>
-    <span class="k">default</span> <span class="kt">void</span> <span class="nf">addViewControllers</span><span class="o">(</span><span class="n">ViewControllerRegistry</span> <span class="n">registry</span><span class="o">)</span> <span class="o">{</span>
-    <span class="o">}</span>
-
-    <span class="cm">/**
-</span><span class="cm">     * Configure view resolvers to translate String-based view names returned from
-</span><span class="cm">     * controllers into concrete {@link org.springframework.web.servlet.View}
-</span><span class="cm">     * implementations to perform rendering with.
-</span><span class="cm">     * @since 4.1
-</span><span class="cm">     */</span>
-    <span class="k">default</span> <span class="kt">void</span> <span class="nf">configureViewResolvers</span><span class="o">(</span><span class="n">ViewResolverRegistry</span> <span class="n">registry</span><span class="o">)</span> <span class="o">{</span>
-    <span class="o">}</span>
-
-    <span class="cm">/**
-</span><span class="cm">     * Add resolvers to support custom controller method argument types.
-</span><span class="cm">     * &lt;p&gt;This does not override the built-in support for resolving handler
-</span><span class="cm">     * method arguments. To customize the built-in support for argument
-</span><span class="cm">     * resolution, configure {@link RequestMappingHandlerAdapter} directly.
-</span><span class="cm">     * @param resolvers initially an empty list
-</span><span class="cm">     */</span>
-    <span class="k">default</span> <span class="kt">void</span> <span class="nf">addArgumentResolvers</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">HandlerMethodArgumentResolver</span><span class="o">&gt;</span> <span class="n">resolvers</span><span class="o">)</span> <span class="o">{</span>
-    <span class="o">}</span>
-
-    <span class="cm">/**
-</span><span class="cm">     * Add handlers to support custom controller method return value types.
-</span><span class="cm">     * &lt;p&gt;Using this option does not override the built-in support for handling
-</span><span class="cm">     * return values. To customize the built-in support for handling return
-</span><span class="cm">     * values, configure RequestMappingHandlerAdapter directly.
-</span><span class="cm">     * @param handlers initially an empty list
-</span><span class="cm">     */</span>
-    <span class="k">default</span> <span class="kt">void</span> <span class="nf">addReturnValueHandlers</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">HandlerMethodReturnValueHandler</span><span class="o">&gt;</span> <span class="n">handlers</span><span class="o">)</span> <span class="o">{</span>
-    <span class="o">}</span>
-
-    <span class="cm">/**
-</span><span class="cm">     * Configure the {@link HttpMessageConverter}s to use for reading or writing
-</span><span class="cm">     * to the body of the request or response. If no converters are added, a
-</span><span class="cm">     * default list of converters is registered.
-</span><span class="cm">     * &lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt; that adding converters to the list, turns off
-</span><span class="cm">     * default converter registration. To simply add a converter without impacting
-</span><span class="cm">     * default registration, consider using the method
-</span><span class="cm">     * {@link #extendMessageConverters(java.util.List)} instead.
-</span><span class="cm">     * @param converters initially an empty list of converters
-</span><span class="cm">     */</span>
-    <span class="k">default</span> <span class="kt">void</span> <span class="nf">configureMessageConverters</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">HttpMessageConverter</span><span class="o">&lt;?&gt;&gt;</span> <span class="n">converters</span><span class="o">)</span> <span class="o">{</span>
-    <span class="o">}</span>
-
-    <span class="cm">/**
-</span><span class="cm">     * A hook for extending or modifying the list of converters after it has been
-</span><span class="cm">     * configured. This may be useful for example to allow default converters to
-</span><span class="cm">     * be registered and then insert a custom converter through this method.
-</span><span class="cm">     * @param converters the list of configured converters to extend.
-</span><span class="cm">     * @since 4.1.3
-</span><span class="cm">     */</span>
-    <span class="k">default</span> <span class="kt">void</span> <span class="nf">extendMessageConverters</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">HttpMessageConverter</span><span class="o">&lt;?&gt;&gt;</span> <span class="n">converters</span><span class="o">)</span> <span class="o">{</span>
-    <span class="o">}</span>
-
-    <span class="cm">/**
-</span><span class="cm">     * Configure exception resolvers.
-</span><span class="cm">     * &lt;p&gt;The given list starts out empty. If it is left empty, the framework
-</span><span class="cm">     * configures a default set of resolvers, see
-</span><span class="cm">     * {@link WebMvcConfigurationSupport#addDefaultHandlerExceptionResolvers(List)}.
-</span><span class="cm">     * Or if any exception resolvers are added to the list, then the application
-</span><span class="cm">     * effectively takes over and must provide, fully initialized, exception
-</span><span class="cm">     * resolvers.
-</span><span class="cm">     * &lt;p&gt;Alternatively you can use
-</span><span class="cm">     * {@link #extendHandlerExceptionResolvers(List)} which allows you to extend
-</span><span class="cm">     * or modify the list of exception resolvers configured by default.
-</span><span class="cm">     * @param resolvers initially an empty list
-</span><span class="cm">     * @see #extendHandlerExceptionResolvers(List)
-</span><span class="cm">     * @see WebMvcConfigurationSupport#addDefaultHandlerExceptionResolvers(List)
-</span><span class="cm">     */</span>
-    <span class="k">default</span> <span class="kt">void</span> <span class="nf">configureHandlerExceptionResolvers</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">HandlerExceptionResolver</span><span class="o">&gt;</span> <span class="n">resolvers</span><span class="o">)</span> <span class="o">{</span>
-    <span class="o">}</span>
-
-    <span class="cm">/**
-</span><span class="cm">     * Extending or modify the list of exception resolvers configured by default.
-</span><span class="cm">     * This can be useful for inserting a custom exception resolver without
-</span><span class="cm">     * interfering with default ones.
-</span><span class="cm">     * @param resolvers the list of configured resolvers to extend
-</span><span class="cm">     * @since 4.3
-</span><span class="cm">     * @see WebMvcConfigurationSupport#addDefaultHandlerExceptionResolvers(List)
-</span><span class="cm">     */</span>
-    <span class="k">default</span> <span class="kt">void</span> <span class="nf">extendHandlerExceptionResolvers</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">HandlerExceptionResolver</span><span class="o">&gt;</span> <span class="n">resolvers</span><span class="o">)</span> <span class="o">{</span>
-    <span class="o">}</span>
-
-    <span class="cm">/**
-</span><span class="cm">     * Provide a custom {@link Validator} instead of the one created by default.
-</span><span class="cm">     * The default implementation, assuming JSR-303 is on the classpath, is:
-</span><span class="cm">     * {@link org.springframework.validation.beanvalidation.OptionalValidatorFactoryBean}.
-</span><span class="cm">     * Leave the return value as {@code null} to keep the default.
-</span><span class="cm">     */</span>
-    <span class="nd">@Nullable</span>
-    <span class="k">default</span> <span class="n">Validator</span> <span class="nf">getValidator</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="cm">/**
-</span><span class="cm">     * Provide a custom {@link MessageCodesResolver} for building message codes
-</span><span class="cm">     * from data binding and validation error codes. Leave the return value as
-</span><span class="cm">     * {@code null} to keep the default.
-</span><span class="cm">     */</span>
-    <span class="nd">@Nullable</span>
-    <span class="k">default</span> <span class="n">MessageCodesResolver</span> <span class="nf">getMessageCodesResolver</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">WebMvcConfigurer</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * Helps with configuring HandlerMappings path matching options such as trailing slash match,
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * suffix registration, path matcher and path helper.
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * Configured path matcher and path helper instances are shared for:
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * &lt;ul&gt;
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * &lt;li&gt;RequestMappings&lt;/li&gt;
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * &lt;li&gt;ViewControllerMappings&lt;/li&gt;
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * &lt;li&gt;ResourcesMappings&lt;/li&gt;
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * &lt;/ul&gt;
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @since 4.0.3
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">default</span> <span class="kt">void</span> <span class="nf">configurePathMatch</span><span class="o">(</span><span class="n">PathMatchConfigurer</span> <span class="n">configurer</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * Configure content negotiation options.
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">default</span> <span class="kt">void</span> <span class="nf">configureContentNegotiation</span><span class="o">(</span><span class="n">ContentNegotiationConfigurer</span> <span class="n">configurer</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * Configure asynchronous request handling options.
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">default</span> <span class="kt">void</span> <span class="nf">configureAsyncSupport</span><span class="o">(</span><span class="n">AsyncSupportConfigurer</span> <span class="n">configurer</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * Configure a handler to delegate unhandled requests by forwarding to the
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * Servlet container&#39;s &#34;default&#34; servlet. A common use case for this is when
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * the {@link DispatcherServlet} is mapped to &#34;/&#34; thus overriding the
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * Servlet container&#39;s default handling of static resources.
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">default</span> <span class="kt">void</span> <span class="nf">configureDefaultServletHandling</span><span class="o">(</span><span class="n">DefaultServletHandlerConfigurer</span> <span class="n">configurer</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * Add {@link Converter}s and {@link Formatter}s in addition to the ones
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * registered by default.
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">default</span> <span class="kt">void</span> <span class="nf">addFormatters</span><span class="o">(</span><span class="n">FormatterRegistry</span> <span class="n">registry</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * Add Spring MVC lifecycle interceptors for pre- and post-processing of
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * controller method invocations. Interceptors can be registered to apply
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * to all requests or be limited to a subset of URL patterns.
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * &lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt; that interceptors registered here only apply to
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * controllers and not to resource handler requests. To intercept requests for
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * static resources either declare a
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * {@link org.springframework.web.servlet.handler.MappedInterceptor MappedInterceptor}
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * bean or switch to advanced configuration mode by extending
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * {@link org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * WebMvcConfigurationSupport} and then override {@code resourceHandlerMapping}.
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">default</span> <span class="kt">void</span> <span class="nf">addInterceptors</span><span class="o">(</span><span class="n">InterceptorRegistry</span> <span class="n">registry</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * Add handlers to serve static resources such as images, js, and, css
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * files from specific locations under web application root, the classpath,
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * and others.
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">default</span> <span class="kt">void</span> <span class="nf">addResourceHandlers</span><span class="o">(</span><span class="n">ResourceHandlerRegistry</span> <span class="n">registry</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * Configure cross origin requests processing.
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @since 4.2
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">default</span> <span class="kt">void</span> <span class="nf">addCorsMappings</span><span class="o">(</span><span class="n">CorsRegistry</span> <span class="n">registry</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * Configure simple automated controllers pre-configured with the response
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * status code and/or a view to render the response body. This is useful in
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * cases where there is no need for custom controller logic -- e.g. render a
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * home page, perform simple site URL redirects, return a 404 status with
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * HTML content, a 204 with no content, and more.
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">default</span> <span class="kt">void</span> <span class="nf">addViewControllers</span><span class="o">(</span><span class="n">ViewControllerRegistry</span> <span class="n">registry</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * Configure view resolvers to translate String-based view names returned from
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * controllers into concrete {@link org.springframework.web.servlet.View}
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * implementations to perform rendering with.
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @since 4.1
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">default</span> <span class="kt">void</span> <span class="nf">configureViewResolvers</span><span class="o">(</span><span class="n">ViewResolverRegistry</span> <span class="n">registry</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * Add resolvers to support custom controller method argument types.
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * &lt;p&gt;This does not override the built-in support for resolving handler
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * method arguments. To customize the built-in support for argument
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * resolution, configure {@link RequestMappingHandlerAdapter} directly.
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param resolvers initially an empty list
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">default</span> <span class="kt">void</span> <span class="nf">addArgumentResolvers</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">HandlerMethodArgumentResolver</span><span class="o">&gt;</span> <span class="n">resolvers</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * Add handlers to support custom controller method return value types.
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * &lt;p&gt;Using this option does not override the built-in support for handling
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * return values. To customize the built-in support for handling return
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * values, configure RequestMappingHandlerAdapter directly.
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param handlers initially an empty list
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">default</span> <span class="kt">void</span> <span class="nf">addReturnValueHandlers</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">HandlerMethodReturnValueHandler</span><span class="o">&gt;</span> <span class="n">handlers</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * Configure the {@link HttpMessageConverter}s to use for reading or writing
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * to the body of the request or response. If no converters are added, a
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * default list of converters is registered.
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * &lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt; that adding converters to the list, turns off
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * default converter registration. To simply add a converter without impacting
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * default registration, consider using the method
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * {@link #extendMessageConverters(java.util.List)} instead.
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param converters initially an empty list of converters
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">default</span> <span class="kt">void</span> <span class="nf">configureMessageConverters</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">HttpMessageConverter</span><span class="o">&lt;?&gt;&gt;</span> <span class="n">converters</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * A hook for extending or modifying the list of converters after it has been
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * configured. This may be useful for example to allow default converters to
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * be registered and then insert a custom converter through this method.
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param converters the list of configured converters to extend.
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @since 4.1.3
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">default</span> <span class="kt">void</span> <span class="nf">extendMessageConverters</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">HttpMessageConverter</span><span class="o">&lt;?&gt;&gt;</span> <span class="n">converters</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * Configure exception resolvers.
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * &lt;p&gt;The given list starts out empty. If it is left empty, the framework
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * configures a default set of resolvers, see
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * {@link WebMvcConfigurationSupport#addDefaultHandlerExceptionResolvers(List)}.
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * Or if any exception resolvers are added to the list, then the application
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * effectively takes over and must provide, fully initialized, exception
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * resolvers.
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * &lt;p&gt;Alternatively you can use
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * {@link #extendHandlerExceptionResolvers(List)} which allows you to extend
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * or modify the list of exception resolvers configured by default.
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param resolvers initially an empty list
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @see #extendHandlerExceptionResolvers(List)
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @see WebMvcConfigurationSupport#addDefaultHandlerExceptionResolvers(List)
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">default</span> <span class="kt">void</span> <span class="nf">configureHandlerExceptionResolvers</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">HandlerExceptionResolver</span><span class="o">&gt;</span> <span class="n">resolvers</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * Extending or modify the list of exception resolvers configured by default.
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * This can be useful for inserting a custom exception resolver without
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * interfering with default ones.
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param resolvers the list of configured resolvers to extend
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @since 4.3
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @see WebMvcConfigurationSupport#addDefaultHandlerExceptionResolvers(List)
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">default</span> <span class="kt">void</span> <span class="nf">extendHandlerExceptionResolvers</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">HandlerExceptionResolver</span><span class="o">&gt;</span> <span class="n">resolvers</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * Provide a custom {@link Validator} instead of the one created by default.
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * The default implementation, assuming JSR-303 is on the classpath, is:
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * {@link org.springframework.validation.beanvalidation.OptionalValidatorFactoryBean}.
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * Leave the return value as {@code null} to keep the default.
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Nullable</span>
+</span></span><span class="line"><span class="cl">    <span class="k">default</span> <span class="n">Validator</span> <span class="nf">getValidator</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * Provide a custom {@link MessageCodesResolver} for building message codes
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * from data binding and validation error codes. Leave the return value as
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * {@code null} to keep the default.
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Nullable</span>
+</span></span><span class="line"><span class="cl">    <span class="k">default</span> <span class="n">MessageCodesResolver</span> <span class="nf">getMessageCodesResolver</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>可以看到，这个接口改为提供默认实现的方式，因此 <code>WebMvcConfigurerAdapter</code> 抽象类已经不需要了，所以自定义的 <code>WebMvcConfig</code> 只需要实现 <code>WebMvcConfigurer</code> 接口。</p>
 
@@ -627,7 +625,7 @@
 
 
 
-<script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 <script type="application/javascript">

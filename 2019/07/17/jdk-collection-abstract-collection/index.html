@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.92.0 with theme even" />
+<meta name="generator" content="Hugo 0.101.0 with theme even" />
 
 
 <link rel="canonical" href="https://urzz.xyz/2019/07/17/jdk-collection-abstract-collection/" />
@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Java 集合源码 - AbstractCollection">
 <meta itemprop="description" content="介绍 AbstractCollection是Java集合实现类的根抽象实现类，它实现了Collection接口，而集合的三个分支(List,S"><meta itemprop="datePublished" content="2019-07-17T16:50:58+00:00" />
 <meta itemprop="dateModified" content="2019-07-17T16:50:58+00:00" />
-<meta itemprop="wordCount" content="2353">
+<meta itemprop="wordCount" content="2352">
 <meta itemprop="keywords" content="Java集合源码," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Java 集合源码 - AbstractCollection"/>
 <meta name="twitter:description" content="介绍 AbstractCollection是Java集合实现类的根抽象实现类，它实现了Collection接口，而集合的三个分支(List,S"/>
@@ -124,7 +124,7 @@
         <div class="post-category">
             <a href="/categories/java/"> Java </a>
             </div>
-          <span class="more-meta"> 约 2353 字 </span>
+          <span class="more-meta"> 约 2352 字 </span>
           <span class="more-meta"> 预计阅读 5 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -151,7 +151,7 @@
 <p><code>AbstractCollection</code>是Java集合实现类的根抽象实现类，它实现了<code>Collection</code>接口，而集合的三个分支(List,Set,Queue)都是继承这个类然后各自实现扩展：<code>AbstractSet</code>, <code>AbstractList</code>, <code>AbstractQueue</code>。</p>
 <p>AbstractCollection 主要包含了三个分支的常用通用方法，三个分支继承AbstractCollection的各自的抽象类中也有三个分支各自具体实现类会有的一些共用方法，所以每个分支才需要有各自的抽象类。</p>
 <!-- more -->
-<p><img src="https://upyun.urzz.xyz/2019/07/17/15633531208284.jpg" alt="-w439"></p>
+<p><img src="https://attachment.urzz.xyz/2019/07/17/15633531208284.jpg" alt="-w439"></p>
 <h2 id="源码">源码</h2>
 <blockquote>
 <p>JDK version: 1.8.0_202</p>
@@ -415,268 +415,266 @@
 </span><span class="lnt">255
 </span><span class="lnt">256
 </span><span class="lnt">257
-</span><span class="lnt">258
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">AbstractCollection</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="kd">implements</span> <span class="n">Collection</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="o">{</span>
-    <span class="c1">// 独有的构造方法，
-</span><span class="c1"></span>    <span class="kd">protected</span> <span class="nf">AbstractCollection</span><span class="o">()</span> <span class="o">{</span>
-    <span class="o">}</span>
-
-    <span class="c1">// 查询相关操作方法
-</span><span class="c1"></span>
-    <span class="kd">public</span> <span class="kd">abstract</span> <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="nf">iterator</span><span class="o">();</span>
-    <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">int</span> <span class="nf">size</span><span class="o">();</span>
-    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isEmpty</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">size</span><span class="o">()</span> <span class="o">==</span> <span class="n">0</span><span class="o">;</span>
-    <span class="o">}</span>
-    <span class="cm">/**
-</span><span class="cm">     * 判断对象是否在集合中，主要依据对象是否为null来做判断
-</span><span class="cm">     */</span>
-    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">contains</span><span class="o">(</span><span class="n">Object</span> <span class="n">o</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">it</span> <span class="o">=</span> <span class="n">iterator</span><span class="o">();</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">o</span><span class="o">==</span><span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-            <span class="k">while</span> <span class="o">(</span><span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span>
-                <span class="k">if</span> <span class="o">(</span><span class="n">it</span><span class="o">.</span><span class="na">next</span><span class="o">()==</span><span class="kc">null</span><span class="o">)</span>
-                    <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
-        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-            <span class="k">while</span> <span class="o">(</span><span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span>
-                <span class="k">if</span> <span class="o">(</span><span class="n">o</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">it</span><span class="o">.</span><span class="na">next</span><span class="o">()))</span>
-                    <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
-        <span class="o">}</span>
-        <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
-    <span class="o">}</span>
-    <span class="cm">/**
-</span><span class="cm">     * 返回一个包含该集合所有元素的数组，数组中元素的顺序和集合中的顺序一致。
-</span><span class="cm">     * 即使在迭代过程中，集合长度被改变，最终也会返回与迭代器长度一致的数组(当集合在迭代期间被其他线程并发修改)
-</span><span class="cm">     * 如果集合中元素比预期的要少，则调用Arrays.copyOf复制数组
-</span><span class="cm">     * 如果集合中元素比预期的要多，则调用finishToArray生成并返回新的数组
-</span><span class="cm">     */</span>
-    <span class="kd">public</span> <span class="n">Object</span><span class="o">[]</span> <span class="nf">toArray</span><span class="o">()</span> <span class="o">{</span>
-        <span class="c1">// 这里的数组长度只是调用size()做一个预估，并不代表最终数组长度一定是当前的长度
-</span><span class="c1"></span>        <span class="n">Object</span><span class="o">[]</span> <span class="n">r</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span><span class="o">[</span><span class="n">size</span><span class="o">()];</span>
-        <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">it</span> <span class="o">=</span> <span class="n">iterator</span><span class="o">();</span>
-        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">r</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-            <span class="c1">// 集合长度少于预期(size())，调用Arrays.copyOf复制数组并返回
-</span><span class="c1"></span>            <span class="k">if</span> <span class="o">(!</span> <span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span>
-                <span class="k">return</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">copyOf</span><span class="o">(</span><span class="n">r</span><span class="o">,</span> <span class="n">i</span><span class="o">);</span>
-            <span class="n">r</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">it</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
-        <span class="o">}</span>
-        <span class="c1">// 判断迭代器是否有剩余的元素没有遍历
-</span><span class="c1"></span>        <span class="c1">// 有的话说明集合长度被增加，调用finishToArray生成新数组并返回
-</span><span class="c1"></span>        <span class="c1">// 没有则说明长度一致，直接返回即可
-</span><span class="c1"></span>        <span class="k">return</span> <span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">()</span> <span class="o">?</span> <span class="n">finishToArray</span><span class="o">(</span><span class="n">r</span><span class="o">,</span> <span class="n">it</span><span class="o">)</span> <span class="o">:</span> <span class="n">r</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="cm">/**
-</span><span class="cm">     * 返回指定类型的数组
-</span><span class="cm">     */</span>
-    <span class="nd">@SuppressWarnings</span><span class="o">(</span><span class="s">&#34;unchecked&#34;</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">T</span><span class="o">[]</span> <span class="nf">toArray</span><span class="o">(</span><span class="n">T</span><span class="o">[]</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span>
-        <span class="c1">// 这里的数组长度只是调用size()做一个预估，并不代表最终数组长度一定是当前的长度
-</span><span class="c1"></span>        <span class="kt">int</span> <span class="n">size</span> <span class="o">=</span> <span class="n">size</span><span class="o">();</span>
-        <span class="c1">// 如果传入的数组长度大于等于集合长度，则将当前集合中的元素复制到该传入的数组中
-</span><span class="c1"></span>        <span class="c1">// 如果传入的数组长度小于集合长度，则创建新的数组存储集合中的元素
-</span><span class="c1"></span>        <span class="n">T</span><span class="o">[]</span> <span class="n">r</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="na">length</span> <span class="o">&gt;=</span> <span class="n">size</span> <span class="o">?</span> <span class="n">a</span> <span class="o">:</span>
-                  <span class="o">(</span><span class="n">T</span><span class="o">[])</span><span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">reflect</span><span class="o">.</span><span class="na">Array</span>
-                  <span class="o">.</span><span class="na">newInstance</span><span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">getClass</span><span class="o">().</span><span class="na">getComponentType</span><span class="o">(),</span> <span class="n">size</span><span class="o">);</span>
-        <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">it</span> <span class="o">=</span> <span class="n">iterator</span><span class="o">();</span>
-
-        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">r</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-            <span class="k">if</span> <span class="o">(!</span> <span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span> <span class="c1">// fewer elements than expected
-</span><span class="c1"></span>            <span class="c1">// 集合中的元素个数比预期的要少(被其他线程并发删除元素)
-</span><span class="c1"></span>                <span class="k">if</span> <span class="o">(</span><span class="n">a</span> <span class="o">==</span> <span class="n">r</span><span class="o">)</span> <span class="o">{</span>
-                <span class="c1">// 如果数组是传入的数组，则将该数组的剩余部分置为null
-</span><span class="c1"></span>                    <span class="n">r</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span> <span class="c1">// null-terminate
-</span><span class="c1"></span>                <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">length</span> <span class="o">&lt;</span> <span class="n">i</span><span class="o">)</span> <span class="o">{</span>
-                <span class="c1">// 如果当前遍历i的数值大于传入数组的长度，则集合元素数量虽然比预期小，但是依旧大于传入数组的长度。
-</span><span class="c1"></span>                <span class="c1">// 直接调用Arrays.copyOf复制并返回新的数组
-</span><span class="c1"></span>                    <span class="k">return</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">copyOf</span><span class="o">(</span><span class="n">r</span><span class="o">,</span> <span class="n">i</span><span class="o">);</span>
-                <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-                <span class="c1">// 数组是新创建的数组，且当前遍历的i小于等于传入数组的长度。
-</span><span class="c1"></span>                <span class="c1">// 则将新创建数组中的元素复制到传入数组中，若遍历的i小于传入数组长度，将传入数组下标为i的值置为null，返回传入的数组
-</span><span class="c1"></span>                    <span class="n">System</span><span class="o">.</span><span class="na">arraycopy</span><span class="o">(</span><span class="n">r</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">a</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">i</span><span class="o">);</span>
-                    <span class="k">if</span> <span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">length</span> <span class="o">&gt;</span> <span class="n">i</span><span class="o">)</span> <span class="o">{</span>
-                        <span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
-                    <span class="o">}</span>
-                <span class="o">}</span>
-                <span class="k">return</span> <span class="n">a</span><span class="o">;</span>
-            <span class="o">}</span>
-            <span class="n">r</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="n">T</span><span class="o">)</span><span class="n">it</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
-        <span class="o">}</span>
-        <span class="c1">// 集合长度被增加的情况与toArray()最终处理方式一致
-</span><span class="c1"></span>        <span class="k">return</span> <span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">()</span> <span class="o">?</span> <span class="n">finishToArray</span><span class="o">(</span><span class="n">r</span><span class="o">,</span> <span class="n">it</span><span class="o">)</span> <span class="o">:</span> <span class="n">r</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="cm">/**
-</span><span class="cm">     * 数组扩容的最大值，实际在Java中，数组最大长度限制为 Integer.MAX_VALUE - 2
-</span><span class="cm">     * 为了防止内存溢出，这里做了限制为 Integer.MAX_VALUE - 8
-</span><span class="cm">     * 关于为什么最大长度要减去 8: 对于有些虚拟机实现来说，数组对象的头部会占用这 8 个字节，具体细节可参考最后的资料
-</span><span class="cm">     */</span>
-    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">MAX_ARRAY_SIZE</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span> <span class="o">-</span> <span class="n">8</span><span class="o">;</span>
-
-    <span class="cm">/**
-</span><span class="cm">     * 当在toArray方法中，迭代器返回了比预期要多的元素时，重新扩容数组并将多余预期的元素放入扩容后的数组中
-</span><span class="cm">     */</span>
-    <span class="nd">@SuppressWarnings</span><span class="o">(</span><span class="s">&#34;unchecked&#34;</span><span class="o">)</span>
-    <span class="kd">private</span> <span class="kd">static</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">T</span><span class="o">[]</span> <span class="nf">finishToArray</span><span class="o">(</span><span class="n">T</span><span class="o">[]</span> <span class="n">r</span><span class="o">,</span> <span class="n">Iterator</span><span class="o">&lt;?&gt;</span> <span class="n">it</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
-        <span class="k">while</span> <span class="o">(</span><span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
-            <span class="kt">int</span> <span class="n">cap</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
-            <span class="c1">// 当索引指向最后一个元素，代表数组长度不够了，需要进行扩容
-</span><span class="c1"></span>            <span class="c1">// 扩容大小：cap + cap/2 + 1
-</span><span class="c1"></span>            <span class="k">if</span> <span class="o">(</span><span class="n">i</span> <span class="o">==</span> <span class="n">cap</span><span class="o">)</span> <span class="o">{</span>
-                <span class="kt">int</span> <span class="n">newCap</span> <span class="o">=</span> <span class="n">cap</span> <span class="o">+</span> <span class="o">(</span><span class="n">cap</span> <span class="o">&gt;&gt;</span> <span class="n">1</span><span class="o">)</span> <span class="o">+</span> <span class="n">1</span><span class="o">;</span>
-                <span class="c1">// 判断扩容后的数组长度是否溢出
-</span><span class="c1"></span>                <span class="k">if</span> <span class="o">(</span><span class="n">newCap</span> <span class="o">-</span> <span class="n">MAX_ARRAY_SIZE</span> <span class="o">&gt;</span> <span class="n">0</span><span class="o">)</span>
-                    <span class="n">newCap</span> <span class="o">=</span> <span class="n">hugeCapacity</span><span class="o">(</span><span class="n">cap</span> <span class="o">+</span> <span class="n">1</span><span class="o">);</span>
-                <span class="n">r</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">copyOf</span><span class="o">(</span><span class="n">r</span><span class="o">,</span> <span class="n">newCap</span><span class="o">);</span>
-            <span class="o">}</span>
-            <span class="n">r</span><span class="o">[</span><span class="n">i</span><span class="o">++]</span> <span class="o">=</span> <span class="o">(</span><span class="n">T</span><span class="o">)</span><span class="n">it</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
-        <span class="o">}</span>
-        <span class="c1">// 如果扩容的容量过多，则只返回实际长度的数组
-</span><span class="c1"></span>        <span class="k">return</span> <span class="o">(</span><span class="n">i</span> <span class="o">==</span> <span class="n">r</span><span class="o">.</span><span class="na">length</span><span class="o">)</span> <span class="o">?</span> <span class="n">r</span> <span class="o">:</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">copyOf</span><span class="o">(</span><span class="n">r</span><span class="o">,</span> <span class="n">i</span><span class="o">);</span>
-    <span class="o">}</span>
-    <span class="cm">/**
-</span><span class="cm">     * 判断数组长度是否溢出
-</span><span class="cm">     */</span>
-    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">hugeCapacity</span><span class="o">(</span><span class="kt">int</span> <span class="n">minCapacity</span><span class="o">)</span> <span class="o">{</span>
-        <span class="c1">// 数组长度溢出，抛出异常
-</span><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">minCapacity</span> <span class="o">&lt;</span> <span class="n">0</span><span class="o">)</span>
-            <span class="k">throw</span> <span class="k">new</span> <span class="n">OutOfMemoryError</span>
-                <span class="o">(</span><span class="s">&#34;Required array size too large&#34;</span><span class="o">);</span>
-        <span class="c1">// 判断是否大于数组扩容允许的最大值，若大于则只允许扩容到最大值
-</span><span class="c1"></span>        <span class="k">return</span> <span class="o">(</span><span class="n">minCapacity</span> <span class="o">&gt;</span> <span class="n">MAX_ARRAY_SIZE</span><span class="o">)</span> <span class="o">?</span>
-            <span class="n">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span> <span class="o">:</span>
-            <span class="n">MAX_ARRAY_SIZE</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="c1">// 修改相关操作方法
-</span><span class="c1"></span>
-    <span class="cm">/**
-</span><span class="cm">     * Collection默认不支持add操作
-</span><span class="cm">     */</span>
-    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">add</span><span class="o">(</span><span class="n">E</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">throw</span> <span class="k">new</span> <span class="n">UnsupportedOperationException</span><span class="o">();</span>
-    <span class="o">}</span>
-
-    <span class="cm">/**
-</span><span class="cm">     * 调用迭代器的remove方法删除元素
-</span><span class="cm">     * 当对应的迭代器没有实现remove方法时，同样会抛UnsupportedOperationException
-</span><span class="cm">     */</span>
-    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">remove</span><span class="o">(</span><span class="n">Object</span> <span class="n">o</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">it</span> <span class="o">=</span> <span class="n">iterator</span><span class="o">();</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">o</span><span class="o">==</span><span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-            <span class="k">while</span> <span class="o">(</span><span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
-                <span class="k">if</span> <span class="o">(</span><span class="n">it</span><span class="o">.</span><span class="na">next</span><span class="o">()==</span><span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-                    <span class="n">it</span><span class="o">.</span><span class="na">remove</span><span class="o">();</span>
-                    <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
-                <span class="o">}</span>
-            <span class="o">}</span>
-        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-            <span class="k">while</span> <span class="o">(</span><span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
-                <span class="k">if</span> <span class="o">(</span><span class="n">o</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">it</span><span class="o">.</span><span class="na">next</span><span class="o">()))</span> <span class="o">{</span>
-                    <span class="n">it</span><span class="o">.</span><span class="na">remove</span><span class="o">();</span>
-                    <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
-                <span class="o">}</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-        <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
-    <span class="o">}</span>
-
-
-    <span class="c1">// 批量操作方法
-</span><span class="c1"></span>
-    <span class="cm">/**
-</span><span class="cm">     * 批量判断元素是否都存在
-</span><span class="cm">     */</span>
-    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">containsAll</span><span class="o">(</span><span class="n">Collection</span><span class="o">&lt;?&gt;</span> <span class="n">c</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">for</span> <span class="o">(</span><span class="n">Object</span> <span class="n">e</span> <span class="o">:</span> <span class="n">c</span><span class="o">)</span>
-            <span class="k">if</span> <span class="o">(!</span><span class="n">contains</span><span class="o">(</span><span class="n">e</span><span class="o">))</span>
-                <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
-        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="cm">/**
-</span><span class="cm">     * 将参数集合中的元素都add到当前集合中
-</span><span class="cm">     * (若集合未实现add方法，可能会抛UnsupportedOperationException)
-</span><span class="cm">     */</span>
-    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">addAll</span><span class="o">(</span><span class="n">Collection</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="n">E</span><span class="o">&gt;</span> <span class="n">c</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kt">boolean</span> <span class="n">modified</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
-        <span class="k">for</span> <span class="o">(</span><span class="n">E</span> <span class="n">e</span> <span class="o">:</span> <span class="n">c</span><span class="o">)</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">add</span><span class="o">(</span><span class="n">e</span><span class="o">))</span>
-                <span class="n">modified</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
-        <span class="k">return</span> <span class="n">modified</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="cm">/**
-</span><span class="cm">     * 批量删除元素
-</span><span class="cm">     * 通过迭代器，迭代判断集合中是否存在元素，存在就调用remove方法删除元素
-</span><span class="cm">     */</span>
-    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">removeAll</span><span class="o">(</span><span class="n">Collection</span><span class="o">&lt;?&gt;</span> <span class="n">c</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">Objects</span><span class="o">.</span><span class="na">requireNonNull</span><span class="o">(</span><span class="n">c</span><span class="o">);</span>
-        <span class="kt">boolean</span> <span class="n">modified</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
-        <span class="n">Iterator</span><span class="o">&lt;?&gt;</span> <span class="n">it</span> <span class="o">=</span> <span class="n">iterator</span><span class="o">();</span>
-        <span class="k">while</span> <span class="o">(</span><span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">c</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">it</span><span class="o">.</span><span class="na">next</span><span class="o">()))</span> <span class="o">{</span>
-                <span class="n">it</span><span class="o">.</span><span class="na">remove</span><span class="o">();</span>
-                <span class="n">modified</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-        <span class="k">return</span> <span class="n">modified</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="cm">/**
-</span><span class="cm">     * 删除所有不在传入集合中存在的元素
-</span><span class="cm">     */</span>
-    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">retainAll</span><span class="o">(</span><span class="n">Collection</span><span class="o">&lt;?&gt;</span> <span class="n">c</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">Objects</span><span class="o">.</span><span class="na">requireNonNull</span><span class="o">(</span><span class="n">c</span><span class="o">);</span>
-        <span class="kt">boolean</span> <span class="n">modified</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
-        <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">it</span> <span class="o">=</span> <span class="n">iterator</span><span class="o">();</span>
-        <span class="k">while</span> <span class="o">(</span><span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
-            <span class="k">if</span> <span class="o">(!</span><span class="n">c</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">it</span><span class="o">.</span><span class="na">next</span><span class="o">()))</span> <span class="o">{</span>
-                <span class="n">it</span><span class="o">.</span><span class="na">remove</span><span class="o">();</span>
-                <span class="n">modified</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-        <span class="k">return</span> <span class="n">modified</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="cm">/**
-</span><span class="cm">     * 删除集合中的所有元素
-</span><span class="cm">     */</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">clear</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">it</span> <span class="o">=</span> <span class="n">iterator</span><span class="o">();</span>
-        <span class="k">while</span> <span class="o">(</span><span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
-            <span class="n">it</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
-            <span class="n">it</span><span class="o">.</span><span class="na">remove</span><span class="o">();</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-
-
-    <span class="c1">//  String conversion
-</span><span class="c1"></span>
-    <span class="cm">/**
-</span><span class="cm">     * 返回集合的字符串表示形式
-</span><span class="cm">     */</span>
-    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">it</span> <span class="o">=</span> <span class="n">iterator</span><span class="o">();</span>
-        <span class="k">if</span> <span class="o">(!</span> <span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span>
-            <span class="k">return</span> <span class="s">&#34;[]&#34;</span><span class="o">;</span>
-
-        <span class="n">StringBuilder</span> <span class="n">sb</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="o">();</span>
-        <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="sc">&#39;[&#39;</span><span class="o">);</span>
-        <span class="k">for</span> <span class="o">(;;)</span> <span class="o">{</span>
-            <span class="n">E</span> <span class="n">e</span> <span class="o">=</span> <span class="n">it</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
-            <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">e</span> <span class="o">==</span> <span class="k">this</span> <span class="o">?</span> <span class="s">&#34;(this Collection)&#34;</span> <span class="o">:</span> <span class="n">e</span><span class="o">);</span>
-            <span class="k">if</span> <span class="o">(!</span> <span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span>
-                <span class="k">return</span> <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="sc">&#39;]&#39;</span><span class="o">).</span><span class="na">toString</span><span class="o">();</span>
-            <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="sc">&#39;,&#39;</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="sc">&#39; &#39;</span><span class="o">);</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">AbstractCollection</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="kd">implements</span> <span class="n">Collection</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 独有的构造方法，
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">protected</span> <span class="nf">AbstractCollection</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 查询相关操作方法
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">abstract</span> <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="nf">iterator</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">int</span> <span class="nf">size</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isEmpty</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">size</span><span class="o">()</span> <span class="o">==</span> <span class="n">0</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 判断对象是否在集合中，主要依据对象是否为null来做判断
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">contains</span><span class="o">(</span><span class="n">Object</span> <span class="n">o</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">it</span> <span class="o">=</span> <span class="n">iterator</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">o</span><span class="o">==</span><span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">while</span> <span class="o">(</span><span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="o">(</span><span class="n">it</span><span class="o">.</span><span class="na">next</span><span class="o">()==</span><span class="kc">null</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">while</span> <span class="o">(</span><span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="o">(</span><span class="n">o</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">it</span><span class="o">.</span><span class="na">next</span><span class="o">()))</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 返回一个包含该集合所有元素的数组，数组中元素的顺序和集合中的顺序一致。
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 即使在迭代过程中，集合长度被改变，最终也会返回与迭代器长度一致的数组(当集合在迭代期间被其他线程并发修改)
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 如果集合中元素比预期的要少，则调用Arrays.copyOf复制数组
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 如果集合中元素比预期的要多，则调用finishToArray生成并返回新的数组
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">Object</span><span class="o">[]</span> <span class="nf">toArray</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 这里的数组长度只是调用size()做一个预估，并不代表最终数组长度一定是当前的长度
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Object</span><span class="o">[]</span> <span class="n">r</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span><span class="o">[</span><span class="n">size</span><span class="o">()];</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">it</span> <span class="o">=</span> <span class="n">iterator</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">r</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// 集合长度少于预期(size())，调用Arrays.copyOf复制数组并返回
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="k">if</span> <span class="o">(!</span> <span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">copyOf</span><span class="o">(</span><span class="n">r</span><span class="o">,</span> <span class="n">i</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">r</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">it</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 判断迭代器是否有剩余的元素没有遍历
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">// 有的话说明集合长度被增加，调用finishToArray生成新数组并返回
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">// 没有则说明长度一致，直接返回即可
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">return</span> <span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">()</span> <span class="o">?</span> <span class="n">finishToArray</span><span class="o">(</span><span class="n">r</span><span class="o">,</span> <span class="n">it</span><span class="o">)</span> <span class="o">:</span> <span class="n">r</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 返回指定类型的数组
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@SuppressWarnings</span><span class="o">(</span><span class="s">&#34;unchecked&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">T</span><span class="o">[]</span> <span class="nf">toArray</span><span class="o">(</span><span class="n">T</span><span class="o">[]</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 这里的数组长度只是调用size()做一个预估，并不代表最终数组长度一定是当前的长度
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kt">int</span> <span class="n">size</span> <span class="o">=</span> <span class="n">size</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 如果传入的数组长度大于等于集合长度，则将当前集合中的元素复制到该传入的数组中
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">// 如果传入的数组长度小于集合长度，则创建新的数组存储集合中的元素
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">T</span><span class="o">[]</span> <span class="n">r</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="na">length</span> <span class="o">&gt;=</span> <span class="n">size</span> <span class="o">?</span> <span class="n">a</span> <span class="o">:</span>
+</span></span><span class="line"><span class="cl">                  <span class="o">(</span><span class="n">T</span><span class="o">[])</span><span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">reflect</span><span class="o">.</span><span class="na">Array</span>
+</span></span><span class="line"><span class="cl">                  <span class="o">.</span><span class="na">newInstance</span><span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">getClass</span><span class="o">().</span><span class="na">getComponentType</span><span class="o">(),</span> <span class="n">size</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">it</span> <span class="o">=</span> <span class="n">iterator</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">r</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="o">(!</span> <span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span> <span class="c1">// fewer elements than expected
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="c1">// 集合中的元素个数比预期的要少(被其他线程并发删除元素)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="k">if</span> <span class="o">(</span><span class="n">a</span> <span class="o">==</span> <span class="n">r</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">// 如果数组是传入的数组，则将该数组的剩余部分置为null
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="n">r</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span> <span class="c1">// null-terminate
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">length</span> <span class="o">&lt;</span> <span class="n">i</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">// 如果当前遍历i的数值大于传入数组的长度，则集合元素数量虽然比预期小，但是依旧大于传入数组的长度。
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="c1">// 直接调用Arrays.copyOf复制并返回新的数组
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="k">return</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">copyOf</span><span class="o">(</span><span class="n">r</span><span class="o">,</span> <span class="n">i</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">                <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">// 数组是新创建的数组，且当前遍历的i小于等于传入数组的长度。
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="c1">// 则将新创建数组中的元素复制到传入数组中，若遍历的i小于传入数组长度，将传入数组下标为i的值置为null，返回传入的数组
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="n">System</span><span class="o">.</span><span class="na">arraycopy</span><span class="o">(</span><span class="n">r</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">a</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">i</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">if</span> <span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">length</span> <span class="o">&gt;</span> <span class="n">i</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">                <span class="o">}</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="n">a</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">            <span class="n">r</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="n">T</span><span class="o">)</span><span class="n">it</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 集合长度被增加的情况与toArray()最终处理方式一致
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">return</span> <span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">()</span> <span class="o">?</span> <span class="n">finishToArray</span><span class="o">(</span><span class="n">r</span><span class="o">,</span> <span class="n">it</span><span class="o">)</span> <span class="o">:</span> <span class="n">r</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 数组扩容的最大值，实际在Java中，数组最大长度限制为 Integer.MAX_VALUE - 2
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 为了防止内存溢出，这里做了限制为 Integer.MAX_VALUE - 8
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 关于为什么最大长度要减去 8: 对于有些虚拟机实现来说，数组对象的头部会占用这 8 个字节，具体细节可参考最后的资料
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">MAX_ARRAY_SIZE</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span> <span class="o">-</span> <span class="n">8</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 当在toArray方法中，迭代器返回了比预期要多的元素时，重新扩容数组并将多余预期的元素放入扩容后的数组中
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@SuppressWarnings</span><span class="o">(</span><span class="s">&#34;unchecked&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">T</span><span class="o">[]</span> <span class="nf">finishToArray</span><span class="o">(</span><span class="n">T</span><span class="o">[]</span> <span class="n">r</span><span class="o">,</span> <span class="n">Iterator</span><span class="o">&lt;?&gt;</span> <span class="n">it</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span> <span class="o">(</span><span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">int</span> <span class="n">cap</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// 当索引指向最后一个元素，代表数组长度不够了，需要进行扩容
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="c1">// 扩容大小：cap + cap/2 + 1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="k">if</span> <span class="o">(</span><span class="n">i</span> <span class="o">==</span> <span class="n">cap</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="kt">int</span> <span class="n">newCap</span> <span class="o">=</span> <span class="n">cap</span> <span class="o">+</span> <span class="o">(</span><span class="n">cap</span> <span class="o">&gt;&gt;</span> <span class="n">1</span><span class="o">)</span> <span class="o">+</span> <span class="n">1</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">// 判断扩容后的数组长度是否溢出
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="k">if</span> <span class="o">(</span><span class="n">newCap</span> <span class="o">-</span> <span class="n">MAX_ARRAY_SIZE</span> <span class="o">&gt;</span> <span class="n">0</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">newCap</span> <span class="o">=</span> <span class="n">hugeCapacity</span><span class="o">(</span><span class="n">cap</span> <span class="o">+</span> <span class="n">1</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">                <span class="n">r</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">copyOf</span><span class="o">(</span><span class="n">r</span><span class="o">,</span> <span class="n">newCap</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">            <span class="n">r</span><span class="o">[</span><span class="n">i</span><span class="o">++]</span> <span class="o">=</span> <span class="o">(</span><span class="n">T</span><span class="o">)</span><span class="n">it</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 如果扩容的容量过多，则只返回实际长度的数组
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">return</span> <span class="o">(</span><span class="n">i</span> <span class="o">==</span> <span class="n">r</span><span class="o">.</span><span class="na">length</span><span class="o">)</span> <span class="o">?</span> <span class="n">r</span> <span class="o">:</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">copyOf</span><span class="o">(</span><span class="n">r</span><span class="o">,</span> <span class="n">i</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 判断数组长度是否溢出
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">hugeCapacity</span><span class="o">(</span><span class="kt">int</span> <span class="n">minCapacity</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 数组长度溢出，抛出异常
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">minCapacity</span> <span class="o">&lt;</span> <span class="n">0</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">OutOfMemoryError</span>
+</span></span><span class="line"><span class="cl">                <span class="o">(</span><span class="s">&#34;Required array size too large&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 判断是否大于数组扩容允许的最大值，若大于则只允许扩容到最大值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">return</span> <span class="o">(</span><span class="n">minCapacity</span> <span class="o">&gt;</span> <span class="n">MAX_ARRAY_SIZE</span><span class="o">)</span> <span class="o">?</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span> <span class="o">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">MAX_ARRAY_SIZE</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 修改相关操作方法
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * Collection默认不支持add操作
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">add</span><span class="o">(</span><span class="n">E</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">throw</span> <span class="k">new</span> <span class="n">UnsupportedOperationException</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 调用迭代器的remove方法删除元素
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 当对应的迭代器没有实现remove方法时，同样会抛UnsupportedOperationException
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">remove</span><span class="o">(</span><span class="n">Object</span> <span class="n">o</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">it</span> <span class="o">=</span> <span class="n">iterator</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">o</span><span class="o">==</span><span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">while</span> <span class="o">(</span><span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="o">(</span><span class="n">it</span><span class="o">.</span><span class="na">next</span><span class="o">()==</span><span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">it</span><span class="o">.</span><span class="na">remove</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">                <span class="o">}</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">while</span> <span class="o">(</span><span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="o">(</span><span class="n">o</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">it</span><span class="o">.</span><span class="na">next</span><span class="o">()))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">it</span><span class="o">.</span><span class="na">remove</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">                <span class="o">}</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 批量操作方法
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 批量判断元素是否都存在
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">containsAll</span><span class="o">(</span><span class="n">Collection</span><span class="o">&lt;?&gt;</span> <span class="n">c</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="o">(</span><span class="n">Object</span> <span class="n">e</span> <span class="o">:</span> <span class="n">c</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="o">(!</span><span class="n">contains</span><span class="o">(</span><span class="n">e</span><span class="o">))</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 将参数集合中的元素都add到当前集合中
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * (若集合未实现add方法，可能会抛UnsupportedOperationException)
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">addAll</span><span class="o">(</span><span class="n">Collection</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="n">E</span><span class="o">&gt;</span> <span class="n">c</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">boolean</span> <span class="n">modified</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="o">(</span><span class="n">E</span> <span class="n">e</span> <span class="o">:</span> <span class="n">c</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="o">(</span><span class="n">add</span><span class="o">(</span><span class="n">e</span><span class="o">))</span>
+</span></span><span class="line"><span class="cl">                <span class="n">modified</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">modified</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 批量删除元素
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 通过迭代器，迭代判断集合中是否存在元素，存在就调用remove方法删除元素
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">removeAll</span><span class="o">(</span><span class="n">Collection</span><span class="o">&lt;?&gt;</span> <span class="n">c</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Objects</span><span class="o">.</span><span class="na">requireNonNull</span><span class="o">(</span><span class="n">c</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">boolean</span> <span class="n">modified</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Iterator</span><span class="o">&lt;?&gt;</span> <span class="n">it</span> <span class="o">=</span> <span class="n">iterator</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span> <span class="o">(</span><span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="o">(</span><span class="n">c</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">it</span><span class="o">.</span><span class="na">next</span><span class="o">()))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">it</span><span class="o">.</span><span class="na">remove</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">                <span class="n">modified</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">modified</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 删除所有不在传入集合中存在的元素
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">retainAll</span><span class="o">(</span><span class="n">Collection</span><span class="o">&lt;?&gt;</span> <span class="n">c</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Objects</span><span class="o">.</span><span class="na">requireNonNull</span><span class="o">(</span><span class="n">c</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">boolean</span> <span class="n">modified</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">it</span> <span class="o">=</span> <span class="n">iterator</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span> <span class="o">(</span><span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="o">(!</span><span class="n">c</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">it</span><span class="o">.</span><span class="na">next</span><span class="o">()))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">it</span><span class="o">.</span><span class="na">remove</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">                <span class="n">modified</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">modified</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 删除集合中的所有元素
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">clear</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">it</span> <span class="o">=</span> <span class="n">iterator</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span> <span class="o">(</span><span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">it</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">            <span class="n">it</span><span class="o">.</span><span class="na">remove</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">//  String conversion
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 返回集合的字符串表示形式
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">it</span> <span class="o">=</span> <span class="n">iterator</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(!</span> <span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="s">&#34;[]&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">StringBuilder</span> <span class="n">sb</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="sc">&#39;[&#39;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="o">(;;)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">E</span> <span class="n">e</span> <span class="o">=</span> <span class="n">it</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">            <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">e</span> <span class="o">==</span> <span class="k">this</span> <span class="o">?</span> <span class="s">&#34;(this Collection)&#34;</span> <span class="o">:</span> <span class="n">e</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="o">(!</span> <span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="sc">&#39;]&#39;</span><span class="o">).</span><span class="na">toString</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">            <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="sc">&#39;,&#39;</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="sc">&#39; &#39;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="资料">资料</h2>
 <ol>
@@ -789,7 +787,7 @@
 
 
 
-<script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 <script type="application/javascript">

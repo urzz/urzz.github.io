@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.92.0 with theme even" />
+<meta name="generator" content="Hugo 0.101.0 with theme even" />
 
 
 <link rel="canonical" href="https://urzz.xyz/2017/06/29/nginx-with-https/" />
@@ -173,8 +173,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">curl  https://get.acme.sh <span class="p">|</span> sh
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">curl  https://get.acme.sh <span class="p">|</span> sh
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="生成证书">生成证书</h4>
 <p>生成证书有两种验证方式。</p>
@@ -191,11 +191,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">CX_Key</span><span class="o">=</span><span class="s2">&#34;1234&#34;</span>
-<span class="nb">export</span> <span class="nv">CX_Secret</span><span class="o">=</span><span class="s2">&#34;sADDsdasdgdsf&#34;</span>
-
-acme.sh --issue --dns dns_cx -d example.com
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">CX_Key</span><span class="o">=</span><span class="s2">&#34;1234&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">CX_Secret</span><span class="o">=</span><span class="s2">&#34;sADDsdasdgdsf&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">acme.sh --issue --dns dns_cx -d example.com
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>这样CX_Key和CX_Secret都会保存在<code>~/.acme.sh/account.conf</code>中，当需要的时候回自动调用。</p>
 <p>更多的DNS API的使用方法可以看这儿：<a href="https://github.com/Neilpang/acme.sh/blob/master/dnsapi/README.md">How to use DNS API</a></p>
@@ -210,11 +210,11 @@ acme.sh --issue --dns dns_cx -d example.com
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">acme.sh --installcert -d urzz.me <span class="se">\
-</span><span class="se"></span>        --key-file /etc/nginx/ssl/urzz.me.key <span class="se">\
-</span><span class="se"></span>        --fullchain-file /etc/nginx/ssl/urzz.me.cer <span class="se">\
-</span><span class="se"></span>        --reloadcmd <span class="s2">&#34;service nginx force-reload&#34;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">acme.sh --installcert -d urzz.me <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>        --key-file /etc/nginx/ssl/urzz.me.key <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>        --fullchain-file /etc/nginx/ssl/urzz.me.cer <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>        --reloadcmd <span class="s2">&#34;service nginx force-reload&#34;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="更新证书">更新证书</h4>
 <p>目前的脚本，证书会在60天之后自动更新。</p>
@@ -224,8 +224,8 @@ acme.sh --issue --dns dns_cx -d example.com
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">acme.sh --renew -d example.com --force
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">acme.sh --renew -d example.com --force
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="更新">更新</h4>
 <p>由于let&rsquo;s encrypt和acme协议都在频繁的更新，因此acme.sh也需要经常更新。</p>
@@ -235,9 +235,9 @@ acme.sh --issue --dns dns_cx -d example.com
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># --auto-upgrade 设置自动更新</span>
-acme.sh  --upgrade  --auto-upgrade
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># --auto-upgrade 设置自动更新</span>
+</span></span><span class="line"><span class="cl">acme.sh  --upgrade  --auto-upgrade
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="nginx-配置">Nginx 配置</h3>
 <p>在 <code>/etc/nginx/nginx.conf</code> 中有一个include，这表示Nginx启东时会解析include后面路径里面的文件</p>
@@ -286,45 +286,45 @@ acme.sh  --upgrade  --auto-upgrade
 </span><span class="lnt">38
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">server</span> <span class="p">{</span>
-    <span class="kn">listen</span>              <span class="mi">443</span> <span class="s">ssl</span><span class="p">;</span>
-    <span class="kn">server_name</span>         <span class="s">urzz.me</span><span class="p">;</span>
-
-    <span class="kn">keepalive_timeout</span>   <span class="mi">70</span><span class="p">;</span>
-
-    <span class="kn">ssl_certificate</span>     <span class="s">/etc/nginx/ssl/urzz.me.cer</span><span class="p">;</span>
-    <span class="kn">ssl_certificate_key</span> <span class="s">/etc/nginx/ssl/urzz.me.key</span><span class="p">;</span>
-
-    <span class="kn">add_header</span> <span class="s">Strict-Transport-Security</span> <span class="s">&#34;max-age=31536000</span><span class="p">;</span><span class="kn">&#34;</span> <span class="s">always</span><span class="p">;</span>
-    
-    <span class="c1"># 使用DH文件, 在目录 /etc/ssl/certs 运行以下代码生成 dhparam.pem 文件
-</span><span class="c1"></span>    <span class="kn">ssl_prefer_server_ciphers</span> <span class="no">on</span><span class="p">;</span>
-    <span class="kn">ssl_dhparam</span> <span class="s">/etc/ssl/certs/dhparam.pem</span><span class="p">;</span>
-    <span class="kn">ssl_protocols</span> <span class="s">TLSv1</span> <span class="s">TLSv1.1</span> <span class="s">TLSv1.2</span><span class="p">;</span>
-    <span class="kn">ssl_ciphers</span> <span class="s">&#34;EECDH+ECDSA+AESGCM</span> <span class="s">EECDH+aRSA+AESGCM</span> <span class="s">EECDH+ECDSA+SHA384</span> <span class="s">EECDH+ECDSA+SHA256</span> <span class="s">EECDH+aRSA+SHA384</span> <span class="s">EECDH+aRSA+SHA256</span> <span class="s">EECDH+aRSA+RC4</span> <span class="s">EECDH</span> <span class="s">EDH+aRSA</span> <span class="s">!aNULL</span> <span class="s">!eNULL</span> <span class="s">!LOW</span> <span class="s">!3DES</span> <span class="s">!MD5</span> <span class="s">!EXP</span> <span class="s">!PSK</span> <span class="s">!SRP</span> <span class="s">!DSS</span> <span class="s">!RC4&#34;</span><span class="p">;</span>
-
-    <span class="kn">add_header</span> <span class="s">X-Frame-Options</span> <span class="s">DENY</span><span class="p">;</span>
-    <span class="kn">add_header</span> <span class="s">X-Content-Type-Options</span> <span class="s">nosniff</span><span class="p">;</span>
-    <span class="kn">add_header</span> <span class="s">X-Xss-Protection</span> <span class="mi">1</span><span class="p">;</span>
-
-    <span class="kn">root</span>              <span class="s">/data/blog</span><span class="p">;</span>
-
-    <span class="kn">index</span>             <span class="s">index.html</span><span class="p">;</span>
-
-    <span class="kn">access_log</span>        <span class="s">/data/log/access_blog.log</span><span class="p">;</span>
-    <span class="kn">error_log</span>         <span class="s">/data/log/error_blog.log</span><span class="p">;</span>
-    
-    <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
-        
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="k">server</span> <span class="p">{</span>
-    <span class="kn">listen</span> <span class="mi">80</span><span class="p">;</span>
-    <span class="kn">server_name</span> <span class="s">urzz.me</span><span class="p">;</span>
-    <span class="kn">rewrite</span> <span class="s">^(.*)</span>$ <span class="s">https://urzz.me</span><span class="nv">$1</span> <span class="s">permanent</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="line"><span class="cl"><span class="k">server</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">listen</span>              <span class="mi">443</span> <span class="s">ssl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">server_name</span>         <span class="s">urzz.me</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kn">keepalive_timeout</span>   <span class="mi">70</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kn">ssl_certificate</span>     <span class="s">/etc/nginx/ssl/urzz.me.cer</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">ssl_certificate_key</span> <span class="s">/etc/nginx/ssl/urzz.me.key</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kn">add_header</span> <span class="s">Strict-Transport-Security</span> <span class="s">&#34;max-age=31536000</span><span class="p">;</span><span class="kn">&#34;</span> <span class="s">always</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># 使用DH文件, 在目录 /etc/ssl/certs 运行以下代码生成 dhparam.pem 文件
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kn">ssl_prefer_server_ciphers</span> <span class="no">on</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">ssl_dhparam</span> <span class="s">/etc/ssl/certs/dhparam.pem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">ssl_protocols</span> <span class="s">TLSv1</span> <span class="s">TLSv1.1</span> <span class="s">TLSv1.2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">ssl_ciphers</span> <span class="s">&#34;EECDH+ECDSA+AESGCM</span> <span class="s">EECDH+aRSA+AESGCM</span> <span class="s">EECDH+ECDSA+SHA384</span> <span class="s">EECDH+ECDSA+SHA256</span> <span class="s">EECDH+aRSA+SHA384</span> <span class="s">EECDH+aRSA+SHA256</span> <span class="s">EECDH+aRSA+RC4</span> <span class="s">EECDH</span> <span class="s">EDH+aRSA</span> <span class="s">!aNULL</span> <span class="s">!eNULL</span> <span class="s">!LOW</span> <span class="s">!3DES</span> <span class="s">!MD5</span> <span class="s">!EXP</span> <span class="s">!PSK</span> <span class="s">!SRP</span> <span class="s">!DSS</span> <span class="s">!RC4&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kn">add_header</span> <span class="s">X-Frame-Options</span> <span class="s">DENY</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">add_header</span> <span class="s">X-Content-Type-Options</span> <span class="s">nosniff</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">add_header</span> <span class="s">X-Xss-Protection</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kn">root</span>              <span class="s">/data/blog</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kn">index</span>             <span class="s">index.html</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kn">access_log</span>        <span class="s">/data/log/access_blog.log</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">error_log</span>         <span class="s">/data/log/error_blog.log</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">server</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">listen</span> <span class="mi">80</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">server_name</span> <span class="s">urzz.me</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">rewrite</span> <span class="s">^(.*)</span>$ <span class="s">https://urzz.me</span><span class="nv">$1</span> <span class="s">permanent</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="小结">小结</h3>
 <p>现在再访问就可以看到强制使用https了哦也。</p>
@@ -435,7 +435,7 @@ acme.sh  --upgrade  --auto-upgrade
 
 
 
-<script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 <script type="application/javascript">

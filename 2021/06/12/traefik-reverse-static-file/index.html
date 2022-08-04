@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.92.0 with theme even" />
+<meta name="generator" content="Hugo 0.101.0 with theme even" />
 
 
 <link rel="canonical" href="https://urzz.xyz/2021/06/12/traefik-reverse-static-file/" />
@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Traefik 静态文件代理">
 <meta itemprop="description" content="先说问题：Traefik 本身是不支持代理静态文件的。原因参考: issue 4240 为什么 这里简单说一下为什么吧，因为它的设计原则是：Separation of C"><meta itemprop="datePublished" content="2021-06-12T02:55:46+08:00" />
 <meta itemprop="dateModified" content="2021-06-12T02:55:46+08:00" />
-<meta itemprop="wordCount" content="559">
+<meta itemprop="wordCount" content="599">
 <meta itemprop="keywords" content="Traefik," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Traefik 静态文件代理"/>
 <meta name="twitter:description" content="先说问题：Traefik 本身是不支持代理静态文件的。原因参考: issue 4240 为什么 这里简单说一下为什么吧，因为它的设计原则是：Separation of C"/>
@@ -125,7 +125,7 @@
             <a href="/categories/linux/"> Linux </a>
             <a href="/categories/docker/"> Docker </a>
             </div>
-          <span class="more-meta"> 约 559 字 </span>
+          <span class="more-meta"> 约 599 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -169,11 +169,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"># 应用名称
-SERVICE_NAME=nginx_server
-# 使用的应用镜像
-DOCKER_IMAGE=nginx:1.21.0-alpine
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 应用名称
+</span></span><span class="line"><span class="cl">SERVICE_NAME=nginx_server
+</span></span><span class="line"><span class="cl"># 使用的应用镜像
+</span></span><span class="line"><span class="cl">DOCKER_IMAGE=nginx:1.21.0-alpine
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="nginx---docker-composeyml">Nginx - docker-compose.yml</h4>
 <div class="highlight"><div class="chroma">
@@ -213,40 +213,40 @@ DOCKER_IMAGE=nginx:1.21.0-alpine
 </span><span class="lnt">33
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;3.6&#39;</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">nginx-server</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">${DOCKER_IMAGE}</span><span class="w">
-</span><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l">${SERVICE_NAME}</span><span class="w">
-</span><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span>- <span class="l">USER_UID=1000</span><span class="w">
-</span><span class="w">      </span>- <span class="l">USER_GID=1000</span><span class="w">
-</span><span class="w">    </span><span class="nt">networks</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span>- <span class="l">traefik</span><span class="w">
-</span><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l">unless-stopped</span><span class="w">
-</span><span class="w">    </span><span class="nt">labels</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span>- <span class="s2">&#34;traefik.enable=true&#34;</span><span class="w">
-</span><span class="w">      </span>- <span class="s2">&#34;traefik.docker.network=traefik&#34;</span><span class="w">
-</span><span class="w">      </span>- <span class="s2">&#34;traefik.http.services.nginxserverhttp.loadbalancer.server.scheme=http&#34;</span><span class="w">
-</span><span class="w">      </span>- <span class="s2">&#34;traefik.http.services.nginxserverhttp.loadbalancer.server.port=80&#34;</span><span class="w">
-</span><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span>- <span class="l">/etc/localtime:/etc/localtime:ro</span><span class="w">
-</span><span class="w">      </span>- <span class="l">/etc/timezone:/etc/timezone:ro</span><span class="w">
-</span><span class="w">      </span>- <span class="l">./conf:/etc/nginx/conf.d</span><span class="w">
-</span><span class="w">      </span>- <span class="l">./data:/data</span><span class="w">
-</span><span class="w">    </span><span class="nt">logging</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;json-file&#34;</span><span class="w">
-</span><span class="w">      </span><span class="nt">options</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="nt">max-size</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;10m&#34;</span><span class="w">
-</span><span class="w">    </span><span class="nt">healthcheck</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="nt">test</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;CMD-SHELL&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;curl --fail http://127.0.0.1 || exit 1&#34;</span><span class="p">]</span><span class="w">
-</span><span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l">5s</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="nt">networks</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">traefik</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="nt">external</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;3.6&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">nginx-server</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">${DOCKER_IMAGE}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l">${SERVICE_NAME}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">USER_UID=1000</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">USER_GID=1000</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">networks</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">traefik</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l">unless-stopped</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">labels</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;traefik.enable=true&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;traefik.docker.network=traefik&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;traefik.http.services.nginxserverhttp.loadbalancer.server.scheme=http&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;traefik.http.services.nginxserverhttp.loadbalancer.server.port=80&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">/etc/localtime:/etc/localtime:ro</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">/etc/timezone:/etc/timezone:ro</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">./conf:/etc/nginx/conf.d</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">./data:/data</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">logging</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;json-file&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">options</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">max-size</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;10m&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">healthcheck</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">test</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;CMD-SHELL&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;curl --fail http://127.0.0.1 || exit 1&#34;</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l">5s</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">networks</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">traefik</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">external</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>将静态文件放入 <code>data</code> 目录，对应的nginx配置文件放入 <code>conf</code> 目录。</p>
 <p>这样可以创建Nginx的container，同时labels中定义了nginx的service。</p>
@@ -269,20 +269,20 @@ DOCKER_IMAGE=nginx:1.21.0-alpine
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="p">[</span><span class="nx">http</span><span class="p">.</span><span class="nx">routers</span><span class="p">]</span>
-  <span class="p">[</span><span class="nx">http</span><span class="p">.</span><span class="nx">routers</span><span class="p">.</span><span class="nx">testroute</span><span class="p">]</span>
-    <span class="nx">entryPoints</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;http&#34;</span><span class="p">]</span>
-    <span class="nx">middlewares</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;https-redirect@file&#34;</span><span class="p">]</span>
-    <span class="nx">rule</span> <span class="p">=</span> <span class="s2">&#34;Host(`domain`)&#34;</span>
-    <span class="nx">service</span> <span class="p">=</span> <span class="s2">&#34;nginxserverhttp&#34;</span>
-  <span class="p">[</span><span class="nx">http</span><span class="p">.</span><span class="nx">routers</span><span class="p">.</span><span class="nx">testroutessl</span><span class="p">]</span>
-    <span class="nx">entryPoints</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;https&#34;</span><span class="p">]</span>
-    <span class="nx">middlewares</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;gzip@file&#34;</span><span class="p">]</span>
-    <span class="nx">rule</span> <span class="p">=</span> <span class="s2">&#34;Host(`domain`)&#34;</span>
-    <span class="nx">service</span> <span class="p">=</span> <span class="s2">&#34;nginxserverhttp&#34;</span>
-  <span class="p">[</span><span class="nx">http</span><span class="p">.</span><span class="nx">routers</span><span class="p">.</span><span class="nx">testroutessl</span><span class="p">.</span><span class="nx">tls</span><span class="p">]</span>
-    <span class="nx">certresolver</span> <span class="p">=</span> <span class="s2">&#34;le&#34;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="p">[</span><span class="nx">http</span><span class="p">.</span><span class="nx">routers</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">[</span><span class="nx">http</span><span class="p">.</span><span class="nx">routers</span><span class="p">.</span><span class="nx">testroute</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">entryPoints</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;http&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">middlewares</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;https-redirect@file&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">rule</span> <span class="p">=</span> <span class="s2">&#34;Host(`domain`)&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">service</span> <span class="p">=</span> <span class="s2">&#34;nginxserverhttp&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">[</span><span class="nx">http</span><span class="p">.</span><span class="nx">routers</span><span class="p">.</span><span class="nx">testroutessl</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">entryPoints</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;https&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">middlewares</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;gzip@file&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">rule</span> <span class="p">=</span> <span class="s2">&#34;Host(`domain`)&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">service</span> <span class="p">=</span> <span class="s2">&#34;nginxserverhttp&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">[</span><span class="nx">http</span><span class="p">.</span><span class="nx">routers</span><span class="p">.</span><span class="nx">testroutessl</span><span class="p">.</span><span class="nx">tls</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">certresolver</span> <span class="p">=</span> <span class="s2">&#34;le&#34;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="结论">结论</h3>
 <p>Traefik 实现静态文件代理的方式，就是创建静态代理服务器的container，然后配置service和rule，实现静态文件的访问。</p>
@@ -391,7 +391,7 @@ DOCKER_IMAGE=nginx:1.21.0-alpine
 
 
 
-<script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 <script type="application/javascript">

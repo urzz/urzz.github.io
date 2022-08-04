@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.92.0 with theme even" />
+<meta name="generator" content="Hugo 0.101.0 with theme even" />
 
 
 <link rel="canonical" href="https://urzz.xyz/2021/02/16/pve-install-synology/" />
@@ -155,37 +155,37 @@
 </blockquote>
 <p>PVE的安装这里就不说了，可以参考这个教程：<a href="https://www.10bests.com/install-proxmox-ve/">Proxmox VE（PVE）6.1安装保姆级图文教程</a></p>
 <h3 id="虚拟机配置">虚拟机配置</h3>
-<p><img src="https://upyun.urzz.xyz/blog-img/20210216231654.png" alt=""></p>
+<p><img src="https://attachment.urzz.xyz/blog-img/20210216231654.png" alt=""></p>
 <blockquote>
 <p>VM ID：虚拟机的唯一ID，只要保证跟其他虚拟机的ID不一致即可</p>
 </blockquote>
-<p><img src="https://upyun.urzz.xyz/blog-img/20210216231915.png" alt=""></p>
+<p><img src="https://attachment.urzz.xyz/blog-img/20210216231915.png" alt=""></p>
 <blockquote>
 <p>选择不使用任何介质</p>
 </blockquote>
-<p><img src="https://upyun.urzz.xyz/blog-img/20210216232034.png" alt=""></p>
-<p><img src="https://upyun.urzz.xyz/blog-img/20210216232145.png" alt=""></p>
-<p><img src="https://upyun.urzz.xyz/blog-img/20210216232209.png" alt=""></p>
+<p><img src="https://attachment.urzz.xyz/blog-img/20210216232034.png" alt=""></p>
+<p><img src="https://attachment.urzz.xyz/blog-img/20210216232145.png" alt=""></p>
+<p><img src="https://attachment.urzz.xyz/blog-img/20210216232209.png" alt=""></p>
 <blockquote>
 <p>如果不需要在DSM中跑Docker，cpu和内存不需要配置太高
 这里有一个点需要特别注意，cpu的类别，默认是kvm64。因为host类型才能更好的发挥cpu的性能，所以一开始我改为使用host类型。但是改为host之后，会无法获取DHCP的IP，因此无法配置群晖。所以，PVE安装DSM，CPU类型必须是kvm64。</p>
 </blockquote>
-<p><img src="https://upyun.urzz.xyz/blog-img/20210216232246.png" alt=""></p>
-<p><img src="https://upyun.urzz.xyz/blog-img/20210216235108.png" alt=""></p>
+<p><img src="https://attachment.urzz.xyz/blog-img/20210216232246.png" alt=""></p>
+<p><img src="https://attachment.urzz.xyz/blog-img/20210216235108.png" alt=""></p>
 <blockquote>
 <p>网卡类型可以选E1000，虽然性能差点，但是群晖可以直接识别。或者也可以选vmxnet3，但是mac地址需要与群晖引导文件中的mac地址保持一致。</p>
 </blockquote>
-<p><img src="https://upyun.urzz.xyz/blog-img/20210216235139.png" alt=""></p>
+<p><img src="https://attachment.urzz.xyz/blog-img/20210216235139.png" alt=""></p>
 <blockquote>
 <p>虚拟机配置列表</p>
 </blockquote>
-<p><img src="https://upyun.urzz.xyz/blog-img/20210216235357.png" alt=""></p>
+<p><img src="https://attachment.urzz.xyz/blog-img/20210216235357.png" alt=""></p>
 <p>删除默认的scsi0的硬盘以及CD/DVD驱动器</p>
-<p><img src="https://upyun.urzz.xyz/blog-img/20210217000458.png" alt=""></p>
+<p><img src="https://attachment.urzz.xyz/blog-img/20210217000458.png" alt=""></p>
 <h3 id="黑群引导文件配置">黑群引导文件配置</h3>
 <p>黑群晖系统的型号我选择的是3617xs，对应引导文件：<a href="https://pan.baidu.com/s/1083MRH7sTGfeTX5-9IdYlw">地址</a> 提取码: me7h</p>
 <p>将下载的引导文件 synoboot.img 上传到Local存储中
-<img src="https://upyun.urzz.xyz/blog-img/20210217005320.png" alt=""></p>
+<img src="https://attachment.urzz.xyz/blog-img/20210217005320.png" alt=""></p>
 <p>将引导文件作为启动硬盘导入到虚拟机中</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -193,18 +193,18 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 1000: vmid，ssd-c2000pro: 虚拟机存储位置</span>
-qm importdisk <span class="m">1000</span> /var/lib/vz/template/iso/synoboot.img ssd-c2000pro
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 1000: vmid，ssd-c2000pro: 虚拟机存储位置</span>
+</span></span><span class="line"><span class="cl">qm importdisk <span class="m">1000</span> /var/lib/vz/template/iso/synoboot.img ssd-c2000pro
+</span></span></code></pre></td></tr></table>
 </div>
-</div><p><img src="https://upyun.urzz.xyz/blog-img/20210217005730.png" alt=""></p>
+</div><p><img src="https://attachment.urzz.xyz/blog-img/20210217005730.png" alt=""></p>
 <p>双击未使用磁盘，设备设置为SATA:0
-<img src="https://upyun.urzz.xyz/blog-img/20210217005800.png" alt=""></p>
+<img src="https://attachment.urzz.xyz/blog-img/20210217005800.png" alt=""></p>
 <p>另加一块硬盘用于安装系统，不用很大，16G或者32G都行。</p>
-<p><img src="https://upyun.urzz.xyz/blog-img/20210217010443.png" alt=""></p>
+<p><img src="https://attachment.urzz.xyz/blog-img/20210217010443.png" alt=""></p>
 <p>修改选项中的引导顺序，选择SATA0为第一个
-<img src="https://upyun.urzz.xyz/blog-img/20210217010536.png" alt="">
-<img src="https://upyun.urzz.xyz/blog-img/20210217010559.png" alt=""></p>
+<img src="https://attachment.urzz.xyz/blog-img/20210217010536.png" alt="">
+<img src="https://attachment.urzz.xyz/blog-img/20210217010559.png" alt=""></p>
 <p>接下来启动虚拟机，然后访问：http://find.synology.com/
 即可找到黑群的地址，然后在黑群官方地址: <a href="https://archive.synology.com/download/Os/DSM">https://archive.synology.com/download/Os/DSM</a> 下载系统pat文件，然后在上面的搜索地址中找到的群晖配置中正常安装系统即可。</p>
 
@@ -312,7 +312,7 @@ qm importdisk <span class="m">1000</span> /var/lib/vz/template/iso/synoboot.img 
 
 
 
-<script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 <script type="application/javascript">

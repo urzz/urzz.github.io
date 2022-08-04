@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.92.0 with theme even" />
+<meta name="generator" content="Hugo 0.101.0 with theme even" />
 
 
 <link rel="canonical" href="https://urzz.xyz/2019/12/15/win10-migration-fix-uefi-boot/" />
@@ -203,29 +203,29 @@
 </span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"># 首先进入diskpart工具查询硬盘和分区信息。
-&gt; diskpart
-&gt; list vol
-# 确定了ESP分区和系统所在分区后，首先给ESP分区分配一个驱动器符，比如G盘
-# 如果系统所在分区的驱动器符不是C盘(和以前不一致),也可以在这里修改对应的盘符
-# 在确定分区的驱动器符都正确后，首先扫描有哪些系统:
-&gt; bootrec /scanos
-# 选择esp分区
-&gt; sel vol 1
-# 分配盘符
-&gt; assign letter=G
-# 修复引导
-&gt; cd /d G:\EFI\Microsoft\Boot\
-# /s S: 指定esp分区所在磁盘
-# /f uefi 指定启动方式为uefi，注意之间的空格一定要输入。
-# /l zh-cn 指定uefi启动界面语言为简体中文
-&gt; bcdboot C:\windows /s G: /f UEFI&gt;
-&gt; bcdboot C:\Windows /l zh-cn /s G: /f ALL
-# 重建引导的最后一步
-&gt; bootrec /rebuildbcd
-# 退出重启电脑
-&gt; exit
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 首先进入diskpart工具查询硬盘和分区信息。
+</span></span><span class="line"><span class="cl">&gt; diskpart
+</span></span><span class="line"><span class="cl">&gt; list vol
+</span></span><span class="line"><span class="cl"># 确定了ESP分区和系统所在分区后，首先给ESP分区分配一个驱动器符，比如G盘
+</span></span><span class="line"><span class="cl"># 如果系统所在分区的驱动器符不是C盘(和以前不一致),也可以在这里修改对应的盘符
+</span></span><span class="line"><span class="cl"># 在确定分区的驱动器符都正确后，首先扫描有哪些系统:
+</span></span><span class="line"><span class="cl">&gt; bootrec /scanos
+</span></span><span class="line"><span class="cl"># 选择esp分区
+</span></span><span class="line"><span class="cl">&gt; sel vol 1
+</span></span><span class="line"><span class="cl"># 分配盘符
+</span></span><span class="line"><span class="cl">&gt; assign letter=G
+</span></span><span class="line"><span class="cl"># 修复引导
+</span></span><span class="line"><span class="cl">&gt; cd /d G:\EFI\Microsoft\Boot\
+</span></span><span class="line"><span class="cl"># /s S: 指定esp分区所在磁盘
+</span></span><span class="line"><span class="cl"># /f uefi 指定启动方式为uefi，注意之间的空格一定要输入。
+</span></span><span class="line"><span class="cl"># /l zh-cn 指定uefi启动界面语言为简体中文
+</span></span><span class="line"><span class="cl">&gt; bcdboot C:\windows /s G: /f UEFI&gt;
+</span></span><span class="line"><span class="cl">&gt; bcdboot C:\Windows /l zh-cn /s G: /f ALL
+</span></span><span class="line"><span class="cl"># 重建引导的最后一步
+</span></span><span class="line"><span class="cl">&gt; bootrec /rebuildbcd
+</span></span><span class="line"><span class="cl"># 退出重启电脑
+</span></span><span class="line"><span class="cl">&gt; exit
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>退出命令行后，重启电脑，选择硬盘启动就好了。到此uefi的引导修复算是完成了。</p>
 <h3 id="参考">参考</h3>
@@ -336,7 +336,7 @@
 
 
 
-<script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 <script type="application/javascript">

@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.92.0 with theme even" />
+<meta name="generator" content="Hugo 0.101.0 with theme even" />
 
 
 <link rel="canonical" href="https://urzz.xyz/2019/06/05/spring-shiro-cors-config/" />
@@ -169,15 +169,15 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="nd">@Override</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">addCorsMappings</span><span class="o">(</span><span class="n">CorsRegistry</span> <span class="n">registry</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">registry</span><span class="o">.</span><span class="na">addMapping</span><span class="o">(</span><span class="s">&#34;/**&#34;</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">allowCredentials</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">allowedHeaders</span><span class="o">(</span><span class="s">&#34;*&#34;</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">allowedOrigins</span><span class="o">(</span><span class="s">&#34;*&#34;</span><span class="o">)</span>
-            <span class="o">.</span><span class="na">allowedMethods</span><span class="o">(</span><span class="s">&#34;*&#34;</span><span class="o">);</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">addCorsMappings</span><span class="o">(</span><span class="n">CorsRegistry</span> <span class="n">registry</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">registry</span><span class="o">.</span><span class="na">addMapping</span><span class="o">(</span><span class="s">&#34;/**&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">            <span class="o">.</span><span class="na">allowCredentials</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">            <span class="o">.</span><span class="na">allowedHeaders</span><span class="o">(</span><span class="s">&#34;*&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">            <span class="o">.</span><span class="na">allowedOrigins</span><span class="o">(</span><span class="s">&#34;*&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">            <span class="o">.</span><span class="na">allowedMethods</span><span class="o">(</span><span class="s">&#34;*&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>这样就会给所有路由的请求加上跨域所需的headers</p>
 <h3 id="2-spring-boot--shiro">2. Spring Boot + Shiro</h3>
@@ -215,35 +215,35 @@
 </span><span class="lnt">28
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="nd">@Bean</span>
-<span class="kd">public</span> <span class="n">FilterRegistrationBean</span> <span class="nf">corsFilter</span><span class="o">()</span> <span class="o">{</span>
-    <span class="kd">final</span> <span class="n">UrlBasedCorsConfigurationSource</span> <span class="n">source</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UrlBasedCorsConfigurationSource</span><span class="o">();</span>
-    <span class="kd">final</span> <span class="n">CorsConfiguration</span> <span class="n">config</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CorsConfiguration</span><span class="o">();</span>
-    <span class="c1">// 允许cookies跨域
-</span><span class="c1"></span>    <span class="n">config</span><span class="o">.</span><span class="na">setAllowCredentials</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
-    <span class="c1">// #允许向该服务器提交请求的URI，*表示全部允许，在SpringMVC中，如果设成*，会自动转成当前请求头中的Origin
-</span><span class="c1"></span>    <span class="n">config</span><span class="o">.</span><span class="na">addAllowedOrigin</span><span class="o">(</span><span class="s">&#34;*&#34;</span><span class="o">);</span>
-    <span class="c1">// #允许访问的头信息,*表示全部
-</span><span class="c1"></span>    <span class="n">config</span><span class="o">.</span><span class="na">addAllowedHeader</span><span class="o">(</span><span class="s">&#34;*&#34;</span><span class="o">);</span>
-    <span class="c1">// 预检请求的缓存时间（秒），即在这个时间段里，对于相同的跨域请求不会再预检了
-</span><span class="c1"></span>    <span class="n">config</span><span class="o">.</span><span class="na">setMaxAge</span><span class="o">(</span><span class="n">18000L</span><span class="o">);</span>
-    <span class="c1">// 允许提交请求的方法，*表示全部允许
-</span><span class="c1"></span>    <span class="n">config</span><span class="o">.</span><span class="na">addAllowedMethod</span><span class="o">(</span><span class="s">&#34;OPTIONS&#34;</span><span class="o">);</span>
-    <span class="n">config</span><span class="o">.</span><span class="na">addAllowedMethod</span><span class="o">(</span><span class="s">&#34;HEAD&#34;</span><span class="o">);</span>
-    <span class="n">config</span><span class="o">.</span><span class="na">addAllowedMethod</span><span class="o">(</span><span class="s">&#34;GET&#34;</span><span class="o">);</span>
-    <span class="n">config</span><span class="o">.</span><span class="na">addAllowedMethod</span><span class="o">(</span><span class="s">&#34;PUT&#34;</span><span class="o">);</span>
-    <span class="n">config</span><span class="o">.</span><span class="na">addAllowedMethod</span><span class="o">(</span><span class="s">&#34;POST&#34;</span><span class="o">);</span>
-    <span class="n">config</span><span class="o">.</span><span class="na">addAllowedMethod</span><span class="o">(</span><span class="s">&#34;DELETE&#34;</span><span class="o">);</span>
-    <span class="n">config</span><span class="o">.</span><span class="na">addAllowedMethod</span><span class="o">(</span><span class="s">&#34;PATCH&#34;</span><span class="o">);</span>
-    <span class="n">source</span><span class="o">.</span><span class="na">registerCorsConfiguration</span><span class="o">(</span><span class="s">&#34;/**&#34;</span><span class="o">,</span> <span class="n">config</span><span class="o">);</span>
-
-    <span class="n">FilterRegistrationBean</span> <span class="n">bean</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FilterRegistrationBean</span><span class="o">(</span><span class="k">new</span> <span class="n">CorsFilter</span><span class="o">(</span><span class="n">source</span><span class="o">));</span>
-    <span class="c1">// 设置监听器的优先级
-</span><span class="c1"></span>    <span class="n">bean</span><span class="o">.</span><span class="na">setOrder</span><span class="o">(</span><span class="n">0</span><span class="o">);</span>
-
-    <span class="k">return</span> <span class="n">bean</span><span class="o">;</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="nd">@Bean</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="n">FilterRegistrationBean</span> <span class="nf">corsFilter</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">final</span> <span class="n">UrlBasedCorsConfigurationSource</span> <span class="n">source</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UrlBasedCorsConfigurationSource</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">final</span> <span class="n">CorsConfiguration</span> <span class="n">config</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CorsConfiguration</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 允许cookies跨域
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">config</span><span class="o">.</span><span class="na">setAllowCredentials</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// #允许向该服务器提交请求的URI，*表示全部允许，在SpringMVC中，如果设成*，会自动转成当前请求头中的Origin
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">config</span><span class="o">.</span><span class="na">addAllowedOrigin</span><span class="o">(</span><span class="s">&#34;*&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// #允许访问的头信息,*表示全部
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">config</span><span class="o">.</span><span class="na">addAllowedHeader</span><span class="o">(</span><span class="s">&#34;*&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 预检请求的缓存时间（秒），即在这个时间段里，对于相同的跨域请求不会再预检了
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">config</span><span class="o">.</span><span class="na">setMaxAge</span><span class="o">(</span><span class="n">18000L</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 允许提交请求的方法，*表示全部允许
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">config</span><span class="o">.</span><span class="na">addAllowedMethod</span><span class="o">(</span><span class="s">&#34;OPTIONS&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">config</span><span class="o">.</span><span class="na">addAllowedMethod</span><span class="o">(</span><span class="s">&#34;HEAD&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">config</span><span class="o">.</span><span class="na">addAllowedMethod</span><span class="o">(</span><span class="s">&#34;GET&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">config</span><span class="o">.</span><span class="na">addAllowedMethod</span><span class="o">(</span><span class="s">&#34;PUT&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">config</span><span class="o">.</span><span class="na">addAllowedMethod</span><span class="o">(</span><span class="s">&#34;POST&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">config</span><span class="o">.</span><span class="na">addAllowedMethod</span><span class="o">(</span><span class="s">&#34;DELETE&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">config</span><span class="o">.</span><span class="na">addAllowedMethod</span><span class="o">(</span><span class="s">&#34;PATCH&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">source</span><span class="o">.</span><span class="na">registerCorsConfiguration</span><span class="o">(</span><span class="s">&#34;/**&#34;</span><span class="o">,</span> <span class="n">config</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">FilterRegistrationBean</span> <span class="n">bean</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FilterRegistrationBean</span><span class="o">(</span><span class="k">new</span> <span class="n">CorsFilter</span><span class="o">(</span><span class="n">source</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 设置监听器的优先级
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">bean</span><span class="o">.</span><span class="na">setOrder</span><span class="o">(</span><span class="n">0</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">bean</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="3-小结">3. 小结</h3>
 <p>跨域的设置其实很简单，原理就是给response加上跨域的header就完事了</p>
@@ -354,7 +354,7 @@
 
 
 
-<script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 <script type="application/javascript">
