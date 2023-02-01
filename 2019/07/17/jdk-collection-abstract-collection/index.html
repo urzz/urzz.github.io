@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.102.3 with theme even" />
+<meta name="generator" content="Hugo 0.110.0 with theme even" />
 
 
 <link rel="canonical" href="https://urzz.xyz/2019/07/17/jdk-collection-abstract-collection/" />
@@ -45,7 +45,6 @@
 <meta property="og:url" content="https://urzz.xyz/2019/07/17/jdk-collection-abstract-collection/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2019-07-17T16:50:58+00:00" />
 <meta property="article:modified_time" content="2019-07-17T16:50:58+00:00" />
-
 <meta itemprop="name" content="Java 集合源码 - AbstractCollection">
 <meta itemprop="description" content="介绍 AbstractCollection是Java集合实现类的根抽象实现类，它实现了Collection接口，而集合的三个分支(List,S"><meta itemprop="datePublished" content="2019-07-17T16:50:58+00:00" />
 <meta itemprop="dateModified" content="2019-07-17T16:50:58+00:00" />
@@ -427,7 +426,7 @@
 </span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">abstract</span> <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="nf">iterator</span><span class="o">();</span>
 </span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">int</span> <span class="nf">size</span><span class="o">();</span>
 </span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isEmpty</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">size</span><span class="o">()</span> <span class="o">==</span> <span class="n">0</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">size</span><span class="o">()</span> <span class="o">==</span> <span class="mi">0</span><span class="o">;</span>
 </span></span><span class="line"><span class="cl">    <span class="o">}</span>
 </span></span><span class="line"><span class="cl">    <span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 判断对象是否在集合中，主要依据对象是否为null来做判断
@@ -455,7 +454,7 @@
 </span></span><span class="line"><span class="cl">        <span class="c1">// 这里的数组长度只是调用size()做一个预估，并不代表最终数组长度一定是当前的长度
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Object</span><span class="o">[]</span> <span class="n">r</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span><span class="o">[</span><span class="n">size</span><span class="o">()];</span>
 </span></span><span class="line"><span class="cl">        <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">it</span> <span class="o">=</span> <span class="n">iterator</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">r</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">r</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
 </span></span><span class="line"><span class="cl">            <span class="c1">// 集合长度少于预期(size())，调用Arrays.copyOf复制数组并返回
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="k">if</span> <span class="o">(!</span> <span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span>
 </span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">copyOf</span><span class="o">(</span><span class="n">r</span><span class="o">,</span> <span class="n">i</span><span class="o">);</span>
@@ -481,7 +480,7 @@
 </span></span><span class="line"><span class="cl">                  <span class="o">.</span><span class="na">newInstance</span><span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">getClass</span><span class="o">().</span><span class="na">getComponentType</span><span class="o">(),</span> <span class="n">size</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="n">it</span> <span class="o">=</span> <span class="n">iterator</span><span class="o">();</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">r</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">r</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
 </span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="o">(!</span> <span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span> <span class="c1">// fewer elements than expected
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="c1">// 集合中的元素个数比预期的要少(被其他线程并发删除元素)
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="k">if</span> <span class="o">(</span><span class="n">a</span> <span class="o">==</span> <span class="n">r</span><span class="o">)</span> <span class="o">{</span>
@@ -494,7 +493,7 @@
 </span></span><span class="line"><span class="cl">                <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
 </span></span><span class="line"><span class="cl">                <span class="c1">// 数组是新创建的数组，且当前遍历的i小于等于传入数组的长度。
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="c1">// 则将新创建数组中的元素复制到传入数组中，若遍历的i小于传入数组长度，将传入数组下标为i的值置为null，返回传入的数组
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="n">System</span><span class="o">.</span><span class="na">arraycopy</span><span class="o">(</span><span class="n">r</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">a</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">i</span><span class="o">);</span>
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="n">System</span><span class="o">.</span><span class="na">arraycopy</span><span class="o">(</span><span class="n">r</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">a</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">i</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">                    <span class="k">if</span> <span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">length</span> <span class="o">&gt;</span> <span class="n">i</span><span class="o">)</span> <span class="o">{</span>
 </span></span><span class="line"><span class="cl">                        <span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
 </span></span><span class="line"><span class="cl">                    <span class="o">}</span>
@@ -512,7 +511,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 为了防止内存溢出，这里做了限制为 Integer.MAX_VALUE - 8
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 关于为什么最大长度要减去 8: 对于有些虚拟机实现来说，数组对象的头部会占用这 8 个字节，具体细节可参考最后的资料
 </span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">MAX_ARRAY_SIZE</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span> <span class="o">-</span> <span class="n">8</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">MAX_ARRAY_SIZE</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span> <span class="o">-</span> <span class="mi">8</span><span class="o">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 当在toArray方法中，迭代器返回了比预期要多的元素时，重新扩容数组并将多余预期的元素放入扩容后的数组中
@@ -525,10 +524,10 @@
 </span></span><span class="line"><span class="cl">            <span class="c1">// 当索引指向最后一个元素，代表数组长度不够了，需要进行扩容
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="c1">// 扩容大小：cap + cap/2 + 1
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="k">if</span> <span class="o">(</span><span class="n">i</span> <span class="o">==</span> <span class="n">cap</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">                <span class="kt">int</span> <span class="n">newCap</span> <span class="o">=</span> <span class="n">cap</span> <span class="o">+</span> <span class="o">(</span><span class="n">cap</span> <span class="o">&gt;&gt;</span> <span class="n">1</span><span class="o">)</span> <span class="o">+</span> <span class="n">1</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">                <span class="kt">int</span> <span class="n">newCap</span> <span class="o">=</span> <span class="n">cap</span> <span class="o">+</span> <span class="o">(</span><span class="n">cap</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="o">)</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
 </span></span><span class="line"><span class="cl">                <span class="c1">// 判断扩容后的数组长度是否溢出
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="k">if</span> <span class="o">(</span><span class="n">newCap</span> <span class="o">-</span> <span class="n">MAX_ARRAY_SIZE</span> <span class="o">&gt;</span> <span class="n">0</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">                    <span class="n">newCap</span> <span class="o">=</span> <span class="n">hugeCapacity</span><span class="o">(</span><span class="n">cap</span> <span class="o">+</span> <span class="n">1</span><span class="o">);</span>
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="k">if</span> <span class="o">(</span><span class="n">newCap</span> <span class="o">-</span> <span class="n">MAX_ARRAY_SIZE</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">newCap</span> <span class="o">=</span> <span class="n">hugeCapacity</span><span class="o">(</span><span class="n">cap</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">                <span class="n">r</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">copyOf</span><span class="o">(</span><span class="n">r</span><span class="o">,</span> <span class="n">newCap</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">            <span class="o">}</span>
 </span></span><span class="line"><span class="cl">            <span class="n">r</span><span class="o">[</span><span class="n">i</span><span class="o">++]</span> <span class="o">=</span> <span class="o">(</span><span class="n">T</span><span class="o">)</span><span class="n">it</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
@@ -541,7 +540,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
 </span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">hugeCapacity</span><span class="o">(</span><span class="kt">int</span> <span class="n">minCapacity</span><span class="o">)</span> <span class="o">{</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">// 数组长度溢出，抛出异常
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">minCapacity</span> <span class="o">&lt;</span> <span class="n">0</span><span class="o">)</span>
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">minCapacity</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="o">)</span>
 </span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">OutOfMemoryError</span>
 </span></span><span class="line"><span class="cl">                <span class="o">(</span><span class="s">&#34;Required array size too large&#34;</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">// 判断是否大于数组扩容允许的最大值，若大于则只允许扩容到最大值
@@ -768,7 +767,7 @@
   <span class="copyright-year">
     &copy; 
     2015 - 
-    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>fooksky</span>
+    2023<span class="heart"><i class="iconfont icon-heart"></i></span><span>fooksky</span>
     <br />
     <a href="https://beian.miit.gov.cn/" target="_blank">苏ICP备18053064号-2</a>
   </span>

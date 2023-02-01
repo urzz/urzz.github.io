@@ -6,7 +6,16 @@
     <description>Recent content in PVE on 破壳 - 虽不能至，心向往之</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 16 Feb 2021 02:35:14 +0800</lastBuildDate><atom:link href="https://urzz.xyz/tags/pve/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 01 Feb 2023 15:49:36 +0800</lastBuildDate><atom:link href="https://urzz.xyz/tags/pve/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Homelab - HPE Gen10 Plus 概述</title>
+      <link>https://urzz.xyz/2023/02/01/homelab-hpe-gen10plus-overview/</link>
+      <pubDate>Wed, 01 Feb 2023 15:49:36 +0800</pubDate>
+      
+      <guid>https://urzz.xyz/2023/02/01/homelab-hpe-gen10plus-overview/</guid>
+      <description>简介 HPE MicroServer 系列是 HPE ProLiant 推出的面向家庭、小型办公室的微型服务器产品，有着体积小、外观漂亮、噪音低等优点。 由于购买较早，开箱图找不到嘞，因此详细的外</description>
+    </item>
+    
     <item>
       <title>PVE 安装黑群晖教程</title>
       <link>https://urzz.xyz/2021/02/16/pve-install-synology/</link>

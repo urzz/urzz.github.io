@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Homelab - HPE Gen10 Plus 概述 - 破壳 - 虽不能至，心向往之</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="fooksky" /><meta name="description" content="简介 HPE MicroServer 系列是 HPE ProLiant 推出的面向家庭、小型办公室的微型服务器产品，有着体积小、外观漂亮、噪音低等优点。 由于购买较早，开箱图找不到嘞，因此详细的外" /><meta name="keywords" content="fooksky, 破壳, Java" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.110.0 with theme even" />
+
+
+<link rel="canonical" href="https://urzz.xyz/2023/02/01/homelab-hpe-gen10plus-overview/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Homelab - HPE Gen10 Plus 概述" />
+<meta property="og:description" content="简介 HPE MicroServer 系列是 HPE ProLiant 推出的面向家庭、小型办公室的微型服务器产品，有着体积小、外观漂亮、噪音低等优点。 由于购买较早，开箱图找不到嘞，因此详细的外" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://urzz.xyz/2023/02/01/homelab-hpe-gen10plus-overview/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2023-02-01T15:49:36+08:00" />
+<meta property="article:modified_time" content="2023-02-01T15:49:36+08:00" />
+<meta itemprop="name" content="Homelab - HPE Gen10 Plus 概述">
+<meta itemprop="description" content="简介 HPE MicroServer 系列是 HPE ProLiant 推出的面向家庭、小型办公室的微型服务器产品，有着体积小、外观漂亮、噪音低等优点。 由于购买较早，开箱图找不到嘞，因此详细的外"><meta itemprop="datePublished" content="2023-02-01T15:49:36+08:00" />
+<meta itemprop="dateModified" content="2023-02-01T15:49:36+08:00" />
+<meta itemprop="wordCount" content="1049">
+<meta itemprop="keywords" content="HPE Gen10 Plus,HomeLab,PVE," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Homelab - HPE Gen10 Plus 概述"/>
+<meta name="twitter:description" content="简介 HPE MicroServer 系列是 HPE ProLiant 推出的面向家庭、小型办公室的微型服务器产品，有着体积小、外观漂亮、噪音低等优点。 由于购买较早，开箱图找不到嘞，因此详细的外"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">FookSky</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">FookSky</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Homelab - HPE Gen10 Plus 概述</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2023-02-01 </span>
+        <div class="post-category">
+            <a href="/categories/%E8%87%AA%E5%A8%B1%E8%87%AA%E4%B9%90/"> 自娱自乐 </a>
+            </div>
+          <span class="more-meta"> 约 1049 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#简介">简介</a></li>
+        <li><a href="#硬件">硬件</a>
+          <ul>
+            <li><a href="#cpu">CPU</a></li>
+            <li><a href="#内存">内存</a></li>
+            <li><a href="#硬盘">硬盘</a></li>
+          </ul>
+        </li>
+        <li><a href="#总结">总结</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="简介">简介</h2>
+<p>HPE MicroServer 系列是 HPE ProLiant 推出的面向家庭、小型办公室的微型服务器产品，有着体积小、外观漂亮、噪音低等优点。</p>
+<p>由于购买较早，开箱图找不到嘞，因此详细的外观、服务器的内部结构等信息，可以参考下面的文章：</p>
+<ul>
+<li><a href="https://wzyboy.im/post/1387.html">HPE MicroServer Gen10 Plus 上手玩</a></li>
+<li><a href="https://chiphell.com/thread-2429660-1-1.html">HPE Gen10 Plus 开箱和使用</a></li>
+</ul>
+<blockquote>
+<p>为了方便描述，后续 HPE Gen10 Plus 简称为 <code>gen10p</code></p>
+</blockquote>
+<h2 id="硬件">硬件</h2>
+<p>官方默认配置有两种，主要是 CPU 和内存的区别，低配是 G5420 + 8G ECC，高配是 E2224 + 16G ECC。</p>
+<p>默认配置对于我而言是不太够用的，因此在服务器到手后，就对它进行了一次升级。升级配置需要注意的是，gen10p 的电源是 180W 的外置电源，同时，因为功耗转换有损失，并不能卡死 180W 的功耗来选配置，所以升级后的功耗需要自行算一下。</p>
+<h3 id="cpu">CPU</h3>
+<p>首先是 CPU，CPU 的更换可以直接参考 <a href="https://zhuanlan.zhihu.com/p/490452003">HPE ProLiant 微服务器 Gen10 Plus 终极定制指南</a> ，主要是要注意功耗。</p>
+<p>不过我更换的 CPU 是 Intel CC150，不在这个列表里，8 核 16 线程，主频锁在 3.5GHz，没有睿频，TDP 95W。因为没有睿频，主频较低导致表现一般，与 i7-8700K 相比，单核性能低 1/4，多核性能超出 10-15%。性能参考：<a href="https://news.mydrivers.com/1/670/670692.htm">Intel CC150 处理器现世：性能比肩 i7、功耗低于 i5</a>。由于没有睿频，功耗表现很好，很适合 HomeLab 使用。</p>
+<p><img src="https://attachment.urzz.xyz/img/2023/02/01/18-44-07-a17c15f9b75bb368cfa27520c2e80d3e-20230201184407-702dd9.png!/format/webp" alt="Intel CC150"></p>
+<h3 id="内存">内存</h3>
+<p>gen10p 的官方产品页表示最大支持内存是 32GB，不过实测下来是可以支持 64GB 的，另外还支持非 ECC 内存，如果不需要 ECC 内存的可以省一笔预算了。</p>
+<p>内存我选择了升到了 64GB，三星 DDR4 32GB ECC x2，iLO 可以看到内存信息，不过也有一些 ECC 内存 iLO 认不出来，影响不大。</p>
+<p><img src="https://attachment.urzz.xyz/img/2023/02/01/18-46-16-a626be2958ed7600e2765fbc497b364d-20230201184616-1f9294.png!/format/webp" alt="内存信息"></p>
+<h3 id="硬盘">硬盘</h3>
+<p>gen10p 有 4 个 SATA3 的 3.5 寸硬盘位，内部只有一个 PCIe 3.0 X16 单槽/半高 的接口。这个接口可以选择以下类型的扩展：</p>
+<ul>
+<li>显卡：只能选半高的显卡，而且功耗需要限制在 70W 内</li>
+<li>网卡：如果有万兆需求，这里可以选择插一张万兆网卡</li>
+<li>NVMe 转接卡：可以扩展 SSD 的存储，同时 gen10p 也支持 PCIe 拆分，但是只支持拆分为两个。如果需要拆分为更多，则需要自带主控芯片的转接卡，比如我选择的自带 ASM2824 主控的转接卡：<a href="https://item.jd.com/39900583730.html">佳翼 NVMe 阵列卡 PCie 转 M.2 转接卡四盘 SSD ASM2824 主控 带涡轮风扇</a>。</li>
+</ul>
+<blockquote>
+<p>需要注意的是，PCIe 插槽的风道基本等于没有，所以散热的压力也比较大，需要注意这里的温度。</p>
+</blockquote>
+<p>内部接口，除了上述的硬盘位和PCIe扩展槽意外，主板内部还有一个 USB2.0 的插槽。</p>
+<p>我的选择是，内部usb接口插u盘做系统盘，PCIe扩展4x4的NVMe的转接卡，插满4根SSD。</p>
+<p>最终的存储为：1T NVMe SSD x4。至于 4 个 SATA 硬盘位，目前暂时先空着了。</p>
+<h2 id="总结">总结</h2>
+<p>gen10p 的硬件升级主要就是上述这些了，升级了 CPU 和内存之后，性能就很可观了，这样也可以省下一部分的 VPS 的支出了。</p>
+<p>不过就我个人而言，选择 gen10p 最大的理由就是体积+静音，支持 iLO，优势太大了。</p>
+<p>其他参考链接：</p>
+<ol>
+<li><a href="https://www.servethehome.com/hpe-proliant-microserver-gen10-plus-ultimate-customization-guide/">HPE ProLiant MicroServer Gen10 Plus Ultimate Customization Guide</a></li>
+</ol>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">fooksky</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2023-02-01
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/hpe-gen10-plus/">HPE Gen10 Plus</a>
+          <a href="/tags/homelab/">HomeLab</a>
+          <a href="/tags/pve/">PVE</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/2022/01/17/portainer-management-ui/">
+            <span class="next-text nav-default">Portainer - Docker 可视化管理工具</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+            repo="urzz/hugo-comments"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/urzz" class="iconfont icon-github" title="github"></a>
+  <a href="https://urzz.xyz/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="upyun-info">
+    Hosted by <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank"><img src="/images/upyun_logo.png" style="width:60px;display:inline;vertical-align:middle;" /></a>
+  </div>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2015 - 
+    2023<span class="heart"><i class="iconfont icon-heart"></i></span><span>fooksky</span>
+    <br />
+    <a href="https://beian.miit.gov.cn/" target="_blank">苏ICP备18053064号-2</a>
+  </span>
+</div>
+
+<script async defer data-website-id="5431c5b9-290f-4df8-9685-5709e4f8974b" src="https://umami.gz1.urzz.xyz/umami.js"></script>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-101637356-2', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<script id="baidu_analytics">
+  var _hmt = _hmt || [];
+  (function() {
+    if (window.location.hostname === 'localhost') return;
+    var hm = document.createElement("script"); hm.async = true;
+    hm.src = "https://hm.baidu.com/hm.js?46750ea49e78dae35da592f752b47547";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+<script id="baidu_push">
+  (function(){
+    if (window.location.hostname === 'localhost') return;
+    var bp = document.createElement('script'); bp.async = true;
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+
+
+</body>
+</html>

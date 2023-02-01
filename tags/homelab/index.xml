@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>HomeLab on 破壳 - 虽不能至，心向往之</title>
+    <link>https://urzz.xyz/tags/homelab/</link>
+    <description>Recent content in HomeLab on 破壳 - 虽不能至，心向往之</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 01 Feb 2023 15:49:36 +0800</lastBuildDate><atom:link href="https://urzz.xyz/tags/homelab/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Homelab - HPE Gen10 Plus 概述</title>
+      <link>https://urzz.xyz/2023/02/01/homelab-hpe-gen10plus-overview/</link>
+      <pubDate>Wed, 01 Feb 2023 15:49:36 +0800</pubDate>
+      
+      <guid>https://urzz.xyz/2023/02/01/homelab-hpe-gen10plus-overview/</guid>
+      <description>简介 HPE MicroServer 系列是 HPE ProLiant 推出的面向家庭、小型办公室的微型服务器产品，有着体积小、外观漂亮、噪音低等优点。 由于购买较早，开箱图找不到嘞，因此详细的外</description>
+    </item>
+    
+  </channel>
+</rss>
