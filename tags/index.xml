@@ -4,233 +4,170 @@
     <title>Tags on 破壳 - 虽不能至，心向往之</title>
     <link>https://urzz.xyz/tags/</link>
     <description>Recent content in Tags on 破壳 - 虽不能至，心向往之</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 01 Feb 2023 15:49:36 +0800</lastBuildDate><atom:link href="https://urzz.xyz/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 01 Feb 2023 15:49:36 +0800</lastBuildDate>
+    <atom:link href="https://urzz.xyz/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>HomeLab</title>
       <link>https://urzz.xyz/tags/homelab/</link>
       <pubDate>Wed, 01 Feb 2023 15:49:36 +0800</pubDate>
-      
       <guid>https://urzz.xyz/tags/homelab/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>HPE Gen10 Plus</title>
       <link>https://urzz.xyz/tags/hpe-gen10-plus/</link>
       <pubDate>Wed, 01 Feb 2023 15:49:36 +0800</pubDate>
-      
       <guid>https://urzz.xyz/tags/hpe-gen10-plus/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>PVE</title>
       <link>https://urzz.xyz/tags/pve/</link>
       <pubDate>Wed, 01 Feb 2023 15:49:36 +0800</pubDate>
-      
       <guid>https://urzz.xyz/tags/pve/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Container</title>
       <link>https://urzz.xyz/tags/container/</link>
       <pubDate>Mon, 17 Jan 2022 16:50:05 +0800</pubDate>
-      
       <guid>https://urzz.xyz/tags/container/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Docker</title>
       <link>https://urzz.xyz/tags/docker/</link>
       <pubDate>Mon, 17 Jan 2022 16:50:05 +0800</pubDate>
-      
       <guid>https://urzz.xyz/tags/docker/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Mybatis-Plus</title>
       <link>https://urzz.xyz/tags/mybatis-plus/</link>
       <pubDate>Sun, 08 Aug 2021 23:17:14 +0800</pubDate>
-      
       <guid>https://urzz.xyz/tags/mybatis-plus/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Traefik</title>
       <link>https://urzz.xyz/tags/traefik/</link>
       <pubDate>Sat, 12 Jun 2021 02:55:46 +0800</pubDate>
-      
       <guid>https://urzz.xyz/tags/traefik/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Java</title>
       <link>https://urzz.xyz/tags/java/</link>
       <pubDate>Mon, 30 Mar 2020 21:59:20 +0000</pubDate>
-      
       <guid>https://urzz.xyz/tags/java/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>设计模式</title>
       <link>https://urzz.xyz/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
       <pubDate>Mon, 30 Mar 2020 21:59:20 +0000</pubDate>
-      
       <guid>https://urzz.xyz/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>UEFI</title>
       <link>https://urzz.xyz/tags/uefi/</link>
       <pubDate>Sun, 15 Dec 2019 18:10:24 +0000</pubDate>
-      
       <guid>https://urzz.xyz/tags/uefi/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Windows</title>
       <link>https://urzz.xyz/tags/windows/</link>
       <pubDate>Sun, 15 Dec 2019 18:10:24 +0000</pubDate>
-      
       <guid>https://urzz.xyz/tags/windows/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Java集合源码</title>
       <link>https://urzz.xyz/tags/java%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81/</link>
       <pubDate>Wed, 17 Jul 2019 16:50:58 +0000</pubDate>
-      
       <guid>https://urzz.xyz/tags/java%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Cookie</title>
       <link>https://urzz.xyz/tags/cookie/</link>
       <pubDate>Wed, 03 Jul 2019 19:08:29 +0000</pubDate>
-      
       <guid>https://urzz.xyz/tags/cookie/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Nginx</title>
       <link>https://urzz.xyz/tags/nginx/</link>
       <pubDate>Wed, 03 Jul 2019 19:08:29 +0000</pubDate>
-      
       <guid>https://urzz.xyz/tags/nginx/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Spring</title>
       <link>https://urzz.xyz/tags/spring/</link>
       <pubDate>Wed, 03 Jul 2019 19:08:29 +0000</pubDate>
-      
       <guid>https://urzz.xyz/tags/spring/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Cors</title>
       <link>https://urzz.xyz/tags/cors/</link>
       <pubDate>Wed, 05 Jun 2019 21:13:14 +0000</pubDate>
-      
       <guid>https://urzz.xyz/tags/cors/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Shiro</title>
       <link>https://urzz.xyz/tags/shiro/</link>
       <pubDate>Wed, 05 Jun 2019 21:13:14 +0000</pubDate>
-      
       <guid>https://urzz.xyz/tags/shiro/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>linux</title>
+      <title>Linux</title>
       <link>https://urzz.xyz/tags/linux/</link>
       <pubDate>Tue, 18 Dec 2018 11:57:16 +0000</pubDate>
-      
       <guid>https://urzz.xyz/tags/linux/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Hexo</title>
       <link>https://urzz.xyz/tags/hexo/</link>
       <pubDate>Sun, 23 Sep 2018 16:09:46 +0000</pubDate>
-      
       <guid>https://urzz.xyz/tags/hexo/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>Spring Boot</title>
-      <link>https://urzz.xyz/tags/spring-boot/</link>
-      <pubDate>Tue, 20 Mar 2018 15:44:02 +0000</pubDate>
-      
-      <guid>https://urzz.xyz/tags/spring-boot/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>vim</title>
+      <title>Vim</title>
       <link>https://urzz.xyz/tags/vim/</link>
       <pubDate>Mon, 02 Jan 2017 11:28:49 +0000</pubDate>
-      
       <guid>https://urzz.xyz/tags/vim/</guid>
       <description></description>
     </item>
-    
-    <item>
-      <title>CSS</title>
-      <link>https://urzz.xyz/tags/css/</link>
-      <pubDate>Tue, 13 Sep 2016 11:01:21 +0000</pubDate>
-      
-      <guid>https://urzz.xyz/tags/css/</guid>
-      <description></description>
-    </item>
-    
     <item>
       <title>Chrome</title>
       <link>https://urzz.xyz/tags/chrome/</link>
       <pubDate>Tue, 26 Jul 2016 16:55:04 +0000</pubDate>
-      
       <guid>https://urzz.xyz/tags/chrome/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Ubuntu</title>
       <link>https://urzz.xyz/tags/ubuntu/</link>
       <pubDate>Tue, 02 Feb 2016 23:33:53 +0000</pubDate>
-      
       <guid>https://urzz.xyz/tags/ubuntu/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Random</title>
       <link>https://urzz.xyz/tags/random/</link>
       <pubDate>Tue, 01 Dec 2015 20:47:48 +0000</pubDate>
-      
       <guid>https://urzz.xyz/tags/random/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

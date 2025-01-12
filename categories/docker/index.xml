@@ -4,26 +4,23 @@
     <title>Docker on 破壳 - 虽不能至，心向往之</title>
     <link>https://urzz.xyz/categories/docker/</link>
     <description>Recent content in Docker on 破壳 - 虽不能至，心向往之</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 12 Jun 2021 02:55:46 +0800</lastBuildDate><atom:link href="https://urzz.xyz/categories/docker/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 12 Jun 2021 02:55:46 +0800</lastBuildDate>
+    <atom:link href="https://urzz.xyz/categories/docker/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Traefik 静态文件代理</title>
       <link>https://urzz.xyz/2021/06/12/traefik-reverse-static-file/</link>
       <pubDate>Sat, 12 Jun 2021 02:55:46 +0800</pubDate>
-      
       <guid>https://urzz.xyz/2021/06/12/traefik-reverse-static-file/</guid>
-      <description>先说问题：Traefik 本身是不支持代理静态文件的。原因参考: issue 4240 为什么 这里简单说一下为什么吧，因为它的设计原则是：Separation of C</description>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;先说问题：Traefik 本身是不支持代理静态文件的。原因参考: &lt;a href=&#34;https://github.com/traefik/traefik/issues/4240&#34;&gt;issue 4240&lt;/a&gt;&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;h3 id=&#34;为什么&#34;&gt;为什么&lt;/h3&gt;&#xA;&lt;p&gt;这里简单说一下为什么吧，因为它的设计原则是：&lt;code&gt;Separation of Concerns&lt;/code&gt;。所以traefik并没有提供代理以外的功能，而静态文件需要一个静态文件服务器。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>升级内核后无法启动docker</title>
       <link>https://urzz.xyz/2017/12/17/failed-start-docker-after-upgrade-kernel/</link>
       <pubDate>Sun, 17 Dec 2017 00:55:16 +0000</pubDate>
-      
       <guid>https://urzz.xyz/2017/12/17/failed-start-docker-after-upgrade-kernel/</guid>
-      <description>使用了manjaro自带工具更新了linux内核版本到4.14.3之后，docker启动失败 原因 在ststemd中，sudo systemctl status docker.service 不能看到全</description>
+      <description>&lt;p&gt;使用了manjaro自带工具更新了linux内核版本到4.14.3之后，docker启动失败&lt;/p&gt;&#xA;&lt;!-- more --&gt;&#xA;&lt;h3 id=&#34;原因&#34;&gt;原因&lt;/h3&gt;&#xA;&lt;p&gt;在ststemd中，&lt;code&gt;sudo systemctl status docker.service&lt;/code&gt; 不能看到全部的出错信息，只能手动启动docker: &lt;code&gt;sudo dockerd&lt;/code&gt;&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

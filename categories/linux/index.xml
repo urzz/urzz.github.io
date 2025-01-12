@@ -4,43 +4,30 @@
     <title>Linux on 破壳 - 虽不能至，心向往之</title>
     <link>https://urzz.xyz/categories/linux/</link>
     <description>Recent content in Linux on 破壳 - 虽不能至，心向往之</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 17 Jan 2022 16:50:05 +0800</lastBuildDate><atom:link href="https://urzz.xyz/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 17 Jan 2022 16:50:05 +0800</lastBuildDate>
+    <atom:link href="https://urzz.xyz/categories/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Portainer - Docker 可视化管理工具</title>
       <link>https://urzz.xyz/2022/01/17/portainer-management-ui/</link>
       <pubDate>Mon, 17 Jan 2022 16:50:05 +0800</pubDate>
-      
       <guid>https://urzz.xyz/2022/01/17/portainer-management-ui/</guid>
-      <description>简介 Portainer 是一个轻量级的 Container 可视化管理工具，支持管理 docker, k8s。 安装 docker 安装 portainer 借助docker，可以快速搭建 portainer。 这里使用docker-</description>
+      <description>&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;&#xA;&lt;p&gt;Portainer 是一个轻量级的 Container 可视化管理工具，支持管理 &lt;code&gt;docker&lt;/code&gt;, &lt;code&gt;k8s&lt;/code&gt;。&lt;/p&gt;&#xA;&lt;h2 id=&#34;安装&#34;&gt;安装&lt;/h2&gt;&#xA;&lt;h3 id=&#34;docker-安装-portainer&#34;&gt;docker 安装 portainer&lt;/h3&gt;&#xA;&lt;p&gt;借助docker，可以快速搭建 portainer。&lt;/p&gt;&#xA;&lt;p&gt;这里使用docker-compose来配置服务。(需要替换下列配置中的 domain 为自己需要设置的域名)&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Traefik 静态文件代理</title>
       <link>https://urzz.xyz/2021/06/12/traefik-reverse-static-file/</link>
       <pubDate>Sat, 12 Jun 2021 02:55:46 +0800</pubDate>
-      
       <guid>https://urzz.xyz/2021/06/12/traefik-reverse-static-file/</guid>
-      <description>先说问题：Traefik 本身是不支持代理静态文件的。原因参考: issue 4240 为什么 这里简单说一下为什么吧，因为它的设计原则是：Separation of C</description>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;先说问题：Traefik 本身是不支持代理静态文件的。原因参考: &lt;a href=&#34;https://github.com/traefik/traefik/issues/4240&#34;&gt;issue 4240&lt;/a&gt;&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;h3 id=&#34;为什么&#34;&gt;为什么&lt;/h3&gt;&#xA;&lt;p&gt;这里简单说一下为什么吧，因为它的设计原则是：&lt;code&gt;Separation of Concerns&lt;/code&gt;。所以traefik并没有提供代理以外的功能，而静态文件需要一个静态文件服务器。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>迁移Ubuntu至另一个硬盘</title>
       <link>https://urzz.xyz/2016/02/02/move-ubuntu/</link>
       <pubDate>Tue, 02 Feb 2016 23:33:53 +0000</pubDate>
-      
       <guid>https://urzz.xyz/2016/02/02/move-ubuntu/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;我一直认为，Windows就是用来玩游戏的系统。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;自从喜欢上了Ubuntu，就一发不可收拾了。虚拟机玩着特别不爽，然后正好要戒游戏，咬咬牙直接装上了Ubuntu（当然，是双系统）。但是固态只有250G左右，两个系统分下来，Ubuntu只有70G左右，win的C盘不知不觉就会占很大的，所以win占大头。其实这本来也是够用了的，不过自从开始学Android之后，就有点吃紧了。原因无他，虚拟机没地方放了。谁让Ubuntu下没有官方的QQ呢，而且wine的QQ真的是特别难用。趁着过年，而且笔记本有个msata的接口，就买了个128G的建兴的。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;头比较大的是家里网时4M小水管，如果重装系统的话很麻烦，而且开发环境也要重新配置，就想着能不能直接把原来的系统备份过来，还好，google是可以查到资料的！&lt;/p&gt;
-&lt;/blockquote&gt;</description>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;我一直认为，Windows就是用来玩游戏的系统。&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;自从喜欢上了Ubuntu，就一发不可收拾了。虚拟机玩着特别不爽，然后正好要戒游戏，咬咬牙直接装上了Ubuntu（当然，是双系统）。但是固态只有250G左右，两个系统分下来，Ubuntu只有70G左右，win的C盘不知不觉就会占很大的，所以win占大头。其实这本来也是够用了的，不过自从开始学Android之后，就有点吃紧了。原因无他，虚拟机没地方放了。谁让Ubuntu下没有官方的QQ呢，而且wine的QQ真的是特别难用。趁着过年，而且笔记本有个msata的接口，就买了个128G的建兴的。&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;头比较大的是家里网时4M小水管，如果重装系统的话很麻烦，而且开发环境也要重新配置，就想着能不能直接把原来的系统备份过来，还好，google是可以查到资料的！&lt;/p&gt;&#xA;&lt;/blockquote&gt;</description>
     </item>
-    
   </channel>
 </rss>

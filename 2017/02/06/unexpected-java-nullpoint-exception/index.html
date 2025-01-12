@@ -16,14 +16,16 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="fooksky" /><meta name="description" content="今天在公司无意中碰到一个从来没碰到过的空指针异常= = Java中，空指针异常应该是最常见的异常了。一般来说，碰到 NullPointerException 直接跳到报错的那一行就很容易" /><meta name="keywords" content="fooksky, 破壳, Java" />
+<meta name="author" content="" /><meta name="description" content="今天在公司无意中碰到一个从来没碰到过的空指针异常= =
+Java中，空指针异常应该是最常见的异常了。一般来说，碰到 NullPointerException 直接跳到报错的那一行就很容易就解决了。
+" /><meta name="keywords" content="fooksky, 破壳, Java" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.113.0 with theme even" />
+<meta name="generator" content="Hugo 0.140.2 with theme even" />
 
 
 <link rel="canonical" href="https://urzz.xyz/2017/02/06/unexpected-java-nullpoint-exception/" />
@@ -39,19 +41,29 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="印象深刻的Java空指针异常" />
-<meta property="og:description" content="今天在公司无意中碰到一个从来没碰到过的空指针异常= = Java中，空指针异常应该是最常见的异常了。一般来说，碰到 NullPointerException 直接跳到报错的那一行就很容易" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://urzz.xyz/2017/02/06/unexpected-java-nullpoint-exception/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2017-02-06T22:51:48+00:00" />
-<meta property="article:modified_time" content="2017-02-06T22:51:48+00:00" />
-<meta itemprop="name" content="印象深刻的Java空指针异常">
-<meta itemprop="description" content="今天在公司无意中碰到一个从来没碰到过的空指针异常= = Java中，空指针异常应该是最常见的异常了。一般来说，碰到 NullPointerException 直接跳到报错的那一行就很容易"><meta itemprop="datePublished" content="2017-02-06T22:51:48+00:00" />
-<meta itemprop="dateModified" content="2017-02-06T22:51:48+00:00" />
-<meta itemprop="wordCount" content="314">
-<meta itemprop="keywords" content="Java," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="印象深刻的Java空指针异常"/>
-<meta name="twitter:description" content="今天在公司无意中碰到一个从来没碰到过的空指针异常= = Java中，空指针异常应该是最常见的异常了。一般来说，碰到 NullPointerException 直接跳到报错的那一行就很容易"/>
+<meta property="og:url" content="https://urzz.xyz/2017/02/06/unexpected-java-nullpoint-exception/">
+  <meta property="og:site_name" content="破壳 - 虽不能至，心向往之">
+  <meta property="og:title" content="印象深刻的Java空指针异常">
+  <meta property="og:description" content="今天在公司无意中碰到一个从来没碰到过的空指针异常= =
+Java中，空指针异常应该是最常见的异常了。一般来说，碰到 NullPointerException 直接跳到报错的那一行就很容易就解决了。">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2017-02-06T22:51:48+00:00">
+    <meta property="article:modified_time" content="2017-02-06T22:51:48+00:00">
+    <meta property="article:tag" content="Java">
+
+  <meta itemprop="name" content="印象深刻的Java空指针异常">
+  <meta itemprop="description" content="今天在公司无意中碰到一个从来没碰到过的空指针异常= =
+Java中，空指针异常应该是最常见的异常了。一般来说，碰到 NullPointerException 直接跳到报错的那一行就很容易就解决了。">
+  <meta itemprop="datePublished" content="2017-02-06T22:51:48+00:00">
+  <meta itemprop="dateModified" content="2017-02-06T22:51:48+00:00">
+  <meta itemprop="wordCount" content="314">
+  <meta itemprop="keywords" content="Java">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="印象深刻的Java空指针异常">
+  <meta name="twitter:description" content="今天在公司无意中碰到一个从来没碰到过的空指针异常= =
+Java中，空指针异常应该是最常见的异常了。一般来说，碰到 NullPointerException 直接跳到报错的那一行就很容易就解决了。">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -161,23 +173,23 @@
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">NPExceptionDemo</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="kt">long</span> <span class="n">size</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="n">Long</span> <span class="nf">getSize</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">setSize</span><span class="o">(</span><span class="kt">long</span> <span class="n">size</span><span class="o">){</span>
-</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="o">.</span><span class="na">size</span> <span class="o">=</span> <span class="n">size</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">setSize</span><span class="o">(</span><span class="n">getSize</span><span class="o">());</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">NPExceptionDemo</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="n">size</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="nf">getSize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setSize</span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="n">size</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">size</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">setSize</span><span class="p">(</span><span class="n">getSize</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>本来我是奇怪，就算传一个null进去也是直接赋值给size啊，怎么会报了空指针呢。。</p>
 <p>然后就javap了一把才发现，Java的自动装箱/拆箱机制具体是怎样的是解决这个异常的关键。</p>
@@ -189,7 +201,7 @@
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content">fooksky</span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -243,7 +255,8 @@
     <footer id="footer" class="footer">
       <div class="social-links">
       <a href="https://github.com/urzz" class="iconfont icon-github" title="github"></a>
-  </div>
+  
+</div>
 
 <div class="copyright">
   <span class="power-by">
@@ -268,9 +281,9 @@
   <span class="copyright-year">
     &copy; 
     2015 - 
-    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>fooksky</span>
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span>
+    <span></span>
     <br />
-    
     <a href="https://beian.miit.gov.cn/" target="_blank">苏ICP备18053064号-2</a>
   </span>
 </div>
@@ -290,17 +303,6 @@
 
 <script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-101637356-2', 'auto');
-	ga('set', 'anonymizeIp', true);
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 <script id="baidu_analytics">
   var _hmt = _hmt || [];
   (function() {

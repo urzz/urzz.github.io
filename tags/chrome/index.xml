@@ -4,17 +4,16 @@
     <title>Chrome on 破壳 - 虽不能至，心向往之</title>
     <link>https://urzz.xyz/tags/chrome/</link>
     <description>Recent content in Chrome on 破壳 - 虽不能至，心向往之</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 26 Jul 2016 16:55:04 +0000</lastBuildDate><atom:link href="https://urzz.xyz/tags/chrome/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 26 Jul 2016 16:55:04 +0000</lastBuildDate>
+    <atom:link href="https://urzz.xyz/tags/chrome/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Chrome 好用的插件及介绍</title>
       <link>https://urzz.xyz/2016/07/26/useful-chrome-extensions/</link>
       <pubDate>Tue, 26 Jul 2016 16:55:04 +0000</pubDate>
-      
       <guid>https://urzz.xyz/2016/07/26/useful-chrome-extensions/</guid>
-      <description>Chrome 好用的插件及介绍 Infinity new tab 自定义新建的标签页，集合了很多很有用的功能。 GitHub Awesome Complete 不离开当前项目窗口的前提下，弹窗显示出你的搜索结果 Octotree Octotree 是一款非常方</description>
+      <description>&lt;h3 id=&#34;chrome-好用的插件及介绍&#34;&gt;Chrome 好用的插件及介绍&lt;/h3&gt;&#xA;&lt;h4 id=&#34;infinity-new-tab-1&#34;&gt;&lt;a href=&#34;http://infinitynewtab.com/&#34;&gt;Infinity new tab &lt;/a&gt;&lt;/h4&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;自定义新建的标签页，集合了很多很有用的功能。&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;h4 id=&#34;github-awesome-complete2&#34;&gt;&lt;a href=&#34;https://github.com/algolia/github-awesome-autocomplete&#34;&gt;GitHub Awesome Complete&lt;/a&gt;&lt;/h4&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;不离开当前项目窗口的前提下，弹窗显示出你的搜索结果&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;!-- more --&gt;&#xA;&lt;h4 id=&#34;octotree3&#34;&gt;&lt;a href=&#34;https://chrome.google.com/webstore/detail/octotree/bkhaagjahfmjljalopjnoealnfndnagc&#34;&gt;Octotree&lt;/a&gt;&lt;/h4&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Octotree 是一款非常方便的 GitHub 扩展，安装了这款插件之后，你可以在 GitHub 项目页面的左侧看到相应项目的树状结构图，对于项目管理以及具体的文件跳转来说非常方便。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

@@ -16,14 +16,14 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="fooksky" /><meta name="description" content="虽不能至，心向往之" /><meta name="keywords" content="fooksky, 破壳, Java" />
+<meta name="author" content="" /><meta name="description" content="虽不能至，心向往之" /><meta name="keywords" content="fooksky, 破壳, Java" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.113.0 with theme even" />
+<meta name="generator" content="Hugo 0.140.2 with theme even" />
 
 
 <link rel="canonical" href="https://urzz.xyz/" />
@@ -41,14 +41,20 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="破壳 - 虽不能至，心向往之" />
-<meta property="og:description" content="虽不能至，心向往之" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://urzz.xyz/" />
-<meta itemprop="name" content="破壳 - 虽不能至，心向往之">
-<meta itemprop="description" content="虽不能至，心向往之"><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="破壳 - 虽不能至，心向往之"/>
-<meta name="twitter:description" content="虽不能至，心向往之"/>
+<meta property="og:url" content="https://urzz.xyz/">
+  <meta property="og:site_name" content="破壳 - 虽不能至，心向往之">
+  <meta property="og:title" content="破壳 - 虽不能至，心向往之">
+  <meta property="og:description" content="虽不能至，心向往之">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="website">
+
+  <meta itemprop="name" content="破壳 - 虽不能至，心向往之">
+  <meta itemprop="description" content="虽不能至，心向往之">
+  <meta itemprop="datePublished" content="2023-02-01T15:49:36+08:00">
+  <meta itemprop="dateModified" content="2023-02-01T15:49:36+08:00">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="破壳 - 虽不能至，心向往之">
+  <meta name="twitter:description" content="虽不能至，心向往之">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -126,7 +132,9 @@
   
   <div class="post-content">
     <div class="post-summary">
-      简介 HPE MicroServer 系列是 HPE ProLiant 推出的面向家庭、小型办公室的微型服务器产品，有着体积小、外观漂亮、噪音低等优点。 由于购买较早，开箱图找不到嘞，因此详细的外
+      <h2 id="简介">简介</h2>
+<p>HPE MicroServer 系列是 HPE ProLiant 推出的面向家庭、小型办公室的微型服务器产品，有着体积小、外观漂亮、噪音低等优点。</p>
+<p>由于购买较早，开箱图找不到嘞，因此详细的外观、服务器的内部结构等信息，可以参考下面的文章：</p>
     </div>
     <div class="read-more">
       <a href="/2023/02/01/homelab-hpe-gen10plus-overview/" class="read-more-link">阅读更多</a>
@@ -149,7 +157,12 @@
   
   <div class="post-content">
     <div class="post-summary">
-      简介 Portainer 是一个轻量级的 Container 可视化管理工具，支持管理 docker, k8s。 安装 docker 安装 portainer 借助docker，可以快速搭建 portainer。 这里使用docker-
+      <h2 id="简介">简介</h2>
+<p>Portainer 是一个轻量级的 Container 可视化管理工具，支持管理 <code>docker</code>, <code>k8s</code>。</p>
+<h2 id="安装">安装</h2>
+<h3 id="docker-安装-portainer">docker 安装 portainer</h3>
+<p>借助docker，可以快速搭建 portainer。</p>
+<p>这里使用docker-compose来配置服务。(需要替换下列配置中的 domain 为自己需要设置的域名)</p>
     </div>
     <div class="read-more">
       <a href="/2022/01/17/portainer-management-ui/" class="read-more-link">阅读更多</a>
@@ -172,7 +185,9 @@
   
   <div class="post-content">
     <div class="post-summary">
-      简介 MyBatis Plus 是一个MyBatis的增强工具，内置通用mapper，提供了基本的curd操作，简化了MyBatis的开发使用工作。 它提供了一个代码
+      <h2 id="简介">简介</h2>
+<p>MyBatis Plus 是一个MyBatis的增强工具，内置通用mapper，提供了基本的curd操作，简化了MyBatis的开发使用工作。
+它提供了一个代码生成器工具，可以根据数据库表来自动生成entity、mapper、mapper xml、service、controller等模块的代码，简化项目的初始化工作。</p>
     </div>
     <div class="read-more">
       <a href="/2021/08/08/mybatis-plus-generator-config/" class="read-more-link">阅读更多</a>
@@ -196,7 +211,11 @@
   
   <div class="post-content">
     <div class="post-summary">
-      先说问题：Traefik 本身是不支持代理静态文件的。原因参考: issue 4240 为什么 这里简单说一下为什么吧，因为它的设计原则是：Separation of C
+      <blockquote>
+<p>先说问题：Traefik 本身是不支持代理静态文件的。原因参考: <a href="https://github.com/traefik/traefik/issues/4240">issue 4240</a></p>
+</blockquote>
+<h3 id="为什么">为什么</h3>
+<p>这里简单说一下为什么吧，因为它的设计原则是：<code>Separation of Concerns</code>。所以traefik并没有提供代理以外的功能，而静态文件需要一个静态文件服务器。</p>
     </div>
     <div class="read-more">
       <a href="/2021/06/12/traefik-reverse-static-file/" class="read-more-link">阅读更多</a>
@@ -219,7 +238,10 @@
   
   <div class="post-content">
     <div class="post-summary">
-      因为某些原因，重装了两三次PVE和黑群，重装的过程中也碰到一点问题，因此这里记录一下教程。 PVE的安装这里就不说了，可以参考这个教程：Pro
+      <blockquote>
+<p>因为某些原因，重装了两三次PVE和黑群，重装的过程中也碰到一点问题，因此这里记录一下教程。</p>
+</blockquote>
+<p>PVE的安装这里就不说了，可以参考这个教程：<a href="https://www.10bests.com/install-proxmox-ve/">Proxmox VE（PVE）6.1安装保姆级图文教程</a></p>
     </div>
     <div class="read-more">
       <a href="/2021/02/16/pve-install-synology/" class="read-more-link">阅读更多</a>
@@ -240,7 +262,18 @@
   
   <div class="post-content">
     <div class="post-summary">
-      安装 首先需要安装Hugo。Hugo的安装很简单，官方安装教程：Install Hugo。 Mac下安装可以直接选择Homebrew。 1 brew install hugo Hu
+      <h3 id="安装">安装</h3>
+<p>首先需要安装Hugo。Hugo的安装很简单，官方安装教程：<a href="https://gohugo.io/getting-started/installing/">Install Hugo</a>。
+Mac下安装可以直接选择Homebrew。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">brew install hugo
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Hugo程序安装以后，需要初始化博客目录。比如要创建一个目录名为Blog的博客目录</p>
     </div>
     <div class="read-more">
       <a href="/2020/09/22/hexo-migrate-to-hugo/" class="read-more-link">阅读更多</a>
@@ -263,7 +296,8 @@
   
   <div class="post-content">
     <div class="post-summary">
-      背景 switch/case 是Java的一个流程控制语法，作为多if/else条件判断的替代语法，平常用的还是很多的，毕竟比起看起来就很繁琐、难以阅读的if/el
+      <h3 id="背景">背景</h3>
+<p>switch/case 是Java的一个流程控制语法，作为多if/else条件判断的替代语法，平常用的还是很多的，毕竟比起看起来就很繁琐、难以阅读的if/else，switch/case更便于阅读理解一段代码的逻辑。</p>
     </div>
     <div class="read-more">
       <a href="/2020/03/30/improve-use-of-switch/" class="read-more-link">阅读更多</a>
@@ -286,7 +320,16 @@
   
   <div class="post-content">
     <div class="post-summary">
-      海康威视c2000 pro太香了，双十二没忍住剁了个1t的。在此记录一下win10的迁移步骤以及碰到的问题。 迁移工具选择 AOMEI Backupper 分区助手 其实这俩都
+      <blockquote>
+<p>海康威视c2000 pro太香了，双十二没忍住剁了个1t的。在此记录一下win10的迁移步骤以及碰到的问题。</p>
+</blockquote>
+<!-- more -->
+<h3 id="迁移工具选择">迁移工具选择</h3>
+<ul>
+<li>AOMEI Backupper</li>
+<li>分区助手</li>
+</ul>
+<p>其实这俩都可以，因为它们都有一个功能：克隆硬盘。</p>
     </div>
     <div class="read-more">
       <a href="/2019/12/15/win10-migration-fix-uefi-boot/" class="read-more-link">阅读更多</a>
@@ -309,7 +352,8 @@
   
   <div class="post-content">
     <div class="post-summary">
-      介绍 AbstractCollection是Java集合实现类的根抽象实现类，它实现了Collection接口，而集合的三个分支(List,S
+      <h2 id="介绍">介绍</h2>
+<p><code>AbstractCollection</code>是Java集合实现类的根抽象实现类，它实现了<code>Collection</code>接口，而集合的三个分支(List,Set,Queue)都是继承这个类然后各自实现扩展：<code>AbstractSet</code>, <code>AbstractList</code>, <code>AbstractQueue</code>。</p>
     </div>
     <div class="read-more">
       <a href="/2019/07/17/jdk-collection-abstract-collection/" class="read-more-link">阅读更多</a>
@@ -332,7 +376,15 @@
   
   <div class="post-content">
     <div class="post-summary">
-      定义 什么是单例模式？ 在整个系统中，一个类永远只有一个实例化的对象，被称为单例 作用 单例模式可以减少一个频繁被创建的重量级对象在多次实例化的时候
+      <h2 id="定义">定义</h2>
+<blockquote>
+<p>什么是单例模式？
+在整个系统中，一个类永远只有一个实例化的对象，被称为单例</p>
+</blockquote>
+<!-- more -->
+<h2 id="作用">作用</h2>
+<blockquote>
+<p>单例模式可以减少一个频繁被创建的重量级对象在多次实例化的时候所花费的时间，当一个类实例化所需要的时间比较长的时候，就可以考虑使用单例了。一来节约了对象多次创建所花费的时间，二来可以节约资源。</p>
     </div>
     <div class="read-more">
       <a href="/2019/07/08/java-singleton-pattern/" class="read-more-link">阅读更多</a>
@@ -358,8 +410,10 @@
     <footer id="footer" class="footer">
       <div class="social-links">
       <a href="https://github.com/urzz" class="iconfont icon-github" title="github"></a>
-  <a  type="application/rss&#43;xml" href="https://urzz.xyz/index.xml" title="破壳 - 虽不能至，心向往之" class="iconfont icon-rss"></a>
-  </div>
+  
+    <a href="/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+  
+</div>
 
 <div class="copyright">
   <span class="power-by">
@@ -384,9 +438,9 @@
   <span class="copyright-year">
     &copy; 
     2015 - 
-    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>fooksky</span>
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span>
+    <span></span>
     <br />
-    
     <a href="https://beian.miit.gov.cn/" target="_blank">苏ICP备18053064号-2</a>
   </span>
 </div>
@@ -406,17 +460,6 @@
 
 <script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-101637356-2', 'auto');
-	ga('set', 'anonymizeIp', true);
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 <script id="baidu_analytics">
   var _hmt = _hmt || [];
   (function() {

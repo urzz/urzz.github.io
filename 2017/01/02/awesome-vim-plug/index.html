@@ -16,14 +16,16 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="fooksky" /><meta name="description" content="之前一直在用spf13-vim的开源vim配置，但是一直都感觉这个太过重量级了。用了大半年之后还是决定自己动手diy一个。 为什么要用 主要是因" /><meta name="keywords" content="fooksky, 破壳, Java" />
+<meta name="author" content="" /><meta name="description" content=" 之前一直在用spf13-vim的开源vim配置，但是一直都感觉这个太过重量级了。用了大半年之后还是决定自己动手diy一个。
+为什么要用 主要是因为vim-plug安装插件是并行的，比vundle要快得多，而且提示信息也更加丰富。
+" /><meta name="keywords" content="fooksky, 破壳, Java" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.113.0 with theme even" />
+<meta name="generator" content="Hugo 0.140.2 with theme even" />
 
 
 <link rel="canonical" href="https://urzz.xyz/2017/01/02/awesome-vim-plug/" />
@@ -39,19 +41,29 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="VIM插件管理器 - vim-plug" />
-<meta property="og:description" content="之前一直在用spf13-vim的开源vim配置，但是一直都感觉这个太过重量级了。用了大半年之后还是决定自己动手diy一个。 为什么要用 主要是因" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://urzz.xyz/2017/01/02/awesome-vim-plug/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2017-01-02T11:28:49+00:00" />
-<meta property="article:modified_time" content="2017-01-02T11:28:49+00:00" />
-<meta itemprop="name" content="VIM插件管理器 - vim-plug">
-<meta itemprop="description" content="之前一直在用spf13-vim的开源vim配置，但是一直都感觉这个太过重量级了。用了大半年之后还是决定自己动手diy一个。 为什么要用 主要是因"><meta itemprop="datePublished" content="2017-01-02T11:28:49+00:00" />
-<meta itemprop="dateModified" content="2017-01-02T11:28:49+00:00" />
-<meta itemprop="wordCount" content="234">
-<meta itemprop="keywords" content="vim," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="VIM插件管理器 - vim-plug"/>
-<meta name="twitter:description" content="之前一直在用spf13-vim的开源vim配置，但是一直都感觉这个太过重量级了。用了大半年之后还是决定自己动手diy一个。 为什么要用 主要是因"/>
+<meta property="og:url" content="https://urzz.xyz/2017/01/02/awesome-vim-plug/">
+  <meta property="og:site_name" content="破壳 - 虽不能至，心向往之">
+  <meta property="og:title" content="VIM插件管理器 - vim-plug">
+  <meta property="og:description" content="之前一直在用spf13-vim的开源vim配置，但是一直都感觉这个太过重量级了。用了大半年之后还是决定自己动手diy一个。
+为什么要用 主要是因为vim-plug安装插件是并行的，比vundle要快得多，而且提示信息也更加丰富。">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2017-01-02T11:28:49+00:00">
+    <meta property="article:modified_time" content="2017-01-02T11:28:49+00:00">
+    <meta property="article:tag" content="Vim">
+
+  <meta itemprop="name" content="VIM插件管理器 - vim-plug">
+  <meta itemprop="description" content="之前一直在用spf13-vim的开源vim配置，但是一直都感觉这个太过重量级了。用了大半年之后还是决定自己动手diy一个。
+为什么要用 主要是因为vim-plug安装插件是并行的，比vundle要快得多，而且提示信息也更加丰富。">
+  <meta itemprop="datePublished" content="2017-01-02T11:28:49+00:00">
+  <meta itemprop="dateModified" content="2017-01-02T11:28:49+00:00">
+  <meta itemprop="wordCount" content="234">
+  <meta itemprop="keywords" content="Vim">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="VIM插件管理器 - vim-plug">
+  <meta name="twitter:description" content="之前一直在用spf13-vim的开源vim配置，但是一直都感觉这个太过重量级了。用了大半年之后还是决定自己动手diy一个。
+为什么要用 主要是因为vim-plug安装插件是并行的，比vundle要快得多，而且提示信息也更加丰富。">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -180,14 +192,14 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vim" data-lang="vim"><span class="line"><span class="cl"><span class="nx">call</span> <span class="nx">plug</span>#<span class="nx">begin</span><span class="p">(</span><span class="s1">&#39;~/.vim/plugged&#39;</span><span class="p">)</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c">
-</span></span></span><span class="line"><span class="cl"><span class="c">&#34; Shorthand notation; fetches https://github.com/junegunn/vim-easy-align</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nx">Plug</span> <span class="s1">&#39;junegunn/vim-easy-align&#39;</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c">
-</span></span></span><span class="line"><span class="cl"><span class="c">&#34; Initialize plugin system</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nx">call</span> <span class="nx">plug</span>#<span class="nx">end</span><span class="p">()</span><span class="err">
-</span></span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vim" data-lang="vim"><span class="line"><span class="cl"><span class="nx">call</span> <span class="nx">plug</span>#<span class="nx">begin</span><span class="p">(</span><span class="s1">&#39;~/.vim/plugged&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c">
+</span></span></span><span class="line"><span class="cl"><span class="c">&#34; Shorthand notation; fetches https://github.com/junegunn/vim-easy-align</span>
+</span></span><span class="line"><span class="cl"><span class="nx">Plug</span> <span class="s1">&#39;junegunn/vim-easy-align&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="c">
+</span></span></span><span class="line"><span class="cl"><span class="c">&#34; Initialize plugin system</span>
+</span></span><span class="line"><span class="cl"><span class="nx">call</span> <span class="nx">plug</span>#<span class="nx">end</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>在begin和end中间加入自己要安装的插件即可。</p>
 <h4 id="常用命令">常用命令</h4>
@@ -205,7 +217,7 @@
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content">fooksky</span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -230,8 +242,8 @@
             <span class="prev-text nav-default">印象深刻的Java空指针异常</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
-        <a class="next" href="/2016/09/13/column-3-of-the-css-layout-skills/">
-            <span class="next-text nav-default">谈谈三栏布局的几种方式</span>
+        <a class="next" href="/2016/07/26/useful-chrome-extensions/">
+            <span class="next-text nav-default">Chrome 好用的插件及介绍</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
@@ -259,7 +271,8 @@
     <footer id="footer" class="footer">
       <div class="social-links">
       <a href="https://github.com/urzz" class="iconfont icon-github" title="github"></a>
-  </div>
+  
+</div>
 
 <div class="copyright">
   <span class="power-by">
@@ -284,9 +297,9 @@
   <span class="copyright-year">
     &copy; 
     2015 - 
-    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>fooksky</span>
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span>
+    <span></span>
     <br />
-    
     <a href="https://beian.miit.gov.cn/" target="_blank">苏ICP备18053064号-2</a>
   </span>
 </div>
@@ -306,17 +319,6 @@
 
 <script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-101637356-2', 'auto');
-	ga('set', 'anonymizeIp', true);
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 <script id="baidu_analytics">
   var _hmt = _hmt || [];
   (function() {

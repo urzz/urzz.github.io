@@ -4,246 +4,170 @@
     <title>破壳 - 虽不能至，心向往之</title>
     <link>https://urzz.xyz/</link>
     <description>Recent content on 破壳 - 虽不能至，心向往之</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 01 Feb 2023 15:49:36 +0800</lastBuildDate><atom:link href="https://urzz.xyz/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 01 Feb 2023 15:49:36 +0800</lastBuildDate>
+    <atom:link href="https://urzz.xyz/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Homelab - HPE Gen10 Plus 概述</title>
       <link>https://urzz.xyz/2023/02/01/homelab-hpe-gen10plus-overview/</link>
       <pubDate>Wed, 01 Feb 2023 15:49:36 +0800</pubDate>
-      
       <guid>https://urzz.xyz/2023/02/01/homelab-hpe-gen10plus-overview/</guid>
-      <description>简介 HPE MicroServer 系列是 HPE ProLiant 推出的面向家庭、小型办公室的微型服务器产品，有着体积小、外观漂亮、噪音低等优点。 由于购买较早，开箱图找不到嘞，因此详细的外</description>
+      <description>&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;&#xA;&lt;p&gt;HPE MicroServer 系列是 HPE ProLiant 推出的面向家庭、小型办公室的微型服务器产品，有着体积小、外观漂亮、噪音低等优点。&lt;/p&gt;&#xA;&lt;p&gt;由于购买较早，开箱图找不到嘞，因此详细的外观、服务器的内部结构等信息，可以参考下面的文章：&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Portainer - Docker 可视化管理工具</title>
       <link>https://urzz.xyz/2022/01/17/portainer-management-ui/</link>
       <pubDate>Mon, 17 Jan 2022 16:50:05 +0800</pubDate>
-      
       <guid>https://urzz.xyz/2022/01/17/portainer-management-ui/</guid>
-      <description>简介 Portainer 是一个轻量级的 Container 可视化管理工具，支持管理 docker, k8s。 安装 docker 安装 portainer 借助docker，可以快速搭建 portainer。 这里使用docker-</description>
+      <description>&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;&#xA;&lt;p&gt;Portainer 是一个轻量级的 Container 可视化管理工具，支持管理 &lt;code&gt;docker&lt;/code&gt;, &lt;code&gt;k8s&lt;/code&gt;。&lt;/p&gt;&#xA;&lt;h2 id=&#34;安装&#34;&gt;安装&lt;/h2&gt;&#xA;&lt;h3 id=&#34;docker-安装-portainer&#34;&gt;docker 安装 portainer&lt;/h3&gt;&#xA;&lt;p&gt;借助docker，可以快速搭建 portainer。&lt;/p&gt;&#xA;&lt;p&gt;这里使用docker-compose来配置服务。(需要替换下列配置中的 domain 为自己需要设置的域名)&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>使用mybatis-plus-generator初始化项目</title>
       <link>https://urzz.xyz/2021/08/08/mybatis-plus-generator-config/</link>
       <pubDate>Sun, 08 Aug 2021 23:17:14 +0800</pubDate>
-      
       <guid>https://urzz.xyz/2021/08/08/mybatis-plus-generator-config/</guid>
-      <description>简介 MyBatis Plus 是一个MyBatis的增强工具，内置通用mapper，提供了基本的curd操作，简化了MyBatis的开发使用工作。 它提供了一个代码</description>
+      <description>&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;&#xA;&lt;p&gt;MyBatis Plus 是一个MyBatis的增强工具，内置通用mapper，提供了基本的curd操作，简化了MyBatis的开发使用工作。&#xA;它提供了一个代码生成器工具，可以根据数据库表来自动生成entity、mapper、mapper xml、service、controller等模块的代码，简化项目的初始化工作。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Traefik 静态文件代理</title>
       <link>https://urzz.xyz/2021/06/12/traefik-reverse-static-file/</link>
       <pubDate>Sat, 12 Jun 2021 02:55:46 +0800</pubDate>
-      
       <guid>https://urzz.xyz/2021/06/12/traefik-reverse-static-file/</guid>
-      <description>先说问题：Traefik 本身是不支持代理静态文件的。原因参考: issue 4240 为什么 这里简单说一下为什么吧，因为它的设计原则是：Separation of C</description>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;先说问题：Traefik 本身是不支持代理静态文件的。原因参考: &lt;a href=&#34;https://github.com/traefik/traefik/issues/4240&#34;&gt;issue 4240&lt;/a&gt;&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;h3 id=&#34;为什么&#34;&gt;为什么&lt;/h3&gt;&#xA;&lt;p&gt;这里简单说一下为什么吧，因为它的设计原则是：&lt;code&gt;Separation of Concerns&lt;/code&gt;。所以traefik并没有提供代理以外的功能，而静态文件需要一个静态文件服务器。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>PVE 安装黑群晖教程</title>
       <link>https://urzz.xyz/2021/02/16/pve-install-synology/</link>
       <pubDate>Tue, 16 Feb 2021 02:35:14 +0800</pubDate>
-      
       <guid>https://urzz.xyz/2021/02/16/pve-install-synology/</guid>
-      <description>因为某些原因，重装了两三次PVE和黑群，重装的过程中也碰到一点问题，因此这里记录一下教程。 PVE的安装这里就不说了，可以参考这个教程：Pro</description>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;因为某些原因，重装了两三次PVE和黑群，重装的过程中也碰到一点问题，因此这里记录一下教程。&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;PVE的安装这里就不说了，可以参考这个教程：&lt;a href=&#34;https://www.10bests.com/install-proxmox-ve/&#34;&gt;Proxmox VE（PVE）6.1安装保姆级图文教程&lt;/a&gt;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Hexo迁移Hugo</title>
       <link>https://urzz.xyz/2020/09/22/hexo-migrate-to-hugo/</link>
       <pubDate>Tue, 22 Sep 2020 02:13:05 +0800</pubDate>
-      
       <guid>https://urzz.xyz/2020/09/22/hexo-migrate-to-hugo/</guid>
-      <description>安装 首先需要安装Hugo。Hugo的安装很简单，官方安装教程：Install Hugo。 Mac下安装可以直接选择Homebrew。 1 brew install hugo Hu</description>
+      <description>&lt;h3 id=&#34;安装&#34;&gt;安装&lt;/h3&gt;&#xA;&lt;p&gt;首先需要安装Hugo。Hugo的安装很简单，官方安装教程：&lt;a href=&#34;https://gohugo.io/getting-started/installing/&#34;&gt;Install Hugo&lt;/a&gt;。&#xA;Mac下安装可以直接选择Homebrew。&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;brew install hugo&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;Hugo程序安装以后，需要初始化博客目录。比如要创建一个目录名为Blog的博客目录&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Switch的优化方式</title>
       <link>https://urzz.xyz/2020/03/30/improve-use-of-switch/</link>
       <pubDate>Mon, 30 Mar 2020 21:59:20 +0000</pubDate>
-      
       <guid>https://urzz.xyz/2020/03/30/improve-use-of-switch/</guid>
-      <description>背景 switch/case 是Java的一个流程控制语法，作为多if/else条件判断的替代语法，平常用的还是很多的，毕竟比起看起来就很繁琐、难以阅读的if/el</description>
+      <description>&lt;h3 id=&#34;背景&#34;&gt;背景&lt;/h3&gt;&#xA;&lt;p&gt;switch/case 是Java的一个流程控制语法，作为多if/else条件判断的替代语法，平常用的还是很多的，毕竟比起看起来就很繁琐、难以阅读的if/else，switch/case更便于阅读理解一段代码的逻辑。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Windows10迁移以及UEFI引导修复</title>
       <link>https://urzz.xyz/2019/12/15/win10-migration-fix-uefi-boot/</link>
       <pubDate>Sun, 15 Dec 2019 18:10:24 +0000</pubDate>
-      
       <guid>https://urzz.xyz/2019/12/15/win10-migration-fix-uefi-boot/</guid>
-      <description>海康威视c2000 pro太香了，双十二没忍住剁了个1t的。在此记录一下win10的迁移步骤以及碰到的问题。 迁移工具选择 AOMEI Backupper 分区助手 其实这俩都</description>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;海康威视c2000 pro太香了，双十二没忍住剁了个1t的。在此记录一下win10的迁移步骤以及碰到的问题。&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;!-- more --&gt;&#xA;&lt;h3 id=&#34;迁移工具选择&#34;&gt;迁移工具选择&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;AOMEI Backupper&lt;/li&gt;&#xA;&lt;li&gt;分区助手&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;其实这俩都可以，因为它们都有一个功能：克隆硬盘。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Java 集合源码 - AbstractCollection</title>
       <link>https://urzz.xyz/2019/07/17/jdk-collection-abstract-collection/</link>
       <pubDate>Wed, 17 Jul 2019 16:50:58 +0000</pubDate>
-      
       <guid>https://urzz.xyz/2019/07/17/jdk-collection-abstract-collection/</guid>
-      <description>介绍 AbstractCollection是Java集合实现类的根抽象实现类，它实现了Collection接口，而集合的三个分支(List,S</description>
+      <description>&lt;h2 id=&#34;介绍&#34;&gt;介绍&lt;/h2&gt;&#xA;&lt;p&gt;&lt;code&gt;AbstractCollection&lt;/code&gt;是Java集合实现类的根抽象实现类，它实现了&lt;code&gt;Collection&lt;/code&gt;接口，而集合的三个分支(List,Set,Queue)都是继承这个类然后各自实现扩展：&lt;code&gt;AbstractSet&lt;/code&gt;, &lt;code&gt;AbstractList&lt;/code&gt;, &lt;code&gt;AbstractQueue&lt;/code&gt;。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>设计模式 - 单例模式的几种实现方式</title>
       <link>https://urzz.xyz/2019/07/08/java-singleton-pattern/</link>
       <pubDate>Mon, 08 Jul 2019 20:02:35 +0000</pubDate>
-      
       <guid>https://urzz.xyz/2019/07/08/java-singleton-pattern/</guid>
-      <description>定义 什么是单例模式？ 在整个系统中，一个类永远只有一个实例化的对象，被称为单例 作用 单例模式可以减少一个频繁被创建的重量级对象在多次实例化的时候</description>
+      <description>&lt;h2 id=&#34;定义&#34;&gt;定义&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;什么是单例模式？&#xA;在整个系统中，一个类永远只有一个实例化的对象，被称为单例&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;!-- more --&gt;&#xA;&lt;h2 id=&#34;作用&#34;&gt;作用&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;单例模式可以减少一个频繁被创建的重量级对象在多次实例化的时候所花费的时间，当一个类实例化所需要的时间比较长的时候，就可以考虑使用单例了。一来节约了对象多次创建所花费的时间，二来可以节约资源。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Nginx反代Spring Boot后端服务后，丢失cookie</title>
       <link>https://urzz.xyz/2019/07/03/spring-boot-nginx-cookie-nout-found/</link>
       <pubDate>Wed, 03 Jul 2019 19:08:29 +0000</pubDate>
-      
       <guid>https://urzz.xyz/2019/07/03/spring-boot-nginx-cookie-nout-found/</guid>
-      <description>为了解决跨域请求无法使用cookie的问题，使用nginx对后端服务做了反代。但是反代之后，却发现cookie没有被正确传递。 相关配置 nginx 反代</description>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;为了解决跨域请求无法使用cookie的问题，使用nginx对后端服务做了反代。但是反代之后，却发现cookie没有被正确传递。&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;!-- more --&gt;&#xA;&lt;h3 id=&#34;相关配置&#34;&gt;相关配置&lt;/h3&gt;&#xA;&lt;h4 id=&#34;nginx-反代配置&#34;&gt;nginx 反代配置&lt;/h4&gt;&#xA;&lt;p&gt;nginx反代的配置很简单，只是简单设置了proxy_pass&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Spring Boot 整合shiro使用自定义filter</title>
       <link>https://urzz.xyz/2019/06/11/spring-boot-shiro-custom-filter/</link>
       <pubDate>Tue, 11 Jun 2019 21:33:38 +0000</pubDate>
-      
       <guid>https://urzz.xyz/2019/06/11/spring-boot-shiro-custom-filter/</guid>
-      <description>最近一个项目的认证是用shiro实现的，以前没有做过spring boot + shiro的整合，所以遇到了一些奇奇怪怪的坑 shiro的整合具体这边就不</description>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;最近一个项目的认证是用shiro实现的，以前没有做过spring boot + shiro的整合，所以遇到了一些奇奇怪怪的坑&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;!-- more --&gt;&#xA;&lt;p&gt;shiro的整合具体这边就不做阐述了，大概有以下几个类:&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Spring Boot 整合shiro后的跨域设置</title>
       <link>https://urzz.xyz/2019/06/05/spring-shiro-cors-config/</link>
       <pubDate>Wed, 05 Jun 2019 21:13:14 +0000</pubDate>
-      
       <guid>https://urzz.xyz/2019/06/05/spring-shiro-cors-config/</guid>
-      <description>之前的项目都没有跨域的要求，都是通过nginx反代后端接口避免跨域请求的，但是最近的项目要求要处理跨域的请求，所以记录一下 1. 正常的Sprin</description>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;之前的项目都没有跨域的要求，都是通过nginx反代后端接口避免跨域请求的，但是最近的项目要求要处理跨域的请求，所以记录一下&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;!-- more --&gt;&#xA;&lt;h3 id=&#34;1-正常的spring-boot项目&#34;&gt;1. 正常的Spring boot项目&lt;/h3&gt;&#xA;&lt;p&gt;基本的spring boot项目只需要写个配置类，实现&lt;code&gt;WebMvcConfigurer&lt;/code&gt;接口的&lt;code&gt;addCorsMappings&lt;/code&gt;方法&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>基于Spring做请求参数的加解密/签名校验</title>
       <link>https://urzz.xyz/2019/05/30/spring-param-encrypt/</link>
       <pubDate>Thu, 30 May 2019 14:04:34 +0000</pubDate>
-      
       <guid>https://urzz.xyz/2019/05/30/spring-param-encrypt/</guid>
-      <description>之前做的一个对外网关项目，安全需要所以得对参数进行加密校验 参数 接口交互约定了三个参数： timestamp（请求时间戳） data（实际请求数据</description>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;之前做的一个对外网关项目，安全需要所以得对参数进行加密校验&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;h3 id=&#34;参数&#34;&gt;参数&lt;/h3&gt;&#xA;&lt;p&gt;接口交互约定了三个参数：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;timestamp（请求时间戳）&lt;/li&gt;&#xA;&lt;li&gt;data（实际请求数据，经过加密得到的字符串）&lt;/li&gt;&#xA;&lt;li&gt;sign（以HMAC-SHA1算法对参数的签名）&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;请求方式&#34;&gt;请求方式&lt;/h3&gt;&#xA;&lt;p&gt;接口统一使用json来进行交互，请求的Content-Type统一为application/json&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>SSH 免密码登录失败</title>
       <link>https://urzz.xyz/2018/12/18/ssh-pubkey-auth-failed/</link>
       <pubDate>Tue, 18 Dec 2018 11:57:16 +0000</pubDate>
-      
       <guid>https://urzz.xyz/2018/12/18/ssh-pubkey-auth-failed/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;服务器新建用户，ssh关闭密码认证，只允许pubkey。但是root可以以pubkey登录，新建的用户却不可以，经检查后发现，pubkey认证对用户目录等相关路径的权限是有要求的。
-可在ssh登录命令后加上 &lt;code&gt;-v&lt;/code&gt; 参数，查看具体登录日志&lt;/p&gt;
-&lt;/blockquote&gt;</description>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;服务器新建用户，ssh关闭密码认证，只允许pubkey。但是root可以以pubkey登录，新建的用户却不可以，经检查后发现，pubkey认证对用户目录等相关路径的权限是有要求的。&#xA;可在ssh登录命令后加上 &lt;code&gt;-v&lt;/code&gt; 参数，查看具体登录日志&lt;/p&gt;&#xA;&lt;/blockquote&gt;</description>
     </item>
-    
     <item>
       <title>hexo 接入 gitment 作为评论系统</title>
       <link>https://urzz.xyz/2018/09/23/hexo-use-gitment/</link>
       <pubDate>Sun, 23 Sep 2018 16:09:46 +0000</pubDate>
-      
       <guid>https://urzz.xyz/2018/09/23/hexo-use-gitment/</guid>
-      <description>hexo version: v6.4.1 1. 配置 配置文件在 themes/next. 基本配置如下，主要需要填写正确的github_user, github_repo, client_id, client_secret 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 # Gitment # Introduction: https://imsun.net/posts/gitment-introduction/ gitment: enable: true mint: true # RECOMMEND,</description>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;hexo version: v6.4.1&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;!-- more --&gt;&#xA;&lt;h3 id=&#34;1-配置&#34;&gt;1. 配置&lt;/h3&gt;&#xA;&lt;p&gt;配置文件在 &lt;code&gt;themes/next&lt;/code&gt;.&#xA;基本配置如下，主要需要填写正确的&lt;code&gt;github_user&lt;/code&gt;, &lt;code&gt;github_repo&lt;/code&gt;, &lt;code&gt;client_id&lt;/code&gt;, &lt;code&gt;client_secret&lt;/code&gt;&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# Gitment&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# Introduction: https://imsun.net/posts/gitment-introduction/&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;gitment&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;enable&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;mint&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# RECOMMEND, A mint on Gitment, to support count, language and proxy_gateway&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;count&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# Show comments count in post meta area&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;lazy&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;false&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# Comments lazy loading with a button&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;cleanly&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# Hide &amp;#39;Powered by ...&amp;#39; on footer, and more&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;language&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# Force language, or auto switch by theme&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;github_user&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;urzz&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# MUST HAVE, Your Github Username&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;github_repo&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;blog-comment &lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# MUST HAVE, The name of the repo you use to store Gitment comments&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;client_id&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;***&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# MUST HAVE, Github client id for the Gitment&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;client_secret&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;***&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# EITHER this or proxy_gateway, Github access secret token for the Gitment&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;proxy_gateway: # Address of api proxy, See&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;https://github.com/aimingoo/intersect&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;redirect_protocol&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# Protocol of redirect_uri with force_redirect_protocol when mint enabled&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;h3 id=&#34;2-使用&#34;&gt;2. 使用&lt;/h3&gt;&#xA;&lt;p&gt;配置文件中设置的 &lt;code&gt;github_repo&lt;/code&gt;,&lt;code&gt;client_id&lt;/code&gt;, &lt;code&gt;client_secret&lt;/code&gt; 需要去github上自行创建。（创建一个repo，和一个 OAuth Apps）&lt;/p&gt;</description>
     </item>
-    
-    <item>
-      <title>Spring Boot 2 的MVC配置改变</title>
-      <link>https://urzz.xyz/2018/03/20/spring-boot-2-mvc-config/</link>
-      <pubDate>Tue, 20 Mar 2018 15:44:02 +0000</pubDate>
-      
-      <guid>https://urzz.xyz/2018/03/20/spring-boot-2-mvc-config/</guid>
-      <description>Spring Boot 升级2.0之后，弃用 WebMvcConfigurerAdapter。 Spring Boot 2的Spring版本升级到Spring5，而Spring5为了充</description>
-    </item>
-    
     <item>
       <title>升级内核后无法启动docker</title>
       <link>https://urzz.xyz/2017/12/17/failed-start-docker-after-upgrade-kernel/</link>
       <pubDate>Sun, 17 Dec 2017 00:55:16 +0000</pubDate>
-      
       <guid>https://urzz.xyz/2017/12/17/failed-start-docker-after-upgrade-kernel/</guid>
-      <description>使用了manjaro自带工具更新了linux内核版本到4.14.3之后，docker启动失败 原因 在ststemd中，sudo systemctl status docker.service 不能看到全</description>
+      <description>&lt;p&gt;使用了manjaro自带工具更新了linux内核版本到4.14.3之后，docker启动失败&lt;/p&gt;&#xA;&lt;!-- more --&gt;&#xA;&lt;h3 id=&#34;原因&#34;&gt;原因&lt;/h3&gt;&#xA;&lt;p&gt;在ststemd中，&lt;code&gt;sudo systemctl status docker.service&lt;/code&gt; 不能看到全部的出错信息，只能手动启动docker: &lt;code&gt;sudo dockerd&lt;/code&gt;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>给博客加上HTTPS</title>
       <link>https://urzz.xyz/2017/06/29/nginx-with-https/</link>
       <pubDate>Thu, 29 Jun 2017 01:21:59 +0000</pubDate>
-      
       <guid>https://urzz.xyz/2017/06/29/nginx-with-https/</guid>
-      <description>最近因为毕业，有很多的事情要忙，差点忘了还有个很久不写的博客还放在腾讯云优惠学生机上面（差点就寿未终就正寝） 毕业之后腾讯云的学生机也玩不到了</description>
+      <description>&lt;p&gt;最近因为毕业，有很多的事情要忙，差点忘了还有个很久不写的博客还放在腾讯云优惠学生机上面（差点就寿未终就正寝）&lt;/p&gt;&#xA;&lt;p&gt;毕业之后腾讯云的学生机也玩不到了，送的域名也是要到期了，干脆就直接域名和服务器都给换了= =&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>印象深刻的Java空指针异常</title>
       <link>https://urzz.xyz/2017/02/06/unexpected-java-nullpoint-exception/</link>
       <pubDate>Mon, 06 Feb 2017 22:51:48 +0000</pubDate>
-      
       <guid>https://urzz.xyz/2017/02/06/unexpected-java-nullpoint-exception/</guid>
-      <description>今天在公司无意中碰到一个从来没碰到过的空指针异常= = Java中，空指针异常应该是最常见的异常了。一般来说，碰到 NullPointerException 直接跳到报错的那一行就很容易</description>
+      <description>&lt;p&gt;今天在公司无意中碰到一个从来没碰到过的空指针异常= =&lt;/p&gt;&#xA;&lt;p&gt;Java中，空指针异常应该是最常见的异常了。一般来说，碰到 NullPointerException 直接跳到报错的那一行就很容易就解决了。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>VIM插件管理器 - vim-plug</title>
       <link>https://urzz.xyz/2017/01/02/awesome-vim-plug/</link>
       <pubDate>Mon, 02 Jan 2017 11:28:49 +0000</pubDate>
-      
       <guid>https://urzz.xyz/2017/01/02/awesome-vim-plug/</guid>
-      <description>之前一直在用spf13-vim的开源vim配置，但是一直都感觉这个太过重量级了。用了大半年之后还是决定自己动手diy一个。 为什么要用 主要是因</description>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;之前一直在用spf13-vim的开源vim配置，但是一直都感觉这个太过重量级了。用了大半年之后还是决定自己动手diy一个。&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;h3 id=&#34;为什么要用&#34;&gt;为什么要用&lt;/h3&gt;&#xA;&lt;p&gt;主要是因为vim-plug安装插件是并行的，比vundle要快得多，而且提示信息也更加丰富。&lt;/p&gt;</description>
     </item>
-    
-    <item>
-      <title>谈谈三栏布局的几种方式</title>
-      <link>https://urzz.xyz/2016/09/13/column-3-of-the-css-layout-skills/</link>
-      <pubDate>Tue, 13 Sep 2016 11:01:21 +0000</pubDate>
-      
-      <guid>https://urzz.xyz/2016/09/13/column-3-of-the-css-layout-skills/</guid>
-      <description>三栏式布局是几种常见的布局方式之一，而且实现三栏布局的方式也是有很多，但是大部分的方法都存在这样那样的问题。 绝对定位法（不推荐） 方法简介 使用</description>
-    </item>
-    
     <item>
       <title>Chrome 好用的插件及介绍</title>
       <link>https://urzz.xyz/2016/07/26/useful-chrome-extensions/</link>
       <pubDate>Tue, 26 Jul 2016 16:55:04 +0000</pubDate>
-      
       <guid>https://urzz.xyz/2016/07/26/useful-chrome-extensions/</guid>
-      <description>Chrome 好用的插件及介绍 Infinity new tab 自定义新建的标签页，集合了很多很有用的功能。 GitHub Awesome Complete 不离开当前项目窗口的前提下，弹窗显示出你的搜索结果 Octotree Octotree 是一款非常方</description>
+      <description>&lt;h3 id=&#34;chrome-好用的插件及介绍&#34;&gt;Chrome 好用的插件及介绍&lt;/h3&gt;&#xA;&lt;h4 id=&#34;infinity-new-tab-1&#34;&gt;&lt;a href=&#34;http://infinitynewtab.com/&#34;&gt;Infinity new tab &lt;/a&gt;&lt;/h4&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;自定义新建的标签页，集合了很多很有用的功能。&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;h4 id=&#34;github-awesome-complete2&#34;&gt;&lt;a href=&#34;https://github.com/algolia/github-awesome-autocomplete&#34;&gt;GitHub Awesome Complete&lt;/a&gt;&lt;/h4&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;不离开当前项目窗口的前提下，弹窗显示出你的搜索结果&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;!-- more --&gt;&#xA;&lt;h4 id=&#34;octotree3&#34;&gt;&lt;a href=&#34;https://chrome.google.com/webstore/detail/octotree/bkhaagjahfmjljalopjnoealnfndnagc&#34;&gt;Octotree&lt;/a&gt;&lt;/h4&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Octotree 是一款非常方便的 GitHub 扩展，安装了这款插件之后，你可以在 GitHub 项目页面的左侧看到相应项目的树状结构图，对于项目管理以及具体的文件跳转来说非常方便。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>迁移Ubuntu至另一个硬盘</title>
       <link>https://urzz.xyz/2016/02/02/move-ubuntu/</link>
       <pubDate>Tue, 02 Feb 2016 23:33:53 +0000</pubDate>
-      
       <guid>https://urzz.xyz/2016/02/02/move-ubuntu/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;我一直认为，Windows就是用来玩游戏的系统。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;自从喜欢上了Ubuntu，就一发不可收拾了。虚拟机玩着特别不爽，然后正好要戒游戏，咬咬牙直接装上了Ubuntu（当然，是双系统）。但是固态只有250G左右，两个系统分下来，Ubuntu只有70G左右，win的C盘不知不觉就会占很大的，所以win占大头。其实这本来也是够用了的，不过自从开始学Android之后，就有点吃紧了。原因无他，虚拟机没地方放了。谁让Ubuntu下没有官方的QQ呢，而且wine的QQ真的是特别难用。趁着过年，而且笔记本有个msata的接口，就买了个128G的建兴的。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;头比较大的是家里网时4M小水管，如果重装系统的话很麻烦，而且开发环境也要重新配置，就想着能不能直接把原来的系统备份过来，还好，google是可以查到资料的！&lt;/p&gt;
-&lt;/blockquote&gt;</description>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;我一直认为，Windows就是用来玩游戏的系统。&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;自从喜欢上了Ubuntu，就一发不可收拾了。虚拟机玩着特别不爽，然后正好要戒游戏，咬咬牙直接装上了Ubuntu（当然，是双系统）。但是固态只有250G左右，两个系统分下来，Ubuntu只有70G左右，win的C盘不知不觉就会占很大的，所以win占大头。其实这本来也是够用了的，不过自从开始学Android之后，就有点吃紧了。原因无他，虚拟机没地方放了。谁让Ubuntu下没有官方的QQ呢，而且wine的QQ真的是特别难用。趁着过年，而且笔记本有个msata的接口，就买了个128G的建兴的。&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;头比较大的是家里网时4M小水管，如果重装系统的话很麻烦，而且开发环境也要重新配置，就想着能不能直接把原来的系统备份过来，还好，google是可以查到资料的！&lt;/p&gt;&#xA;&lt;/blockquote&gt;</description>
     </item>
-    
     <item>
       <title>JS通过打乱数组生成不重复随机数</title>
       <link>https://urzz.xyz/2015/12/01/js-random-no-repeat/</link>
       <pubDate>Tue, 01 Dec 2015 20:47:48 +0000</pubDate>
-      
       <guid>https://urzz.xyz/2015/12/01/js-random-no-repeat/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;Js生成随机数的方法跟Java很像，或者说很多的编程语言的随机数生成方法都是类似的，只不过生成随机数的函数的实现思想是不是一致我就不知道了～&lt;/p&gt;
-&lt;/blockquote&gt;</description>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;Js生成随机数的方法跟Java很像，或者说很多的编程语言的随机数生成方法都是类似的，只不过生成随机数的函数的实现思想是不是一致我就不知道了～&lt;/p&gt;&#xA;&lt;/blockquote&gt;</description>
     </item>
-    
   </channel>
 </rss>

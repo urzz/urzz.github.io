@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="fooksky" /><meta name="description" content=" 服务器新建用户，ssh关闭密码认证，只允许pubkey。但是root可以以pubkey登录，新建的用户却不可以，经检查后发现，pubkey认证对用户目录等相关路径的权限是有要求的。 可在ssh登录命令后加上 -v 参数，查看具体登录日志
+<meta name="author" content="" /><meta name="description" content=" 服务器新建用户，ssh关闭密码认证，只允许pubkey。但是root可以以pubkey登录，新建的用户却不可以，经检查后发现，pubkey认证对用户目录等相关路径的权限是有要求的。 可在ssh登录命令后加上 -v 参数，查看具体登录日志
 " /><meta name="keywords" content="fooksky, 破壳, Java" />
 
 
@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.113.0 with theme even" />
+<meta name="generator" content="Hugo 0.140.2 with theme even" />
 
 
 <link rel="canonical" href="https://urzz.xyz/2018/12/18/ssh-pubkey-auth-failed/" />
@@ -40,28 +40,26 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="SSH 免密码登录失败" />
-<meta property="og:description" content="
-服务器新建用户，ssh关闭密码认证，只允许pubkey。但是root可以以pubkey登录，新建的用户却不可以，经检查后发现，pubkey认证对用户目录等相关路径的权限是有要求的。
-可在ssh登录命令后加上 -v 参数，查看具体登录日志
-" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://urzz.xyz/2018/12/18/ssh-pubkey-auth-failed/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2018-12-18T11:57:16+00:00" />
-<meta property="article:modified_time" content="2018-12-18T11:57:16+00:00" />
-<meta itemprop="name" content="SSH 免密码登录失败">
-<meta itemprop="description" content="
-服务器新建用户，ssh关闭密码认证，只允许pubkey。但是root可以以pubkey登录，新建的用户却不可以，经检查后发现，pubkey认证对用户目录等相关路径的权限是有要求的。
-可在ssh登录命令后加上 -v 参数，查看具体登录日志
-"><meta itemprop="datePublished" content="2018-12-18T11:57:16+00:00" />
-<meta itemprop="dateModified" content="2018-12-18T11:57:16+00:00" />
-<meta itemprop="wordCount" content="357">
-<meta itemprop="keywords" content="linux," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="SSH 免密码登录失败"/>
-<meta name="twitter:description" content="
-服务器新建用户，ssh关闭密码认证，只允许pubkey。但是root可以以pubkey登录，新建的用户却不可以，经检查后发现，pubkey认证对用户目录等相关路径的权限是有要求的。
-可在ssh登录命令后加上 -v 参数，查看具体登录日志
-"/>
+<meta property="og:url" content="https://urzz.xyz/2018/12/18/ssh-pubkey-auth-failed/">
+  <meta property="og:site_name" content="破壳 - 虽不能至，心向往之">
+  <meta property="og:title" content="SSH 免密码登录失败">
+  <meta property="og:description" content="服务器新建用户，ssh关闭密码认证，只允许pubkey。但是root可以以pubkey登录，新建的用户却不可以，经检查后发现，pubkey认证对用户目录等相关路径的权限是有要求的。 可在ssh登录命令后加上 -v 参数，查看具体登录日志">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2018-12-18T11:57:16+00:00">
+    <meta property="article:modified_time" content="2018-12-18T11:57:16+00:00">
+    <meta property="article:tag" content="Linux">
+
+  <meta itemprop="name" content="SSH 免密码登录失败">
+  <meta itemprop="description" content="服务器新建用户，ssh关闭密码认证，只允许pubkey。但是root可以以pubkey登录，新建的用户却不可以，经检查后发现，pubkey认证对用户目录等相关路径的权限是有要求的。 可在ssh登录命令后加上 -v 参数，查看具体登录日志">
+  <meta itemprop="datePublished" content="2018-12-18T11:57:16+00:00">
+  <meta itemprop="dateModified" content="2018-12-18T11:57:16+00:00">
+  <meta itemprop="wordCount" content="357">
+  <meta itemprop="keywords" content="Linux">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="SSH 免密码登录失败">
+  <meta name="twitter:description" content="服务器新建用户，ssh关闭密码认证，只允许pubkey。但是root可以以pubkey登录，新建的用户却不可以，经检查后发现，pubkey认证对用户目录等相关路径的权限是有要求的。 可在ssh登录命令后加上 -v 参数，查看具体登录日志">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -169,7 +167,7 @@
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content">fooksky</span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -223,7 +221,8 @@
     <footer id="footer" class="footer">
       <div class="social-links">
       <a href="https://github.com/urzz" class="iconfont icon-github" title="github"></a>
-  </div>
+  
+</div>
 
 <div class="copyright">
   <span class="power-by">
@@ -248,9 +247,9 @@
   <span class="copyright-year">
     &copy; 
     2015 - 
-    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>fooksky</span>
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span>
+    <span></span>
     <br />
-    
     <a href="https://beian.miit.gov.cn/" target="_blank">苏ICP备18053064号-2</a>
   </span>
 </div>
@@ -270,17 +269,6 @@
 
 <script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-101637356-2', 'auto');
-	ga('set', 'anonymizeIp', true);
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 <script id="baidu_analytics">
   var _hmt = _hmt || [];
   (function() {

@@ -16,14 +16,16 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="fooksky" /><meta name="description" content="简介 HPE MicroServer 系列是 HPE ProLiant 推出的面向家庭、小型办公室的微型服务器产品，有着体积小、外观漂亮、噪音低等优点。 由于购买较早，开箱图找不到嘞，因此详细的外" /><meta name="keywords" content="fooksky, 破壳, Java" />
+<meta name="author" content="" /><meta name="description" content="简介 HPE MicroServer 系列是 HPE ProLiant 推出的面向家庭、小型办公室的微型服务器产品，有着体积小、外观漂亮、噪音低等优点。
+由于购买较早，开箱图找不到嘞，因此详细的外观、服务器的内部结构等信息，可以参考下面的文章：
+" /><meta name="keywords" content="fooksky, 破壳, Java" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.113.0 with theme even" />
+<meta name="generator" content="Hugo 0.140.2 with theme even" />
 
 
 <link rel="canonical" href="https://urzz.xyz/2023/02/01/homelab-hpe-gen10plus-overview/" />
@@ -39,19 +41,31 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Homelab - HPE Gen10 Plus 概述" />
-<meta property="og:description" content="简介 HPE MicroServer 系列是 HPE ProLiant 推出的面向家庭、小型办公室的微型服务器产品，有着体积小、外观漂亮、噪音低等优点。 由于购买较早，开箱图找不到嘞，因此详细的外" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://urzz.xyz/2023/02/01/homelab-hpe-gen10plus-overview/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2023-02-01T15:49:36+08:00" />
-<meta property="article:modified_time" content="2023-02-01T15:49:36+08:00" />
-<meta itemprop="name" content="Homelab - HPE Gen10 Plus 概述">
-<meta itemprop="description" content="简介 HPE MicroServer 系列是 HPE ProLiant 推出的面向家庭、小型办公室的微型服务器产品，有着体积小、外观漂亮、噪音低等优点。 由于购买较早，开箱图找不到嘞，因此详细的外"><meta itemprop="datePublished" content="2023-02-01T15:49:36+08:00" />
-<meta itemprop="dateModified" content="2023-02-01T15:49:36+08:00" />
-<meta itemprop="wordCount" content="1049">
-<meta itemprop="keywords" content="HPE Gen10 Plus,HomeLab,PVE," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Homelab - HPE Gen10 Plus 概述"/>
-<meta name="twitter:description" content="简介 HPE MicroServer 系列是 HPE ProLiant 推出的面向家庭、小型办公室的微型服务器产品，有着体积小、外观漂亮、噪音低等优点。 由于购买较早，开箱图找不到嘞，因此详细的外"/>
+<meta property="og:url" content="https://urzz.xyz/2023/02/01/homelab-hpe-gen10plus-overview/">
+  <meta property="og:site_name" content="破壳 - 虽不能至，心向往之">
+  <meta property="og:title" content="Homelab - HPE Gen10 Plus 概述">
+  <meta property="og:description" content="简介 HPE MicroServer 系列是 HPE ProLiant 推出的面向家庭、小型办公室的微型服务器产品，有着体积小、外观漂亮、噪音低等优点。
+由于购买较早，开箱图找不到嘞，因此详细的外观、服务器的内部结构等信息，可以参考下面的文章：">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2023-02-01T15:49:36+08:00">
+    <meta property="article:modified_time" content="2023-02-01T15:49:36+08:00">
+    <meta property="article:tag" content="HPE Gen10 Plus">
+    <meta property="article:tag" content="HomeLab">
+    <meta property="article:tag" content="PVE">
+
+  <meta itemprop="name" content="Homelab - HPE Gen10 Plus 概述">
+  <meta itemprop="description" content="简介 HPE MicroServer 系列是 HPE ProLiant 推出的面向家庭、小型办公室的微型服务器产品，有着体积小、外观漂亮、噪音低等优点。
+由于购买较早，开箱图找不到嘞，因此详细的外观、服务器的内部结构等信息，可以参考下面的文章：">
+  <meta itemprop="datePublished" content="2023-02-01T15:49:36+08:00">
+  <meta itemprop="dateModified" content="2023-02-01T15:49:36+08:00">
+  <meta itemprop="wordCount" content="1049">
+  <meta itemprop="keywords" content="HPE Gen10 Plus,HomeLab,PVE">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Homelab - HPE Gen10 Plus 概述">
+  <meta name="twitter:description" content="简介 HPE MicroServer 系列是 HPE ProLiant 推出的面向家庭、小型办公室的微型服务器产品，有着体积小、外观漂亮、噪音低等优点。
+由于购买较早，开箱图找不到嘞，因此详细的外观、服务器的内部结构等信息，可以参考下面的文章：">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -199,7 +213,7 @@
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content">fooksky</span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -251,7 +265,8 @@
     <footer id="footer" class="footer">
       <div class="social-links">
       <a href="https://github.com/urzz" class="iconfont icon-github" title="github"></a>
-  </div>
+  
+</div>
 
 <div class="copyright">
   <span class="power-by">
@@ -276,9 +291,9 @@
   <span class="copyright-year">
     &copy; 
     2015 - 
-    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>fooksky</span>
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span>
+    <span></span>
     <br />
-    
     <a href="https://beian.miit.gov.cn/" target="_blank">苏ICP备18053064号-2</a>
   </span>
 </div>
@@ -298,17 +313,6 @@
 
 <script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-101637356-2', 'auto');
-	ga('set', 'anonymizeIp', true);
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 <script id="baidu_analytics">
   var _hmt = _hmt || [];
   (function() {

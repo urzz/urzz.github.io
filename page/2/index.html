@@ -16,14 +16,14 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="fooksky" /><meta name="description" content="虽不能至，心向往之" /><meta name="keywords" content="fooksky, 破壳, Java" />
+<meta name="author" content="" /><meta name="description" content="虽不能至，心向往之" /><meta name="keywords" content="fooksky, 破壳, Java" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.113.0 with theme even" />
+<meta name="generator" content="Hugo 0.140.2 with theme even" />
 
 
 <link rel="canonical" href="https://urzz.xyz/" />
@@ -41,14 +41,20 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="破壳 - 虽不能至，心向往之" />
-<meta property="og:description" content="虽不能至，心向往之" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://urzz.xyz/" />
-<meta itemprop="name" content="破壳 - 虽不能至，心向往之">
-<meta itemprop="description" content="虽不能至，心向往之"><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="破壳 - 虽不能至，心向往之"/>
-<meta name="twitter:description" content="虽不能至，心向往之"/>
+<meta property="og:url" content="https://urzz.xyz/">
+  <meta property="og:site_name" content="破壳 - 虽不能至，心向往之">
+  <meta property="og:title" content="破壳 - 虽不能至，心向往之">
+  <meta property="og:description" content="虽不能至，心向往之">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="website">
+
+  <meta itemprop="name" content="破壳 - 虽不能至，心向往之">
+  <meta itemprop="description" content="虽不能至，心向往之">
+  <meta itemprop="datePublished" content="2023-02-01T15:49:36+08:00">
+  <meta itemprop="dateModified" content="2023-02-01T15:49:36+08:00">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="破壳 - 虽不能至，心向往之">
+  <meta name="twitter:description" content="虽不能至，心向往之">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -126,7 +132,13 @@
   
   <div class="post-content">
     <div class="post-summary">
-      为了解决跨域请求无法使用cookie的问题，使用nginx对后端服务做了反代。但是反代之后，却发现cookie没有被正确传递。 相关配置 nginx 反代
+      <blockquote>
+<p>为了解决跨域请求无法使用cookie的问题，使用nginx对后端服务做了反代。但是反代之后，却发现cookie没有被正确传递。</p>
+</blockquote>
+<!-- more -->
+<h3 id="相关配置">相关配置</h3>
+<h4 id="nginx-反代配置">nginx 反代配置</h4>
+<p>nginx反代的配置很简单，只是简单设置了proxy_pass</p>
     </div>
     <div class="read-more">
       <a href="/2019/07/03/spring-boot-nginx-cookie-nout-found/" class="read-more-link">阅读更多</a>
@@ -149,7 +161,11 @@
   
   <div class="post-content">
     <div class="post-summary">
-      最近一个项目的认证是用shiro实现的，以前没有做过spring boot + shiro的整合，所以遇到了一些奇奇怪怪的坑 shiro的整合具体这边就不
+      <blockquote>
+<p>最近一个项目的认证是用shiro实现的，以前没有做过spring boot + shiro的整合，所以遇到了一些奇奇怪怪的坑</p>
+</blockquote>
+<!-- more -->
+<p>shiro的整合具体这边就不做阐述了，大概有以下几个类:</p>
     </div>
     <div class="read-more">
       <a href="/2019/06/11/spring-boot-shiro-custom-filter/" class="read-more-link">阅读更多</a>
@@ -172,7 +188,12 @@
   
   <div class="post-content">
     <div class="post-summary">
-      之前的项目都没有跨域的要求，都是通过nginx反代后端接口避免跨域请求的，但是最近的项目要求要处理跨域的请求，所以记录一下 1. 正常的Sprin
+      <blockquote>
+<p>之前的项目都没有跨域的要求，都是通过nginx反代后端接口避免跨域请求的，但是最近的项目要求要处理跨域的请求，所以记录一下</p>
+</blockquote>
+<!-- more -->
+<h3 id="1-正常的spring-boot项目">1. 正常的Spring boot项目</h3>
+<p>基本的spring boot项目只需要写个配置类，实现<code>WebMvcConfigurer</code>接口的<code>addCorsMappings</code>方法</p>
     </div>
     <div class="read-more">
       <a href="/2019/06/05/spring-shiro-cors-config/" class="read-more-link">阅读更多</a>
@@ -195,7 +216,18 @@
   
   <div class="post-content">
     <div class="post-summary">
-      之前做的一个对外网关项目，安全需要所以得对参数进行加密校验 参数 接口交互约定了三个参数： timestamp（请求时间戳） data（实际请求数据
+      <blockquote>
+<p>之前做的一个对外网关项目，安全需要所以得对参数进行加密校验</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<p>接口交互约定了三个参数：</p>
+<ul>
+<li>timestamp（请求时间戳）</li>
+<li>data（实际请求数据，经过加密得到的字符串）</li>
+<li>sign（以HMAC-SHA1算法对参数的签名）</li>
+</ul>
+<h3 id="请求方式">请求方式</h3>
+<p>接口统一使用json来进行交互，请求的Content-Type统一为application/json</p>
     </div>
     <div class="read-more">
       <a href="/2019/05/30/spring-param-encrypt/" class="read-more-link">阅读更多</a>
@@ -244,33 +276,54 @@
   
   <div class="post-content">
     <div class="post-summary">
-      hexo version: v6.4.1 1. 配置 配置文件在 themes/next. 基本配置如下，主要需要填写正确的github_user, github_repo, client_id, client_secret 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 # Gitment # Introduction: https://imsun.net/posts/gitment-introduction/ gitment: enable: true mint: true # RECOMMEND,
+      <blockquote>
+<p>hexo version: v6.4.1</p>
+</blockquote>
+<!-- more -->
+<h3 id="1-配置">1. 配置</h3>
+<p>配置文件在 <code>themes/next</code>.
+基本配置如下，主要需要填写正确的<code>github_user</code>, <code>github_repo</code>, <code>client_id</code>, <code>client_secret</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># Gitment</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># Introduction: https://imsun.net/posts/gitment-introduction/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">gitment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">enable</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">mint</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c"># RECOMMEND, A mint on Gitment, to support count, language and proxy_gateway</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c"># Show comments count in post meta area</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">lazy</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="c"># Comments lazy loading with a button</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">cleanly</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c"># Hide &#39;Powered by ...&#39; on footer, and more</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">language</span><span class="p">:</span><span class="w"> </span><span class="c"># Force language, or auto switch by theme</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">github_user</span><span class="p">:</span><span class="w"> </span><span class="l">urzz</span><span class="w"> </span><span class="c"># MUST HAVE, Your Github Username</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">github_repo</span><span class="p">:</span><span class="w"> </span><span class="l">blog-comment </span><span class="w"> </span><span class="c"># MUST HAVE, The name of the repo you use to store Gitment comments</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">client_id</span><span class="p">:</span><span class="w"> </span><span class="cp">***</span><span class="w"> </span><span class="c"># MUST HAVE, Github client id for the Gitment</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">client_secret</span><span class="p">:</span><span class="w"> </span><span class="cp">***</span><span class="w"> </span><span class="c"># EITHER this or proxy_gateway, Github access secret token for the Gitment</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">proxy_gateway: # Address of api proxy, See</span><span class="p">:</span><span class="w"> </span><span class="l">https://github.com/aimingoo/intersect</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">redirect_protocol</span><span class="p">:</span><span class="w"> </span><span class="c"># Protocol of redirect_uri with force_redirect_protocol when mint enabled</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="2-使用">2. 使用</h3>
+<p>配置文件中设置的 <code>github_repo</code>,<code>client_id</code>, <code>client_secret</code> 需要去github上自行创建。（创建一个repo，和一个 OAuth Apps）</p>
     </div>
     <div class="read-more">
       <a href="/2018/09/23/hexo-use-gitment/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2018/03/20/spring-boot-2-mvc-config/">Spring Boot 2 的MVC配置改变</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2018-03-20 </span>
-      <div class="post-category">
-          <a href="/categories/spring-boot/"> Spring Boot </a>
-          </div>
-        <span class="more-meta"> 约 1239 字 </span>
-        <span class="more-meta"> 预计阅读 3 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      Spring Boot 升级2.0之后，弃用 WebMvcConfigurerAdapter。 Spring Boot 2的Spring版本升级到Spring5，而Spring5为了充
-    </div>
-    <div class="read-more">
-      <a href="/2018/03/20/spring-boot-2-mvc-config/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
@@ -290,7 +343,10 @@
   
   <div class="post-content">
     <div class="post-summary">
-      使用了manjaro自带工具更新了linux内核版本到4.14.3之后，docker启动失败 原因 在ststemd中，sudo systemctl status docker.service 不能看到全
+      <p>使用了manjaro自带工具更新了linux内核版本到4.14.3之后，docker启动失败</p>
+<!-- more -->
+<h3 id="原因">原因</h3>
+<p>在ststemd中，<code>sudo systemctl status docker.service</code> 不能看到全部的出错信息，只能手动启动docker: <code>sudo dockerd</code></p>
     </div>
     <div class="read-more">
       <a href="/2017/12/17/failed-start-docker-after-upgrade-kernel/" class="read-more-link">阅读更多</a>
@@ -313,7 +369,8 @@
   
   <div class="post-content">
     <div class="post-summary">
-      最近因为毕业，有很多的事情要忙，差点忘了还有个很久不写的博客还放在腾讯云优惠学生机上面（差点就寿未终就正寝） 毕业之后腾讯云的学生机也玩不到了
+      <p>最近因为毕业，有很多的事情要忙，差点忘了还有个很久不写的博客还放在腾讯云优惠学生机上面（差点就寿未终就正寝）</p>
+<p>毕业之后腾讯云的学生机也玩不到了，送的域名也是要到期了，干脆就直接域名和服务器都给换了= =</p>
     </div>
     <div class="read-more">
       <a href="/2017/06/29/nginx-with-https/" class="read-more-link">阅读更多</a>
@@ -336,10 +393,38 @@
   
   <div class="post-content">
     <div class="post-summary">
-      今天在公司无意中碰到一个从来没碰到过的空指针异常= = Java中，空指针异常应该是最常见的异常了。一般来说，碰到 NullPointerException 直接跳到报错的那一行就很容易
+      <p>今天在公司无意中碰到一个从来没碰到过的空指针异常= =</p>
+<p>Java中，空指针异常应该是最常见的异常了。一般来说，碰到 NullPointerException 直接跳到报错的那一行就很容易就解决了。</p>
     </div>
     <div class="read-more">
       <a href="/2017/02/06/unexpected-java-nullpoint-exception/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2017/01/02/awesome-vim-plug/">VIM插件管理器 - vim-plug</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2017-01-02 </span>
+      <div class="post-category">
+          <a href="/categories/editor/"> Editor </a>
+          </div>
+        <span class="more-meta"> 约 234 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <blockquote>
+<p>之前一直在用spf13-vim的开源vim配置，但是一直都感觉这个太过重量级了。用了大半年之后还是决定自己动手diy一个。</p>
+</blockquote>
+<h3 id="为什么要用">为什么要用</h3>
+<p>主要是因为vim-plug安装插件是并行的，比vundle要快得多，而且提示信息也更加丰富。</p>
+    </div>
+    <div class="read-more">
+      <a href="/2017/01/02/awesome-vim-plug/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
@@ -365,8 +450,10 @@
     <footer id="footer" class="footer">
       <div class="social-links">
       <a href="https://github.com/urzz" class="iconfont icon-github" title="github"></a>
-  <a  type="application/rss&#43;xml" href="https://urzz.xyz/index.xml" title="破壳 - 虽不能至，心向往之" class="iconfont icon-rss"></a>
-  </div>
+  
+    <a href="/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+  
+</div>
 
 <div class="copyright">
   <span class="power-by">
@@ -391,9 +478,9 @@
   <span class="copyright-year">
     &copy; 
     2015 - 
-    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>fooksky</span>
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span>
+    <span></span>
     <br />
-    
     <a href="https://beian.miit.gov.cn/" target="_blank">苏ICP备18053064号-2</a>
   </span>
 </div>
@@ -413,17 +500,6 @@
 
 <script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-101637356-2', 'auto');
-	ga('set', 'anonymizeIp', true);
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 <script id="baidu_analytics">
   var _hmt = _hmt || [];
   (function() {

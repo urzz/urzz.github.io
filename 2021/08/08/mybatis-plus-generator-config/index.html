@@ -16,14 +16,15 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="fooksky" /><meta name="description" content="简介 MyBatis Plus 是一个MyBatis的增强工具，内置通用mapper，提供了基本的curd操作，简化了MyBatis的开发使用工作。 它提供了一个代码" /><meta name="keywords" content="fooksky, 破壳, Java" />
+<meta name="author" content="" /><meta name="description" content="简介 MyBatis Plus 是一个MyBatis的增强工具，内置通用mapper，提供了基本的curd操作，简化了MyBatis的开发使用工作。 它提供了一个代码生成器工具，可以根据数据库表来自动生成entity、mapper、mapper xml、service、controller等模块的代码，简化项目的初始化工作。
+" /><meta name="keywords" content="fooksky, 破壳, Java" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.113.0 with theme even" />
+<meta name="generator" content="Hugo 0.140.2 with theme even" />
 
 
 <link rel="canonical" href="https://urzz.xyz/2021/08/08/mybatis-plus-generator-config/" />
@@ -39,19 +40,26 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="使用mybatis-plus-generator初始化项目" />
-<meta property="og:description" content="简介 MyBatis Plus 是一个MyBatis的增强工具，内置通用mapper，提供了基本的curd操作，简化了MyBatis的开发使用工作。 它提供了一个代码" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://urzz.xyz/2021/08/08/mybatis-plus-generator-config/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2021-08-08T23:17:14+08:00" />
-<meta property="article:modified_time" content="2021-08-08T23:17:14+08:00" />
-<meta itemprop="name" content="使用mybatis-plus-generator初始化项目">
-<meta itemprop="description" content="简介 MyBatis Plus 是一个MyBatis的增强工具，内置通用mapper，提供了基本的curd操作，简化了MyBatis的开发使用工作。 它提供了一个代码"><meta itemprop="datePublished" content="2021-08-08T23:17:14+08:00" />
-<meta itemprop="dateModified" content="2021-08-08T23:17:14+08:00" />
-<meta itemprop="wordCount" content="749">
-<meta itemprop="keywords" content="Mybatis-Plus," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="使用mybatis-plus-generator初始化项目"/>
-<meta name="twitter:description" content="简介 MyBatis Plus 是一个MyBatis的增强工具，内置通用mapper，提供了基本的curd操作，简化了MyBatis的开发使用工作。 它提供了一个代码"/>
+<meta property="og:url" content="https://urzz.xyz/2021/08/08/mybatis-plus-generator-config/">
+  <meta property="og:site_name" content="破壳 - 虽不能至，心向往之">
+  <meta property="og:title" content="使用mybatis-plus-generator初始化项目">
+  <meta property="og:description" content="简介 MyBatis Plus 是一个MyBatis的增强工具，内置通用mapper，提供了基本的curd操作，简化了MyBatis的开发使用工作。 它提供了一个代码生成器工具，可以根据数据库表来自动生成entity、mapper、mapper xml、service、controller等模块的代码，简化项目的初始化工作。">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2021-08-08T23:17:14+08:00">
+    <meta property="article:modified_time" content="2021-08-08T23:17:14+08:00">
+    <meta property="article:tag" content="Mybatis-Plus">
+
+  <meta itemprop="name" content="使用mybatis-plus-generator初始化项目">
+  <meta itemprop="description" content="简介 MyBatis Plus 是一个MyBatis的增强工具，内置通用mapper，提供了基本的curd操作，简化了MyBatis的开发使用工作。 它提供了一个代码生成器工具，可以根据数据库表来自动生成entity、mapper、mapper xml、service、controller等模块的代码，简化项目的初始化工作。">
+  <meta itemprop="datePublished" content="2021-08-08T23:17:14+08:00">
+  <meta itemprop="dateModified" content="2021-08-08T23:17:14+08:00">
+  <meta itemprop="wordCount" content="749">
+  <meta itemprop="keywords" content="Mybatis-Plus">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="使用mybatis-plus-generator初始化项目">
+  <meta name="twitter:description" content="简介 MyBatis Plus 是一个MyBatis的增强工具，内置通用mapper，提供了基本的curd操作，简化了MyBatis的开发使用工作。 它提供了一个代码生成器工具，可以根据数据库表来自动生成entity、mapper、mapper xml、service、controller等模块的代码，简化项目的初始化工作。">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -266,80 +274,80 @@
 </span><span class="lnt">73
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nn">xyz.urzz.selfpubgservice</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">com.baomidou.mybatisplus.generator.AutoGenerator</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">com.baomidou.mybatisplus.generator.config.*</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">com.baomidou.mybatisplus.generator.config.rules.NamingStrategy</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MybatisPlusGen</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">DB_URL</span> <span class="o">=</span> <span class="s">&#34;jdbc:mysql://${mysql_server}:3306/${db_name}&#34;</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">DB_USERNAME</span> <span class="o">=</span> <span class="s">&#34;user&#34;</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">DB_PASSWD</span> <span class="o">=</span> <span class="s">&#34;passwd&#34;</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">MODULE</span> <span class="o">=</span> <span class="s">&#34;self-pubg-service&#34;</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">CODE_GEN_PATH</span> <span class="o">=</span> <span class="s">&#34;/src/main/java&#34;</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">CODE_AUTHOR</span> <span class="o">=</span> <span class="s">&#34;urzz&#34;</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">PACKAGE_PARENT</span> <span class="o">=</span> <span class="s">&#34;xyz.urzz.self.pubg&#34;</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">DB_TABLE_PREFIX</span> <span class="o">=</span> <span class="s">&#34;t_&#34;</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">// db config
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">DataSourceConfig</span> <span class="n">dataSourceConfig</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DataSourceConfig</span>
-</span></span><span class="line"><span class="cl">                <span class="o">.</span><span class="na">Builder</span><span class="o">(</span><span class="n">DB_URL</span><span class="o">,</span> <span class="n">DB_USERNAME</span><span class="o">,</span> <span class="n">DB_PASSWD</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">                <span class="o">.</span><span class="na">build</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="c1">// code gen path config
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">String</span> <span class="n">projectPath</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">getProperty</span><span class="o">(</span><span class="s">&#34;user.dir&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">GlobalConfig</span> <span class="n">globalConfig</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GlobalConfig</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
-</span></span><span class="line"><span class="cl">                <span class="o">.</span><span class="na">outputDir</span><span class="o">(</span><span class="n">projectPath</span> <span class="o">+</span> <span class="s">&#34;/&#34;</span> <span class="o">+</span> <span class="n">MODULE</span> <span class="o">+</span> <span class="n">CODE_GEN_PATH</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">                <span class="c1">// 生成文件后是否打开目录（文件浏览器）
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="o">.</span><span class="na">openDir</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">                <span class="c1">// 覆盖文件
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="c1">//.fileOverride()
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="o">.</span><span class="na">author</span><span class="o">(</span><span class="n">CODE_AUTHOR</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">                <span class="o">.</span><span class="na">build</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="c1">// code gen package config
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">PackageConfig</span> <span class="n">packageConfig</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PackageConfig</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
-</span></span><span class="line"><span class="cl">                <span class="c1">// 包路径
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="o">.</span><span class="na">parent</span><span class="o">(</span><span class="n">PACKAGE_PARENT</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">                <span class="o">.</span><span class="na">build</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="c1">// code gen strategy config
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">StrategyConfig</span> <span class="n">strategyConfig</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StrategyConfig</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
-</span></span><span class="line"><span class="cl">                <span class="c1">// table prefix
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="o">.</span><span class="na">addTablePrefix</span><span class="o">(</span><span class="n">DB_TABLE_PREFIX</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">                <span class="o">.</span><span class="na">entityBuilder</span><span class="o">()</span>
-</span></span><span class="line"><span class="cl">                <span class="c1">// table -&gt; entity
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="o">.</span><span class="na">naming</span><span class="o">(</span><span class="n">NamingStrategy</span><span class="o">.</span><span class="na">underline_to_camel</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">                <span class="c1">// column -&gt; field
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="o">.</span><span class="na">columnNaming</span><span class="o">(</span><span class="n">NamingStrategy</span><span class="o">.</span><span class="na">underline_to_camel</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">                <span class="c1">// entity add lombok
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="o">.</span><span class="na">enableLombok</span><span class="o">()</span>
-</span></span><span class="line"><span class="cl">                <span class="o">.</span><span class="na">mapperBuilder</span><span class="o">()</span>
-</span></span><span class="line"><span class="cl">                <span class="c1">// mapper add column list
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="o">.</span><span class="na">enableBaseColumnList</span><span class="o">()</span>
-</span></span><span class="line"><span class="cl">                <span class="c1">// mapper add column map
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="o">.</span><span class="na">enableBaseResultMap</span><span class="o">()</span>
-</span></span><span class="line"><span class="cl">                <span class="o">.</span><span class="na">build</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="n">TemplateConfig</span> <span class="n">templateConfig</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TemplateConfig</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
-</span></span><span class="line"><span class="cl">                <span class="c1">// disable gen controller
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="o">.</span><span class="na">disable</span><span class="o">(</span><span class="n">TemplateType</span><span class="o">.</span><span class="na">CONTROLLER</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">                <span class="o">.</span><span class="na">build</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="n">AutoGenerator</span> <span class="n">autoGenerator</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AutoGenerator</span><span class="o">(</span><span class="n">dataSourceConfig</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">autoGenerator</span><span class="o">.</span><span class="na">global</span><span class="o">(</span><span class="n">globalConfig</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">                <span class="o">.</span><span class="na">strategy</span><span class="o">(</span><span class="n">strategyConfig</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">                <span class="o">.</span><span class="na">template</span><span class="o">(</span><span class="n">templateConfig</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">                <span class="o">.</span><span class="na">packageInfo</span><span class="o">(</span><span class="n">packageConfig</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="n">autoGenerator</span><span class="o">.</span><span class="na">execute</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nn">xyz.urzz.selfpubgservice</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">com.baomidou.mybatisplus.generator.AutoGenerator</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">com.baomidou.mybatisplus.generator.config.*</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">com.baomidou.mybatisplus.generator.config.rules.NamingStrategy</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MybatisPlusGen</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">DB_URL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;jdbc:mysql://${mysql_server}:3306/${db_name}&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">DB_USERNAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;user&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">DB_PASSWD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;passwd&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">MODULE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;self-pubg-service&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">CODE_GEN_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;/src/main/java&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">CODE_AUTHOR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;urzz&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">PACKAGE_PARENT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;xyz.urzz.self.pubg&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">DB_TABLE_PREFIX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;t_&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// db config</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">DataSourceConfig</span><span class="w"> </span><span class="n">dataSourceConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DataSourceConfig</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">Builder</span><span class="p">(</span><span class="n">DB_URL</span><span class="p">,</span><span class="w"> </span><span class="n">DB_USERNAME</span><span class="p">,</span><span class="w"> </span><span class="n">DB_PASSWD</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// code gen path config</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">projectPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">getProperty</span><span class="p">(</span><span class="s">&#34;user.dir&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">GlobalConfig</span><span class="w"> </span><span class="n">globalConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">GlobalConfig</span><span class="p">.</span><span class="na">Builder</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">outputDir</span><span class="p">(</span><span class="n">projectPath</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&#34;/&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">MODULE</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">CODE_GEN_PATH</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="c1">// 生成文件后是否打开目录（文件浏览器）</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">openDir</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="c1">// 覆盖文件</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="c1">//.fileOverride()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">author</span><span class="p">(</span><span class="n">CODE_AUTHOR</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// code gen package config</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">PackageConfig</span><span class="w"> </span><span class="n">packageConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PackageConfig</span><span class="p">.</span><span class="na">Builder</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="c1">// 包路径</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">parent</span><span class="p">(</span><span class="n">PACKAGE_PARENT</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// code gen strategy config</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">StrategyConfig</span><span class="w"> </span><span class="n">strategyConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">StrategyConfig</span><span class="p">.</span><span class="na">Builder</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="c1">// table prefix</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">addTablePrefix</span><span class="p">(</span><span class="n">DB_TABLE_PREFIX</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">entityBuilder</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="c1">// table -&gt; entity</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">naming</span><span class="p">(</span><span class="n">NamingStrategy</span><span class="p">.</span><span class="na">underline_to_camel</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="c1">// column -&gt; field</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">columnNaming</span><span class="p">(</span><span class="n">NamingStrategy</span><span class="p">.</span><span class="na">underline_to_camel</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="c1">// entity add lombok</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">enableLombok</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">mapperBuilder</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="c1">// mapper add column list</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">enableBaseColumnList</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="c1">// mapper add column map</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">enableBaseResultMap</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">TemplateConfig</span><span class="w"> </span><span class="n">templateConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TemplateConfig</span><span class="p">.</span><span class="na">Builder</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="c1">// disable gen controller</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">disable</span><span class="p">(</span><span class="n">TemplateType</span><span class="p">.</span><span class="na">CONTROLLER</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">AutoGenerator</span><span class="w"> </span><span class="n">autoGenerator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AutoGenerator</span><span class="p">(</span><span class="n">dataSourceConfig</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">autoGenerator</span><span class="p">.</span><span class="na">global</span><span class="p">(</span><span class="n">globalConfig</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">strategy</span><span class="p">(</span><span class="n">strategyConfig</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">template</span><span class="p">(</span><span class="n">templateConfig</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">packageInfo</span><span class="p">(</span><span class="n">packageConfig</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">autoGenerator</span><span class="p">.</span><span class="na">execute</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>类生成的相关配置在下列的各个配置类中，示例中只是展示了部分的配置。</p>
 <ul>
@@ -359,7 +367,7 @@
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content">fooksky</span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -413,7 +421,8 @@
     <footer id="footer" class="footer">
       <div class="social-links">
       <a href="https://github.com/urzz" class="iconfont icon-github" title="github"></a>
-  </div>
+  
+</div>
 
 <div class="copyright">
   <span class="power-by">
@@ -438,9 +447,9 @@
   <span class="copyright-year">
     &copy; 
     2015 - 
-    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>fooksky</span>
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span>
+    <span></span>
     <br />
-    
     <a href="https://beian.miit.gov.cn/" target="_blank">苏ICP备18053064号-2</a>
   </span>
 </div>
@@ -460,17 +469,6 @@
 
 <script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-101637356-2', 'auto');
-	ga('set', 'anonymizeIp', true);
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 <script id="baidu_analytics">
   var _hmt = _hmt || [];
   (function() {

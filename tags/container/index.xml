@@ -4,17 +4,16 @@
     <title>Container on 破壳 - 虽不能至，心向往之</title>
     <link>https://urzz.xyz/tags/container/</link>
     <description>Recent content in Container on 破壳 - 虽不能至，心向往之</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 17 Jan 2022 16:50:05 +0800</lastBuildDate><atom:link href="https://urzz.xyz/tags/container/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 17 Jan 2022 16:50:05 +0800</lastBuildDate>
+    <atom:link href="https://urzz.xyz/tags/container/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Portainer - Docker 可视化管理工具</title>
       <link>https://urzz.xyz/2022/01/17/portainer-management-ui/</link>
       <pubDate>Mon, 17 Jan 2022 16:50:05 +0800</pubDate>
-      
       <guid>https://urzz.xyz/2022/01/17/portainer-management-ui/</guid>
-      <description>简介 Portainer 是一个轻量级的 Container 可视化管理工具，支持管理 docker, k8s。 安装 docker 安装 portainer 借助docker，可以快速搭建 portainer。 这里使用docker-</description>
+      <description>&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;&#xA;&lt;p&gt;Portainer 是一个轻量级的 Container 可视化管理工具，支持管理 &lt;code&gt;docker&lt;/code&gt;, &lt;code&gt;k8s&lt;/code&gt;。&lt;/p&gt;&#xA;&lt;h2 id=&#34;安装&#34;&gt;安装&lt;/h2&gt;&#xA;&lt;h3 id=&#34;docker-安装-portainer&#34;&gt;docker 安装 portainer&lt;/h3&gt;&#xA;&lt;p&gt;借助docker，可以快速搭建 portainer。&lt;/p&gt;&#xA;&lt;p&gt;这里使用docker-compose来配置服务。(需要替换下列配置中的 domain 为自己需要设置的域名)&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

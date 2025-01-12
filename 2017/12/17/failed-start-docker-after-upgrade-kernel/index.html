@@ -16,14 +16,16 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="fooksky" /><meta name="description" content="使用了manjaro自带工具更新了linux内核版本到4.14.3之后，docker启动失败 原因 在ststemd中，sudo systemctl status docker.service 不能看到全" /><meta name="keywords" content="fooksky, 破壳, Java" />
+<meta name="author" content="" /><meta name="description" content="使用了manjaro自带工具更新了linux内核版本到4.14.3之后，docker启动失败
+原因 在ststemd中，sudo systemctl status docker.service 不能看到全部的出错信息，只能手动启动docker: sudo dockerd
+" /><meta name="keywords" content="fooksky, 破壳, Java" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.113.0 with theme even" />
+<meta name="generator" content="Hugo 0.140.2 with theme even" />
 
 
 <link rel="canonical" href="https://urzz.xyz/2017/12/17/failed-start-docker-after-upgrade-kernel/" />
@@ -39,19 +41,30 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="升级内核后无法启动docker" />
-<meta property="og:description" content="使用了manjaro自带工具更新了linux内核版本到4.14.3之后，docker启动失败 原因 在ststemd中，sudo systemctl status docker.service 不能看到全" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://urzz.xyz/2017/12/17/failed-start-docker-after-upgrade-kernel/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2017-12-17T00:55:16+00:00" />
-<meta property="article:modified_time" content="2017-12-17T00:55:16+00:00" />
-<meta itemprop="name" content="升级内核后无法启动docker">
-<meta itemprop="description" content="使用了manjaro自带工具更新了linux内核版本到4.14.3之后，docker启动失败 原因 在ststemd中，sudo systemctl status docker.service 不能看到全"><meta itemprop="datePublished" content="2017-12-17T00:55:16+00:00" />
-<meta itemprop="dateModified" content="2017-12-17T00:55:16+00:00" />
-<meta itemprop="wordCount" content="439">
-<meta itemprop="keywords" content="linux,docker," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="升级内核后无法启动docker"/>
-<meta name="twitter:description" content="使用了manjaro自带工具更新了linux内核版本到4.14.3之后，docker启动失败 原因 在ststemd中，sudo systemctl status docker.service 不能看到全"/>
+<meta property="og:url" content="https://urzz.xyz/2017/12/17/failed-start-docker-after-upgrade-kernel/">
+  <meta property="og:site_name" content="破壳 - 虽不能至，心向往之">
+  <meta property="og:title" content="升级内核后无法启动docker">
+  <meta property="og:description" content="使用了manjaro自带工具更新了linux内核版本到4.14.3之后，docker启动失败
+原因 在ststemd中，sudo systemctl status docker.service 不能看到全部的出错信息，只能手动启动docker: sudo dockerd">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2017-12-17T00:55:16+00:00">
+    <meta property="article:modified_time" content="2017-12-17T00:55:16+00:00">
+    <meta property="article:tag" content="Linux">
+    <meta property="article:tag" content="Docker">
+
+  <meta itemprop="name" content="升级内核后无法启动docker">
+  <meta itemprop="description" content="使用了manjaro自带工具更新了linux内核版本到4.14.3之后，docker启动失败
+原因 在ststemd中，sudo systemctl status docker.service 不能看到全部的出错信息，只能手动启动docker: sudo dockerd">
+  <meta itemprop="datePublished" content="2017-12-17T00:55:16+00:00">
+  <meta itemprop="dateModified" content="2017-12-17T00:55:16+00:00">
+  <meta itemprop="wordCount" content="439">
+  <meta itemprop="keywords" content="Linux,Docker">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="升级内核后无法启动docker">
+  <meta name="twitter:description" content="使用了manjaro自带工具更新了linux内核版本到4.14.3之后，docker启动失败
+原因 在ststemd中，sudo systemctl status docker.service 不能看到全部的出错信息，只能手动启动docker: sudo dockerd">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -174,13 +187,13 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">The aufs storage driver depends on the linux-image-extra packages being installed; those packages are tied to the kernel version, so should be upgraded as well after upgrading the kernel.
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">The</span> <span class="n">aufs</span> <span class="n">storage</span> <span class="n">driver</span> <span class="n">depends</span> <span class="n">on</span> <span class="n">the</span> <span class="n">linux</span><span class="o">-</span><span class="n">image</span><span class="o">-</span><span class="n">extra</span> <span class="n">packages</span> <span class="n">being</span> <span class="n">installed</span><span class="p">;</span> <span class="n">those</span> <span class="n">packages</span> <span class="n">are</span> <span class="n">tied</span> <span class="n">to</span> <span class="n">the</span> <span class="n">kernel</span> <span class="n">version</span><span class="p">,</span> <span class="n">so</span> <span class="n">should</span> <span class="n">be</span> <span class="n">upgraded</span> <span class="n">as</span> <span class="n">well</span> <span class="n">after</span> <span class="n">upgrading</span> <span class="n">the</span> <span class="n">kernel</span><span class="o">.</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">IIRC, Manjaro linux is based on Arch, which is known to be distributing &#34;bleeding edge&#34; packages, and because of that is known to break things regularly. For this reason, we don&#39;t have official packages for that distribution.
+</span></span><span class="line"><span class="cl"><span class="n">IIRC</span><span class="p">,</span> <span class="n">Manjaro</span> <span class="n">linux</span> <span class="n">is</span> <span class="n">based</span> <span class="n">on</span> <span class="n">Arch</span><span class="p">,</span> <span class="n">which</span> <span class="n">is</span> <span class="n">known</span> <span class="n">to</span> <span class="n">be</span> <span class="n">distributing</span> <span class="s2">&#34;bleeding edge&#34;</span> <span class="n">packages</span><span class="p">,</span> <span class="ow">and</span> <span class="n">because</span> <span class="n">of</span> <span class="n">that</span> <span class="n">is</span> <span class="n">known</span> <span class="n">to</span> <span class="k">break</span> <span class="n">things</span> <span class="n">regularly</span><span class="o">.</span> <span class="n">For</span> <span class="n">this</span> <span class="n">reason</span><span class="p">,</span> <span class="n">we</span> <span class="n">don</span><span class="s1">&#39;t have official packages for that distribution.</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">To resolve this; check if aufs is available for that kernel version, or select a different storage driver. When selecting a different storage driver, you may want to do a &#34;factory reset&#34; and remove your /var/lib/docker directory; doing so will remove all your images and containers.
+</span></span><span class="line"><span class="cl"><span class="n">To</span> <span class="n">resolve</span> <span class="n">this</span><span class="p">;</span> <span class="n">check</span> <span class="k">if</span> <span class="n">aufs</span> <span class="n">is</span> <span class="n">available</span> <span class="k">for</span> <span class="n">that</span> <span class="n">kernel</span> <span class="n">version</span><span class="p">,</span> <span class="ow">or</span> <span class="n">select</span> <span class="n">a</span> <span class="n">different</span> <span class="n">storage</span> <span class="n">driver</span><span class="o">.</span> <span class="n">When</span> <span class="n">selecting</span> <span class="n">a</span> <span class="n">different</span> <span class="n">storage</span> <span class="n">driver</span><span class="p">,</span> <span class="n">you</span> <span class="n">may</span> <span class="n">want</span> <span class="n">to</span> <span class="k">do</span> <span class="n">a</span> <span class="s2">&#34;factory reset&#34;</span> <span class="ow">and</span> <span class="n">remove</span> <span class="n">your</span> <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">docker</span> <span class="n">directory</span><span class="p">;</span> <span class="n">doing</span> <span class="n">so</span> <span class="n">will</span> <span class="n">remove</span> <span class="n">all</span> <span class="n">your</span> <span class="n">images</span> <span class="ow">and</span> <span class="n">containers</span><span class="o">.</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">For kernel 4 and up, the overlay2 (or overlay) diver may be a good choice, but this depends on your use case (see https://docs.docker.com/engine/userguide/storagedriver/selectadriver/)
+</span></span><span class="line"><span class="cl"><span class="n">For</span> <span class="n">kernel</span> <span class="mi">4</span> <span class="ow">and</span> <span class="n">up</span><span class="p">,</span> <span class="n">the</span> <span class="n">overlay2</span> <span class="p">(</span><span class="ow">or</span> <span class="n">overlay</span><span class="p">)</span> <span class="n">diver</span> <span class="n">may</span> <span class="n">be</span> <span class="n">a</span> <span class="n">good</span> <span class="n">choice</span><span class="p">,</span> <span class="n">but</span> <span class="n">this</span> <span class="n">depends</span> <span class="n">on</span> <span class="n">your</span> <span class="n">use</span> <span class="k">case</span> <span class="p">(</span><span class="n">see</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">docs</span><span class="o">.</span><span class="n">docker</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">engine</span><span class="o">/</span><span class="n">userguide</span><span class="o">/</span><span class="n">storagedriver</span><span class="o">/</span><span class="n">selectadriver</span><span class="o">/</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="解决方法">解决方法</h3>
@@ -196,7 +209,7 @@
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content">fooksky</span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -217,9 +230,9 @@
           <a href="/tags/docker/">docker</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/2018/03/20/spring-boot-2-mvc-config/">
+        <a class="prev" href="/2018/09/23/hexo-use-gitment/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">Spring Boot 2 的MVC配置改变</span>
+            <span class="prev-text nav-default">hexo 接入 gitment 作为评论系统</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
         <a class="next" href="/2017/06/29/nginx-with-https/">
@@ -251,7 +264,8 @@
     <footer id="footer" class="footer">
       <div class="social-links">
       <a href="https://github.com/urzz" class="iconfont icon-github" title="github"></a>
-  </div>
+  
+</div>
 
 <div class="copyright">
   <span class="power-by">
@@ -276,9 +290,9 @@
   <span class="copyright-year">
     &copy; 
     2015 - 
-    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>fooksky</span>
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span>
+    <span></span>
     <br />
-    
     <a href="https://beian.miit.gov.cn/" target="_blank">苏ICP备18053064号-2</a>
   </span>
 </div>
@@ -298,17 +312,6 @@
 
 <script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-101637356-2', 'auto');
-	ga('set', 'anonymizeIp', true);
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 <script id="baidu_analytics">
   var _hmt = _hmt || [];
   (function() {

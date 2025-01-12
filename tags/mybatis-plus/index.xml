@@ -4,17 +4,16 @@
     <title>Mybatis-Plus on 破壳 - 虽不能至，心向往之</title>
     <link>https://urzz.xyz/tags/mybatis-plus/</link>
     <description>Recent content in Mybatis-Plus on 破壳 - 虽不能至，心向往之</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 08 Aug 2021 23:17:14 +0800</lastBuildDate><atom:link href="https://urzz.xyz/tags/mybatis-plus/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 08 Aug 2021 23:17:14 +0800</lastBuildDate>
+    <atom:link href="https://urzz.xyz/tags/mybatis-plus/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>使用mybatis-plus-generator初始化项目</title>
       <link>https://urzz.xyz/2021/08/08/mybatis-plus-generator-config/</link>
       <pubDate>Sun, 08 Aug 2021 23:17:14 +0800</pubDate>
-      
       <guid>https://urzz.xyz/2021/08/08/mybatis-plus-generator-config/</guid>
-      <description>简介 MyBatis Plus 是一个MyBatis的增强工具，内置通用mapper，提供了基本的curd操作，简化了MyBatis的开发使用工作。 它提供了一个代码</description>
+      <description>&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;&#xA;&lt;p&gt;MyBatis Plus 是一个MyBatis的增强工具，内置通用mapper，提供了基本的curd操作，简化了MyBatis的开发使用工作。&#xA;它提供了一个代码生成器工具，可以根据数据库表来自动生成entity、mapper、mapper xml、service、controller等模块的代码，简化项目的初始化工作。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

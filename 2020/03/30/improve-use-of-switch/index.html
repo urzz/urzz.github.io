@@ -16,14 +16,15 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="fooksky" /><meta name="description" content="背景 switch/case 是Java的一个流程控制语法，作为多if/else条件判断的替代语法，平常用的还是很多的，毕竟比起看起来就很繁琐、难以阅读的if/el" /><meta name="keywords" content="fooksky, 破壳, Java" />
+<meta name="author" content="" /><meta name="description" content="背景 switch/case 是Java的一个流程控制语法，作为多if/else条件判断的替代语法，平常用的还是很多的，毕竟比起看起来就很繁琐、难以阅读的if/else，switch/case更便于阅读理解一段代码的逻辑。
+" /><meta name="keywords" content="fooksky, 破壳, Java" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.113.0 with theme even" />
+<meta name="generator" content="Hugo 0.140.2 with theme even" />
 
 
 <link rel="canonical" href="https://urzz.xyz/2020/03/30/improve-use-of-switch/" />
@@ -39,19 +40,27 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Switch的优化方式" />
-<meta property="og:description" content="背景 switch/case 是Java的一个流程控制语法，作为多if/else条件判断的替代语法，平常用的还是很多的，毕竟比起看起来就很繁琐、难以阅读的if/el" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://urzz.xyz/2020/03/30/improve-use-of-switch/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2020-03-30T21:59:20+00:00" />
-<meta property="article:modified_time" content="2020-03-30T21:59:20+00:00" />
-<meta itemprop="name" content="Switch的优化方式">
-<meta itemprop="description" content="背景 switch/case 是Java的一个流程控制语法，作为多if/else条件判断的替代语法，平常用的还是很多的，毕竟比起看起来就很繁琐、难以阅读的if/el"><meta itemprop="datePublished" content="2020-03-30T21:59:20+00:00" />
-<meta itemprop="dateModified" content="2020-03-30T21:59:20+00:00" />
-<meta itemprop="wordCount" content="1544">
-<meta itemprop="keywords" content="Java,设计模式," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Switch的优化方式"/>
-<meta name="twitter:description" content="背景 switch/case 是Java的一个流程控制语法，作为多if/else条件判断的替代语法，平常用的还是很多的，毕竟比起看起来就很繁琐、难以阅读的if/el"/>
+<meta property="og:url" content="https://urzz.xyz/2020/03/30/improve-use-of-switch/">
+  <meta property="og:site_name" content="破壳 - 虽不能至，心向往之">
+  <meta property="og:title" content="Switch的优化方式">
+  <meta property="og:description" content="背景 switch/case 是Java的一个流程控制语法，作为多if/else条件判断的替代语法，平常用的还是很多的，毕竟比起看起来就很繁琐、难以阅读的if/else，switch/case更便于阅读理解一段代码的逻辑。">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2020-03-30T21:59:20+00:00">
+    <meta property="article:modified_time" content="2020-03-30T21:59:20+00:00">
+    <meta property="article:tag" content="Java">
+    <meta property="article:tag" content="设计模式">
+
+  <meta itemprop="name" content="Switch的优化方式">
+  <meta itemprop="description" content="背景 switch/case 是Java的一个流程控制语法，作为多if/else条件判断的替代语法，平常用的还是很多的，毕竟比起看起来就很繁琐、难以阅读的if/else，switch/case更便于阅读理解一段代码的逻辑。">
+  <meta itemprop="datePublished" content="2020-03-30T21:59:20+00:00">
+  <meta itemprop="dateModified" content="2020-03-30T21:59:20+00:00">
+  <meta itemprop="wordCount" content="1544">
+  <meta itemprop="keywords" content="Java,设计模式">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Switch的优化方式">
+  <meta name="twitter:description" content="背景 switch/case 是Java的一个流程控制语法，作为多if/else条件判断的替代语法，平常用的还是很多的，毕竟比起看起来就很繁琐、难以阅读的if/else，switch/case更便于阅读理解一段代码的逻辑。">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -186,35 +195,35 @@
 </span><span class="lnt">28
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="k">switch</span><span class="o">(</span><span class="n">condition</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="n">Condition</span><span class="mf">.1</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">        <span class="n">doMethod1</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="k">break</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="n">Condition</span><span class="mf">.2</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">        <span class="n">doMethod2</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="k">break</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="n">Condition</span><span class="mf">.3</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">        <span class="n">doMethod3</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="k">break</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="n">Condition</span><span class="mf">.4</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">        <span class="n">doMethod4</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="k">break</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="n">Condition</span><span class="mf">.5</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">        <span class="n">doMethod5</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="k">break</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="n">Condition</span><span class="mf">.6</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">        <span class="n">doMethod6</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="k">break</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="n">Condition</span><span class="mf">.7</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">        <span class="n">doMethod7</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="k">break</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="n">Condition</span><span class="mf">.8</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">        <span class="n">doMethod8</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="k">break</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="k">default</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">        <span class="n">doDefault</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="k">switch</span><span class="p">(</span><span class="n">condition</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="n">Condition</span><span class="p">.</span><span class="na">1</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">doMethod1</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">break</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="n">Condition</span><span class="p">.</span><span class="na">2</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">doMethod2</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">break</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="n">Condition</span><span class="p">.</span><span class="na">3</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">doMethod3</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">break</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="n">Condition</span><span class="p">.</span><span class="na">4</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">doMethod4</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">break</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="n">Condition</span><span class="p">.</span><span class="na">5</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">doMethod5</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">break</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="n">Condition</span><span class="p">.</span><span class="na">6</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">doMethod6</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">break</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="n">Condition</span><span class="p">.</span><span class="na">7</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">doMethod7</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">break</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="n">Condition</span><span class="p">.</span><span class="na">8</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">doMethod8</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">break</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">default</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">doDefault</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>上面这段代码是一个比较典型的switch的用法，根据不同条件走不同分支的代码，执行相关的函数代码。相比较使用if/else，这种用法无疑简便了许多，因为无需对于每个分支条件去写条件判断，这样也可以尽量避免误操作写错条件判断。但是，switch并没有改变if/else产生的问题，if/else的代码比较复杂且难以维护，违反了开闭原则，switch也同样如此，只是switch看起来稍微清晰一些，然而在需求逐渐变化，判断条件增多的情况下，每新增一个条件都需要在这一段switch的代码中添加相应的条件。所以实际上，即使使用了switch，代码依旧会慢慢变得有些难以维护，同时实现方式也很不优雅。</p>
 <blockquote>
@@ -236,14 +245,14 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">IDoFunc</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="cm">/**
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">IDoFunc</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * do func
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">doMethod</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></td></tr></table>
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">doMethod</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -256,14 +265,14 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Method1Do</span> <span class="kd">implements</span> <span class="n">IDoFunc</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">doMethod</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">// do something
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;do method 1&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Method1Do</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">IDoFunc</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">doMethod</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// do something</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;do method 1&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>单纯只靠策略模式的话，就只能做到这一步了，但是switch所产生的问题并没有解决，并且只是单纯地增加了代码量。接下来就要靠另一个方式来简化switch的流程控制逻辑的代码了。</p>
 <h4 id="简单工厂去除switch逻辑">简单工厂去除switch逻辑</h4>
@@ -283,16 +292,16 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">enum</span> <span class="n">DoTypeEnum</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">DO_METHOD1</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">    <span class="n">DO_METHOD2</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">    <span class="n">DO_METHOD3</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">    <span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">DoTypeEnum</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">enum</span><span class="w"> </span><span class="n">DoTypeEnum</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">DO_METHOD1</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">DO_METHOD2</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">DO_METHOD3</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">DoTypeEnum</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -303,12 +312,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Target</span><span class="o">(</span><span class="n">ElementType</span><span class="o">.</span><span class="na">TYPE</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="nd">@Retention</span><span class="o">(</span><span class="n">RetentionPolicy</span><span class="o">.</span><span class="na">RUNTIME</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="nd">@interface</span> <span class="n">DoType</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">DoTypeEnum</span> <span class="nf">value</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Target</span><span class="p">(</span><span class="n">ElementType</span><span class="p">.</span><span class="na">TYPE</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Retention</span><span class="p">(</span><span class="n">RetentionPolicy</span><span class="p">.</span><span class="na">RUNTIME</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="nd">@interface</span><span class="w"> </span><span class="n">DoType</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">DoTypeEnum</span><span class="w"> </span><span class="nf">value</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>然后修改实现类，为实现类加上自定义注解。</p>
 <div class="highlight"><div class="chroma">
@@ -324,16 +333,16 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@DoType</span><span class="o">(</span><span class="n">DoTypeEnum</span><span class="o">.</span><span class="na">DO_METHOD1</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="nd">@Service</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Method1Do</span> <span class="kd">implements</span> <span class="n">IDoFunc</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">doMethod</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">// do something
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;do method 1&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@DoType</span><span class="p">(</span><span class="n">DoTypeEnum</span><span class="p">.</span><span class="na">DO_METHOD1</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Service</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Method1Do</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">IDoFunc</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">doMethod</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// do something</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;do method 1&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>接下来就是工厂类的实现了，这里借助spring的工具类来简化获取实现类的代码。
 首先我们需要获取spring的applicationContext，便于后续根据枚举来获取实现类的实例化对象。然后根据我们的自定义注解获取容器中已经实例化好的实现类对象，并且在工厂类初始化的时候去加载至定义好的map中。这样，工厂类在创建实例时，就可以根据传入的枚举来决定创建(返回)哪个实现类了。</p>
@@ -356,22 +365,22 @@
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// 获取applicationContext的方式有好几种，这里采用实现ApplicationContextAware接口的方式。
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nd">@Component</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SpringContextUtil</span> <span class="kd">implements</span> <span class="n">ApplicationContextAware</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">ApplicationContext</span> <span class="n">context</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ApplicationContext</span> <span class="nf">getContext</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">context</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setApplicationContext</span><span class="o">(</span><span class="n">ApplicationContext</span> <span class="n">applicationContext</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">BeansException</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="o">.</span><span class="na">context</span> <span class="o">=</span> <span class="n">applicationContext</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// 获取applicationContext的方式有好几种，这里采用实现ApplicationContextAware接口的方式。</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Component</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SpringContextUtil</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">ApplicationContextAware</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">ApplicationContext</span><span class="w"> </span><span class="n">context</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">ApplicationContext</span><span class="w"> </span><span class="nf">getContext</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">context</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setApplicationContext</span><span class="p">(</span><span class="n">ApplicationContext</span><span class="w"> </span><span class="n">applicationContext</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">BeansException</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">applicationContext</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -399,29 +408,29 @@
 </span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Component</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DoFactory</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nd">@Autowired</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">SpringContextUtil</span> <span class="n">springContextUtil</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">DoTypeEnum</span><span class="o">,</span> <span class="n">IDoFunc</span><span class="o">&gt;</span> <span class="n">doMap</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ConcurrentHashMap</span><span class="o">&lt;&gt;();</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nd">@PostConstruct</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">beansMap</span> <span class="o">=</span> <span class="n">springContextUtil</span><span class="o">.</span><span class="na">getContext</span><span class="o">().</span><span class="na">getBeansWithAnnotation</span><span class="o">(</span><span class="n">DoType</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">beansMap</span><span class="o">.</span><span class="na">values</span><span class="o">()</span>
-</span></span><span class="line"><span class="cl">                <span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">item</span> <span class="o">-&gt;</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">                    <span class="n">DoType</span> <span class="n">doTypeAnnotation</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="na">getClass</span><span class="o">().</span><span class="na">getAnnotation</span><span class="o">(</span><span class="n">DoType</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">                    <span class="n">doMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">doTypeAnnotation</span><span class="o">.</span><span class="na">value</span><span class="o">(),</span> <span class="o">(</span><span class="n">IDoFunc</span><span class="o">)</span> <span class="n">item</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">                <span class="o">});</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="n">IDoFunc</span> <span class="nf">createDoMethod</span><span class="o">(</span><span class="n">DoTypeEnum</span> <span class="n">doTypeEnum</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">doMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">doTypeEnum</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Component</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">DoFactory</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Autowired</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">SpringContextUtil</span><span class="w"> </span><span class="n">springContextUtil</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">DoTypeEnum</span><span class="p">,</span><span class="w"> </span><span class="n">IDoFunc</span><span class="o">&gt;</span><span class="w"> </span><span class="n">doMap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ConcurrentHashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@PostConstruct</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">init</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="n">beansMap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">springContextUtil</span><span class="p">.</span><span class="na">getContext</span><span class="p">().</span><span class="na">getBeansWithAnnotation</span><span class="p">(</span><span class="n">DoType</span><span class="p">.</span><span class="na">class</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">beansMap</span><span class="p">.</span><span class="na">values</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">forEach</span><span class="p">(</span><span class="n">item</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="n">DoType</span><span class="w"> </span><span class="n">doTypeAnnotation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">item</span><span class="p">.</span><span class="na">getClass</span><span class="p">().</span><span class="na">getAnnotation</span><span class="p">(</span><span class="n">DoType</span><span class="p">.</span><span class="na">class</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="n">doMap</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">doTypeAnnotation</span><span class="p">.</span><span class="na">value</span><span class="p">(),</span><span class="w"> </span><span class="p">(</span><span class="n">IDoFunc</span><span class="p">)</span><span class="w"> </span><span class="n">item</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">});</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">IDoFunc</span><span class="w"> </span><span class="nf">createDoMethod</span><span class="p">(</span><span class="n">DoTypeEnum</span><span class="w"> </span><span class="n">doTypeEnum</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">doMap</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">doTypeEnum</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="小结">小结</h3>
 <p>上述代码的方式可以比较好的完成switch的优化，但是这样的重构方式也不是没有坏处。最麻烦的点就是这种方式会需要给每个策略都有一个实现类，所以虽然优化掉了这一大段的switch代码，但是取而代之的就是类的数量增多，代码量会增加。不过这个缺点可以尝试用函数式接口去尝试解决。</p>
@@ -431,7 +440,7 @@
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content">fooksky</span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -486,7 +495,8 @@
     <footer id="footer" class="footer">
       <div class="social-links">
       <a href="https://github.com/urzz" class="iconfont icon-github" title="github"></a>
-  </div>
+  
+</div>
 
 <div class="copyright">
   <span class="power-by">
@@ -511,9 +521,9 @@
   <span class="copyright-year">
     &copy; 
     2015 - 
-    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>fooksky</span>
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span>
+    <span></span>
     <br />
-    
     <a href="https://beian.miit.gov.cn/" target="_blank">苏ICP备18053064号-2</a>
   </span>
 </div>
@@ -533,17 +543,6 @@
 
 <script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-101637356-2', 'auto');
-	ga('set', 'anonymizeIp', true);
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 <script id="baidu_analytics">
   var _hmt = _hmt || [];
   (function() {

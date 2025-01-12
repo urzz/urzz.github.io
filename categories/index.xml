@@ -4,152 +4,114 @@
     <title>Categories on 破壳 - 虽不能至，心向往之</title>
     <link>https://urzz.xyz/categories/</link>
     <description>Recent content in Categories on 破壳 - 虽不能至，心向往之</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 01 Feb 2023 15:49:36 +0800</lastBuildDate><atom:link href="https://urzz.xyz/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 01 Feb 2023 15:49:36 +0800</lastBuildDate>
+    <atom:link href="https://urzz.xyz/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>自娱自乐</title>
       <link>https://urzz.xyz/categories/%E8%87%AA%E5%A8%B1%E8%87%AA%E4%B9%90/</link>
       <pubDate>Wed, 01 Feb 2023 15:49:36 +0800</pubDate>
-      
       <guid>https://urzz.xyz/categories/%E8%87%AA%E5%A8%B1%E8%87%AA%E4%B9%90/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Linux</title>
       <link>https://urzz.xyz/categories/linux/</link>
       <pubDate>Mon, 17 Jan 2022 16:50:05 +0800</pubDate>
-      
       <guid>https://urzz.xyz/categories/linux/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Java</title>
       <link>https://urzz.xyz/categories/java/</link>
       <pubDate>Sun, 08 Aug 2021 23:17:14 +0800</pubDate>
-      
       <guid>https://urzz.xyz/categories/java/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Docker</title>
       <link>https://urzz.xyz/categories/docker/</link>
       <pubDate>Sat, 12 Jun 2021 02:55:46 +0800</pubDate>
-      
       <guid>https://urzz.xyz/categories/docker/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>PVE</title>
       <link>https://urzz.xyz/categories/pve/</link>
       <pubDate>Tue, 16 Feb 2021 02:35:14 +0800</pubDate>
-      
       <guid>https://urzz.xyz/categories/pve/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>System</title>
       <link>https://urzz.xyz/categories/system/</link>
       <pubDate>Sun, 15 Dec 2019 18:10:24 +0000</pubDate>
-      
       <guid>https://urzz.xyz/categories/system/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>设计模式</title>
       <link>https://urzz.xyz/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
       <pubDate>Mon, 08 Jul 2019 20:02:35 +0000</pubDate>
-      
       <guid>https://urzz.xyz/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Spring Boot</title>
       <link>https://urzz.xyz/categories/spring-boot/</link>
       <pubDate>Wed, 03 Jul 2019 19:08:29 +0000</pubDate>
-      
       <guid>https://urzz.xyz/categories/spring-boot/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Spring</title>
       <link>https://urzz.xyz/categories/spring/</link>
       <pubDate>Tue, 11 Jun 2019 21:33:38 +0000</pubDate>
-      
       <guid>https://urzz.xyz/categories/spring/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>ssh</title>
+      <title>Ssh</title>
       <link>https://urzz.xyz/categories/ssh/</link>
       <pubDate>Tue, 18 Dec 2018 11:57:16 +0000</pubDate>
-      
       <guid>https://urzz.xyz/categories/ssh/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Hexo</title>
       <link>https://urzz.xyz/categories/hexo/</link>
       <pubDate>Sun, 23 Sep 2018 16:09:46 +0000</pubDate>
-      
       <guid>https://urzz.xyz/categories/hexo/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Nginx</title>
       <link>https://urzz.xyz/categories/nginx/</link>
       <pubDate>Thu, 29 Jun 2017 01:21:59 +0000</pubDate>
-      
       <guid>https://urzz.xyz/categories/nginx/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Editor</title>
       <link>https://urzz.xyz/categories/editor/</link>
       <pubDate>Mon, 02 Jan 2017 11:28:49 +0000</pubDate>
-      
       <guid>https://urzz.xyz/categories/editor/</guid>
       <description></description>
     </item>
-    
-    <item>
-      <title>CSS</title>
-      <link>https://urzz.xyz/categories/css/</link>
-      <pubDate>Tue, 13 Sep 2016 11:01:21 +0000</pubDate>
-      
-      <guid>https://urzz.xyz/categories/css/</guid>
-      <description></description>
-    </item>
-    
     <item>
       <title>Chrome</title>
       <link>https://urzz.xyz/categories/chrome/</link>
       <pubDate>Tue, 26 Jul 2016 16:55:04 +0000</pubDate>
-      
       <guid>https://urzz.xyz/categories/chrome/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>JavaScript</title>
       <link>https://urzz.xyz/categories/javascript/</link>
       <pubDate>Tue, 01 Dec 2015 20:47:48 +0000</pubDate>
-      
       <guid>https://urzz.xyz/categories/javascript/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

@@ -4,53 +4,44 @@
     <title>Java on 破壳 - 虽不能至，心向往之</title>
     <link>https://urzz.xyz/categories/java/</link>
     <description>Recent content in Java on 破壳 - 虽不能至，心向往之</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 08 Aug 2021 23:17:14 +0800</lastBuildDate><atom:link href="https://urzz.xyz/categories/java/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 08 Aug 2021 23:17:14 +0800</lastBuildDate>
+    <atom:link href="https://urzz.xyz/categories/java/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>使用mybatis-plus-generator初始化项目</title>
       <link>https://urzz.xyz/2021/08/08/mybatis-plus-generator-config/</link>
       <pubDate>Sun, 08 Aug 2021 23:17:14 +0800</pubDate>
-      
       <guid>https://urzz.xyz/2021/08/08/mybatis-plus-generator-config/</guid>
-      <description>简介 MyBatis Plus 是一个MyBatis的增强工具，内置通用mapper，提供了基本的curd操作，简化了MyBatis的开发使用工作。 它提供了一个代码</description>
+      <description>&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;&#xA;&lt;p&gt;MyBatis Plus 是一个MyBatis的增强工具，内置通用mapper，提供了基本的curd操作，简化了MyBatis的开发使用工作。&#xA;它提供了一个代码生成器工具，可以根据数据库表来自动生成entity、mapper、mapper xml、service、controller等模块的代码，简化项目的初始化工作。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Switch的优化方式</title>
       <link>https://urzz.xyz/2020/03/30/improve-use-of-switch/</link>
       <pubDate>Mon, 30 Mar 2020 21:59:20 +0000</pubDate>
-      
       <guid>https://urzz.xyz/2020/03/30/improve-use-of-switch/</guid>
-      <description>背景 switch/case 是Java的一个流程控制语法，作为多if/else条件判断的替代语法，平常用的还是很多的，毕竟比起看起来就很繁琐、难以阅读的if/el</description>
+      <description>&lt;h3 id=&#34;背景&#34;&gt;背景&lt;/h3&gt;&#xA;&lt;p&gt;switch/case 是Java的一个流程控制语法，作为多if/else条件判断的替代语法，平常用的还是很多的，毕竟比起看起来就很繁琐、难以阅读的if/else，switch/case更便于阅读理解一段代码的逻辑。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Java 集合源码 - AbstractCollection</title>
       <link>https://urzz.xyz/2019/07/17/jdk-collection-abstract-collection/</link>
       <pubDate>Wed, 17 Jul 2019 16:50:58 +0000</pubDate>
-      
       <guid>https://urzz.xyz/2019/07/17/jdk-collection-abstract-collection/</guid>
-      <description>介绍 AbstractCollection是Java集合实现类的根抽象实现类，它实现了Collection接口，而集合的三个分支(List,S</description>
+      <description>&lt;h2 id=&#34;介绍&#34;&gt;介绍&lt;/h2&gt;&#xA;&lt;p&gt;&lt;code&gt;AbstractCollection&lt;/code&gt;是Java集合实现类的根抽象实现类，它实现了&lt;code&gt;Collection&lt;/code&gt;接口，而集合的三个分支(List,Set,Queue)都是继承这个类然后各自实现扩展：&lt;code&gt;AbstractSet&lt;/code&gt;, &lt;code&gt;AbstractList&lt;/code&gt;, &lt;code&gt;AbstractQueue&lt;/code&gt;。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>基于Spring做请求参数的加解密/签名校验</title>
       <link>https://urzz.xyz/2019/05/30/spring-param-encrypt/</link>
       <pubDate>Thu, 30 May 2019 14:04:34 +0000</pubDate>
-      
       <guid>https://urzz.xyz/2019/05/30/spring-param-encrypt/</guid>
-      <description>之前做的一个对外网关项目，安全需要所以得对参数进行加密校验 参数 接口交互约定了三个参数： timestamp（请求时间戳） data（实际请求数据</description>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;之前做的一个对外网关项目，安全需要所以得对参数进行加密校验&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;h3 id=&#34;参数&#34;&gt;参数&lt;/h3&gt;&#xA;&lt;p&gt;接口交互约定了三个参数：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;timestamp（请求时间戳）&lt;/li&gt;&#xA;&lt;li&gt;data（实际请求数据，经过加密得到的字符串）&lt;/li&gt;&#xA;&lt;li&gt;sign（以HMAC-SHA1算法对参数的签名）&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;请求方式&#34;&gt;请求方式&lt;/h3&gt;&#xA;&lt;p&gt;接口统一使用json来进行交互，请求的Content-Type统一为application/json&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>印象深刻的Java空指针异常</title>
       <link>https://urzz.xyz/2017/02/06/unexpected-java-nullpoint-exception/</link>
       <pubDate>Mon, 06 Feb 2017 22:51:48 +0000</pubDate>
-      
       <guid>https://urzz.xyz/2017/02/06/unexpected-java-nullpoint-exception/</guid>
-      <description>今天在公司无意中碰到一个从来没碰到过的空指针异常= = Java中，空指针异常应该是最常见的异常了。一般来说，碰到 NullPointerException 直接跳到报错的那一行就很容易</description>
+      <description>&lt;p&gt;今天在公司无意中碰到一个从来没碰到过的空指针异常= =&lt;/p&gt;&#xA;&lt;p&gt;Java中，空指针异常应该是最常见的异常了。一般来说，碰到 NullPointerException 直接跳到报错的那一行就很容易就解决了。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

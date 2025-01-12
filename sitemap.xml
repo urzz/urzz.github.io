@@ -352,20 +352,6 @@
   </url>
   
   <url>
-    <loc>https://urzz.xyz/tags/spring-boot/</loc>
-    <lastmod>2018-03-20T15:44:02+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://urzz.xyz/2018/03/20/spring-boot-2-mvc-config/</loc>
-    <lastmod>2018-03-20T15:44:02+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://urzz.xyz/2017/12/17/failed-start-docker-after-upgrade-kernel/</loc>
     <lastmod>2017-12-17T00:55:16+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -410,27 +396,6 @@
   <url>
     <loc>https://urzz.xyz/2017/01/02/awesome-vim-plug/</loc>
     <lastmod>2017-01-02T11:28:49+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://urzz.xyz/tags/css/</loc>
-    <lastmod>2016-09-13T11:01:21+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://urzz.xyz/categories/css/</loc>
-    <lastmod>2016-09-13T11:01:21+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://urzz.xyz/2016/09/13/column-3-of-the-css-layout-skills/</loc>
-    <lastmod>2016-09-13T11:01:21+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

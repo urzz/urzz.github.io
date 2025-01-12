@@ -4,17 +4,16 @@
     <title>Java集合源码 on 破壳 - 虽不能至，心向往之</title>
     <link>https://urzz.xyz/tags/java%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81/</link>
     <description>Recent content in Java集合源码 on 破壳 - 虽不能至，心向往之</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 17 Jul 2019 16:50:58 +0000</lastBuildDate><atom:link href="https://urzz.xyz/tags/java%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 17 Jul 2019 16:50:58 +0000</lastBuildDate>
+    <atom:link href="https://urzz.xyz/tags/java%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Java 集合源码 - AbstractCollection</title>
       <link>https://urzz.xyz/2019/07/17/jdk-collection-abstract-collection/</link>
       <pubDate>Wed, 17 Jul 2019 16:50:58 +0000</pubDate>
-      
       <guid>https://urzz.xyz/2019/07/17/jdk-collection-abstract-collection/</guid>
-      <description>介绍 AbstractCollection是Java集合实现类的根抽象实现类，它实现了Collection接口，而集合的三个分支(List,S</description>
+      <description>&lt;h2 id=&#34;介绍&#34;&gt;介绍&lt;/h2&gt;&#xA;&lt;p&gt;&lt;code&gt;AbstractCollection&lt;/code&gt;是Java集合实现类的根抽象实现类，它实现了&lt;code&gt;Collection&lt;/code&gt;接口，而集合的三个分支(List,Set,Queue)都是继承这个类然后各自实现扩展：&lt;code&gt;AbstractSet&lt;/code&gt;, &lt;code&gt;AbstractList&lt;/code&gt;, &lt;code&gt;AbstractQueue&lt;/code&gt;。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

@@ -16,14 +16,16 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="fooksky" /><meta name="description" content="最近一个项目的认证是用shiro实现的，以前没有做过spring boot &#43; shiro的整合，所以遇到了一些奇奇怪怪的坑 shiro的整合具体这边就不" /><meta name="keywords" content="fooksky, 破壳, Java" />
+<meta name="author" content="" /><meta name="description" content=" 最近一个项目的认证是用shiro实现的，以前没有做过spring boot &#43; shiro的整合，所以遇到了一些奇奇怪怪的坑
+shiro的整合具体这边就不做阐述了，大概有以下几个类:
+" /><meta name="keywords" content="fooksky, 破壳, Java" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.113.0 with theme even" />
+<meta name="generator" content="Hugo 0.140.2 with theme even" />
 
 
 <link rel="canonical" href="https://urzz.xyz/2019/06/11/spring-boot-shiro-custom-filter/" />
@@ -39,19 +41,30 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Spring Boot 整合shiro使用自定义filter" />
-<meta property="og:description" content="最近一个项目的认证是用shiro实现的，以前没有做过spring boot &#43; shiro的整合，所以遇到了一些奇奇怪怪的坑 shiro的整合具体这边就不" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://urzz.xyz/2019/06/11/spring-boot-shiro-custom-filter/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2019-06-11T21:33:38+00:00" />
-<meta property="article:modified_time" content="2019-06-11T21:33:38+00:00" />
-<meta itemprop="name" content="Spring Boot 整合shiro使用自定义filter">
-<meta itemprop="description" content="最近一个项目的认证是用shiro实现的，以前没有做过spring boot &#43; shiro的整合，所以遇到了一些奇奇怪怪的坑 shiro的整合具体这边就不"><meta itemprop="datePublished" content="2019-06-11T21:33:38+00:00" />
-<meta itemprop="dateModified" content="2019-06-11T21:33:38+00:00" />
-<meta itemprop="wordCount" content="1050">
-<meta itemprop="keywords" content="Spring,Java," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Spring Boot 整合shiro使用自定义filter"/>
-<meta name="twitter:description" content="最近一个项目的认证是用shiro实现的，以前没有做过spring boot &#43; shiro的整合，所以遇到了一些奇奇怪怪的坑 shiro的整合具体这边就不"/>
+<meta property="og:url" content="https://urzz.xyz/2019/06/11/spring-boot-shiro-custom-filter/">
+  <meta property="og:site_name" content="破壳 - 虽不能至，心向往之">
+  <meta property="og:title" content="Spring Boot 整合shiro使用自定义filter">
+  <meta property="og:description" content="最近一个项目的认证是用shiro实现的，以前没有做过spring boot &#43; shiro的整合，所以遇到了一些奇奇怪怪的坑
+shiro的整合具体这边就不做阐述了，大概有以下几个类:">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2019-06-11T21:33:38+00:00">
+    <meta property="article:modified_time" content="2019-06-11T21:33:38+00:00">
+    <meta property="article:tag" content="Spring">
+    <meta property="article:tag" content="Java">
+
+  <meta itemprop="name" content="Spring Boot 整合shiro使用自定义filter">
+  <meta itemprop="description" content="最近一个项目的认证是用shiro实现的，以前没有做过spring boot &#43; shiro的整合，所以遇到了一些奇奇怪怪的坑
+shiro的整合具体这边就不做阐述了，大概有以下几个类:">
+  <meta itemprop="datePublished" content="2019-06-11T21:33:38+00:00">
+  <meta itemprop="dateModified" content="2019-06-11T21:33:38+00:00">
+  <meta itemprop="wordCount" content="1050">
+  <meta itemprop="keywords" content="Spring,Java">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Spring Boot 整合shiro使用自定义filter">
+  <meta name="twitter:description" content="最近一个项目的认证是用shiro实现的，以前没有做过spring boot &#43; shiro的整合，所以遇到了一些奇奇怪怪的坑
+shiro的整合具体这边就不做阐述了，大概有以下几个类:">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -202,43 +215,43 @@
 </span><span class="lnt">36
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"> <span class="nd">@Bean</span><span class="o">(</span><span class="s">&#34;securityManager&#34;</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="n">DefaultWebSecurityManager</span> <span class="nf">getManager</span><span class="o">(</span><span class="nd">@Autowired</span> <span class="n">JwtRealm</span> <span class="n">jwtRealm</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">DefaultWebSecurityManager</span> <span class="n">securityManager</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultWebSecurityManager</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">securityManager</span><span class="o">.</span><span class="na">setRealm</span><span class="o">(</span><span class="n">jwtRealm</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">DefaultSubjectDAO</span> <span class="n">subjectDAO</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultSubjectDAO</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">    <span class="n">DefaultSessionStorageEvaluator</span> <span class="n">defaultSessionStorageEvaluator</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultSessionStorageEvaluator</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">    <span class="n">defaultSessionStorageEvaluator</span><span class="o">.</span><span class="na">setSessionStorageEnabled</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="n">subjectDAO</span><span class="o">.</span><span class="na">setSessionStorageEvaluator</span><span class="o">(</span><span class="n">defaultSessionStorageEvaluator</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="n">securityManager</span><span class="o">.</span><span class="na">setSubjectDAO</span><span class="o">(</span><span class="n">subjectDAO</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">securityManager</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nd">@Bean</span><span class="o">(</span><span class="s">&#34;shiroFilter&#34;</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="n">ShiroFilterFactoryBean</span> <span class="nf">factory</span><span class="o">(</span><span class="n">DefaultWebSecurityManager</span> <span class="n">securityManager</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">ShiroFilterFactoryBean</span> <span class="n">factoryBean</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ShiroFilterFactoryBean</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Filter</span><span class="o">&gt;</span> <span class="n">filterMap</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedHashMap</span><span class="o">&lt;&gt;();</span>
-</span></span><span class="line"><span class="cl">    <span class="n">filterMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">SHIRO_JWT_FILTER_NAME</span><span class="o">,</span> <span class="k">new</span> <span class="n">JwtFilter</span><span class="o">());</span>
-</span></span><span class="line"><span class="cl">    <span class="n">factoryBean</span><span class="o">.</span><span class="na">setFilters</span><span class="o">(</span><span class="n">filterMap</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">factoryBean</span><span class="o">.</span><span class="na">setSecurityManager</span><span class="o">(</span><span class="n">securityManager</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">filterRuleMap</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedHashMap</span><span class="o">&lt;&gt;();</span>
-</span></span><span class="line"><span class="cl">    <span class="n">filterRuleMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;/auth/token&#34;</span><span class="o">,</span> <span class="s">&#34;anon&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="n">filterRuleMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;/v2/api-docs&#34;</span><span class="o">,</span> <span class="s">&#34;anon&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="n">filterRuleMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;/swagger-resources/**&#34;</span><span class="o">,</span> <span class="s">&#34;anon&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="n">filterRuleMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;/api/**&#34;</span><span class="o">,</span> <span class="s">&#34;anon&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="n">filterRuleMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;/**&#34;</span><span class="o">,</span> <span class="n">SHIRO_JWT_FILTER_NAME</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">factoryBean</span><span class="o">.</span><span class="na">setFilterChainDefinitionMap</span><span class="o">(</span><span class="n">filterRuleMap</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">factoryBean</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="w"> </span><span class="nd">@Bean</span><span class="p">(</span><span class="s">&#34;securityManager&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="n">DefaultWebSecurityManager</span><span class="w"> </span><span class="nf">getManager</span><span class="p">(</span><span class="nd">@Autowired</span><span class="w"> </span><span class="n">JwtRealm</span><span class="w"> </span><span class="n">jwtRealm</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">DefaultWebSecurityManager</span><span class="w"> </span><span class="n">securityManager</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DefaultWebSecurityManager</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">securityManager</span><span class="p">.</span><span class="na">setRealm</span><span class="p">(</span><span class="n">jwtRealm</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">DefaultSubjectDAO</span><span class="w"> </span><span class="n">subjectDAO</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DefaultSubjectDAO</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">DefaultSessionStorageEvaluator</span><span class="w"> </span><span class="n">defaultSessionStorageEvaluator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DefaultSessionStorageEvaluator</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">defaultSessionStorageEvaluator</span><span class="p">.</span><span class="na">setSessionStorageEnabled</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">subjectDAO</span><span class="p">.</span><span class="na">setSessionStorageEvaluator</span><span class="p">(</span><span class="n">defaultSessionStorageEvaluator</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">securityManager</span><span class="p">.</span><span class="na">setSubjectDAO</span><span class="p">(</span><span class="n">subjectDAO</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">securityManager</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Bean</span><span class="p">(</span><span class="s">&#34;shiroFilter&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="n">ShiroFilterFactoryBean</span><span class="w"> </span><span class="nf">factory</span><span class="p">(</span><span class="n">DefaultWebSecurityManager</span><span class="w"> </span><span class="n">securityManager</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">ShiroFilterFactoryBean</span><span class="w"> </span><span class="n">factoryBean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ShiroFilterFactoryBean</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Filter</span><span class="o">&gt;</span><span class="w"> </span><span class="n">filterMap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">LinkedHashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">filterMap</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">SHIRO_JWT_FILTER_NAME</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JwtFilter</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">factoryBean</span><span class="p">.</span><span class="na">setFilters</span><span class="p">(</span><span class="n">filterMap</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">factoryBean</span><span class="p">.</span><span class="na">setSecurityManager</span><span class="p">(</span><span class="n">securityManager</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">filterRuleMap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">LinkedHashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">filterRuleMap</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&#34;/auth/token&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;anon&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">filterRuleMap</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&#34;/v2/api-docs&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;anon&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">filterRuleMap</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&#34;/swagger-resources/**&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;anon&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">filterRuleMap</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&#34;/api/**&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;anon&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">filterRuleMap</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&#34;/**&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">SHIRO_JWT_FILTER_NAME</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">factoryBean</span><span class="p">.</span><span class="na">setFilterChainDefinitionMap</span><span class="p">(</span><span class="n">filterRuleMap</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">factoryBean</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="anon失效">anon失效</h3>
 <p>因为需要在自定义filter中注入一些属性，所以把JwtFilter交给Spring管理</p>
@@ -250,11 +263,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="nd">@Bean</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="n">JwtFilter</span> <span class="nf">jwtFilter</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="k">new</span> <span class="n">JwtFilter</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="nd">@Bean</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="n">JwtFilter</span><span class="w"> </span><span class="nf">jwtFilter</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JwtFilter</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>同时修改<code>shiroFilter</code>中的filterMap设置</p>
 <div class="highlight"><div class="chroma">
@@ -262,8 +275,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="n">filterMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">SHIRO_JWT_FILTER_NAME</span><span class="o">,</span> <span class="n">jwtFilter</span><span class="o">());</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="n">filterMap</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">SHIRO_JWT_FILTER_NAME</span><span class="p">,</span><span class="w"> </span><span class="n">jwtFilter</span><span class="p">());</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>但是在修改后，filterChainDefinitionMap中设置为anon的路由规则就失效了，所有的接口请求都会走JwtFilter，而不是先走ShiroFilter。</p>
 <p>原因：</p>
@@ -293,15 +306,15 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="nd">@Bean</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="n">FilterRegistrationBean</span> <span class="nf">registerJwtFilter</span><span class="o">(</span><span class="nd">@Autowired</span> <span class="n">JwtFilter</span> <span class="n">jwtFilter</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="c1">// 设置jwt filter不自动注册到spring管理的监听器中，防止与shiro filter同级，导致该监听器必定执行
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">FilterRegistrationBean</span><span class="o">&lt;</span><span class="n">JwtFilter</span><span class="o">&gt;</span> <span class="n">jwtFilterRegister</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FilterRegistrationBean</span><span class="o">&lt;&gt;(</span><span class="n">jwtFilter</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="n">jwtFilterRegister</span><span class="o">.</span><span class="na">setEnabled</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">jwtFilterRegister</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="nd">@Bean</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="n">FilterRegistrationBean</span><span class="w"> </span><span class="nf">registerJwtFilter</span><span class="p">(</span><span class="nd">@Autowired</span><span class="w"> </span><span class="n">JwtFilter</span><span class="w"> </span><span class="n">jwtFilter</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// 设置jwt filter不自动注册到spring管理的监听器中，防止与shiro filter同级，导致该监听器必定执行</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">FilterRegistrationBean</span><span class="o">&lt;</span><span class="n">JwtFilter</span><span class="o">&gt;</span><span class="w"> </span><span class="n">jwtFilterRegister</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FilterRegistrationBean</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">jwtFilter</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">jwtFilterRegister</span><span class="p">.</span><span class="na">setEnabled</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">jwtFilterRegister</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="小结">小结</h3>
 <p>Spring Boot整合Shiro很方便，但是还是有一些注意点的，甚至有的问题还是与Spring的加载机制有关系</p>
@@ -311,7 +324,7 @@
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content">fooksky</span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -366,7 +379,8 @@
     <footer id="footer" class="footer">
       <div class="social-links">
       <a href="https://github.com/urzz" class="iconfont icon-github" title="github"></a>
-  </div>
+  
+</div>
 
 <div class="copyright">
   <span class="power-by">
@@ -391,9 +405,9 @@
   <span class="copyright-year">
     &copy; 
     2015 - 
-    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>fooksky</span>
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span>
+    <span></span>
     <br />
-    
     <a href="https://beian.miit.gov.cn/" target="_blank">苏ICP备18053064号-2</a>
   </span>
 </div>
@@ -413,17 +427,6 @@
 
 <script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-101637356-2', 'auto');
-	ga('set', 'anonymizeIp', true);
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 <script id="baidu_analytics">
   var _hmt = _hmt || [];
   (function() {

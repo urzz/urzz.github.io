@@ -4,17 +4,16 @@
     <title>Traefik on 破壳 - 虽不能至，心向往之</title>
     <link>https://urzz.xyz/tags/traefik/</link>
     <description>Recent content in Traefik on 破壳 - 虽不能至，心向往之</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 12 Jun 2021 02:55:46 +0800</lastBuildDate><atom:link href="https://urzz.xyz/tags/traefik/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 12 Jun 2021 02:55:46 +0800</lastBuildDate>
+    <atom:link href="https://urzz.xyz/tags/traefik/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Traefik 静态文件代理</title>
       <link>https://urzz.xyz/2021/06/12/traefik-reverse-static-file/</link>
       <pubDate>Sat, 12 Jun 2021 02:55:46 +0800</pubDate>
-      
       <guid>https://urzz.xyz/2021/06/12/traefik-reverse-static-file/</guid>
-      <description>先说问题：Traefik 本身是不支持代理静态文件的。原因参考: issue 4240 为什么 这里简单说一下为什么吧，因为它的设计原则是：Separation of C</description>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;先说问题：Traefik 本身是不支持代理静态文件的。原因参考: &lt;a href=&#34;https://github.com/traefik/traefik/issues/4240&#34;&gt;issue 4240&lt;/a&gt;&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;h3 id=&#34;为什么&#34;&gt;为什么&lt;/h3&gt;&#xA;&lt;p&gt;这里简单说一下为什么吧，因为它的设计原则是：&lt;code&gt;Separation of Concerns&lt;/code&gt;。所以traefik并没有提供代理以外的功能，而静态文件需要一个静态文件服务器。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

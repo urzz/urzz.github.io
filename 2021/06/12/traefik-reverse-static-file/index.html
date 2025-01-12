@@ -16,14 +16,16 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="fooksky" /><meta name="description" content="先说问题：Traefik 本身是不支持代理静态文件的。原因参考: issue 4240 为什么 这里简单说一下为什么吧，因为它的设计原则是：Separation of C" /><meta name="keywords" content="fooksky, 破壳, Java" />
+<meta name="author" content="" /><meta name="description" content=" 先说问题：Traefik 本身是不支持代理静态文件的。原因参考: issue 4240
+为什么 这里简单说一下为什么吧，因为它的设计原则是：Separation of Concerns。所以traefik并没有提供代理以外的功能，而静态文件需要一个静态文件服务器。
+" /><meta name="keywords" content="fooksky, 破壳, Java" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.113.0 with theme even" />
+<meta name="generator" content="Hugo 0.140.2 with theme even" />
 
 
 <link rel="canonical" href="https://urzz.xyz/2021/06/12/traefik-reverse-static-file/" />
@@ -39,19 +41,29 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Traefik 静态文件代理" />
-<meta property="og:description" content="先说问题：Traefik 本身是不支持代理静态文件的。原因参考: issue 4240 为什么 这里简单说一下为什么吧，因为它的设计原则是：Separation of C" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://urzz.xyz/2021/06/12/traefik-reverse-static-file/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2021-06-12T02:55:46+08:00" />
-<meta property="article:modified_time" content="2021-06-12T02:55:46+08:00" />
-<meta itemprop="name" content="Traefik 静态文件代理">
-<meta itemprop="description" content="先说问题：Traefik 本身是不支持代理静态文件的。原因参考: issue 4240 为什么 这里简单说一下为什么吧，因为它的设计原则是：Separation of C"><meta itemprop="datePublished" content="2021-06-12T02:55:46+08:00" />
-<meta itemprop="dateModified" content="2021-06-12T02:55:46+08:00" />
-<meta itemprop="wordCount" content="599">
-<meta itemprop="keywords" content="Traefik," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Traefik 静态文件代理"/>
-<meta name="twitter:description" content="先说问题：Traefik 本身是不支持代理静态文件的。原因参考: issue 4240 为什么 这里简单说一下为什么吧，因为它的设计原则是：Separation of C"/>
+<meta property="og:url" content="https://urzz.xyz/2021/06/12/traefik-reverse-static-file/">
+  <meta property="og:site_name" content="破壳 - 虽不能至，心向往之">
+  <meta property="og:title" content="Traefik 静态文件代理">
+  <meta property="og:description" content="先说问题：Traefik 本身是不支持代理静态文件的。原因参考: issue 4240
+为什么 这里简单说一下为什么吧，因为它的设计原则是：Separation of Concerns。所以traefik并没有提供代理以外的功能，而静态文件需要一个静态文件服务器。">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2021-06-12T02:55:46+08:00">
+    <meta property="article:modified_time" content="2021-06-12T02:55:46+08:00">
+    <meta property="article:tag" content="Traefik">
+
+  <meta itemprop="name" content="Traefik 静态文件代理">
+  <meta itemprop="description" content="先说问题：Traefik 本身是不支持代理静态文件的。原因参考: issue 4240
+为什么 这里简单说一下为什么吧，因为它的设计原则是：Separation of Concerns。所以traefik并没有提供代理以外的功能，而静态文件需要一个静态文件服务器。">
+  <meta itemprop="datePublished" content="2021-06-12T02:55:46+08:00">
+  <meta itemprop="dateModified" content="2021-06-12T02:55:46+08:00">
+  <meta itemprop="wordCount" content="599">
+  <meta itemprop="keywords" content="Traefik">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Traefik 静态文件代理">
+  <meta name="twitter:description" content="先说问题：Traefik 本身是不支持代理静态文件的。原因参考: issue 4240
+为什么 这里简单说一下为什么吧，因为它的设计原则是：Separation of Concerns。所以traefik并没有提供代理以外的功能，而静态文件需要一个静态文件服务器。">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -291,7 +303,7 @@
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content">fooksky</span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -345,7 +357,8 @@
     <footer id="footer" class="footer">
       <div class="social-links">
       <a href="https://github.com/urzz" class="iconfont icon-github" title="github"></a>
-  </div>
+  
+</div>
 
 <div class="copyright">
   <span class="power-by">
@@ -370,9 +383,9 @@
   <span class="copyright-year">
     &copy; 
     2015 - 
-    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>fooksky</span>
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span>
+    <span></span>
     <br />
-    
     <a href="https://beian.miit.gov.cn/" target="_blank">苏ICP备18053064号-2</a>
   </span>
 </div>
@@ -392,17 +405,6 @@
 
 <script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-101637356-2', 'auto');
-	ga('set', 'anonymizeIp', true);
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 <script id="baidu_analytics">
   var _hmt = _hmt || [];
   (function() {

@@ -4,17 +4,16 @@
     <title>PVE on 破壳 - 虽不能至，心向往之</title>
     <link>https://urzz.xyz/categories/pve/</link>
     <description>Recent content in PVE on 破壳 - 虽不能至，心向往之</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 16 Feb 2021 02:35:14 +0800</lastBuildDate><atom:link href="https://urzz.xyz/categories/pve/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 16 Feb 2021 02:35:14 +0800</lastBuildDate>
+    <atom:link href="https://urzz.xyz/categories/pve/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>PVE 安装黑群晖教程</title>
       <link>https://urzz.xyz/2021/02/16/pve-install-synology/</link>
       <pubDate>Tue, 16 Feb 2021 02:35:14 +0800</pubDate>
-      
       <guid>https://urzz.xyz/2021/02/16/pve-install-synology/</guid>
-      <description>因为某些原因，重装了两三次PVE和黑群，重装的过程中也碰到一点问题，因此这里记录一下教程。 PVE的安装这里就不说了，可以参考这个教程：Pro</description>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;因为某些原因，重装了两三次PVE和黑群，重装的过程中也碰到一点问题，因此这里记录一下教程。&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;PVE的安装这里就不说了，可以参考这个教程：&lt;a href=&#34;https://www.10bests.com/install-proxmox-ve/&#34;&gt;Proxmox VE（PVE）6.1安装保姆级图文教程&lt;/a&gt;&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

@@ -4,26 +4,23 @@
     <title>Spring on 破壳 - 虽不能至，心向往之</title>
     <link>https://urzz.xyz/categories/spring/</link>
     <description>Recent content in Spring on 破壳 - 虽不能至，心向往之</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 11 Jun 2019 21:33:38 +0000</lastBuildDate><atom:link href="https://urzz.xyz/categories/spring/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 11 Jun 2019 21:33:38 +0000</lastBuildDate>
+    <atom:link href="https://urzz.xyz/categories/spring/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Spring Boot 整合shiro使用自定义filter</title>
       <link>https://urzz.xyz/2019/06/11/spring-boot-shiro-custom-filter/</link>
       <pubDate>Tue, 11 Jun 2019 21:33:38 +0000</pubDate>
-      
       <guid>https://urzz.xyz/2019/06/11/spring-boot-shiro-custom-filter/</guid>
-      <description>最近一个项目的认证是用shiro实现的，以前没有做过spring boot + shiro的整合，所以遇到了一些奇奇怪怪的坑 shiro的整合具体这边就不</description>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;最近一个项目的认证是用shiro实现的，以前没有做过spring boot + shiro的整合，所以遇到了一些奇奇怪怪的坑&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;!-- more --&gt;&#xA;&lt;p&gt;shiro的整合具体这边就不做阐述了，大概有以下几个类:&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Spring Boot 整合shiro后的跨域设置</title>
       <link>https://urzz.xyz/2019/06/05/spring-shiro-cors-config/</link>
       <pubDate>Wed, 05 Jun 2019 21:13:14 +0000</pubDate>
-      
       <guid>https://urzz.xyz/2019/06/05/spring-shiro-cors-config/</guid>
-      <description>之前的项目都没有跨域的要求，都是通过nginx反代后端接口避免跨域请求的，但是最近的项目要求要处理跨域的请求，所以记录一下 1. 正常的Sprin</description>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;之前的项目都没有跨域的要求，都是通过nginx反代后端接口避免跨域请求的，但是最近的项目要求要处理跨域的请求，所以记录一下&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;!-- more --&gt;&#xA;&lt;h3 id=&#34;1-正常的spring-boot项目&#34;&gt;1. 正常的Spring boot项目&lt;/h3&gt;&#xA;&lt;p&gt;基本的spring boot项目只需要写个配置类，实现&lt;code&gt;WebMvcConfigurer&lt;/code&gt;接口的&lt;code&gt;addCorsMappings&lt;/code&gt;方法&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>
