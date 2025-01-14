@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://urzz.xyz/post/</loc>
+    <lastmod>2025-01-15T22:32:10+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://urzz.xyz/</loc>
+    <lastmod>2025-01-15T22:32:10+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://urzz.xyz/categories/</loc>
     <lastmod>2023-02-01T15:49:36+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -30,13 +44,6 @@
   </url>
   
   <url>
-    <loc>https://urzz.xyz/post/</loc>
-    <lastmod>2023-02-01T15:49:36+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://urzz.xyz/tags/pve/</loc>
     <lastmod>2023-02-01T15:49:36+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -45,13 +52,6 @@
   
   <url>
     <loc>https://urzz.xyz/tags/</loc>
-    <lastmod>2023-02-01T15:49:36+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://urzz.xyz/</loc>
     <lastmod>2023-02-01T15:49:36+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
