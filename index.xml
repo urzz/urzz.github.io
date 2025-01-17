@@ -6,8 +6,15 @@
     <description>Recent content on 破壳 - 虽不能至，心向往之</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 01 Feb 2023 15:49:36 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 15 Jan 2025 22:32:10 +0800</lastBuildDate>
     <atom:link href="https://urzz.xyz/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Java Reflection - 谁影响了我？</title>
+      <link>https://urzz.xyz/2025/01/15/java-reflection-arthas-conflict-jdk-8240908/</link>
+      <pubDate>Wed, 15 Jan 2025 18:32:10 +0800</pubDate>
+      <guid>https://urzz.xyz/2025/01/15/java-reflection-arthas-conflict-jdk-8240908/</guid>
+      <description>&lt;h2 id=&#34;背景&#34;&gt;背景&lt;/h2&gt;&#xA;&lt;h3 id=&#34;反射获取方法参数&#34;&gt;反射获取方法参数&lt;/h3&gt;&#xA;&lt;p&gt;当在AspectJ的切面中，需要获取切面方法的参数名信息时，可以怎么做？&lt;/p&gt;&#xA;&lt;p&gt;自 JDK 1.8 之后，开始引入 java.lang.reflect.Parameter 类，用于对参数名称的支持，通过使用“-parameters”编译器标志，开发者在编译时可以保留方法参数的名称信息。&lt;/p&gt;&#xA;&lt;p&gt;而 &lt;code&gt;StandardReflectionParameterNameDiscoverer&lt;/code&gt; 则是Spring封装的，使用 JDK 8 的反射工具，内省方法参数名的工具类，在 Spring MVC 中有大量使用该类获取参数信息。&lt;/p&gt;&#xA;&lt;h3 id=&#34;arthas&#34;&gt;Arthas&lt;/h3&gt;&#xA;&lt;p&gt;什么是 Arthas 可以参考 &lt;a href=&#34;https://arthas.aliyun.com/doc/&#34;&gt;官网介绍&lt;/a&gt; 。&lt;/p&gt;&#xA;&lt;p&gt;简单来说，作为一个 Java 开发，遇到线上问题时才发现由于 日志不齐全、无法debug 等原因无法定位问题时，怎么办？有Arthas就可以处理了。我们能用Arthas来做什么官网也有介绍：&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://attachment.urzz.xyz/img/20250115001953.png!/format/webp%22&#34; alt=&#34;Arthas 能给我们带来什么能力？&#34;&gt;&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Homelab - HPE Gen10 Plus 概述</title>
       <link>https://urzz.xyz/2023/02/01/homelab-hpe-gen10plus-overview/</link>
