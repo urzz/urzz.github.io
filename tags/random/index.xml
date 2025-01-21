@@ -5,7 +5,7 @@
         <link>https://urzz.xyz/tags/random/</link>
         <description>Recent content in Random on 破壳</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>zh-cn</language>
+        <language>zh-CN</language>
         <lastBuildDate>Tue, 01 Dec 2015 20:47:48 +0000</lastBuildDate><atom:link href="https://urzz.xyz/tags/random/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>JS通过打乱数组生成不重复随机数</title>
         <link>https://urzz.xyz/p/js-random-no-repeat/</link>
