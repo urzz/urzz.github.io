@@ -1,19 +1,90 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Ubuntu on 破壳 - 虽不能至，心向往之</title>
-    <link>https://urzz.xyz/tags/ubuntu/</link>
-    <description>Recent content in Ubuntu on 破壳 - 虽不能至，心向往之</description>
-    <generator>Hugo</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Tue, 02 Feb 2016 23:33:53 +0000</lastBuildDate>
-    <atom:link href="https://urzz.xyz/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>迁移Ubuntu至另一个硬盘</title>
-      <link>https://urzz.xyz/2016/02/02/move-ubuntu/</link>
-      <pubDate>Tue, 02 Feb 2016 23:33:53 +0000</pubDate>
-      <guid>https://urzz.xyz/2016/02/02/move-ubuntu/</guid>
-      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;我一直认为，Windows就是用来玩游戏的系统。&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;自从喜欢上了Ubuntu，就一发不可收拾了。虚拟机玩着特别不爽，然后正好要戒游戏，咬咬牙直接装上了Ubuntu（当然，是双系统）。但是固态只有250G左右，两个系统分下来，Ubuntu只有70G左右，win的C盘不知不觉就会占很大的，所以win占大头。其实这本来也是够用了的，不过自从开始学Android之后，就有点吃紧了。原因无他，虚拟机没地方放了。谁让Ubuntu下没有官方的QQ呢，而且wine的QQ真的是特别难用。趁着过年，而且笔记本有个msata的接口，就买了个128G的建兴的。&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;头比较大的是家里网时4M小水管，如果重装系统的话很麻烦，而且开发环境也要重新配置，就想着能不能直接把原来的系统备份过来，还好，google是可以查到资料的！&lt;/p&gt;&#xA;&lt;/blockquote&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Ubuntu on 破壳</title>
+        <link>https://urzz.xyz/tags/ubuntu/</link>
+        <description>Recent content in Ubuntu on 破壳</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <lastBuildDate>Tue, 02 Feb 2016 23:33:53 +0000</lastBuildDate><atom:link href="https://urzz.xyz/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>迁移Ubuntu至另一个硬盘</title>
+        <link>https://urzz.xyz/p/move-ubuntu/</link>
+        <pubDate>Tue, 02 Feb 2016 23:33:53 +0000</pubDate>
+        
+        <guid>https://urzz.xyz/p/move-ubuntu/</guid>
+        <description>&lt;blockquote&gt;
+&lt;p&gt;我一直认为，Windows就是用来玩游戏的系统。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;自从喜欢上了Ubuntu，就一发不可收拾了。虚拟机玩着特别不爽，然后正好要戒游戏，咬咬牙直接装上了Ubuntu（当然，是双系统）。但是固态只有250G左右，两个系统分下来，Ubuntu只有70G左右，win的C盘不知不觉就会占很大的，所以win占大头。其实这本来也是够用了的，不过自从开始学Android之后，就有点吃紧了。原因无他，虚拟机没地方放了。谁让Ubuntu下没有官方的QQ呢，而且wine的QQ真的是特别难用。趁着过年，而且笔记本有个msata的接口，就买了个128G的建兴的。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;头比较大的是家里网时4M小水管，如果重装系统的话很麻烦，而且开发环境也要重新配置，就想着能不能直接把原来的系统备份过来，还好，google是可以查到资料的！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;分区&#34;&gt;分区
+&lt;/h3&gt;&lt;p&gt;我之前的系统是分了4个区的，分别是： &lt;code&gt;/&lt;/code&gt; ， &lt;code&gt;/boot&lt;/code&gt; ， &lt;code&gt;交换分区&lt;/code&gt; ， &lt;code&gt;/home&lt;/code&gt;
+本来在新的硬盘上面也是这么分四个区，但是有个问题！
+我之前的硬盘是&lt;code&gt;GPT&lt;/code&gt;的，系统都是用&lt;code&gt;UEFI&lt;/code&gt;装的，在迁移系统的时候就要注意，新硬盘也要是&lt;code&gt;GPT&lt;/code&gt;格式的。所以在分区的时候要分出ESP分区，我给了&lt;code&gt;200M&lt;/code&gt;，然后其他的四个分区就跟以前一样的了。
+&lt;code&gt;/&lt;/code&gt;我给了40G，&lt;code&gt;/boot&lt;/code&gt;我给了600M（系统更新的时候有时候会显示boot空间不足，干脆分的大一点），&lt;code&gt;交换分区&lt;/code&gt;我给了4G，但是应该没什么用，毕竟我也是8G&lt;code&gt;大&lt;/code&gt;内存！（手动斜眼），剩下的就都是给了&lt;code&gt;/home&lt;/code&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;拷贝&#34;&gt;拷贝
+&lt;/h3&gt;&lt;p&gt;分完区之后就是把原系统的文件拷贝到新硬盘中。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    sudo cp -ax / /media/vliupro/_/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    sudo cp -ax /boot/* /media/vliupro/boot
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    sudo cp -ax /home/* /media/vliupro/home
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;修改uuid&#34;&gt;修改uuid
+&lt;/h3&gt;&lt;p&gt;在拷贝结束之后，需要修改配置文件中的uuid，否则将会出现错误。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;查看uuid： &lt;code&gt;sudo blkid&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;修改配置文件：
+&lt;code&gt;sudo gedit /media/vliupro/_/etc/fstab&lt;/code&gt;
+将其中对应的uuid一一替换。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;修复grub&#34;&gt;修复grub
+&lt;/h3&gt;&lt;p&gt;修改完uuid之后就可以去修复引导了。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;查看各分区情况： &lt;code&gt;sudo fdisk -l&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;挂载各分区，交换分区是不用挂载的！
+&lt;ul&gt;
+&lt;li&gt;sudo mount /dev/sda2 /mnt&lt;/li&gt;
+&lt;li&gt;sudo mount /dev/sda3 /mnt/boot&lt;/li&gt;
+&lt;li&gt;sudo mount /dev/sda1 /mnt/boot/efi&lt;/li&gt;
+&lt;li&gt;sudo mount /dev/sda5 /mnt/home&lt;/li&gt;
+&lt;li&gt;mount -t proc proc /mnt/proc&lt;/li&gt;
+&lt;li&gt;mount &amp;ndash;rbind /sys /mnt/sys&lt;/li&gt;
+&lt;li&gt;mount &amp;ndash;rbind /dev /mnt/dev&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;挂载完成之后就可以chroot到新硬盘上的系统了：&lt;code&gt;sudo chroot /mnt /bin/bash&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;重新生成&lt;code&gt;/boot/grub/grub.cfg&lt;/code&gt;：&lt;code&gt;grub-mkconfig -o /boot/grub/grub.cfg&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;最后安装grub即可：&lt;code&gt;sudo grub-install --boot-directory=/mnt/boot /dev/sda&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;重启&#34;&gt;重启
+&lt;/h3&gt;&lt;p&gt;如果没什么问题现在重启选择新硬盘启动就可以进入新硬盘中的系统&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    sudo update-grub  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    sudo grub-install /dev/sda
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;hr&gt;
+&lt;blockquote&gt;
+&lt;p&gt;现在可以愉快的撸Ubuntu了～&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+        </item>
+        
+    </channel>
 </rss>

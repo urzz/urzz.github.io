@@ -1,19 +1,79 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Editor on 破壳 - 虽不能至，心向往之</title>
-    <link>https://urzz.xyz/categories/editor/</link>
-    <description>Recent content in Editor on 破壳 - 虽不能至，心向往之</description>
-    <generator>Hugo</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Mon, 02 Jan 2017 11:28:49 +0000</lastBuildDate>
-    <atom:link href="https://urzz.xyz/categories/editor/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>VIM插件管理器 - vim-plug</title>
-      <link>https://urzz.xyz/2017/01/02/awesome-vim-plug/</link>
-      <pubDate>Mon, 02 Jan 2017 11:28:49 +0000</pubDate>
-      <guid>https://urzz.xyz/2017/01/02/awesome-vim-plug/</guid>
-      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;之前一直在用spf13-vim的开源vim配置，但是一直都感觉这个太过重量级了。用了大半年之后还是决定自己动手diy一个。&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;h3 id=&#34;为什么要用&#34;&gt;为什么要用&lt;/h3&gt;&#xA;&lt;p&gt;主要是因为vim-plug安装插件是并行的，比vundle要快得多，而且提示信息也更加丰富。&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Editor on 破壳</title>
+        <link>https://urzz.xyz/categories/editor/</link>
+        <description>Recent content in Editor on 破壳</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <lastBuildDate>Mon, 02 Jan 2017 11:28:49 +0000</lastBuildDate><atom:link href="https://urzz.xyz/categories/editor/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>VIM插件管理器 - vim-plug</title>
+        <link>https://urzz.xyz/p/awesome-vim-plug/</link>
+        <pubDate>Mon, 02 Jan 2017 11:28:49 +0000</pubDate>
+        
+        <guid>https://urzz.xyz/p/awesome-vim-plug/</guid>
+        <description>&lt;blockquote&gt;
+&lt;p&gt;之前一直在用spf13-vim的开源vim配置，但是一直都感觉这个太过重量级了。用了大半年之后还是决定自己动手diy一个。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;为什么要用&#34;&gt;为什么要用
+&lt;/h3&gt;&lt;p&gt;主要是因为vim-plug安装插件是并行的，比vundle要快得多，而且提示信息也更加丰富。&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;h3 id=&#34;怎么用&#34;&gt;怎么用
+&lt;/h3&gt;&lt;h4 id=&#34;安装&#34;&gt;安装
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;curl -fLo ~/.vim/autoload/plug.vim --create-dirs &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;使用&#34;&gt;使用
+&lt;/h4&gt;&lt;p&gt;在.vimrc文件中加入：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-vim&#34; data-lang=&#34;vim&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;call&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;plug&lt;/span&gt;#&lt;span class=&#34;nx&#34;&gt;begin&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;~/.vim/plugged&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;&amp;#34; Shorthand notation; fetches https://github.com/junegunn/vim-easy-align&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;Plug&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;junegunn/vim-easy-align&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;&amp;#34; Initialize plugin system&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;call&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;plug&lt;/span&gt;#&lt;span class=&#34;nx&#34;&gt;end&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;在begin和end中间加入自己要安装的插件即可。&lt;/p&gt;
+&lt;h4 id=&#34;常用命令&#34;&gt;常用命令
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;查看插件状态 &lt;code&gt;:PlugStatus&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;安装插件 &lt;code&gt;:PlugInstall&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;更新插件 &lt;code&gt;:PlugUpdate&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;清理插件 &lt;code&gt;:PlugClean&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;更多用法可以参考项目地址：&lt;a class=&#34;link&#34; href=&#34;https://github.com/junegunn/vim-plug&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;vim-plug&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xkw26.com1.z0.glb.clouddn.com/vim-plug-status.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;vim-plug-status&#34;
+	
+	
+&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

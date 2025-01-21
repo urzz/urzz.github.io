@@ -1,19 +1,84 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>自娱自乐 on 破壳 - 虽不能至，心向往之</title>
-    <link>https://urzz.xyz/categories/%E8%87%AA%E5%A8%B1%E8%87%AA%E4%B9%90/</link>
-    <description>Recent content in 自娱自乐 on 破壳 - 虽不能至，心向往之</description>
-    <generator>Hugo</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Wed, 01 Feb 2023 15:49:36 +0800</lastBuildDate>
-    <atom:link href="https://urzz.xyz/categories/%E8%87%AA%E5%A8%B1%E8%87%AA%E4%B9%90/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Homelab - HPE Gen10 Plus 概述</title>
-      <link>https://urzz.xyz/2023/02/01/homelab-hpe-gen10plus-overview/</link>
-      <pubDate>Wed, 01 Feb 2023 15:49:36 +0800</pubDate>
-      <guid>https://urzz.xyz/2023/02/01/homelab-hpe-gen10plus-overview/</guid>
-      <description>&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;&#xA;&lt;p&gt;HPE MicroServer 系列是 HPE ProLiant 推出的面向家庭、小型办公室的微型服务器产品，有着体积小、外观漂亮、噪音低等优点。&lt;/p&gt;&#xA;&lt;p&gt;由于购买较早，开箱图找不到嘞，因此详细的外观、服务器的内部结构等信息，可以参考下面的文章：&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>自娱自乐 on 破壳</title>
+        <link>https://urzz.xyz/categories/%E8%87%AA%E5%A8%B1%E8%87%AA%E4%B9%90/</link>
+        <description>Recent content in 自娱自乐 on 破壳</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <lastBuildDate>Wed, 01 Feb 2023 15:49:36 +0800</lastBuildDate><atom:link href="https://urzz.xyz/categories/%E8%87%AA%E5%A8%B1%E8%87%AA%E4%B9%90/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Homelab - HPE Gen10 Plus 概述</title>
+        <link>https://urzz.xyz/p/homelab-hpe-gen10plus-overview/</link>
+        <pubDate>Wed, 01 Feb 2023 15:49:36 +0800</pubDate>
+        
+        <guid>https://urzz.xyz/p/homelab-hpe-gen10plus-overview/</guid>
+        <description>&lt;h2 id=&#34;简介&#34;&gt;简介
+&lt;/h2&gt;&lt;p&gt;HPE MicroServer 系列是 HPE ProLiant 推出的面向家庭、小型办公室的微型服务器产品，有着体积小、外观漂亮、噪音低等优点。&lt;/p&gt;
+&lt;p&gt;由于购买较早，开箱图找不到嘞，因此详细的外观、服务器的内部结构等信息，可以参考下面的文章：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://wzyboy.im/post/1387.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;HPE MicroServer Gen10 Plus 上手玩&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://chiphell.com/thread-2429660-1-1.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;HPE Gen10 Plus 开箱和使用&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;为了方便描述，后续 HPE Gen10 Plus 简称为 &lt;code&gt;gen10p&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;硬件&#34;&gt;硬件
+&lt;/h2&gt;&lt;p&gt;官方默认配置有两种，主要是 CPU 和内存的区别，低配是 G5420 + 8G ECC，高配是 E2224 + 16G ECC。&lt;/p&gt;
+&lt;p&gt;默认配置对于我而言是不太够用的，因此在服务器到手后，就对它进行了一次升级。升级配置需要注意的是，gen10p 的电源是 180W 的外置电源，同时，因为功耗转换有损失，并不能卡死 180W 的功耗来选配置，所以升级后的功耗需要自行算一下。&lt;/p&gt;
+&lt;h3 id=&#34;cpu&#34;&gt;CPU
+&lt;/h3&gt;&lt;p&gt;首先是 CPU，CPU 的更换可以直接参考 &lt;a class=&#34;link&#34; href=&#34;https://zhuanlan.zhihu.com/p/490452003&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;HPE ProLiant 微服务器 Gen10 Plus 终极定制指南&lt;/a&gt; ，主要是要注意功耗。&lt;/p&gt;
+&lt;p&gt;不过我更换的 CPU 是 Intel CC150，不在这个列表里，8 核 16 线程，主频锁在 3.5GHz，没有睿频，TDP 95W。因为没有睿频，主频较低导致表现一般，与 i7-8700K 相比，单核性能低 1/4，多核性能超出 10-15%。性能参考：&lt;a class=&#34;link&#34; href=&#34;https://news.mydrivers.com/1/670/670692.htm&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Intel CC150 处理器现世：性能比肩 i7、功耗低于 i5&lt;/a&gt;。由于没有睿频，功耗表现很好，很适合 HomeLab 使用。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://attachment.urzz.xyz/img/2023/02/01/18-44-07-a17c15f9b75bb368cfa27520c2e80d3e-20230201184407-702dd9.png!/format/webp&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Intel CC150&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;内存&#34;&gt;内存
+&lt;/h3&gt;&lt;p&gt;gen10p 的官方产品页表示最大支持内存是 32GB，不过实测下来是可以支持 64GB 的，另外还支持非 ECC 内存，如果不需要 ECC 内存的可以省一笔预算了。&lt;/p&gt;
+&lt;p&gt;内存我选择了升到了 64GB，三星 DDR4 32GB ECC x2，iLO 可以看到内存信息，不过也有一些 ECC 内存 iLO 认不出来，影响不大。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://attachment.urzz.xyz/img/2023/02/01/18-46-16-a626be2958ed7600e2765fbc497b364d-20230201184616-1f9294.png!/format/webp&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;内存信息&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;硬盘&#34;&gt;硬盘
+&lt;/h3&gt;&lt;p&gt;gen10p 有 4 个 SATA3 的 3.5 寸硬盘位，内部只有一个 PCIe 3.0 X16 单槽/半高 的接口。这个接口可以选择以下类型的扩展：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;显卡：只能选半高的显卡，而且功耗需要限制在 70W 内&lt;/li&gt;
+&lt;li&gt;网卡：如果有万兆需求，这里可以选择插一张万兆网卡&lt;/li&gt;
+&lt;li&gt;NVMe 转接卡：可以扩展 SSD 的存储，同时 gen10p 也支持 PCIe 拆分，但是只支持拆分为两个。如果需要拆分为更多，则需要自带主控芯片的转接卡，比如我选择的自带 ASM2824 主控的转接卡：&lt;a class=&#34;link&#34; href=&#34;https://item.jd.com/39900583730.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;佳翼 NVMe 阵列卡 PCie 转 M.2 转接卡四盘 SSD ASM2824 主控 带涡轮风扇&lt;/a&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;需要注意的是，PCIe 插槽的风道基本等于没有，所以散热的压力也比较大，需要注意这里的温度。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;内部接口，除了上述的硬盘位和PCIe扩展槽意外，主板内部还有一个 USB2.0 的插槽。&lt;/p&gt;
+&lt;p&gt;我的选择是，内部usb接口插u盘做系统盘，PCIe扩展4x4的NVMe的转接卡，插满4根SSD。&lt;/p&gt;
+&lt;p&gt;最终的存储为：2T NVMe SSD x4。至于 4 个 SATA 硬盘位，目前暂时先空着了。&lt;/p&gt;
+&lt;h2 id=&#34;总结&#34;&gt;总结
+&lt;/h2&gt;&lt;p&gt;gen10p 的硬件升级主要就是上述这些了，升级了 CPU 和内存之后，性能就很可观了，这样也可以省下一部分的 VPS 的支出了。&lt;/p&gt;
+&lt;p&gt;不过就我个人而言，选择 gen10p 最大的理由就是体积+静音，支持 iLO，优势太大了。&lt;/p&gt;
+&lt;p&gt;其他参考链接：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.servethehome.com/hpe-proliant-microserver-gen10-plus-ultimate-customization-guide/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;HPE ProLiant MicroServer Gen10 Plus Ultimate Customization Guide&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

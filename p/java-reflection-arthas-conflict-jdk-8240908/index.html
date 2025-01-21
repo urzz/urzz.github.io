@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=" 一句话概括: Arthas 增强后导致 Java 反射获取方法参数信息失败。\n">
+<meta name="keywords" content="Reflection, Java反射, Arthas, Instrumentation, 参数名丢失"><title>Java Reflection - 谁影响了我？</title>
+
+<link rel='canonical' href='https://urzz.xyz/p/java-reflection-arthas-conflict-jdk-8240908/'>
+
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="Java Reflection - 谁影响了我？">
+<meta property='og:description' content=" 一句话概括: Arthas 增强后导致 Java 反射获取方法参数信息失败。\n">
+<meta property='og:url' content='https://urzz.xyz/p/java-reflection-arthas-conflict-jdk-8240908/'>
+<meta property='og:site_name' content='破壳'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Java' /><meta property='article:tag' content='Arthas' /><meta property='article:tag' content='Reflection' /><meta property='article:published_time' content='2025-01-15T18:32:10&#43;08:00'/><meta property='article:modified_time' content='2025-01-15T22:32:10&#43;08:00'/>
+<meta name="twitter:title" content="Java Reflection - 谁影响了我？">
+<meta name="twitter:description" content=" 一句话概括: Arthas 增强后导致 Java 反射获取方法参数信息失败。\n">
+    <link rel="shortcut icon" href="/favicon.png" />
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=GA-4938994256"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'GA-4938994256');
+        }
+      </script>
+<script async defer 
+  src="https://umami.urzz.me/script.js" 
+  data-website-id="3325b119-db87-4ffb-ae4a-cbc2febaa67c"data-domains="urzz.xyz"
+  ></script>
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu1612401612759814577.webp" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">📷</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">破壳</a></h1>
+            <h2 class="site-description">虽不能至，心向往之</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/urzz'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#背景">背景</a>
+      <ol>
+        <li><a href="#反射获取方法参数">反射获取方法参数</a></li>
+        <li><a href="#arthas">Arthas</a></li>
+      </ol>
+    </li>
+    <li><a href="#问题">问题</a>
+      <ol>
+        <li><a href="#表现消失的参数名列表">表现：消失的参数名列表</a></li>
+      </ol>
+    </li>
+    <li><a href="#分析">分析</a>
+      <ol>
+        <li><a href="#反射相关">反射相关</a></li>
+        <li><a href="#arthas-相关">Arthas 相关</a></li>
+      </ol>
+    </li>
+    <li><a href="#深入">深入</a>
+      <ol>
+        <li><a href="#arthas-增强导致参数名丢失">Arthas 增强导致参数名丢失</a>
+          <ol>
+            <li><a href="#为什么是-arg0">为什么是 arg0？</a></li>
+          </ol>
+        </li>
+        <li><a href="#method-获取参数名缓存">Method 获取参数名缓存</a></li>
+      </ol>
+    </li>
+    <li><a href="#总结">总结</a>
+      <ol>
+        <li><a href="#arthas-增强命令">Arthas 增强命令</a></li>
+      </ol>
+    </li>
+    <li><a href="#参考链接">参考链接</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/java/" >
+                Java
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/java-reflection-arthas-conflict-jdk-8240908/">Java Reflection - 谁影响了我？</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025-01-15</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 7 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <blockquote>
+<p>一句话概括: Arthas 增强后导致 Java 反射获取方法参数信息失败。</p>
+</blockquote>
+<h2 id="背景">背景
+</h2><h3 id="反射获取方法参数">反射获取方法参数
+</h3><p>当在AspectJ的切面中，需要获取切面方法的参数名信息时，可以怎么做？</p>
+<p>自 JDK 1.8 之后，开始引入 java.lang.reflect.Parameter 类，用于对参数名称的支持，通过使用“-parameters”编译器标志，开发者在编译时可以保留方法参数的名称信息。</p>
+<p>而 <code>StandardReflectionParameterNameDiscoverer</code> 则是Spring封装的，使用 JDK 8 的反射工具，内省方法参数名的工具类，在 Spring MVC 中有大量使用该类获取参数信息。</p>
+<h3 id="arthas">Arthas
+</h3><p>什么是 Arthas 可以参考 <a class="link" href="https://arthas.aliyun.com/doc/"  target="_blank" rel="noopener"
+    >官网介绍</a> 。</p>
+<p>简单来说，作为一个 Java 开发，遇到线上问题时才发现由于 日志不齐全、无法debug 等原因无法定位问题时，怎么办？有Arthas就可以处理了。我们能用Arthas来做什么官网也有介绍：</p>
+<p>![Arthas 能给我们带来什么能力？](<a class="link" href="https://attachment.urzz.xyz/img/20250115001953.png!/format/webp%22"  target="_blank" rel="noopener"
+    >https://attachment.urzz.xyz/img/20250115001953.png!/format/webp"</a></p>
+<h2 id="问题">问题
+</h2><h3 id="表现消失的参数名列表">表现：消失的参数名列表
+</h3><p>为了排查线上某个接口的性能问题，使用 Arthas - trace 命令观察指定接口的调用路径以及相应的耗时时，发现当服务刚启动且未发起请求时，使用trace命令观察接口后，所有该接口的调用都会触发一个异常错误：</p>
+<blockquote>
+<p><code>java.lang.NullPointerException: Cannot read the array length because &quot;params&quot; is null</code></p>
+</blockquote>
+<p>详细查看报错行代码后发现，接口出入参打印是由一个公共组件封装的能力，这个通用组件内会获取接口方法的参数名信息做一些处理。大概代码参考：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">ParameterNameDiscoverer</span><span class="w"> </span><span class="n">discoverer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">StandardReflectionParameterNameDiscoverer</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Method</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="n">MethodSignature</span><span class="p">)</span><span class="w"> </span><span class="n">point</span><span class="p">.</span><span class="na">getSignature</span><span class="p">()).</span><span class="na">getMethod</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">paramDiscover</span><span class="p">.</span><span class="na">getParameterNames</span><span class="p">(</span><span class="n">method</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">0</span><span class="p">;</span><span class="w"> </span><span class="n">len</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">params</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w"> </span><span class="n">len</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// do something</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>此刻心里缓缓冒出一个❓</p>
+<p>为什么这个 params 会为 null 呢？</p>
+<h2 id="分析">分析
+</h2><h3 id="反射相关">反射相关
+</h3><p>首先来看下反射获取参数名列表的代码: <code>paramDiscover.getParameterNames(method)</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">StandardReflectionParameterNameDiscoverer</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">ParameterNameDiscoverer</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nd">@Nullable</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="nf">getParameterNames</span><span class="p">(</span><span class="n">Method</span><span class="w"> </span><span class="n">method</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="k">return</span><span class="w"> </span><span class="n">getParameterNames</span><span class="p">(</span><span class="n">method</span><span class="p">.</span><span class="na">getParameters</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nd">@Nullable</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="nf">getParameterNames</span><span class="p">(</span><span class="n">Constructor</span><span class="o">&lt;?&gt;</span><span class="w"> </span><span class="n">ctor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="k">return</span><span class="w"> </span><span class="n">getParameterNames</span><span class="p">(</span><span class="n">ctor</span><span class="p">.</span><span class="na">getParameters</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nd">@Nullable</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="nf">getParameterNames</span><span class="p">(</span><span class="n">Parameter</span><span class="o">[]</span><span class="w"> </span><span class="n">parameters</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">parameterNames</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">String</span><span class="o">[</span><span class="n">parameters</span><span class="p">.</span><span class="na">length</span><span class="o">]</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">parameters</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span><span class="n">Parameter</span><span class="w"> </span><span class="n">param</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parameters</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">param</span><span class="p">.</span><span class="na">isNamePresent</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">				</span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span><span class="n">parameterNames</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">param</span><span class="p">.</span><span class="na">getName</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="k">return</span><span class="w"> </span><span class="n">parameterNames</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>从实现代码可以看到，当 Parameter#isNamePresent 返回false时，参数名列表才会是个null，那这个方法是干什么用的呢？</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isNamePresent</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// 当没有真实参数数据，或name为null，则会返回false</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">executable</span><span class="p">.</span><span class="na">hasRealParameterData</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>追踪代码可以看到一个关键类：java.lang.reflect.Executable#privateGetParameters</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">private</span><span class="w"> </span><span class="n">Parameter</span><span class="o">[]</span><span class="w"> </span><span class="nf">privateGetParameters</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// Use tmp to avoid multiple writes to a volatile.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Parameter</span><span class="o">[]</span><span class="w"> </span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parameters</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tmp</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// Otherwise, go to the JVM to get them</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getParameters0</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="p">(</span><span class="n">IllegalArgumentException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">// Rethrow ClassFormatErrors</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MalformedParametersException</span><span class="p">(</span><span class="s">&#34;Invalid constant pool index&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// If we get back nothing, then synthesize parameters</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tmp</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">hasRealParameterData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">synthesizeAllParams</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">hasRealParameterData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">verifyParameters</span><span class="p">(</span><span class="n">tmp</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">parameters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmp</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">tmp</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>这个方法的作用简单来说就是，先尝试从JVM中获取参数列表：</p>
+<ul>
+<li>参数列表依旧为null，则说明无参数数据，标记 <code>hasRealParameterData</code> 为false，并尝试合成参数信息（获取参数数量，并以 arg0,1,2…表示）</li>
+<li>参数列表不为null，标记 <code>hasRealParameterData</code> 为true，并校验参数列表</li>
+</ul>
+<p>到目前为止基本可以确定，因为从JVM中获取的参数列表是个null，才导致出现的 <code>NullPointException</code>，而获取参数信息时调用的<code>java.lang.reflect.Executable#getParameters0</code> 是一个native方法。</p>
+<h3 id="arthas-相关">Arthas 相关
+</h3><p>由于反射相关的Java代码无法定位<strong>为什么从JVM中获取的参数列表是个null</strong>，再深入就得去看native实现的C++代码了。这时我突然意识到，可以去看看Arthas的issues是不是有人踩过这个坑，于是我就找到了这个：<a class="link" href="https://github.com/alibaba/arthas/issues/2800"  target="_blank" rel="noopener"
+    >arthas增强类以后参数名会抹除 #2800</a>。</p>
+<p>按照issue的描述来看，当使用arthas对类进行增强的时候，增强类的方法参数名会丢失，变成arg0这种占位符。</p>
+<p>本地用arthas来手动尝试一把：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="p">[</span><span class="nx">arthas</span><span class="err">@</span><span class="mi">40916</span><span class="p">]</span><span class="nx">$</span> <span class="nx">ognl</span> <span class="s1">&#39;@com.xxx.XxxController@class.getMethods()[0].getParameters()&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="err">@</span><span class="nx">Parameter</span><span class="p">[][</span>
+</span></span><span class="line"><span class="cl">    <span class="err">@</span><span class="nx">Parameter</span><span class="p">[</span><span class="nx">com</span><span class="p">.</span><span class="nx">xxx</span><span class="p">.</span><span class="nx">ParamVO</span> <span class="nx">request</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">arthas</span><span class="err">@</span><span class="mi">40916</span><span class="p">]</span><span class="nx">$</span> <span class="nx">stack</span> <span class="nx">com</span><span class="p">.</span><span class="nx">xxx</span><span class="p">.</span><span class="nx">XxxController</span> <span class="nx">index</span> <span class="o">-</span><span class="nx">n</span> <span class="mi">5</span>
+</span></span><span class="line"><span class="cl"><span class="nx">Press</span> <span class="nx">Q</span> <span class="nx">or</span> <span class="nx">Ctrl</span><span class="o">+</span><span class="nx">C</span> <span class="nx">to</span> <span class="nx">abort</span><span class="p">.</span>
+</span></span><span class="line"><span class="cl"><span class="nx">Affect</span><span class="p">(</span><span class="kr">class</span> <span class="nx">count</span><span class="o">:</span> <span class="mi">2</span> <span class="p">,</span> <span class="nx">method</span> <span class="nx">count</span><span class="o">:</span> <span class="mi">2</span><span class="p">)</span> <span class="nx">cost</span> <span class="k">in</span> <span class="mi">167</span> <span class="nx">ms</span><span class="p">,</span> <span class="nx">listenerId</span><span class="o">:</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">arthas</span><span class="err">@</span><span class="mi">40916</span><span class="p">]</span><span class="nx">$</span> <span class="nx">ognl</span> <span class="s1">&#39;@com.xxx.XxxController@class.getMethods()[0].getParameters()&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="err">@</span><span class="nx">Parameter</span><span class="p">[][</span>
+</span></span><span class="line"><span class="cl">    <span class="err">@</span><span class="nx">Parameter</span><span class="p">[</span><span class="nx">com</span><span class="p">.</span><span class="nx">xxx</span><span class="p">.</span><span class="nx">ParamVO</span> <span class="nx">arg0</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>尝试结果如下：</p>
+<ul>
+<li>第一次执行 getParameters 方法，能正常获取参数名信息：request。</li>
+<li>使用stack命令增强</li>
+<li>第二次执行 getParameters 方法，获取到的参数名信息就变成了 arg0</li>
+</ul>
+<p>到目前为止基本可以确定，params 为 null 的原因，就是因为Arthas。</p>
+<h2 id="深入">深入
+</h2><p>排查一番之后，虽然找到了直接原因，但是随之而来的是更多的问题：</p>
+<ul>
+<li>Arthas 增强后为什么反射获取参数列表会失败？</li>
+<li>为什么增强后再获取参数列表，参数名就变成了arg0？</li>
+<li>为什么只有在服务启动后首次访问接口前增强会导致后续接口调用失败？</li>
+</ul>
+<h3 id="arthas-增强导致参数名丢失">Arthas 增强导致参数名丢失
+</h3><p>首先关注这个issue： <a class="link" href="https://github.com/alibaba/arthas/issues/2800"  target="_blank" rel="noopener"
+    >arthas增强类以后参数名会抹除 #2800</a> ，其中有提到JDK有一个bug，其会导致JVM在重新加载class时丢失方法参数信息。如下：<a class="link" href="https://bugs.openjdk.org/browse/JDK-8240908"  target="_blank" rel="noopener"
+    >JDK-8240908 RetransformClass does not know about MethodParameters attribute</a></p>
+<p><img src="https://attachment.urzz.xyz/img/202501150024135.png!/format/webp"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p>手动尝试一下，是否符合预期，使用JDK17：
+<img src="https://attachment.urzz.xyz/img/202501150025745.png!/format/webp"
+	
+	
+	
+	loading="lazy"
+	
+		alt="retransformClass测试"
+	
+	
+></p>
+<p>可以看到，在触发 Instrumentation#retransformClasses 重新加载类字节码后，参数名信息丢失了。而 Arthas 的实现就是借助 Java Agent 在字节码层面对类和方法进行修改，达到观测目标的。而最终实现就是通过 java.lang.instrument 相关工具，通过 addTransformer/retransformClasses 来修改并重新加载类字节码。</p>
+<p>看看源码：<a class="link" href="https://github.com/alibaba/arthas"  target="_blank" rel="noopener"
+    >https://github.com/alibaba/arthas</a></p>
+<p>类增强命令都会继承 EnhancerCommand，而 EnhancerCommand 都会调用 Enhancer#enhance 方法。Enhancer是Arthas中实现的 ClassFileTransformer，用于对类进行增强，参考代码：
+<img src="https://attachment.urzz.xyz/img/202501150026028.png!/format/webp"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Enhancer#enhance"
+	
+	
+></p>
+<p>从图片中可以观察到，Enhancer 确实会触发上述  Instrumentation#retransformClasses 方法，因此在增强类后会导致参数名丢失。</p>
+<h4 id="为什么是-arg0">为什么是 arg0？
+</h4><p>知道了参数信息丢失的原因后，下一个问题是，为什么参数名会变成arg0？这个就需要回到 <code>Executable#getParameters</code> 方法来看，当JVM丢失参数信息后，Java的反射代码会怎么处理这种情况，直接看代码吧：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * {@return an array of {@code Parameter} objects representing
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * all the parameters to the underlying executable represented by
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * this object} An array of length 0 is returned if the executable
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * has no parameters.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * &lt;p&gt;The parameters of the underlying executable do not necessarily
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * have unique names, or names that are legal identifiers in the
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Java programming language (JLS {@jls 3.8}).
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @throws MalformedParametersException if the class file contains
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * a MethodParameters attribute that is improperly formatted.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="n">Parameter</span><span class="o">[]</span><span class="w"> </span><span class="nf">getParameters</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// TODO: This may eventually need to be guarded by security</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// mechanisms similar to those in Field, Method, etc.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">//</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// Need to copy the cached array to prevent users from messing</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// with it.  Since parameters are immutable, we can</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// shallow-copy.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">privateGetParameters</span><span class="p">().</span><span class="na">clone</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>getParameters</code> 方法最终会调用 <code>privateGetParameter</code> 来获取参数列表，并返回一个对应结果的浅拷贝。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">private</span><span class="w"> </span><span class="kd">transient</span><span class="w"> </span><span class="kd">volatile</span><span class="w"> </span><span class="n">Parameter</span><span class="o">[]</span><span class="w"> </span><span class="n">parameters</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">private</span><span class="w"> </span><span class="kd">native</span><span class="w"> </span><span class="n">Parameter</span><span class="o">[]</span><span class="w"> </span><span class="nf">getParameters0</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// ...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">private</span><span class="w"> </span><span class="n">Parameter</span><span class="o">[]</span><span class="w"> </span><span class="nf">synthesizeAllParams</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">realparams</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getParameterCount</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">final</span><span class="w"> </span><span class="n">Parameter</span><span class="o">[]</span><span class="w"> </span><span class="n">out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Parameter</span><span class="o">[</span><span class="n">realparams</span><span class="o">]</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">realparams</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// TODO: is there a way to synthetically derive the</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// modifiers?  Probably not in the general case, since</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// we&#39;d have no way of knowing about them, but there</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// may be specific cases.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">out</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Parameter</span><span class="p">(</span><span class="s">&#34;arg&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">0</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">out</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">private</span><span class="w"> </span><span class="n">Parameter</span><span class="o">[]</span><span class="w"> </span><span class="nf">privateGetParameters</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// Use tmp to avoid multiple writes to a volatile.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Parameter</span><span class="o">[]</span><span class="w"> </span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parameters</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tmp</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// Otherwise, go to the JVM to get them</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getParameters0</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="p">(</span><span class="n">IllegalArgumentException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">// Rethrow ClassFormatErrors</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MalformedParametersException</span><span class="p">(</span><span class="s">&#34;Invalid constant pool index&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// If we get back nothing, then synthesize parameters</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tmp</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">hasRealParameterData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">synthesizeAllParams</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">hasRealParameterData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">verifyParameters</span><span class="p">(</span><span class="n">tmp</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">parameters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmp</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">tmp</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>privateGetParameter</code> 会先尝试访问 parameters 成员变量，若该变量为null，则会进行初始化流程，否则直接返回。从这段代码可以看到，初始化参数信息时，会先尝试从JVM获取（<code>getParameters0()</code> 是native方法）参数信息，若JVM获取到的参数信息为空，则会标记 <code>hasRealParameterData</code> 为false，并调用 <code>synthesizeAllParams()</code> 方法，<code>hasRealParameterData</code> 会导致 Parameter#isNamePresent 方法返回false，这也是一开始碰到空指针异常的原因了。</p>
+<p>而另一个 <code>synthesizeAllParams</code> 方法的作用，就是在JVM获取的参数信息为空时，以 arg 为前缀尝试注入参数名信息，这也是为什么增强后参数丢失，看到的参数名是arg0的原因。</p>
+<h3 id="method-获取参数名缓存">Method 获取参数名缓存
+</h3><p>在尝试复现的过程中我发现，只有在服务启动后首次访问接口前增强会导致后续该接口调用失败，如果已经调用过接口再增强，就不会失败了。</p>
+<p>回顾 <code>privateGetParameters</code> 方法后，这个问题的原因也就自然的浮出水面了！</p>
+<p>Method 是有一个成员变量来缓存参数信息结果的，如果该成员变量不为空，就不会进行初始化，也就不会再从JVM获取参数信息了。</p>
+<h2 id="总结">总结
+</h2><p>从JDK的bug单来看，这个问题在 JDK19+ 才会修复，因此在19之前，涉及到使用了 Instrumentation 增强类的工具，需要谨慎使用。另外，封装组件还是要尽量从代码的角度上避免向上抛Exception，自身问题不能影响业务功能。</p>
+<h3 id="arthas-增强命令">Arthas 增强命令
+</h3><p>arthas增强类的命令，都继承自 EnhancerCommand 类，可以看到涉及到增强的命令如下：</p>
+<ul>
+<li><a class="link" href="https://arthas.aliyun.com/doc/monitor.html"  target="_blank" rel="noopener"
+    >monitor</a></li>
+<li><a class="link" href="https://arthas.aliyun.com/doc/stack.html"  target="_blank" rel="noopener"
+    >stack</a></li>
+<li><a class="link" href="https://arthas.aliyun.com/doc/tt.html"  target="_blank" rel="noopener"
+    >tt - TimeTunnel</a></li>
+<li><a class="link" href="https://arthas.aliyun.com/doc/trace.html"  target="_blank" rel="noopener"
+    >trace</a></li>
+<li><a class="link" href="https://arthas.aliyun.com/doc/watch.html"  target="_blank" rel="noopener"
+    >watch</a></li>
+</ul>
+<p><img src="https://attachment.urzz.xyz/img/202501150027420.png!/format/webp"
+	
+	
+	
+	loading="lazy"
+	
+		alt="EnhancerCommand"
+	
+	
+></p>
+<h2 id="参考链接">参考链接
+</h2><ul>
+<li><a class="link" href="https://github.com/alibaba/arthas/issues/2800"  target="_blank" rel="noopener"
+    >arthas增强类以后参数名会抹除 #2800</a></li>
+<li><a class="link" href="https://bugs.openjdk.org/browse/JDK-8240908"  target="_blank" rel="noopener"
+    >JDK Bug单</a></li>
+<li><a class="link" href="https://github.com/alibaba/arthas/blob/b266e1c967268f3d41f28080ced0f12b124cc3a6/core/src/main/java/com/taobao/arthas/core/advisor/Enhancer.java#L415"  target="_blank" rel="noopener"
+    >arthas增强类参考代码</a></li>
+</ul>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/java/">Java</a>
+        
+            <a href="/tags/arthas/">Arthas</a>
+        
+            <a href="/tags/reflection/">Reflection</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    <section class="article-lastmod">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <span>
+            最后更新于 2025-01-15 22:32
+        </span>
+    </section></footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/improve-use-of-switch/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Switch的优化方式</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/spring-param-encrypt/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">基于Spring做请求参数的加解密/签名校验</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/unexpected-java-nullpoint-exception/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">印象深刻的Java空指针异常</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/mybatis-plus-generator-config/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">使用mybatis-plus-generator初始化项目</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/jdk-collection-abstract-collection/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Java 集合源码 - AbstractCollection</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <script
+    src="https://giscus.app/client.js"
+    data-repo="urzz/hugo-comments"
+    data-repo-id="MDEwOlJlcG9zaXRvcnkyOTcwMzIyMjQ="
+    data-category="Announcements"
+    data-category-id="DIC_kwDOEbRaIM4CmLa-"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme="light"
+    data-lang="zh-cn"
+    data-loading=""
+    crossorigin="anonymous"
+    async
+></script>
+<script>
+    function setGiscusTheme(theme) {
+        let giscus = document.querySelector("iframe.giscus-frame");
+        if (giscus) {
+            giscus.contentWindow.postMessage(
+                {
+                    giscus: {
+                        setConfig: {
+                            theme: theme,
+                        },
+                    },
+                },
+                "https://giscus.app"
+            );
+        }
+    }
+
+    (function () {
+        addEventListener("message", (e) => {
+            if (event.origin !== "https://giscus.app") return;
+            handler();
+        });
+        window.addEventListener("onColorSchemeChange", handler);
+
+        function handler() {
+            if (document.documentElement.dataset.scheme === "light") {
+                setGiscusTheme('light');
+            } else {
+                setGiscusTheme('dark_dimmed');
+            }
+        }
+    })();
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2015 - 
+        
+        2025 破壳
+    </section>
+    
+    <section class="powerby">
+        
+            <a href="https://beian.miit.gov.cn/" target="_blank">苏ICP备18053064号-2</a>
+<div class="upyun-info">本网站由  <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank"><img src="/images/upyun_logo_no_bg.png" style="width:20px;display:inline;vertical-align:middle;" /></a>  提供CDN加速/云存储服务</div>
+ <br/>
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.29.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

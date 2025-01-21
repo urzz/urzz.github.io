@@ -1,19 +1,122 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Chrome on 破壳 - 虽不能至，心向往之</title>
-    <link>https://urzz.xyz/tags/chrome/</link>
-    <description>Recent content in Chrome on 破壳 - 虽不能至，心向往之</description>
-    <generator>Hugo</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Tue, 26 Jul 2016 16:55:04 +0000</lastBuildDate>
-    <atom:link href="https://urzz.xyz/tags/chrome/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Chrome 好用的插件及介绍</title>
-      <link>https://urzz.xyz/2016/07/26/useful-chrome-extensions/</link>
-      <pubDate>Tue, 26 Jul 2016 16:55:04 +0000</pubDate>
-      <guid>https://urzz.xyz/2016/07/26/useful-chrome-extensions/</guid>
-      <description>&lt;h3 id=&#34;chrome-好用的插件及介绍&#34;&gt;Chrome 好用的插件及介绍&lt;/h3&gt;&#xA;&lt;h4 id=&#34;infinity-new-tab-1&#34;&gt;&lt;a href=&#34;http://infinitynewtab.com/&#34;&gt;Infinity new tab &lt;/a&gt;&lt;/h4&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;自定义新建的标签页，集合了很多很有用的功能。&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;h4 id=&#34;github-awesome-complete2&#34;&gt;&lt;a href=&#34;https://github.com/algolia/github-awesome-autocomplete&#34;&gt;GitHub Awesome Complete&lt;/a&gt;&lt;/h4&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;不离开当前项目窗口的前提下，弹窗显示出你的搜索结果&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;!-- more --&gt;&#xA;&lt;h4 id=&#34;octotree3&#34;&gt;&lt;a href=&#34;https://chrome.google.com/webstore/detail/octotree/bkhaagjahfmjljalopjnoealnfndnagc&#34;&gt;Octotree&lt;/a&gt;&lt;/h4&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Octotree 是一款非常方便的 GitHub 扩展，安装了这款插件之后，你可以在 GitHub 项目页面的左侧看到相应项目的树状结构图，对于项目管理以及具体的文件跳转来说非常方便。&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Chrome on 破壳</title>
+        <link>https://urzz.xyz/tags/chrome/</link>
+        <description>Recent content in Chrome on 破壳</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <lastBuildDate>Tue, 26 Jul 2016 16:55:04 +0000</lastBuildDate><atom:link href="https://urzz.xyz/tags/chrome/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Chrome 好用的插件及介绍</title>
+        <link>https://urzz.xyz/p/useful-chrome-extensions/</link>
+        <pubDate>Tue, 26 Jul 2016 16:55:04 +0000</pubDate>
+        
+        <guid>https://urzz.xyz/p/useful-chrome-extensions/</guid>
+        <description>&lt;h3 id=&#34;chrome-好用的插件及介绍&#34;&gt;Chrome 好用的插件及介绍
+&lt;/h3&gt;&lt;h4 id=&#34;infinity-new-tab-1&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;http://infinitynewtab.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Infinity new tab &lt;/a&gt;
+&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;自定义新建的标签页，集合了很多很有用的功能。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;github-awesome-complete2&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/algolia/github-awesome-autocomplete&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;GitHub Awesome Complete&lt;/a&gt;
+&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;不离开当前项目窗口的前提下，弹窗显示出你的搜索结果&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;!-- more --&gt;
+&lt;h4 id=&#34;octotree3&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://chrome.google.com/webstore/detail/octotree/bkhaagjahfmjljalopjnoealnfndnagc&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Octotree&lt;/a&gt;
+&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;Octotree 是一款非常方便的 GitHub 扩展，安装了这款插件之后，你可以在 GitHub 项目页面的左侧看到相应项目的树状结构图，对于项目管理以及具体的文件跳转来说非常方便。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;postman4&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Postman&lt;/a&gt;
+&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;相信开发者朋友一定知道这款插件，这是一款强大的 API &amp;amp; HTTP 请求调试工具，它不仅可以调试简单的 HTML、CSS 以及脚本等简单的网页基本信息，这款 Chrome 插件甚至还能发送几乎所有的 HTTP 请求&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;掘金浏览器插件5&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;http://gold.xitu.io/extension/?utm_source=extension&amp;amp;utm_medium=zhihu&amp;amp;utm_campaign=108452984&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;掘金浏览器插件&lt;/a&gt;
+&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;专为开发者、设计师和产品经理量身定制，能够帮助你快速发现优质的开发、设计或者产品方面的干货，减少筛选成本。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;proxy-switchysharp6&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://chrome.google.com/webstore/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Proxy SwitchySharp&lt;/a&gt;
+&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;翻墙工具，配合Shadowsocks使用，灵活。可以设置PAC文件，以及手动添加PAC规则列表。轻松快捷地管理和切换多个代理设置。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;google-翻译7&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://chrome.google.com/webstore/detail/google-translate/aapbdbdomjkkjkaonfhkkikfgjllcleb&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Google 翻译&lt;/a&gt;
+&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;快捷的对网页上的内容进行翻译，浏览网页时可轻松查看翻译版本。由Google翻译小组提供。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;stylish8&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://chrome.google.com/webstore/detail/stylish/fjnbnpbmkenffdnngjfgmeleoegfcffe&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Stylish&lt;/a&gt;
+&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;是一个调整网页外观的用户样式管理器。它可让您轻松地为许多热门网站网站安装主题和皮肤。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;rss-feed-reader9&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://chrome.google.com/webstore/detail/rss-feed-reader/pnjaodmkngahhkoihejjehlcdlnohgmp&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;RSS Feed Reader&lt;/a&gt;
+&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;方便管理自己的RSS的订阅&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;ublock-origin10&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;uBlock Origin&lt;/a&gt;
+&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;一款高效的网络请求过滤工具，占用极低的内存和 CPU。用来过滤广告不错。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;知乎外链直达11&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://chrome.google.com/webstore/detail/%E7%9F%A5%E4%B9%8E%E5%A4%96%E9%93%BE%E7%9B%B4%E8%BE%BE/chidjfbdenglhicdckjnjccccpgknfhg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;知乎外链直达&lt;/a&gt;
+&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;移除知乎外部链接重定向，加速上网、避免访问追踪。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;马克飞象12&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://chrome.google.com/webstore/detail/marxico/kidnkfckhbdkfgbicccmdggmpgogehop&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;马克飞象&lt;/a&gt;
+&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;强大的Markdown离线编辑器，专为印象笔记打造&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;advanced-font-settings13&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://chrome.google.com/webstore/detail/advanced-font-settings/caclkomlalccbpcdllchkeecicepbmbm&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Advanced Font Settings&lt;/a&gt;
+&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;修改浏览器的字体&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;一键管理所有扩展14&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://chrome.google.com/webstore/detail/%E4%B8%80%E9%94%AE%E7%AE%A1%E7%90%86%E6%89%80%E6%9C%89%E6%89%A9%E5%B1%95/niemebbfnfbjfojajlmnbiikmcpjkkja&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;一键管理所有扩展&lt;/a&gt;
+&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;一款可以一键管理所有 Chrome 扩展的 Chrome 扩展。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;tampermonkey15&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Tampermonkey&lt;/a&gt;
+&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;油猴脚本Tampermonkey，可以装很多实用的网站脚本&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;好用的tampermonke脚本-----需要先安装tampermonkey&#34;&gt;好用的Tampermonke脚本 &amp;mdash; &lt;em&gt;需要先安装Tampermonkey&lt;/em&gt;
+&lt;/h3&gt;&lt;h4 id=&#34;remove-the-jump-link-in-baidu-ecma616&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://greasyfork.org/zh-CN/scripts/11915-remove-the-jump-link-in-baidu-ecma6&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;remove the jump link in BAIDU (ECMA6)&lt;/a&gt;
+&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;去除百度搜索跳转链接&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;vipvideos_skipad17&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://greasyfork.org/zh-CN/scripts/8561-vipvideos-skipad&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;vipVideos_skipAd&lt;/a&gt;
+&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;配合ABP去视频广告；开启GPU加速&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;去广告去除百度推广以及无用功能18&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://greasyfork.org/zh-CN/scripts/19759-%E5%8E%BB%E5%B9%BF%E5%91%8A-%E5%8E%BB%E9%99%A4%E7%99%BE%E5%BA%A6%E6%8E%A8%E5%B9%BF%E4%BB%A5%E5%8F%8A%E6%97%A0%E7%94%A8%E5%8A%9F%E8%83%BD&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;去广告/去除百度推广以及无用功能&lt;/a&gt;
+&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;去掉百度推广以及辣鸡推广&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;哔哩哔哩bilibilicom播放器调整19&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://greasyfork.org/zh-CN/scripts/21284-%E5%93%94%E5%93%A9%E5%93%94%E5%93%A9-bilibili-com-%E6%92%AD%E6%94%BE%E5%99%A8%E8%B0%83%E6%95%B4&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;哔哩哔哩（bilibili.com）播放器调整&lt;/a&gt;
+&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;B站自动播放器宽屏，定位到播放器位置&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;购物党比价工具20&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://greasyfork.org/zh-CN/scripts/14466-%E8%B4%AD%E7%89%A9%E5%85%9A%E6%AF%94%E4%BB%B7%E5%B7%A5%E5%85%B7&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;购物党比价工具&lt;/a&gt;
+&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;京东.淘宝.天猫.易迅.亚马逊中国.一号店.苏宁易购.当当网.国美在线.新蛋网中国.拍拍网自动比价。（并不是太有用）&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

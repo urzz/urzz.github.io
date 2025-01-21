@@ -1,19 +1,36 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Ssh on 破壳 - 虽不能至，心向往之</title>
-    <link>https://urzz.xyz/categories/ssh/</link>
-    <description>Recent content in Ssh on 破壳 - 虽不能至，心向往之</description>
-    <generator>Hugo</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Tue, 18 Dec 2018 11:57:16 +0000</lastBuildDate>
-    <atom:link href="https://urzz.xyz/categories/ssh/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>SSH 免密码登录失败</title>
-      <link>https://urzz.xyz/2018/12/18/ssh-pubkey-auth-failed/</link>
-      <pubDate>Tue, 18 Dec 2018 11:57:16 +0000</pubDate>
-      <guid>https://urzz.xyz/2018/12/18/ssh-pubkey-auth-failed/</guid>
-      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;服务器新建用户，ssh关闭密码认证，只允许pubkey。但是root可以以pubkey登录，新建的用户却不可以，经检查后发现，pubkey认证对用户目录等相关路径的权限是有要求的。&#xA;可在ssh登录命令后加上 &lt;code&gt;-v&lt;/code&gt; 参数，查看具体登录日志&lt;/p&gt;&#xA;&lt;/blockquote&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Ssh on 破壳</title>
+        <link>https://urzz.xyz/categories/ssh/</link>
+        <description>Recent content in Ssh on 破壳</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <lastBuildDate>Tue, 18 Dec 2018 11:57:16 +0000</lastBuildDate><atom:link href="https://urzz.xyz/categories/ssh/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>SSH 免密码登录失败</title>
+        <link>https://urzz.xyz/p/ssh-pubkey-auth-failed/</link>
+        <pubDate>Tue, 18 Dec 2018 11:57:16 +0000</pubDate>
+        
+        <guid>https://urzz.xyz/p/ssh-pubkey-auth-failed/</guid>
+        <description>&lt;blockquote&gt;
+&lt;p&gt;服务器新建用户，ssh关闭密码认证，只允许pubkey。但是root可以以pubkey登录，新建的用户却不可以，经检查后发现，pubkey认证对用户目录等相关路径的权限是有要求的。
+可在ssh登录命令后加上 &lt;code&gt;-v&lt;/code&gt; 参数，查看具体登录日志&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;确认ssh key正确添加到~/.ssh/authorized_keys&lt;/li&gt;
+&lt;li&gt;查看&lt;code&gt;/var/log/secure&lt;/code&gt;日志，若是出现 &lt;code&gt;Authentication refused: bad ownership or modes for directory /home/***&lt;/code&gt;, 则需要检查用户目录以及~/.ssh等路径的权限&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;sshd为了安全，对属主的目录和文件权限有所要求。如果权限不对，则ssh的免密码登陆不生效。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;用户目录权限为 755 或者 700，就是不能是77x。&lt;/li&gt;
+&lt;li&gt;.ssh目录权限一般为755或者700。&lt;/li&gt;
+&lt;li&gt;authorized_keys权限一般为644&lt;/li&gt;
+&lt;li&gt;rsa_id权限必须为600&lt;/li&gt;
+&lt;li&gt;~ 路径的权限限制： group 和 other 不能有 ~ 路径的写权限： chmod go-w ~&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;</description>
+        </item>
+        
+    </channel>
 </rss>
