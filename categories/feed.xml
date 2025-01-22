@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Categories on 破壳</title>
+        <link>https://urzz.xyz/categories/</link>
+        <description>Recent content in Categories on 破壳</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-CN</language>
+        <managingEditor>virus.ljd@gmail.com (Fooksky)</managingEditor>
+        <webMaster>virus.ljd@gmail.com (Fooksky)</webMaster>
+        <lastBuildDate>Wed, 15 Jan 2025 22:32:10 +0800</lastBuildDate><atom:link href="https://urzz.xyz/categories/feed.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Java</title>
+        <link>https://urzz.xyz/categories/java/</link>
+        <pubDate>Wed, 15 Jan 2025 18:32:10 +0800</pubDate>
+        <author>virus.ljd@gmail.com (Fooksky)</author>
+        <guid>https://urzz.xyz/categories/java/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>问题分享</title>
+        <link>https://urzz.xyz/categories/%E9%97%AE%E9%A2%98%E5%88%86%E4%BA%AB/</link>
+        <pubDate>Wed, 15 Jan 2025 18:32:10 +0800</pubDate>
+        <author>virus.ljd@gmail.com (Fooksky)</author>
+        <guid>https://urzz.xyz/categories/%E9%97%AE%E9%A2%98%E5%88%86%E4%BA%AB/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>HomeLab</title>
+        <link>https://urzz.xyz/categories/homelab/</link>
+        <pubDate>Wed, 01 Feb 2023 15:49:36 +0800</pubDate>
+        <author>virus.ljd@gmail.com (Fooksky)</author>
+        <guid>https://urzz.xyz/categories/homelab/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Windows</title>
+        <link>https://urzz.xyz/categories/windows/</link>
+        <pubDate>Sun, 15 Dec 2019 18:10:24 +0000</pubDate>
+        <author>virus.ljd@gmail.com (Fooksky)</author>
+        <guid>https://urzz.xyz/categories/windows/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>源码解析</title>
+        <link>https://urzz.xyz/categories/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/</link>
+        <pubDate>Wed, 17 Jul 2019 16:50:58 +0000</pubDate>
+        <author>virus.ljd@gmail.com (Fooksky)</author>
+        <guid>https://urzz.xyz/categories/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>设计模式</title>
+        <link>https://urzz.xyz/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
+        <pubDate>Mon, 08 Jul 2019 20:02:35 +0000</pubDate>
+        <author>virus.ljd@gmail.com (Fooksky)</author>
+        <guid>https://urzz.xyz/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Spring</title>
+        <link>https://urzz.xyz/categories/spring/</link>
+        <pubDate>Wed, 03 Jul 2019 19:08:29 +0000</pubDate>
+        <author>virus.ljd@gmail.com (Fooksky)</author>
+        <guid>https://urzz.xyz/categories/spring/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Linux</title>
+        <link>https://urzz.xyz/categories/linux/</link>
+        <pubDate>Tue, 18 Dec 2018 11:57:16 +0000</pubDate>
+        <author>virus.ljd@gmail.com (Fooksky)</author>
+        <guid>https://urzz.xyz/categories/linux/</guid>
+        <description></description>
+        </item>
+        
+    </channel>
+</rss>

@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>黑群晖 on 破壳</title>
+        <link>https://urzz.xyz/tags/%E9%BB%91%E7%BE%A4%E6%99%96/</link>
+        <description>Recent content in 黑群晖 on 破壳</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-CN</language>
+        <managingEditor>virus.ljd@gmail.com (Fooksky)</managingEditor>
+        <webMaster>virus.ljd@gmail.com (Fooksky)</webMaster>
+        <lastBuildDate>Tue, 16 Feb 2021 02:35:14 +0800</lastBuildDate><atom:link href="https://urzz.xyz/tags/%E9%BB%91%E7%BE%A4%E6%99%96/feed.xml" rel="self" type="application/rss+xml" /><item>
+        <title>PVE 安装黑群晖教程</title>
+        <link>https://urzz.xyz/p/pve-install-synology/</link>
+        <pubDate>Tue, 16 Feb 2021 02:35:14 +0800</pubDate>
+        <author>virus.ljd@gmail.com (Fooksky)</author>
+        <guid>https://urzz.xyz/p/pve-install-synology/</guid>
+        <description>&lt;blockquote&gt;
+&lt;p&gt;因为某些原因，重装了两三次PVE和黑群，重装的过程中也碰到一点问题，因此这里记录一下教程。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;PVE的安装这里就不说了，可以参考这个教程：&lt;a class=&#34;link&#34; href=&#34;https://www.10bests.com/install-proxmox-ve/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Proxmox VE（PVE）6.1安装保姆级图文教程&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;虚拟机配置&#34;&gt;虚拟机配置
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://attachment.urzz.xyz/blog-img/20210216231654.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;VM ID：虚拟机的唯一ID，只要保证跟其他虚拟机的ID不一致即可&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://attachment.urzz.xyz/blog-img/20210216231915.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;选择不使用任何介质&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://attachment.urzz.xyz/blog-img/20210216232034.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://attachment.urzz.xyz/blog-img/20210216232145.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://attachment.urzz.xyz/blog-img/20210216232209.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如果不需要在DSM中跑Docker，cpu和内存不需要配置太高
+这里有一个点需要特别注意，cpu的类别，默认是kvm64。因为host类型才能更好的发挥cpu的性能，所以一开始我改为使用host类型。但是改为host之后，会无法获取DHCP的IP，因此无法配置群晖。所以，PVE安装DSM，CPU类型必须是kvm64。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://attachment.urzz.xyz/blog-img/20210216232246.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://attachment.urzz.xyz/blog-img/20210216235108.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;网卡类型可以选E1000，虽然性能差点，但是群晖可以直接识别。或者也可以选vmxnet3，但是mac地址需要与群晖引导文件中的mac地址保持一致。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://attachment.urzz.xyz/blog-img/20210216235139.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;虚拟机配置列表&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://attachment.urzz.xyz/blog-img/20210216235357.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;删除默认的scsi0的硬盘以及CD/DVD驱动器&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://attachment.urzz.xyz/blog-img/20210217000458.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;黑群引导文件配置&#34;&gt;黑群引导文件配置
+&lt;/h3&gt;&lt;p&gt;黑群晖系统的型号我选择的是3617xs，对应引导文件：&lt;a class=&#34;link&#34; href=&#34;https://pan.baidu.com/s/1083MRH7sTGfeTX5-9IdYlw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;地址&lt;/a&gt; 提取码: me7h&lt;/p&gt;
+&lt;p&gt;将下载的引导文件 synoboot.img 上传到Local存储中
+&lt;img src=&#34;https://attachment.urzz.xyz/blog-img/20210217005320.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;将引导文件作为启动硬盘导入到虚拟机中&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 1000: vmid，ssd-c2000pro: 虚拟机存储位置&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;qm importdisk &lt;span class=&#34;m&#34;&gt;1000&lt;/span&gt; /var/lib/vz/template/iso/synoboot.img ssd-c2000pro
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://attachment.urzz.xyz/blog-img/20210217005730.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;双击未使用磁盘，设备设置为SATA:0
+&lt;img src=&#34;https://attachment.urzz.xyz/blog-img/20210217005800.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;另加一块硬盘用于安装系统，不用很大，16G或者32G都行。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://attachment.urzz.xyz/blog-img/20210217010443.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;修改选项中的引导顺序，选择SATA0为第一个
+&lt;img src=&#34;https://attachment.urzz.xyz/blog-img/20210217010536.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;
+&lt;img src=&#34;https://attachment.urzz.xyz/blog-img/20210217010559.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;接下来启动虚拟机，然后访问：http://find.synology.com/
+即可找到黑群的地址，然后在黑群官方地址: &lt;a class=&#34;link&#34; href=&#34;https://archive.synology.com/download/Os/DSM&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://archive.synology.com/download/Os/DSM&lt;/a&gt; 下载系统pat文件，然后在上面的搜索地址中找到的群晖配置中正常安装系统即可。&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Nginx on 破壳</title>
+        <link>https://urzz.xyz/tags/nginx/</link>
+        <description>Recent content in Nginx on 破壳</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-CN</language>
+        <managingEditor>virus.ljd@gmail.com (Fooksky)</managingEditor>
+        <webMaster>virus.ljd@gmail.com (Fooksky)</webMaster>
+        <lastBuildDate>Wed, 03 Jul 2019 19:08:29 +0000</lastBuildDate><atom:link href="https://urzz.xyz/tags/nginx/feed.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Nginx反代Spring Boot后端服务后，丢失cookie</title>
+        <link>https://urzz.xyz/p/spring-boot-nginx-cookie-nout-found/</link>
+        <pubDate>Wed, 03 Jul 2019 19:08:29 +0000</pubDate>
+        <author>virus.ljd@gmail.com (Fooksky)</author>
+        <guid>https://urzz.xyz/p/spring-boot-nginx-cookie-nout-found/</guid>
+        <description>&lt;blockquote&gt;
+&lt;p&gt;为了解决跨域请求无法使用cookie的问题，使用nginx对后端服务做了反代。但是反代之后，却发现cookie没有被正确传递。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;!-- more --&gt;
+&lt;h3 id=&#34;相关配置&#34;&gt;相关配置
+&lt;/h3&gt;&lt;h4 id=&#34;nginx-反代配置&#34;&gt;nginx 反代配置
+&lt;/h4&gt;&lt;p&gt;nginx反代的配置很简单，只是简单设置了proxy_pass&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-nginx&#34; data-lang=&#34;nginx&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;location&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;/edims-api&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kn&#34;&gt;proxy_pass&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;http://server_ip:port/&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;spring-boot后端服务配置&#34;&gt;Spring Boot后端服务配置
+&lt;/h4&gt;&lt;p&gt;后端服务使用内嵌Tomcat，且设置了context-path。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;server&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# 省略了无关配置&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;servlet&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;context-path&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;/path&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;分析&#34;&gt;分析
+&lt;/h3&gt;&lt;p&gt;打个比方，登录请求需要请求两个接口A和B。在A接口中，会往session中存入一些数据，在访问B接口的时候需要从session中取出A接口存入的数据。在使用了nginx反代了后端服务之后，请求B接口时，无法从session中取到需要的数据，原因在于访问B接口时，浏览器没有自动将cookie带上，所以每次访问接口的session都不一样。&lt;/p&gt;
+&lt;p&gt;一般来说，后端在Response Header中设置Set-Cookie之后，浏览器在向服务器发起其他请求时，自动带上设置的cookie，如果没有带上，那就只能说明，肯定是第二次请求接口时，有什么条件不符合导致浏览器没有自动带上cookie。&lt;/p&gt;
+&lt;p&gt;参考MDN上的资料（参考 &lt;a class=&#34;link&#34; href=&#34;https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#Scope_of_cookies&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;MDN-Cookies&lt;/a&gt;）&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The Domain and Path directives define the scope of the cookie: what URLs the cookies should be sent to.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;浏览器根据cookie的domain和path，决定为哪些url请求发送cookie，而根据我的nginx配置来看，domain肯定是一致的，区别就在于path了。&lt;/p&gt;
+&lt;p&gt;首先看一下cookie的path：
+&lt;img src=&#34;https://attachment.urzz.xyz/2019/07/03/15621459439181.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;-w669&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;再来看一下请求url的path：
+&lt;img src=&#34;https://attachment.urzz.xyz/2019/07/03/15621460365392.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;-w553&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;原因找到了，因为后端设置的cookie的path与反代之后访问地址的path不一致，才导致浏览器在B接口请求时并没有发送该cookie。&lt;/p&gt;
+&lt;h3 id=&#34;解决&#34;&gt;解决
+&lt;/h3&gt;&lt;p&gt;修改nginx的反代配置，在location中添加&lt;code&gt;proxy_cookie_path&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-nginx&#34; data-lang=&#34;nginx&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;location&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;/edims-api&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kn&#34;&gt;proxy_pass&lt;/span&gt;          &lt;span class=&#34;s&#34;&gt;http://server_ip:port/&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kn&#34;&gt;proxy_cookie_path&lt;/span&gt;   &lt;span class=&#34;s&#34;&gt;/edims-background&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;/edims-api/edims-background&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;总结&#34;&gt;总结
+&lt;/h3&gt;&lt;p&gt;一般来说，我们的Java后端应用并不会设置context-path，那默认的cookie的path其实应该是 &lt;code&gt;/&lt;/code&gt;，这样的话，也就不会发现反代还会导致cookie丢失这种情况了。不过如果碰到了，只要了解web开发相关的基础知识，也还是很好解决的。&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
