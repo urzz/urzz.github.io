@@ -26,8 +26,16 @@
 &lt;/h3&gt;&lt;p&gt;什么是 Arthas 可以参考 &lt;a class=&#34;link&#34; href=&#34;https://arthas.aliyun.com/doc/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;官网介绍&lt;/a&gt; 。&lt;/p&gt;
 &lt;p&gt;简单来说，作为一个 Java 开发，遇到线上问题时才发现由于 日志不齐全、无法debug 等原因无法定位问题时，怎么办？有Arthas就可以处理了。我们能用Arthas来做什么官网也有介绍：&lt;/p&gt;
-&lt;p&gt;![Arthas 能给我们带来什么能力？](&lt;a class=&#34;link&#34; href=&#34;https://attachment.urzz.xyz/img/20250115001953.png!/format/webp%22&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://attachment.urzz.xyz/img/20250115001953.png!/format/webp&#34;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://attachment.urzz.xyz/img/20250115001953.png!/format/webp%22&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Arthas 能给我们带来什么能力？&#34;
+	
+	
+&gt;&lt;/p&gt;
 &lt;h2 id=&#34;问题&#34;&gt;问题
 &lt;/h2&gt;&lt;h3 id=&#34;表现消失的参数名列表&#34;&gt;表现：消失的参数名列表
 &lt;/h3&gt;&lt;p&gt;为了排查线上某个接口的性能问题，使用 Arthas - trace 命令观察指定接口的调用路径以及相应的耗时时，发现当服务刚启动且未发起请求时，使用trace命令观察接口后，所有该接口的调用都会触发一个异常错误：&lt;/p&gt;
