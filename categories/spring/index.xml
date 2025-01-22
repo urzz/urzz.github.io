@@ -6,7 +6,7 @@
         <description>Recent content in Spring on 破壳</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-CN</language>
-        <lastBuildDate>Tue, 11 Jun 2019 21:33:38 +0000</lastBuildDate><atom:link href="https://urzz.xyz/categories/spring/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 21 Sep 2020 01:17:10 +0800</lastBuildDate><atom:link href="https://urzz.xyz/categories/spring/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Spring Boot 整合shiro使用自定义filter</title>
         <link>https://urzz.xyz/p/spring-boot-shiro-custom-filter/</link>
         <pubDate>Tue, 11 Jun 2019 21:33:38 +0000</pubDate>
