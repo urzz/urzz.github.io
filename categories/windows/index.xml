@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Windows on 破壳</title>
+        <link>https://urzz.xyz/categories/windows/</link>
+        <description>Recent content in Windows on 破壳</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-CN</language>
+        <lastBuildDate>Sun, 15 Dec 2019 18:10:24 +0000</lastBuildDate><atom:link href="https://urzz.xyz/categories/windows/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Windows10迁移以及UEFI引导修复</title>
+        <link>https://urzz.xyz/p/win10-migration-fix-uefi-boot/</link>
+        <pubDate>Sun, 15 Dec 2019 18:10:24 +0000</pubDate>
+        
+        <guid>https://urzz.xyz/p/win10-migration-fix-uefi-boot/</guid>
+        <description>&lt;blockquote&gt;
+&lt;p&gt;海康威视c2000 pro太香了，双十二没忍住剁了个1t的。在此记录一下win10的迁移步骤以及碰到的问题。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;!-- more --&gt;
+&lt;h3 id=&#34;迁移工具选择&#34;&gt;迁移工具选择
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;AOMEI Backupper&lt;/li&gt;
+&lt;li&gt;分区助手&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;其实这俩都可以，因为它们都有一个功能：克隆硬盘。&lt;/p&gt;
+&lt;h3 id=&#34;克隆硬盘&#34;&gt;克隆硬盘
+&lt;/h3&gt;&lt;p&gt;克隆硬盘首先要保证俩硬盘的分区表是一致的，要么都是mbr，要么都是guid。所以我把ssd装到主机上后，就把硬盘的分区表格式改为了guid。接着并不需要做任何分区的操作，直接打开上面说的两个工具之一，选择克隆硬盘。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;克隆硬盘的时候一定要记住勾选ssd优化，因为ssd我们正常自己用的时候分区也是要设置4k对齐的，这个ssd优化其实就是帮我们做了这一步。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;克隆硬盘完成之后，其实可以把原固态拆下来用新固态启动试试，但是我这一步很自信的直接清了原固态的所有分区和数据，然后我进系统就失败了。&lt;/p&gt;
+&lt;h3 id=&#34;引导修复&#34;&gt;引导修复
+&lt;/h3&gt;&lt;p&gt;电脑启动会出现：0xc000000e 这样的错误码，同时提示电脑设备需要修复。&lt;/p&gt;
+&lt;p&gt;这个错误我查了下说可能是引导丢失引起的，只能想办法修复引导了。如果这个时候手上有个pe系统盘就会很省事了，pe一般都会带bootice这样的引导修复工具，直接打开该工具修复一下引导就行了，具体就不说了。&lt;/p&gt;
+&lt;p&gt;但是我手上只有一个win10原版系统的u盘，所以只能靠它来修复引导了。&lt;/p&gt;
+&lt;h4 id=&#34;设置从系统盘启动&#34;&gt;设置从系统盘启动
+&lt;/h4&gt;&lt;p&gt;开机启动选择U盘启动就好了，没啥说的&lt;/p&gt;
+&lt;h4 id=&#34;uefi引导修复&#34;&gt;UEFI引导修复
+&lt;/h4&gt;&lt;p&gt;系统盘里面有个功能叫：修复计算机。点击它进入修复功能，疑难解答-&amp;gt;命令行工具。&lt;/p&gt;
+&lt;p&gt;这一步最关键的是你要找到你系统所在分区和efi分区。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 首先进入diskpart工具查询硬盘和分区信息。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;gt; diskpart
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;gt; list vol
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 确定了ESP分区和系统所在分区后，首先给ESP分区分配一个驱动器符，比如G盘
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 如果系统所在分区的驱动器符不是C盘(和以前不一致),也可以在这里修改对应的盘符
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 在确定分区的驱动器符都正确后，首先扫描有哪些系统:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;gt; bootrec /scanos
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 选择esp分区
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;gt; sel vol 1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 分配盘符
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;gt; assign letter=G
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 修复引导
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;gt; cd /d G:\EFI\Microsoft\Boot\
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# /s S: 指定esp分区所在磁盘
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# /f uefi 指定启动方式为uefi，注意之间的空格一定要输入。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# /l zh-cn 指定uefi启动界面语言为简体中文
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;gt; bcdboot C:\windows /s G: /f UEFI&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;gt; bcdboot C:\Windows /l zh-cn /s G: /f ALL
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 重建引导的最后一步
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;gt; bootrec /rebuildbcd
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 退出重启电脑
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;gt; exit
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;退出命令行后，重启电脑，选择硬盘启动就好了。到此uefi的引导修复算是完成了。&lt;/p&gt;
+&lt;h3 id=&#34;参考&#34;&gt;参考
+&lt;/h3&gt;&lt;p&gt;[1] &lt;a class=&#34;link&#34; href=&#34;https://neosmart.net/wiki/fix-uefi-boot/#Fix_UEFI_Boot_in_Windows_8_81_or_10&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Fix UEFI Boot: Fix for Windows 7, 8, 8.1, 10&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

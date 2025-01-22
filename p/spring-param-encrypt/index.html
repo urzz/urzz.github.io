@@ -10,7 +10,7 @@
 <meta property='og:description' content=" 之前做的一个对外网关项目，安全需要所以得对参数进行加密校验\n参数 接口交互约定了三个参数：\ntimestamp（请求时间戳） data（实际请求数据，经过加密得到的字符串） sign（以HMAC-SHA1算法对参数的签名） 请求方式 接口统一使用json来进行交互，请求的Content-Type统一为application/json\n">
 <meta property='og:url' content='https://urzz.xyz/p/spring-param-encrypt/'>
 <meta property='og:site_name' content='破壳'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Spring' /><meta property='article:tag' content='Java' /><meta property='article:published_time' content='2019-05-30T14:04:34&#43;00:00'/><meta property='article:modified_time' content='2020-09-21T01:17:10&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Spring' /><meta property='article:tag' content='参数校验' /><meta property='article:published_time' content='2019-05-30T14:04:34&#43;00:00'/><meta property='article:modified_time' content='2019-05-30T14:04:34&#43;00:00'/>
 <meta name="twitter:title" content="基于Spring做请求参数的加解密/签名校验">
 <meta name="twitter:description" content=" 之前做的一个对外网关项目，安全需要所以得对参数进行加密校验\n参数 接口交互约定了三个参数：\ntimestamp（请求时间戳） data（实际请求数据，经过加密得到的字符串） sign（以HMAC-SHA1算法对参数的签名） 请求方式 接口统一使用json来进行交互，请求的Content-Type统一为application/json\n">
     <link rel="shortcut icon" href="/favicon.ico" />
@@ -116,26 +116,6 @@
             
         </ol><ol class="menu" id="main-menu">
         
-        
-        
-        <li >
-            <a href='/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <polyline points="5 12 3 12 12 3 21 12 19 12" />
-  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
-  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
-</svg>
-
-
-
-                
-                <span>主页</span>
-            </a>
-        </li>
         
         
         <li >
@@ -256,6 +236,10 @@
         
             <a href="/categories/java/" >
                 Java
+            </a>
+        
+            <a href="/categories/spring/" >
+                Spring
             </a>
         
     </header>
@@ -741,7 +725,7 @@
         
             <a href="/tags/spring/">Spring</a>
         
-            <a href="/tags/java/">Java</a>
+            <a href="/tags/%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C/">参数校验</a>
         
     </section>
 
@@ -758,19 +742,7 @@
 
         <span>Licensed under CC BY-NC-SA 4.0</span>
     </section>
-    <section class="article-lastmod">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <polyline points="12 7 12 12 15 15" />
-</svg>
-
-
-
-        <span>
-            最后更新于 2020-09-21 01:17
-        </span>
-    </section></footer>
+    </footer>
 
 
     
@@ -787,6 +759,45 @@
             
                 
 <article class="">
+    <a href="/p/spring-boot-shiro-custom-filter/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Spring Boot 整合shiro使用自定义filter</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/spring-shiro-cors-config/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Spring Boot 整合shiro后的跨域设置</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/spring-boot-nginx-cookie-nout-found/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Nginx反代Spring Boot后端服务后，丢失cookie</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
     <a href="/p/java-reflection-arthas-conflict-jdk-8240908/">
         
         
@@ -800,51 +811,12 @@
             
                 
 <article class="">
-    <a href="/p/improve-use-of-switch/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Switch的优化方式</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/p/unexpected-java-nullpoint-exception/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">印象深刻的Java空指针异常</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
     <a href="/p/mybatis-plus-generator-config/">
         
         
 
         <div class="article-details">
             <h2 class="article-title">使用mybatis-plus-generator初始化项目</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/p/jdk-collection-abstract-collection/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Java 集合源码 - AbstractCollection</h2>
         </div>
     </a>
 </article>
@@ -914,7 +886,7 @@
     <section class="copyright">
         &copy; 
         
-            2015 - 
+            2017 - 
         
         2025 破壳
     </section>
